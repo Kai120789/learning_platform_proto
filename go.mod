@@ -1,4 +1,4 @@
-module github.com/Kai120789/learning_platform/learning_platform_proto
+module github.com/Kai120789/learning_platform_proto
 
 go 1.25.6
 
