@@ -125,7 +125,6 @@ func (x *LoginRequest) GetPassword() string {
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -166,13 +165,6 @@ func (x *LoginResponse) GetUserId() int64 {
 		return x.UserId
 	}
 	return 0
-}
-
-func (x *LoginResponse) GetSessionId() string {
-	if x != nil {
-		return x.SessionId
-	}
-	return ""
 }
 
 func (x *LoginResponse) GetAccessToken() string {
@@ -269,7 +261,6 @@ func (x *RegisterRequest) GetPassword() string {
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -310,13 +301,6 @@ func (x *RegisterResponse) GetUserId() int64 {
 		return x.UserId
 	}
 	return 0
-}
-
-func (x *RegisterResponse) GetSessionId() string {
-	if x != nil {
-		return x.SessionId
-	}
-	return ""
 }
 
 func (x *RegisterResponse) GetAccessToken() string {
@@ -957,11 +941,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x0fauth/auth.proto\x12\x04auth\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"j\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"K\n" +
 	"\rLoginResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
-	"\n" +
-	"session_id\x18\x02 \x01(\tR\tsessionId\x12!\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\"\xc5\x01\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
@@ -971,11 +953,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x04role\x18\x05 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12\x1a\n" +
 	"\bpassword\x18\x06 \x01(\tR\bpasswordB\f\n" +
 	"\n" +
-	"_last_name\"m\n" +
+	"_last_name\"N\n" +
 	"\x10RegisterResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
-	"\n" +
-	"session_id\x18\x02 \x01(\tR\tsessionId\x12!\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\"9\n" +
 	"\x14RefreshTokensRequest\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\":\n" +
