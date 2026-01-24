@@ -681,6 +681,7 @@ func (x *ChangePasswordResponse) GetAccessToken() string {
 type ForceChangePasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -722,6 +723,13 @@ func (x *ForceChangePasswordRequest) GetUserId() int64 {
 	return 0
 }
 
+func (x *ForceChangePasswordRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
+}
+
 type ForceChangePasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -756,6 +764,190 @@ func (x *ForceChangePasswordResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ForceChangePasswordResponse.ProtoReflect.Descriptor instead.
 func (*ForceChangePasswordResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+}
+
+type ChangeEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	NewEmail      string                 `protobuf:"bytes,2,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeEmailRequest) Reset() {
+	*x = ChangeEmailRequest{}
+	mi := &file_auth_auth_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeEmailRequest) ProtoMessage() {}
+
+func (x *ChangeEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeEmailRequest.ProtoReflect.Descriptor instead.
+func (*ChangeEmailRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ChangeEmailRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *ChangeEmailRequest) GetNewEmail() string {
+	if x != nil {
+		return x.NewEmail
+	}
+	return ""
+}
+
+type ChangeEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeEmailResponse) Reset() {
+	*x = ChangeEmailResponse{}
+	mi := &file_auth_auth_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeEmailResponse) ProtoMessage() {}
+
+func (x *ChangeEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeEmailResponse.ProtoReflect.Descriptor instead.
+func (*ChangeEmailResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ChangeEmailResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+type ForceChangeEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	NewEmail      string                 `protobuf:"bytes,2,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForceChangeEmailRequest) Reset() {
+	*x = ForceChangeEmailRequest{}
+	mi := &file_auth_auth_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForceChangeEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceChangeEmailRequest) ProtoMessage() {}
+
+func (x *ForceChangeEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceChangeEmailRequest.ProtoReflect.Descriptor instead.
+func (*ForceChangeEmailRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ForceChangeEmailRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *ForceChangeEmailRequest) GetNewEmail() string {
+	if x != nil {
+		return x.NewEmail
+	}
+	return ""
+}
+
+type ForceChangeEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForceChangeEmailResponse) Reset() {
+	*x = ForceChangeEmailResponse{}
+	mi := &file_auth_auth_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForceChangeEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceChangeEmailResponse) ProtoMessage() {}
+
+func (x *ForceChangeEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceChangeEmailResponse.ProtoReflect.Descriptor instead.
+func (*ForceChangeEmailResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{17}
 }
 
 var File_auth_auth_proto protoreflect.FileDescriptor
@@ -800,14 +992,24 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\fold_password\x18\x02 \x01(\tR\voldPassword\x12!\n" +
 	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\";\n" +
 	"\x16ChangePasswordResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"5\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"X\n" +
 	"\x1aForceChangePasswordRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\x1d\n" +
-	"\x1bForceChangePasswordResponse*=\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
+	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x1d\n" +
+	"\x1bForceChangePasswordResponse\"J\n" +
+	"\x12ChangeEmailRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"8\n" +
+	"\x13ChangeEmailResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"O\n" +
+	"\x17ForceChangeEmailRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x1a\n" +
+	"\x18ForceChangeEmailResponse*=\n" +
 	"\bUserRole\x12\x19\n" +
 	"\x15ENUM_NAME_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05TUTOR\x10\x01\x12\v\n" +
-	"\aSTUDENT\x10\x022\xd9\x03\n" +
+	"\aSTUDENT\x10\x022\xf0\x04\n" +
 	"\x04Auth\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12H\n" +
@@ -815,7 +1017,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12<\n" +
 	"\tLogoutAll\x12\x16.auth.LogoutAllRequest\x1a\x17.auth.LogoutAllResponse\x12K\n" +
 	"\x0eChangePassword\x12\x1b.auth.ChangePasswordRequest\x1a\x1c.auth.ChangePasswordResponse\x12Z\n" +
-	"\x13ForceChangePassword\x12 .auth.ForceChangePasswordRequest\x1a!.auth.ForceChangePasswordResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/authb\x06proto3"
+	"\x13ForceChangePassword\x12 .auth.ForceChangePasswordRequest\x1a!.auth.ForceChangePasswordResponse\x12B\n" +
+	"\vChangeEmail\x12\x18.auth.ChangeEmailRequest\x1a\x19.auth.ChangeEmailResponse\x12Q\n" +
+	"\x10ForceChangeEmail\x12\x1d.auth.ForceChangeEmailRequest\x1a\x1e.auth.ForceChangeEmailResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -830,7 +1034,7 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 }
 
 var file_auth_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_auth_auth_proto_goTypes = []any{
 	(UserRole)(0),                       // 0: auth.UserRole
 	(*LoginRequest)(nil),                // 1: auth.LoginRequest
@@ -847,6 +1051,10 @@ var file_auth_auth_proto_goTypes = []any{
 	(*ChangePasswordResponse)(nil),      // 12: auth.ChangePasswordResponse
 	(*ForceChangePasswordRequest)(nil),  // 13: auth.ForceChangePasswordRequest
 	(*ForceChangePasswordResponse)(nil), // 14: auth.ForceChangePasswordResponse
+	(*ChangeEmailRequest)(nil),          // 15: auth.ChangeEmailRequest
+	(*ChangeEmailResponse)(nil),         // 16: auth.ChangeEmailResponse
+	(*ForceChangeEmailRequest)(nil),     // 17: auth.ForceChangeEmailRequest
+	(*ForceChangeEmailResponse)(nil),    // 18: auth.ForceChangeEmailResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
 	0,  // 0: auth.RegisterRequest.role:type_name -> auth.UserRole
@@ -857,15 +1065,19 @@ var file_auth_auth_proto_depIdxs = []int32{
 	9,  // 5: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
 	11, // 6: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
 	13, // 7: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
-	2,  // 8: auth.Auth.Login:output_type -> auth.LoginResponse
-	4,  // 9: auth.Auth.Register:output_type -> auth.RegisterResponse
-	6,  // 10: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
-	8,  // 11: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	10, // 12: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
-	12, // 13: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
-	14, // 14: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
-	8,  // [8:15] is the sub-list for method output_type
-	1,  // [1:8] is the sub-list for method input_type
+	15, // 8: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
+	17, // 9: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
+	2,  // 10: auth.Auth.Login:output_type -> auth.LoginResponse
+	4,  // 11: auth.Auth.Register:output_type -> auth.RegisterResponse
+	6,  // 12: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
+	8,  // 13: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	10, // 14: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
+	12, // 15: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
+	14, // 16: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
+	16, // 17: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
+	18, // 18: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
+	10, // [10:19] is the sub-list for method output_type
+	1,  // [1:10] is the sub-list for method input_type
 	1,  // [1:1] is the sub-list for extension type_name
 	1,  // [1:1] is the sub-list for extension extendee
 	0,  // [0:1] is the sub-list for field type_name
@@ -883,7 +1095,7 @@ func file_auth_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   14,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

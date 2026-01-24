@@ -12,6 +12,8 @@ service Auth {
   rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
   rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
   rpc ForceChangePassword (ForceChangePasswordRequest) returns (ForceChangePasswordResponse);
+  rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
+  rpc ForceChangeEmail (ForceChangeEmailRequest) returns (ForceChangeEmailResponse);
 }
 
 enum UserRole {
@@ -78,6 +80,23 @@ message ChangePasswordResponse {
 
 message ForceChangePasswordRequest {
   int64 user_id = 1;
+  string new_password = 2;
 }
 
 message ForceChangePasswordResponse {}
+
+message ChangeEmailRequest {
+  int64 user_id = 1;
+  string new_email = 2;
+}
+
+message ChangeEmailResponse {
+  string access_token = 1;
+}
+
+message ForceChangeEmailRequest {
+  int64 user_id = 1;
+  string new_email = 2;
+}
+
+message ForceChangeEmailResponse {}
