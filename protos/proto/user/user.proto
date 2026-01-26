@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/user";
+
+service User {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc GetUserData (GetUserDataRequest) returns (GetUserDataResponse);
+  rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+  rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
+  rpc UpdateUserInfo (UpdateUserInfoRequest) returns (UpdateUserInfoResponse);
+  rpc UpdateUserSettings (UpdateUserSettingsRequest) returns (UpdateUserSettingsResponse);
+}
+
+enum UserRole {
+  USER_ROLE_UNSPECIFIED = 0;
+  TUTOR = 1;
+  STUDENT = 2;
+  ADMIN = 3;
+}
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  ACTIVE = 1;
+  INACTIVE= 2;
+  BANNED = 3;
+}
+
+message CreateUserRequest {
+  string email = 1;
+  string name = 2;
+  string surname = 3;
+  optional string last_name = 4;
+  UserRole role = 5;
+  string password_hash = 6;
+}
+
+message CreateUserResponse {
+  int64 user_id = 1;
+}
+
+message GetUserRequest {
+  int64 user_id = 1;
+}
+
+message GetUserResponse {
+  int64 user_id = 1;
+  string email = 2;
+  string password_hash = 3;
+}
+
+message GetUserDataRequest {
+  int64 user_id = 1;
+}
+
+message GetUserDataResponse {
+  int64 user_id = 1;
+  string email = 2;
+  UpdateUserInfoResponse user_info = 3;
+  UpdateUserSettingsResponse user_settings = 4;
+}
+
+message ChangePasswordRequest {
+  int64 user_id = 1;
+  string new_password = 2;
+}
+
+message ChangePasswordResponse {}
+
+message ChangeEmailRequest {
+  int64 user_id = 1;
+  string new_email = 2;
+}
+
+message ChangeEmailResponse {}
+
+message UpdateUserInfoRequest {
+  int64 user_id = 1;
+  optional string name = 2;
+  optional string surname = 3;
+  optional string lastname = 4;
+  optional string city = 5;
+  optional string about = 6;
+  optional int64 class = 7;
+}
+
+message UpdateUserInfoResponse {
+  string name = 1;
+  string surname = 2;
+  optional string lastname = 3;
+  optional string city = 4;
+  optional string about = 5;
+  UserRole role = 6;
+  Status status = 7;
+  optional int64 class = 8;
+}
+
+message UpdateUserSettingsRequest {
+  int64 user_id = 1;
+  optional bool is_2_fa_enabled = 2;
+  optional bool is_notifications_enabled = 3;
+}
+
+message UpdateUserSettingsResponse {
+  bool is_2_fa_enabled = 1;
+  bool is_notifications_enabled = 2;
+}
