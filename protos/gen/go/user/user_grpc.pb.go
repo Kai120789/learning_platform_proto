@@ -19,13 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	User_CreateUser_FullMethodName         = "/user.User/CreateUser"
-	User_GetUser_FullMethodName            = "/user.User/GetUser"
-	User_GetUserData_FullMethodName        = "/user.User/GetUserData"
-	User_ChangePassword_FullMethodName     = "/user.User/ChangePassword"
-	User_ChangeEmail_FullMethodName        = "/user.User/ChangeEmail"
-	User_UpdateUserInfo_FullMethodName     = "/user.User/UpdateUserInfo"
-	User_UpdateUserSettings_FullMethodName = "/user.User/UpdateUserSettings"
+	User_CreateUser_FullMethodName          = "/user.User/CreateUser"
+	User_GetUser_FullMethodName             = "/user.User/GetUser"
+	User_GetUserByEmail_FullMethodName      = "/user.User/GetUserByEmail"
+	User_GetAllUsersWithData_FullMethodName = "/user.User/GetAllUsersWithData"
+	User_GetUserData_FullMethodName         = "/user.User/GetUserData"
+	User_ChangePassword_FullMethodName      = "/user.User/ChangePassword"
+	User_ChangeEmail_FullMethodName         = "/user.User/ChangeEmail"
+	User_UpdateUserInfo_FullMethodName      = "/user.User/UpdateUserInfo"
+	User_UpdateUserSettings_FullMethodName  = "/user.User/UpdateUserSettings"
 )
 
 // UserClient is the client API for User service.
@@ -33,7 +35,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	GetUser(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error)
+	GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*GetUserByEmailResponse, error)
+	GetAllUsersWithData(ctx context.Context, in *GetAllUsersWithDataRequest, opts ...grpc.CallOption) (*GetAllUsersWithDataResponse, error)
 	GetUserData(ctx context.Context, in *GetUserDataRequest, opts ...grpc.CallOption) (*GetUserDataResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
 	ChangeEmail(ctx context.Context, in *ChangeEmailRequest, opts ...grpc.CallOption) (*ChangeEmailResponse, error)
@@ -59,10 +63,30 @@ func (c *userClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts
 	return out, nil
 }
 
-func (c *userClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+func (c *userClient) GetUser(ctx context.Context, in *GetUserByIdRequest, opts ...grpc.CallOption) (*GetUserByIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserResponse)
+	out := new(GetUserByIdResponse)
 	err := c.cc.Invoke(ctx, User_GetUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*GetUserByEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserByEmailResponse)
+	err := c.cc.Invoke(ctx, User_GetUserByEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetAllUsersWithData(ctx context.Context, in *GetAllUsersWithDataRequest, opts ...grpc.CallOption) (*GetAllUsersWithDataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllUsersWithDataResponse)
+	err := c.cc.Invoke(ctx, User_GetAllUsersWithData_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +148,9 @@ func (c *userClient) UpdateUserSettings(ctx context.Context, in *UpdateUserSetti
 // for forward compatibility.
 type UserServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	GetUser(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error)
+	GetUserByEmail(context.Context, *GetUserByEmailRequest) (*GetUserByEmailResponse, error)
+	GetAllUsersWithData(context.Context, *GetAllUsersWithDataRequest) (*GetAllUsersWithDataResponse, error)
 	GetUserData(context.Context, *GetUserDataRequest) (*GetUserDataResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
 	ChangeEmail(context.Context, *ChangeEmailRequest) (*ChangeEmailResponse, error)
@@ -143,8 +169,14 @@ type UnimplementedUserServer struct{}
 func (UnimplementedUserServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedUserServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
+func (UnimplementedUserServer) GetUser(context.Context, *GetUserByIdRequest) (*GetUserByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServer) GetUserByEmail(context.Context, *GetUserByEmailRequest) (*GetUserByEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
+}
+func (UnimplementedUserServer) GetAllUsersWithData(context.Context, *GetAllUsersWithDataRequest) (*GetAllUsersWithDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsersWithData not implemented")
 }
 func (UnimplementedUserServer) GetUserData(context.Context, *GetUserDataRequest) (*GetUserDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserData not implemented")
@@ -201,7 +233,7 @@ func _User_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(int
 }
 
 func _User_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserRequest)
+	in := new(GetUserByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -213,7 +245,43 @@ func _User_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: User_GetUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).GetUser(ctx, req.(*GetUserRequest))
+		return srv.(UserServer).GetUser(ctx, req.(*GetUserByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetUserByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_GetUserByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetUserByEmail(ctx, req.(*GetUserByEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetAllUsersWithData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllUsersWithDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetAllUsersWithData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_GetAllUsersWithData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetAllUsersWithData(ctx, req.(*GetAllUsersWithDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -322,6 +390,14 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _User_GetUser_Handler,
+		},
+		{
+			MethodName: "GetUserByEmail",
+			Handler:    _User_GetUserByEmail_Handler,
+		},
+		{
+			MethodName: "GetAllUsersWithData",
+			Handler:    _User_GetAllUsersWithData_Handler,
 		},
 		{
 			MethodName: "GetUserData",

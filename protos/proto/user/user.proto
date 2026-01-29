@@ -6,7 +6,9 @@ option go_package = "github.com/Kai120789/learning_platform/learning_platform_pr
 
 service User {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
-  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc GetUser (GetUserByIdRequest) returns (GetUserByIdResponse);
+  rpc GetUserByEmail (GetUserByEmailRequest) returns (GetUserByEmailResponse);
+  rpc GetAllUsersWithData (GetAllUsersWithDataRequest) returns (GetAllUsersWithDataResponse);
   rpc GetUserData (GetUserDataRequest) returns (GetUserDataResponse);
   rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
   rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
@@ -41,11 +43,11 @@ message CreateUserResponse {
   int64 user_id = 1;
 }
 
-message GetUserRequest {
+message GetUserByIdRequest {
   int64 user_id = 1;
 }
 
-message GetUserResponse {
+message GetUserByIdResponse {
   int64 user_id = 1;
   string email = 2;
   string password_hash = 3;
@@ -106,4 +108,20 @@ message UpdateUserSettingsRequest {
 message UpdateUserSettingsResponse {
   bool is_2_fa_enabled = 1;
   bool is_notifications_enabled = 2;
+}
+
+message GetUserByEmailRequest {
+  string email = 1;
+}
+
+message GetUserByEmailResponse {
+  int64 user_id = 1;
+  string email = 2;
+  string password_hash = 3;
+}
+
+message GetAllUsersWithDataRequest {}
+
+message GetAllUsersWithDataResponse {
+  repeated GetUserDataResponse users = 1;
 }
