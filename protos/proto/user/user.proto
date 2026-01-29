@@ -6,7 +6,7 @@ option go_package = "github.com/Kai120789/learning_platform/learning_platform_pr
 
 service User {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
-  rpc GetUser (GetUserByIdRequest) returns (GetUserByIdResponse);
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
   rpc GetUserByEmail (GetUserByEmailRequest) returns (GetUserByEmailResponse);
   rpc GetAllUsersWithData (GetAllUsersWithDataRequest) returns (GetAllUsersWithDataResponse);
   rpc GetUserData (GetUserDataRequest) returns (GetUserDataResponse);

@@ -1227,11 +1227,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\x06ACTIVE\x10\x01\x12\f\n" +
 	"\bINACTIVE\x10\x02\x12\n" +
 	"\n" +
-	"\x06BANNED\x10\x032\xab\x05\n" +
+	"\x06BANNED\x10\x032\xaf\x05\n" +
 	"\x04User\x12?\n" +
 	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12>\n" +
-	"\aGetUser\x12\x18.user.GetUserByIdRequest\x1a\x19.user.GetUserByIdResponse\x12K\n" +
+	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12B\n" +
+	"\vGetUserById\x12\x18.user.GetUserByIdRequest\x1a\x19.user.GetUserByIdResponse\x12K\n" +
 	"\x0eGetUserByEmail\x12\x1b.user.GetUserByEmailRequest\x1a\x1c.user.GetUserByEmailResponse\x12Z\n" +
 	"\x13GetAllUsersWithData\x12 .user.GetAllUsersWithDataRequest\x1a!.user.GetAllUsersWithDataResponse\x12B\n" +
 	"\vGetUserData\x12\x18.user.GetUserDataRequest\x1a\x19.user.GetUserDataResponse\x12K\n" +
@@ -1284,7 +1284,7 @@ var file_user_user_proto_depIdxs = []int32{
 	1,  // 4: user.UpdateUserInfoResponse.status:type_name -> user.Status
 	7,  // 5: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
 	2,  // 6: user.User.CreateUser:input_type -> user.CreateUserRequest
-	4,  // 7: user.User.GetUser:input_type -> user.GetUserByIdRequest
+	4,  // 7: user.User.GetUserById:input_type -> user.GetUserByIdRequest
 	16, // 8: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
 	18, // 9: user.User.GetAllUsersWithData:input_type -> user.GetAllUsersWithDataRequest
 	6,  // 10: user.User.GetUserData:input_type -> user.GetUserDataRequest
@@ -1293,7 +1293,7 @@ var file_user_user_proto_depIdxs = []int32{
 	12, // 13: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
 	14, // 14: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
 	3,  // 15: user.User.CreateUser:output_type -> user.CreateUserResponse
-	5,  // 16: user.User.GetUser:output_type -> user.GetUserByIdResponse
+	5,  // 16: user.User.GetUserById:output_type -> user.GetUserByIdResponse
 	17, // 17: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
 	19, // 18: user.User.GetAllUsersWithData:output_type -> user.GetAllUsersWithDataResponse
 	7,  // 19: user.User.GetUserData:output_type -> user.GetUserDataResponse
