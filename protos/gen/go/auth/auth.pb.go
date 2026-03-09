@@ -176,12 +176,13 @@ func (x *LoginResponse) GetAccessToken() string {
 
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
-	LastName      *string                `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
-	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
-	Password      string                 `protobuf:"bytes,6,opt,name=password,proto3" json:"password,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Surname       string                 `protobuf:"bytes,4,opt,name=surname,proto3" json:"surname,omitempty"`
+	LastName      *string                `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	Role          UserRole               `protobuf:"varint,6,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
+	Password      string                 `protobuf:"bytes,7,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -214,6 +215,13 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RegisterRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 func (x *RegisterRequest) GetEmail() string {
@@ -944,14 +952,15 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"K\n" +
 	"\rLoginResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
-	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\"\xc5\x01\n" +
-	"\x0fRegisterRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x03 \x01(\tR\asurname\x12 \n" +
-	"\tlast_name\x18\x04 \x01(\tH\x00R\blastName\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12\x1a\n" +
-	"\bpassword\x18\x06 \x01(\tR\bpasswordB\f\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\"\xdd\x01\n" +
+	"\x0fRegisterRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x18\n" +
+	"\asurname\x18\x04 \x01(\tR\asurname\x12 \n" +
+	"\tlast_name\x18\x05 \x01(\tH\x00R\blastName\x88\x01\x01\x12\"\n" +
+	"\x04role\x18\x06 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12\x1a\n" +
+	"\bpassword\x18\a \x01(\tR\bpasswordB\f\n" +
 	"\n" +
 	"_last_name\"N\n" +
 	"\x10RegisterResponse\x12\x17\n" +
