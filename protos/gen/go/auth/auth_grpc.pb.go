@@ -19,16 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Login_FullMethodName               = "/auth.Auth/Login"
-	Auth_Register_FullMethodName            = "/auth.Auth/Register"
-	Auth_RefreshTokens_FullMethodName       = "/auth.Auth/RefreshTokens"
-	Auth_CheckPassword_FullMethodName       = "/auth.Auth/CheckPassword"
-	Auth_Logout_FullMethodName              = "/auth.Auth/Logout"
-	Auth_LogoutAll_FullMethodName           = "/auth.Auth/LogoutAll"
-	Auth_ChangePassword_FullMethodName      = "/auth.Auth/ChangePassword"
-	Auth_ForceChangePassword_FullMethodName = "/auth.Auth/ForceChangePassword"
-	Auth_ChangeEmail_FullMethodName         = "/auth.Auth/ChangeEmail"
-	Auth_ForceChangeEmail_FullMethodName    = "/auth.Auth/ForceChangeEmail"
+	Auth_Login_FullMethodName                = "/auth.Auth/Login"
+	Auth_Register_FullMethodName             = "/auth.Auth/Register"
+	Auth_RefreshTokens_FullMethodName        = "/auth.Auth/RefreshTokens"
+	Auth_CheckPassword_FullMethodName        = "/auth.Auth/CheckPassword"
+	Auth_GeneratePasswordHash_FullMethodName = "/auth.Auth/GeneratePasswordHash"
+	Auth_Logout_FullMethodName               = "/auth.Auth/Logout"
+	Auth_LogoutAll_FullMethodName            = "/auth.Auth/LogoutAll"
+	Auth_ChangePassword_FullMethodName       = "/auth.Auth/ChangePassword"
+	Auth_ForceChangePassword_FullMethodName  = "/auth.Auth/ForceChangePassword"
+	Auth_ChangeEmail_FullMethodName          = "/auth.Auth/ChangeEmail"
+	Auth_ForceChangeEmail_FullMethodName     = "/auth.Auth/ForceChangeEmail"
 )
 
 // AuthClient is the client API for Auth service.
@@ -39,6 +40,7 @@ type AuthClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	RefreshTokens(ctx context.Context, in *RefreshTokensRequest, opts ...grpc.CallOption) (*RefreshTokensResponse, error)
 	CheckPassword(ctx context.Context, in *CheckPasswordRequest, opts ...grpc.CallOption) (*CheckPasswordResponse, error)
+	GeneratePasswordHash(ctx context.Context, in *GeneratePasswordHashRequest, opts ...grpc.CallOption) (*GeneratePasswordHashResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
@@ -89,6 +91,16 @@ func (c *authClient) CheckPassword(ctx context.Context, in *CheckPasswordRequest
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CheckPasswordResponse)
 	err := c.cc.Invoke(ctx, Auth_CheckPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) GeneratePasswordHash(ctx context.Context, in *GeneratePasswordHashRequest, opts ...grpc.CallOption) (*GeneratePasswordHashResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GeneratePasswordHashResponse)
+	err := c.cc.Invoke(ctx, Auth_GeneratePasswordHash_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -163,6 +175,7 @@ type AuthServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	RefreshTokens(context.Context, *RefreshTokensRequest) (*RefreshTokensResponse, error)
 	CheckPassword(context.Context, *CheckPasswordRequest) (*CheckPasswordResponse, error)
+	GeneratePasswordHash(context.Context, *GeneratePasswordHashRequest) (*GeneratePasswordHashResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
@@ -190,6 +203,9 @@ func (UnimplementedAuthServer) RefreshTokens(context.Context, *RefreshTokensRequ
 }
 func (UnimplementedAuthServer) CheckPassword(context.Context, *CheckPasswordRequest) (*CheckPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckPassword not implemented")
+}
+func (UnimplementedAuthServer) GeneratePasswordHash(context.Context, *GeneratePasswordHashRequest) (*GeneratePasswordHashResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GeneratePasswordHash not implemented")
 }
 func (UnimplementedAuthServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
@@ -298,6 +314,24 @@ func _Auth_CheckPassword_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServer).CheckPassword(ctx, req.(*CheckPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_GeneratePasswordHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GeneratePasswordHashRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GeneratePasswordHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GeneratePasswordHash_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GeneratePasswordHash(ctx, req.(*GeneratePasswordHashRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -432,6 +466,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckPassword",
 			Handler:    _Auth_CheckPassword_Handler,
+		},
+		{
+			MethodName: "GeneratePasswordHash",
+			Handler:    _Auth_GeneratePasswordHash_Handler,
 		},
 		{
 			MethodName: "Logout",

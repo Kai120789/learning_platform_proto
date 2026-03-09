@@ -9,6 +9,7 @@ service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc RefreshTokens (RefreshTokensRequest) returns (RefreshTokensResponse);
   rpc CheckPassword (CheckPasswordRequest) returns (CheckPasswordResponse);
+  rpc GeneratePasswordHash (GeneratePasswordHashRequest) returns (GeneratePasswordHashResponse);
   rpc Logout (LogoutRequest) returns (LogoutResponse);
   rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
   rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
@@ -64,6 +65,13 @@ message CheckPasswordRequest {
 
 message CheckPasswordResponse {
   bool is_valid = 1;
+}
+
+message GeneratePasswordHashRequest {
+  string password = 1;
+}
+message GeneratePasswordHashResponse {
+  string password_hash = 2;
 }
 
 message LogoutRequest {
