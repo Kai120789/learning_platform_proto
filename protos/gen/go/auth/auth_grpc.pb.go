@@ -24,6 +24,7 @@ const (
 	Auth_RefreshTokens_FullMethodName        = "/auth.Auth/RefreshTokens"
 	Auth_CheckPassword_FullMethodName        = "/auth.Auth/CheckPassword"
 	Auth_GeneratePasswordHash_FullMethodName = "/auth.Auth/GeneratePasswordHash"
+	Auth_ValidateToken_FullMethodName        = "/auth.Auth/ValidateToken"
 	Auth_Logout_FullMethodName               = "/auth.Auth/Logout"
 	Auth_LogoutAll_FullMethodName            = "/auth.Auth/LogoutAll"
 	Auth_ChangePassword_FullMethodName       = "/auth.Auth/ChangePassword"
@@ -41,6 +42,7 @@ type AuthClient interface {
 	RefreshTokens(ctx context.Context, in *RefreshTokensRequest, opts ...grpc.CallOption) (*RefreshTokensResponse, error)
 	CheckPassword(ctx context.Context, in *CheckPasswordRequest, opts ...grpc.CallOption) (*CheckPasswordResponse, error)
 	GeneratePasswordHash(ctx context.Context, in *GeneratePasswordHashRequest, opts ...grpc.CallOption) (*GeneratePasswordHashResponse, error)
+	ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
@@ -101,6 +103,16 @@ func (c *authClient) GeneratePasswordHash(ctx context.Context, in *GeneratePassw
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GeneratePasswordHashResponse)
 	err := c.cc.Invoke(ctx, Auth_GeneratePasswordHash_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ValidateTokenResponse)
+	err := c.cc.Invoke(ctx, Auth_ValidateToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -176,6 +188,7 @@ type AuthServer interface {
 	RefreshTokens(context.Context, *RefreshTokensRequest) (*RefreshTokensResponse, error)
 	CheckPassword(context.Context, *CheckPasswordRequest) (*CheckPasswordResponse, error)
 	GeneratePasswordHash(context.Context, *GeneratePasswordHashRequest) (*GeneratePasswordHashResponse, error)
+	ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
@@ -206,6 +219,9 @@ func (UnimplementedAuthServer) CheckPassword(context.Context, *CheckPasswordRequ
 }
 func (UnimplementedAuthServer) GeneratePasswordHash(context.Context, *GeneratePasswordHashRequest) (*GeneratePasswordHashResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GeneratePasswordHash not implemented")
+}
+func (UnimplementedAuthServer) ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ValidateToken not implemented")
 }
 func (UnimplementedAuthServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
@@ -332,6 +348,24 @@ func _Auth_GeneratePasswordHash_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServer).GeneratePasswordHash(ctx, req.(*GeneratePasswordHashRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_ValidateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValidateTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ValidateToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ValidateToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ValidateToken(ctx, req.(*ValidateTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,6 +504,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GeneratePasswordHash",
 			Handler:    _Auth_GeneratePasswordHash_Handler,
+		},
+		{
+			MethodName: "ValidateToken",
+			Handler:    _Auth_ValidateToken_Handler,
 		},
 		{
 			MethodName: "Logout",
