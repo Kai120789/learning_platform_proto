@@ -32,7 +32,7 @@ message LoginRequest {
 
 message LoginResponse  {
   int64 user_id = 1;
-  string access_token = 2;
+  string session_id = 2;
 }
 
 message RegisterRequest {
@@ -47,13 +47,13 @@ message RegisterRequest {
 
 message RegisterResponse {
   int64 user_id = 1;
-  string access_token = 2;
+  string session_id = 2;
 }
 
 message RefreshTokensRequest {}
 
 message RefreshTokensResponse {
-  string access_token = 1;
+  string session_id = 1;
 }
 
 message CheckPasswordRequest {
@@ -89,7 +89,7 @@ message ChangePasswordRequest {
 }
 
 message ChangePasswordResponse {
-  string access_token = 1;
+  string session_id = 1;
 }
 
 message ForceChangePasswordRequest {
@@ -105,7 +105,7 @@ message ChangeEmailRequest {
 }
 
 message ChangeEmailResponse {
-  string access_token = 1;
+  string session_id = 1;
 }
 
 message ForceChangeEmailRequest {

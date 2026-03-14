@@ -133,7 +133,7 @@ func (x *LoginRequest) GetPassword() string {
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,2,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -175,9 +175,9 @@ func (x *LoginResponse) GetUserId() int64 {
 	return 0
 }
 
-func (x *LoginResponse) GetAccessToken() string {
+func (x *LoginResponse) GetSessionId() string {
 	if x != nil {
-		return x.AccessToken
+		return x.SessionId
 	}
 	return ""
 }
@@ -277,7 +277,7 @@ func (x *RegisterRequest) GetPassword() string {
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,2,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -319,9 +319,9 @@ func (x *RegisterResponse) GetUserId() int64 {
 	return 0
 }
 
-func (x *RegisterResponse) GetAccessToken() string {
+func (x *RegisterResponse) GetSessionId() string {
 	if x != nil {
-		return x.AccessToken
+		return x.SessionId
 	}
 	return ""
 }
@@ -364,7 +364,7 @@ func (*RefreshTokensRequest) Descriptor() ([]byte, []int) {
 
 type RefreshTokensResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -399,9 +399,9 @@ func (*RefreshTokensResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *RefreshTokensResponse) GetAccessToken() string {
+func (x *RefreshTokensResponse) GetSessionId() string {
 	if x != nil {
-		return x.AccessToken
+		return x.SessionId
 	}
 	return ""
 }
@@ -804,7 +804,7 @@ func (x *ChangePasswordRequest) GetNewPassword() string {
 
 type ChangePasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -839,9 +839,9 @@ func (*ChangePasswordResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ChangePasswordResponse) GetAccessToken() string {
+func (x *ChangePasswordResponse) GetSessionId() string {
 	if x != nil {
-		return x.AccessToken
+		return x.SessionId
 	}
 	return ""
 }
@@ -988,7 +988,7 @@ func (x *ChangeEmailRequest) GetNewEmail() string {
 
 type ChangeEmailResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1023,9 +1023,9 @@ func (*ChangeEmailResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *ChangeEmailResponse) GetAccessToken() string {
+func (x *ChangeEmailResponse) GetSessionId() string {
 	if x != nil {
-		return x.AccessToken
+		return x.SessionId
 	}
 	return ""
 }
@@ -1126,10 +1126,11 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\fLoginRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"K\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"G\n" +
 	"\rLoginResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
-	"\faccess_token\x18\x02 \x01(\tR\vaccessToken\"\xde\x01\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\"\xde\x01\n" +
 	"\x0fRegisterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
@@ -1139,13 +1140,15 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x04role\x18\x06 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12\x1a\n" +
 	"\bpassword\x18\a \x01(\tR\bpasswordB\f\n" +
 	"\n" +
-	"_last_name\"N\n" +
+	"_last_name\"J\n" +
 	"\x10RegisterResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
-	"\faccess_token\x18\x02 \x01(\tR\vaccessToken\"\x16\n" +
-	"\x14RefreshTokensRequest\":\n" +
-	"\x15RefreshTokensResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"W\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\"\x16\n" +
+	"\x14RefreshTokensRequest\"6\n" +
+	"\x15RefreshTokensResponse\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"W\n" +
 	"\x14CheckPasswordRequest\x12\x1a\n" +
 	"\bpassword\x18\x01 \x01(\tR\bpassword\x12#\n" +
 	"\rpassword_hash\x18\x02 \x01(\tR\fpasswordHash\"2\n" +
@@ -1163,18 +1166,20 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x15ChangePasswordRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\fold_password\x18\x02 \x01(\tR\voldPassword\x12!\n" +
-	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\";\n" +
-	"\x16ChangePasswordResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"X\n" +
+	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\"7\n" +
+	"\x16ChangePasswordResponse\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"X\n" +
 	"\x1aForceChangePasswordRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x1d\n" +
 	"\x1bForceChangePasswordResponse\"J\n" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
-	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"8\n" +
-	"\x13ChangeEmailResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"O\n" +
+	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"4\n" +
+	"\x13ChangeEmailResponse\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"O\n" +
 	"\x17ForceChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x1a\n" +
