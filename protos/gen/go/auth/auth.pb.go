@@ -364,7 +364,7 @@ func (*RefreshTokensRequest) Descriptor() ([]byte, []int) {
 
 type RefreshTokensResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -399,9 +399,9 @@ func (*RefreshTokensResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *RefreshTokensResponse) GetSessionId() string {
+func (x *RefreshTokensResponse) GetAccessToken() string {
 	if x != nil {
-		return x.SessionId
+		return x.AccessToken
 	}
 	return ""
 }
@@ -1145,10 +1145,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x02 \x01(\tR\tsessionId\"\x16\n" +
-	"\x14RefreshTokensRequest\"6\n" +
-	"\x15RefreshTokensResponse\x12\x1d\n" +
-	"\n" +
-	"session_id\x18\x01 \x01(\tR\tsessionId\"W\n" +
+	"\x14RefreshTokensRequest\":\n" +
+	"\x15RefreshTokensResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"W\n" +
 	"\x14CheckPasswordRequest\x12\x1a\n" +
 	"\bpassword\x18\x01 \x01(\tR\bpassword\x12#\n" +
 	"\rpassword_hash\x18\x02 \x01(\tR\fpasswordHash\"2\n" +

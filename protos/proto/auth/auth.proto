@@ -53,7 +53,7 @@ message RegisterResponse {
 message RefreshTokensRequest {}
 
 message RefreshTokensResponse {
-  string session_id = 1;
+  string access_token = 1;
 }
 
 message CheckPasswordRequest {
