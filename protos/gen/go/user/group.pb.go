@@ -1189,8 +1189,8 @@ const file_user_group_proto_rawDesc = "" +
 	"\x14GetGroupUsersRequest\x12\x19\n" +
 	"\bgroup_id\x18\x01 \x01(\x03R\agroupId\"B\n" +
 	"\x15GetGroupUsersResponse\x12)\n" +
-	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users2\xba\x05\n" +
-	"\fGroupService\x12B\n" +
+	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users2\xb3\x05\n" +
+	"\x05Group\x12B\n" +
 	"\vCreateGroup\x12\x18.user.CreateGroupRequest\x1a\x19.user.CreateGroupResponse\x12B\n" +
 	"\vUpdateGroup\x12\x18.user.UpdateGroupRequest\x1a\x19.user.UpdateGroupResponse\x12B\n" +
 	"\vRemoveGroup\x12\x18.user.RemoveGroupRequest\x1a\x19.user.RemoveGroupResponse\x12E\n" +
@@ -1240,24 +1240,24 @@ var file_user_group_proto_depIdxs = []int32{
 	8,  // 1: user.GetUserGroupsResponse.groups:type_name -> user.GetGroupByIdResponse
 	8,  // 2: user.GetGroupsByTutorIdResponse.groups:type_name -> user.GetGroupByIdResponse
 	0,  // 3: user.GetGroupUsersResponse.users:type_name -> user.UserShortInfo
-	1,  // 4: user.GroupService.CreateGroup:input_type -> user.CreateGroupRequest
-	3,  // 5: user.GroupService.UpdateGroup:input_type -> user.UpdateGroupRequest
-	5,  // 6: user.GroupService.RemoveGroup:input_type -> user.RemoveGroupRequest
-	7,  // 7: user.GroupService.GetGroupById:input_type -> user.GetGroupByIdRequest
-	9,  // 8: user.GroupService.AddUsersToGroup:input_type -> user.AddUsersToGroupRequest
-	11, // 9: user.GroupService.RemoveUserFromGroup:input_type -> user.RemoveUserFromGroupRequest
-	13, // 10: user.GroupService.GetUserGroups:input_type -> user.GetUserGroupsRequest
-	15, // 11: user.GroupService.GetGroupsByTutorId:input_type -> user.GetGroupsByTutorIdRequest
-	17, // 12: user.GroupService.GetGroupUsers:input_type -> user.GetGroupUsersRequest
-	2,  // 13: user.GroupService.CreateGroup:output_type -> user.CreateGroupResponse
-	4,  // 14: user.GroupService.UpdateGroup:output_type -> user.UpdateGroupResponse
-	6,  // 15: user.GroupService.RemoveGroup:output_type -> user.RemoveGroupResponse
-	8,  // 16: user.GroupService.GetGroupById:output_type -> user.GetGroupByIdResponse
-	10, // 17: user.GroupService.AddUsersToGroup:output_type -> user.AddUsersToGroupResponse
-	12, // 18: user.GroupService.RemoveUserFromGroup:output_type -> user.RemoveUserFromGroupResponse
-	14, // 19: user.GroupService.GetUserGroups:output_type -> user.GetUserGroupsResponse
-	16, // 20: user.GroupService.GetGroupsByTutorId:output_type -> user.GetGroupsByTutorIdResponse
-	18, // 21: user.GroupService.GetGroupUsers:output_type -> user.GetGroupUsersResponse
+	1,  // 4: user.Group.CreateGroup:input_type -> user.CreateGroupRequest
+	3,  // 5: user.Group.UpdateGroup:input_type -> user.UpdateGroupRequest
+	5,  // 6: user.Group.RemoveGroup:input_type -> user.RemoveGroupRequest
+	7,  // 7: user.Group.GetGroupById:input_type -> user.GetGroupByIdRequest
+	9,  // 8: user.Group.AddUsersToGroup:input_type -> user.AddUsersToGroupRequest
+	11, // 9: user.Group.RemoveUserFromGroup:input_type -> user.RemoveUserFromGroupRequest
+	13, // 10: user.Group.GetUserGroups:input_type -> user.GetUserGroupsRequest
+	15, // 11: user.Group.GetGroupsByTutorId:input_type -> user.GetGroupsByTutorIdRequest
+	17, // 12: user.Group.GetGroupUsers:input_type -> user.GetGroupUsersRequest
+	2,  // 13: user.Group.CreateGroup:output_type -> user.CreateGroupResponse
+	4,  // 14: user.Group.UpdateGroup:output_type -> user.UpdateGroupResponse
+	6,  // 15: user.Group.RemoveGroup:output_type -> user.RemoveGroupResponse
+	8,  // 16: user.Group.GetGroupById:output_type -> user.GetGroupByIdResponse
+	10, // 17: user.Group.AddUsersToGroup:output_type -> user.AddUsersToGroupResponse
+	12, // 18: user.Group.RemoveUserFromGroup:output_type -> user.RemoveUserFromGroupResponse
+	14, // 19: user.Group.GetUserGroups:output_type -> user.GetUserGroupsResponse
+	16, // 20: user.Group.GetGroupsByTutorId:output_type -> user.GetGroupsByTutorIdResponse
+	18, // 21: user.Group.GetGroupUsers:output_type -> user.GetGroupUsersResponse
 	13, // [13:22] is the sub-list for method output_type
 	4,  // [4:13] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name

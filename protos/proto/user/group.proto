@@ -4,7 +4,7 @@ package user;
 
 option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/user";
 
-service GroupService {
+service Group {
   rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse);
   rpc UpdateGroup (UpdateGroupRequest) returns (UpdateGroupResponse);
   rpc RemoveGroup (RemoveGroupRequest) returns (RemoveGroupResponse);
