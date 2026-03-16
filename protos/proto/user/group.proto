@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/user";
+
+service GroupService {
+  rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse);
+  rpc UpdateGroup (UpdateGroupRequest) returns (UpdateGroupResponse);
+  rpc RemoveGroup (RemoveGroupRequest) returns (RemoveGroupResponse);
+  rpc GetGroupById (GetGroupByIdRequest) returns (GetGroupByIdResponse);
+  rpc AddUsersToGroup (AddUsersToGroupRequest) returns (AddUsersToGroupResponse);
+  rpc RemoveUserFromGroup (RemoveUserFromGroupRequest) returns (RemoveUserFromGroupResponse);
+  rpc GetUserGroups (GetUserGroupsRequest) returns (GetUserGroupsResponse);
+  rpc GetGroupsByTutorId (GetGroupsByTutorIdRequest) returns (GetGroupsByTutorIdResponse);
+  rpc GetGroupUsers (GetGroupUsersRequest) returns (GetGroupUsersResponse);
+}
+
+message UserShortInfo {
+  int64 id = 1;
+  string email = 2;
+}
+
+message CreateGroupRequest {
+  string title = 1;
+  string description = 2;
+  int64 subject_id = 3;
+  int64 tutor_id = 4;
+  optional string tg_group_link = 5;
+  optional int64 tg_chat_id = 6;
+}
+
+message CreateGroupResponse {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int64 subject_id = 4;
+  int64 tutor_id = 5;
+  optional string tg_group_link = 6;
+  optional int64 tg_chat_id = 7;
+}
+
+message UpdateGroupRequest {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int64 subject_id = 4;
+  optional string tg_group_link = 5;
+  optional int64 tg_chat_id = 6;
+}
+
+message UpdateGroupResponse {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int64 subject_id = 4;
+  int64 tutor_id = 5;
+  optional string tg_group_link = 6;
+  optional int64 tg_chat_id = 7;
+}
+
+message RemoveGroupRequest {
+  int64 id = 1;
+}
+
+message RemoveGroupResponse {}
+
+message GetGroupByIdRequest {
+  int64 id = 1;
+}
+
+message GetGroupByIdResponse {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int64 subject_id = 4;
+  int64 tutor_id = 5;
+  optional string tg_group_link = 6;
+  optional int64 tg_chat_id = 7;
+}
+
+message AddUsersToGroupRequest {
+  int64 group_id = 1;
+  repeated int64 user_ids = 2;
+}
+
+message AddUsersToGroupResponse {
+  int64 group_id = 1;
+  repeated UserShortInfo users = 2;
+}
+
+message RemoveUserFromGroupRequest {
+  int64 group_id = 1;
+  int64 user_id = 2;
+}
+
+message RemoveUserFromGroupResponse {}
+
+message GetUserGroupsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserGroupsResponse {
+  repeated GetGroupByIdResponse groups = 1;
+}
+
+message GetGroupsByTutorIdRequest {
+  int64 tutor_id = 1;
+}
+
+message GetGroupsByTutorIdResponse {
+  repeated GetGroupByIdResponse groups = 1;
+}
+
+message GetGroupUsersRequest {
+  int64 group_id = 1;
+}
+
+message GetGroupUsersResponse {
+  repeated UserShortInfo users = 1;
+}
