@@ -56,9 +56,8 @@ message UpdateGroupResponse {
   string title = 2;
   string description = 3;
   int64 subject_id = 4;
-  int64 tutor_id = 5;
-  optional string tg_group_link = 6;
-  optional int64 tg_chat_id = 7;
+  optional string tg_group_link = 5;
+  optional int64 tg_chat_id = 6;
 }
 
 message RemoveGroupRequest {
