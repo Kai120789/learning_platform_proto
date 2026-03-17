@@ -24,7 +24,8 @@ const (
 type UserShortInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -64,6 +65,13 @@ func (x *UserShortInfo) GetId() int64 {
 		return x.Id
 	}
 	return 0
+}
+
+func (x *UserShortInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 func (x *UserShortInfo) GetEmail() string {
@@ -1101,10 +1109,11 @@ var File_user_group_proto protoreflect.FileDescriptor
 
 const file_user_group_proto_rawDesc = "" +
 	"\n" +
-	"\x10user/group.proto\x12\x04user\"5\n" +
+	"\x10user/group.proto\x12\x04user\"I\n" +
 	"\rUserShortInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\"\xf3\x01\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"\xf3\x01\n" +
 	"\x12CreateGroupRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
