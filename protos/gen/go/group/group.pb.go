@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.0
-// source: user/group.proto
+// source: group/group.proto
 
 package user
 
@@ -32,7 +32,7 @@ type UserShortInfo struct {
 
 func (x *UserShortInfo) Reset() {
 	*x = UserShortInfo{}
-	mi := &file_user_group_proto_msgTypes[0]
+	mi := &file_group_group_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *UserShortInfo) String() string {
 func (*UserShortInfo) ProtoMessage() {}
 
 func (x *UserShortInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[0]
+	mi := &file_group_group_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *UserShortInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserShortInfo.ProtoReflect.Descriptor instead.
 func (*UserShortInfo) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{0}
+	return file_group_group_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UserShortInfo) GetId() int64 {
@@ -95,7 +95,7 @@ type CreateGroupRequest struct {
 
 func (x *CreateGroupRequest) Reset() {
 	*x = CreateGroupRequest{}
-	mi := &file_user_group_proto_msgTypes[1]
+	mi := &file_group_group_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -107,7 +107,7 @@ func (x *CreateGroupRequest) String() string {
 func (*CreateGroupRequest) ProtoMessage() {}
 
 func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[1]
+	mi := &file_group_group_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +120,7 @@ func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGroupRequest.ProtoReflect.Descriptor instead.
 func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{1}
+	return file_group_group_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateGroupRequest) GetTitle() string {
@@ -180,7 +180,7 @@ type CreateGroupResponse struct {
 
 func (x *CreateGroupResponse) Reset() {
 	*x = CreateGroupResponse{}
-	mi := &file_user_group_proto_msgTypes[2]
+	mi := &file_group_group_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +192,7 @@ func (x *CreateGroupResponse) String() string {
 func (*CreateGroupResponse) ProtoMessage() {}
 
 func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[2]
+	mi := &file_group_group_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +205,7 @@ func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGroupResponse.ProtoReflect.Descriptor instead.
 func (*CreateGroupResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{2}
+	return file_group_group_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateGroupResponse) GetId() int64 {
@@ -270,7 +270,7 @@ type UpdateGroupRequest struct {
 
 func (x *UpdateGroupRequest) Reset() {
 	*x = UpdateGroupRequest{}
-	mi := &file_user_group_proto_msgTypes[3]
+	mi := &file_group_group_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -282,7 +282,7 @@ func (x *UpdateGroupRequest) String() string {
 func (*UpdateGroupRequest) ProtoMessage() {}
 
 func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[3]
+	mi := &file_group_group_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -295,7 +295,7 @@ func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGroupRequest.ProtoReflect.Descriptor instead.
 func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{3}
+	return file_group_group_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UpdateGroupRequest) GetId() int64 {
@@ -348,7 +348,7 @@ type UpdateGroupResponse struct {
 
 func (x *UpdateGroupResponse) Reset() {
 	*x = UpdateGroupResponse{}
-	mi := &file_user_group_proto_msgTypes[4]
+	mi := &file_group_group_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -360,7 +360,7 @@ func (x *UpdateGroupResponse) String() string {
 func (*UpdateGroupResponse) ProtoMessage() {}
 
 func (x *UpdateGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[4]
+	mi := &file_group_group_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -373,7 +373,7 @@ func (x *UpdateGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGroupResponse.ProtoReflect.Descriptor instead.
 func (*UpdateGroupResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{4}
+	return file_group_group_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpdateGroupResponse) GetId() int64 {
@@ -434,7 +434,7 @@ type RemoveGroupRequest struct {
 
 func (x *RemoveGroupRequest) Reset() {
 	*x = RemoveGroupRequest{}
-	mi := &file_user_group_proto_msgTypes[5]
+	mi := &file_group_group_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -446,7 +446,7 @@ func (x *RemoveGroupRequest) String() string {
 func (*RemoveGroupRequest) ProtoMessage() {}
 
 func (x *RemoveGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[5]
+	mi := &file_group_group_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -459,7 +459,7 @@ func (x *RemoveGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGroupRequest.ProtoReflect.Descriptor instead.
 func (*RemoveGroupRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{5}
+	return file_group_group_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RemoveGroupRequest) GetId() int64 {
@@ -477,7 +477,7 @@ type RemoveGroupResponse struct {
 
 func (x *RemoveGroupResponse) Reset() {
 	*x = RemoveGroupResponse{}
-	mi := &file_user_group_proto_msgTypes[6]
+	mi := &file_group_group_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -489,7 +489,7 @@ func (x *RemoveGroupResponse) String() string {
 func (*RemoveGroupResponse) ProtoMessage() {}
 
 func (x *RemoveGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[6]
+	mi := &file_group_group_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -502,7 +502,7 @@ func (x *RemoveGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGroupResponse.ProtoReflect.Descriptor instead.
 func (*RemoveGroupResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{6}
+	return file_group_group_proto_rawDescGZIP(), []int{6}
 }
 
 type GetGroupByIdRequest struct {
@@ -514,7 +514,7 @@ type GetGroupByIdRequest struct {
 
 func (x *GetGroupByIdRequest) Reset() {
 	*x = GetGroupByIdRequest{}
-	mi := &file_user_group_proto_msgTypes[7]
+	mi := &file_group_group_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -526,7 +526,7 @@ func (x *GetGroupByIdRequest) String() string {
 func (*GetGroupByIdRequest) ProtoMessage() {}
 
 func (x *GetGroupByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[7]
+	mi := &file_group_group_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -539,7 +539,7 @@ func (x *GetGroupByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupByIdRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{7}
+	return file_group_group_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetGroupByIdRequest) GetId() int64 {
@@ -564,7 +564,7 @@ type GetGroupByIdResponse struct {
 
 func (x *GetGroupByIdResponse) Reset() {
 	*x = GetGroupByIdResponse{}
-	mi := &file_user_group_proto_msgTypes[8]
+	mi := &file_group_group_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -576,7 +576,7 @@ func (x *GetGroupByIdResponse) String() string {
 func (*GetGroupByIdResponse) ProtoMessage() {}
 
 func (x *GetGroupByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[8]
+	mi := &file_group_group_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -589,7 +589,7 @@ func (x *GetGroupByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupByIdResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{8}
+	return file_group_group_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetGroupByIdResponse) GetId() int64 {
@@ -649,7 +649,7 @@ type GetGroupsRequest struct {
 
 func (x *GetGroupsRequest) Reset() {
 	*x = GetGroupsRequest{}
-	mi := &file_user_group_proto_msgTypes[9]
+	mi := &file_group_group_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +661,7 @@ func (x *GetGroupsRequest) String() string {
 func (*GetGroupsRequest) ProtoMessage() {}
 
 func (x *GetGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[9]
+	mi := &file_group_group_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +674,7 @@ func (x *GetGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupsRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{9}
+	return file_group_group_proto_rawDescGZIP(), []int{9}
 }
 
 type GetGroupsResponse struct {
@@ -686,7 +686,7 @@ type GetGroupsResponse struct {
 
 func (x *GetGroupsResponse) Reset() {
 	*x = GetGroupsResponse{}
-	mi := &file_user_group_proto_msgTypes[10]
+	mi := &file_group_group_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -698,7 +698,7 @@ func (x *GetGroupsResponse) String() string {
 func (*GetGroupsResponse) ProtoMessage() {}
 
 func (x *GetGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[10]
+	mi := &file_group_group_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -711,7 +711,7 @@ func (x *GetGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupsResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{10}
+	return file_group_group_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetGroupsResponse) GetGroups() []*GetGroupByIdResponse {
@@ -731,7 +731,7 @@ type AddUsersToGroupRequest struct {
 
 func (x *AddUsersToGroupRequest) Reset() {
 	*x = AddUsersToGroupRequest{}
-	mi := &file_user_group_proto_msgTypes[11]
+	mi := &file_group_group_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -743,7 +743,7 @@ func (x *AddUsersToGroupRequest) String() string {
 func (*AddUsersToGroupRequest) ProtoMessage() {}
 
 func (x *AddUsersToGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[11]
+	mi := &file_group_group_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +756,7 @@ func (x *AddUsersToGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUsersToGroupRequest.ProtoReflect.Descriptor instead.
 func (*AddUsersToGroupRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{11}
+	return file_group_group_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AddUsersToGroupRequest) GetGroupId() int64 {
@@ -783,7 +783,7 @@ type AddUsersToGroupResponse struct {
 
 func (x *AddUsersToGroupResponse) Reset() {
 	*x = AddUsersToGroupResponse{}
-	mi := &file_user_group_proto_msgTypes[12]
+	mi := &file_group_group_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -795,7 +795,7 @@ func (x *AddUsersToGroupResponse) String() string {
 func (*AddUsersToGroupResponse) ProtoMessage() {}
 
 func (x *AddUsersToGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[12]
+	mi := &file_group_group_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -808,7 +808,7 @@ func (x *AddUsersToGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddUsersToGroupResponse.ProtoReflect.Descriptor instead.
 func (*AddUsersToGroupResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{12}
+	return file_group_group_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *AddUsersToGroupResponse) GetGroupId() int64 {
@@ -835,7 +835,7 @@ type RemoveUserFromGroupRequest struct {
 
 func (x *RemoveUserFromGroupRequest) Reset() {
 	*x = RemoveUserFromGroupRequest{}
-	mi := &file_user_group_proto_msgTypes[13]
+	mi := &file_group_group_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -847,7 +847,7 @@ func (x *RemoveUserFromGroupRequest) String() string {
 func (*RemoveUserFromGroupRequest) ProtoMessage() {}
 
 func (x *RemoveUserFromGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[13]
+	mi := &file_group_group_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -860,7 +860,7 @@ func (x *RemoveUserFromGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserFromGroupRequest.ProtoReflect.Descriptor instead.
 func (*RemoveUserFromGroupRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{13}
+	return file_group_group_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RemoveUserFromGroupRequest) GetGroupId() int64 {
@@ -885,7 +885,7 @@ type RemoveUserFromGroupResponse struct {
 
 func (x *RemoveUserFromGroupResponse) Reset() {
 	*x = RemoveUserFromGroupResponse{}
-	mi := &file_user_group_proto_msgTypes[14]
+	mi := &file_group_group_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -897,7 +897,7 @@ func (x *RemoveUserFromGroupResponse) String() string {
 func (*RemoveUserFromGroupResponse) ProtoMessage() {}
 
 func (x *RemoveUserFromGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[14]
+	mi := &file_group_group_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -910,7 +910,7 @@ func (x *RemoveUserFromGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveUserFromGroupResponse.ProtoReflect.Descriptor instead.
 func (*RemoveUserFromGroupResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{14}
+	return file_group_group_proto_rawDescGZIP(), []int{14}
 }
 
 type GetUserGroupsRequest struct {
@@ -922,7 +922,7 @@ type GetUserGroupsRequest struct {
 
 func (x *GetUserGroupsRequest) Reset() {
 	*x = GetUserGroupsRequest{}
-	mi := &file_user_group_proto_msgTypes[15]
+	mi := &file_group_group_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -934,7 +934,7 @@ func (x *GetUserGroupsRequest) String() string {
 func (*GetUserGroupsRequest) ProtoMessage() {}
 
 func (x *GetUserGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[15]
+	mi := &file_group_group_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -947,7 +947,7 @@ func (x *GetUserGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserGroupsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{15}
+	return file_group_group_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetUserGroupsRequest) GetUserId() int64 {
@@ -966,7 +966,7 @@ type GetUserGroupsResponse struct {
 
 func (x *GetUserGroupsResponse) Reset() {
 	*x = GetUserGroupsResponse{}
-	mi := &file_user_group_proto_msgTypes[16]
+	mi := &file_group_group_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -978,7 +978,7 @@ func (x *GetUserGroupsResponse) String() string {
 func (*GetUserGroupsResponse) ProtoMessage() {}
 
 func (x *GetUserGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[16]
+	mi := &file_group_group_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -991,7 +991,7 @@ func (x *GetUserGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserGroupsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{16}
+	return file_group_group_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetUserGroupsResponse) GetGroups() []*GetGroupByIdResponse {
@@ -1010,7 +1010,7 @@ type GetGroupsByTutorIdRequest struct {
 
 func (x *GetGroupsByTutorIdRequest) Reset() {
 	*x = GetGroupsByTutorIdRequest{}
-	mi := &file_user_group_proto_msgTypes[17]
+	mi := &file_group_group_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1022,7 +1022,7 @@ func (x *GetGroupsByTutorIdRequest) String() string {
 func (*GetGroupsByTutorIdRequest) ProtoMessage() {}
 
 func (x *GetGroupsByTutorIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[17]
+	mi := &file_group_group_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1035,7 +1035,7 @@ func (x *GetGroupsByTutorIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupsByTutorIdRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupsByTutorIdRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{17}
+	return file_group_group_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetGroupsByTutorIdRequest) GetTutorId() int64 {
@@ -1054,7 +1054,7 @@ type GetGroupsByTutorIdResponse struct {
 
 func (x *GetGroupsByTutorIdResponse) Reset() {
 	*x = GetGroupsByTutorIdResponse{}
-	mi := &file_user_group_proto_msgTypes[18]
+	mi := &file_group_group_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1066,7 +1066,7 @@ func (x *GetGroupsByTutorIdResponse) String() string {
 func (*GetGroupsByTutorIdResponse) ProtoMessage() {}
 
 func (x *GetGroupsByTutorIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[18]
+	mi := &file_group_group_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1079,7 +1079,7 @@ func (x *GetGroupsByTutorIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupsByTutorIdResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupsByTutorIdResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{18}
+	return file_group_group_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetGroupsByTutorIdResponse) GetGroups() []*GetGroupByIdResponse {
@@ -1098,7 +1098,7 @@ type GetGroupUsersRequest struct {
 
 func (x *GetGroupUsersRequest) Reset() {
 	*x = GetGroupUsersRequest{}
-	mi := &file_user_group_proto_msgTypes[19]
+	mi := &file_group_group_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1110,7 +1110,7 @@ func (x *GetGroupUsersRequest) String() string {
 func (*GetGroupUsersRequest) ProtoMessage() {}
 
 func (x *GetGroupUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[19]
+	mi := &file_group_group_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1123,7 +1123,7 @@ func (x *GetGroupUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupUsersRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupUsersRequest) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{19}
+	return file_group_group_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetGroupUsersRequest) GetGroupId() int64 {
@@ -1142,7 +1142,7 @@ type GetGroupUsersResponse struct {
 
 func (x *GetGroupUsersResponse) Reset() {
 	*x = GetGroupUsersResponse{}
-	mi := &file_user_group_proto_msgTypes[20]
+	mi := &file_group_group_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1154,7 +1154,7 @@ func (x *GetGroupUsersResponse) String() string {
 func (*GetGroupUsersResponse) ProtoMessage() {}
 
 func (x *GetGroupUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_group_proto_msgTypes[20]
+	mi := &file_group_group_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1167,7 +1167,7 @@ func (x *GetGroupUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupUsersResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupUsersResponse) Descriptor() ([]byte, []int) {
-	return file_user_group_proto_rawDescGZIP(), []int{20}
+	return file_group_group_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetGroupUsersResponse) GetUsers() []*UserShortInfo {
@@ -1177,11 +1177,11 @@ func (x *GetGroupUsersResponse) GetUsers() []*UserShortInfo {
 	return nil
 }
 
-var File_user_group_proto protoreflect.FileDescriptor
+var File_group_group_proto protoreflect.FileDescriptor
 
-const file_user_group_proto_rawDesc = "" +
+const file_group_group_proto_rawDesc = "" +
 	"\n" +
-	"\x10user/group.proto\x12\x04user\"I\n" +
+	"\x11group/group.proto\x12\x04user\"I\n" +
 	"\rUserShortInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -1285,19 +1285,19 @@ const file_user_group_proto_rawDesc = "" +
 	"\rGetGroupUsers\x12\x1a.user.GetGroupUsersRequest\x1a\x1b.user.GetGroupUsersResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/userb\x06proto3"
 
 var (
-	file_user_group_proto_rawDescOnce sync.Once
-	file_user_group_proto_rawDescData []byte
+	file_group_group_proto_rawDescOnce sync.Once
+	file_group_group_proto_rawDescData []byte
 )
 
-func file_user_group_proto_rawDescGZIP() []byte {
-	file_user_group_proto_rawDescOnce.Do(func() {
-		file_user_group_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_user_group_proto_rawDesc), len(file_user_group_proto_rawDesc)))
+func file_group_group_proto_rawDescGZIP() []byte {
+	file_group_group_proto_rawDescOnce.Do(func() {
+		file_group_group_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_group_group_proto_rawDesc), len(file_group_group_proto_rawDesc)))
 	})
-	return file_user_group_proto_rawDescData
+	return file_group_group_proto_rawDescData
 }
 
-var file_user_group_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
-var file_user_group_proto_goTypes = []any{
+var file_group_group_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_group_group_proto_goTypes = []any{
 	(*UserShortInfo)(nil),               // 0: user.UserShortInfo
 	(*CreateGroupRequest)(nil),          // 1: user.CreateGroupRequest
 	(*CreateGroupResponse)(nil),         // 2: user.CreateGroupResponse
@@ -1320,7 +1320,7 @@ var file_user_group_proto_goTypes = []any{
 	(*GetGroupUsersRequest)(nil),        // 19: user.GetGroupUsersRequest
 	(*GetGroupUsersResponse)(nil),       // 20: user.GetGroupUsersResponse
 }
-var file_user_group_proto_depIdxs = []int32{
+var file_group_group_proto_depIdxs = []int32{
 	8,  // 0: user.GetGroupsResponse.groups:type_name -> user.GetGroupByIdResponse
 	0,  // 1: user.AddUsersToGroupResponse.users:type_name -> user.UserShortInfo
 	8,  // 2: user.GetUserGroupsResponse.groups:type_name -> user.GetGroupByIdResponse
@@ -1353,31 +1353,31 @@ var file_user_group_proto_depIdxs = []int32{
 	0,  // [0:5] is the sub-list for field type_name
 }
 
-func init() { file_user_group_proto_init() }
-func file_user_group_proto_init() {
-	if File_user_group_proto != nil {
+func init() { file_group_group_proto_init() }
+func file_group_group_proto_init() {
+	if File_group_group_proto != nil {
 		return
 	}
-	file_user_group_proto_msgTypes[1].OneofWrappers = []any{}
-	file_user_group_proto_msgTypes[2].OneofWrappers = []any{}
-	file_user_group_proto_msgTypes[3].OneofWrappers = []any{}
-	file_user_group_proto_msgTypes[4].OneofWrappers = []any{}
-	file_user_group_proto_msgTypes[8].OneofWrappers = []any{}
+	file_group_group_proto_msgTypes[1].OneofWrappers = []any{}
+	file_group_group_proto_msgTypes[2].OneofWrappers = []any{}
+	file_group_group_proto_msgTypes[3].OneofWrappers = []any{}
+	file_group_group_proto_msgTypes[4].OneofWrappers = []any{}
+	file_group_group_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_group_proto_rawDesc), len(file_user_group_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_group_group_proto_rawDesc), len(file_group_group_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_user_group_proto_goTypes,
-		DependencyIndexes: file_user_group_proto_depIdxs,
-		MessageInfos:      file_user_group_proto_msgTypes,
+		GoTypes:           file_group_group_proto_goTypes,
+		DependencyIndexes: file_group_group_proto_depIdxs,
+		MessageInfos:      file_group_group_proto_msgTypes,
 	}.Build()
-	File_user_group_proto = out.File
-	file_user_group_proto_goTypes = nil
-	file_user_group_proto_depIdxs = nil
+	File_group_group_proto = out.File
+	file_group_group_proto_goTypes = nil
+	file_group_group_proto_depIdxs = nil
 }
