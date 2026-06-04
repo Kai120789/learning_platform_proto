@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package user;
+package group;
 
-option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/user";
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/group";
 
 service Group {
   rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse);

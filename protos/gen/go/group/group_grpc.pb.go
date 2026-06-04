@@ -4,7 +4,7 @@
 // - protoc             v6.33.0
 // source: group/group.proto
 
-package user
+package group
 
 import (
 	context "context"
@@ -19,16 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Group_CreateGroup_FullMethodName         = "/user.Group/CreateGroup"
-	Group_UpdateGroup_FullMethodName         = "/user.Group/UpdateGroup"
-	Group_RemoveGroup_FullMethodName         = "/user.Group/RemoveGroup"
-	Group_GetGroupById_FullMethodName        = "/user.Group/GetGroupById"
-	Group_GetGroups_FullMethodName           = "/user.Group/GetGroups"
-	Group_AddUsersToGroup_FullMethodName     = "/user.Group/AddUsersToGroup"
-	Group_RemoveUserFromGroup_FullMethodName = "/user.Group/RemoveUserFromGroup"
-	Group_GetUserGroups_FullMethodName       = "/user.Group/GetUserGroups"
-	Group_GetGroupsByTutorId_FullMethodName  = "/user.Group/GetGroupsByTutorId"
-	Group_GetGroupUsers_FullMethodName       = "/user.Group/GetGroupUsers"
+	Group_CreateGroup_FullMethodName         = "/group.Group/CreateGroup"
+	Group_UpdateGroup_FullMethodName         = "/group.Group/UpdateGroup"
+	Group_RemoveGroup_FullMethodName         = "/group.Group/RemoveGroup"
+	Group_GetGroupById_FullMethodName        = "/group.Group/GetGroupById"
+	Group_GetGroups_FullMethodName           = "/group.Group/GetGroups"
+	Group_AddUsersToGroup_FullMethodName     = "/group.Group/AddUsersToGroup"
+	Group_RemoveUserFromGroup_FullMethodName = "/group.Group/RemoveUserFromGroup"
+	Group_GetUserGroups_FullMethodName       = "/group.Group/GetUserGroups"
+	Group_GetGroupsByTutorId_FullMethodName  = "/group.Group/GetGroupsByTutorId"
+	Group_GetGroupUsers_FullMethodName       = "/group.Group/GetGroupUsers"
 )
 
 // GroupClient is the client API for Group service.
@@ -414,7 +414,7 @@ func _Group_GetGroupUsers_Handler(srv interface{}, ctx context.Context, dec func
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Group_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.Group",
+	ServiceName: "group.Group",
 	HandlerType: (*GroupServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
