@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package lesson;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/group";
+
+service Lesson {
+  rpc GetOneLesson (GetOneLessonRequest) returns (GetOneLessonResponse);
+  rpc GetLessonsByUserId (GetLessonsByUserIdRequest) returns (GetLessonsByUserIdResponse);
+  rpc CreateLesson (CreateLessonRequest) returns (CreateLessonResponse);
+  rpc UpdateLesson (UpdateLessonRequest) returns (UpdateLessonResponse);
+  rpc CancelLesson (CancelLessonRequest) returns (CancelLessonResponse);
+  rpc GetLessonsByTutorId (GetLessonsByTutorIdRequest) returns (GetLessonsByTutorIdResponse);
+  rpc GetLessonsByGroupId (GetLessonsByGroupIdRequest) returns (GetLessonsByGroupIdResponse);
+}
+
+message GetOneLessonRequest {
+  int64 id = 1;
+}
+
+enum LessonStatus {
+    LESSON_STATUS_UNSPECIFIED = 0;
+    SCHEDULED = 1;
+    IN_PROCESS = 2;
+    COMPLETED = 3;
+    CANCELLED = 4;
+}
+
+message GetOneLessonResponse {
+  int64 id = 1;
+  int64 group_id = 2;
+  optional int64 board_id = 3;
+  optional string meet_link = 4;
+  google.protobuf.Timestamp start_time = 5;
+  repeated string media_items = 6;
+  int64 duration = 7;
+  int64 tutor_id = 8;
+  LessonStatus status = 9;
+}
+
+message GetLessonsByUserIdRequest {
+  int64 user_id = 1;
+}
+
+message GetLessonsByUserIdResponse {
+  repeated GetOneLessonResponse lessons = 1;
+}
+
+message CreateLessonRequest {
+  int64 group_id = 1;
+  optional int64 board_id = 2;
+  optional string meet_link = 3;
+  google.protobuf.Timestamp start_time = 4;
+  repeated string media_items = 5;
+  int64 duration = 6;
+  int64 tutor_id = 7;
+}
+
+message CreateLessonResponse {
+  int64 id = 1;
+  int64 group_id = 2;
+  optional int64 board_id = 3;
+  optional string meet_link = 4;
+  google.protobuf.Timestamp start_time = 5;
+  repeated string media_items = 6;
+  int64 duration = 7;
+  int64 tutor_id = 8;
+  LessonStatus status = 9;
+}
+
+message UpdateLessonRequest {
+  int64 id = 1;
+  int64 group_id = 2;
+  optional int64 board_id = 3;
+  optional string meet_link = 4;
+  google.protobuf.Timestamp start_time = 5;
+  repeated string media_items = 6;
+  int64 duration = 7;
+}
+
+message UpdateLessonResponse {
+  int64 id = 1;
+  int64 group_id = 2;
+  optional int64 board_id = 3;
+  optional string meet_link = 4;
+  google.protobuf.Timestamp start_time = 5;
+  repeated string media_items = 6;
+  int64 duration = 7;
+  int64 tutor_id = 8;
+  LessonStatus status = 9;
+}
+
+message CancelLessonRequest {
+  int64 id = 1;
+}
+
+message CancelLessonResponse {}
+
+message GetLessonsByTutorIdRequest {
+  int64 tutor_id = 1;
+}
+
+message GetLessonsByTutorIdResponse {
+  repeated GetOneLessonResponse lessons = 1;
+}
+
+message GetLessonsByGroupIdRequest {
+  int64 group_id = 1;
+}
+
+message GetLessonsByGroupIdResponse {
+  repeated GetOneLessonResponse lessons = 1;
+}
+
+
+// Сервис уроков отвечает за создание уроков, домашних заданий, я изначально планировал загрузку в с3 тоже, но думаю,
+// что лучше отдельный сервис под это, а в сервисе уроков оставить приоритетно работу с монгой, а именно:
+
+// 1) получение урока, на вход принимается id, а возвращается дата, ссылка на доску, какие-то прикрепленные медиа,
+// ссылка на звонок, но только при условии, что пользователю доступен этот урок, то есть должна быть проверка,
+// ссылки на доску и звонок могут быть пустыми, а ссылка на доску может выбираться из тех, которые есть, ну в целом
+// даже ее id может быть, а на фронте просто по роуту пользователь будет переходить (на получение доски тоже будет проверка)
+
+// 2) получение уроков по id ученика, возвращаются все уроки, которые доступны для ученика, там со временем, преподом
+
+// 3) создание урока: задается время начала, длительность, ссылка на звонок, на доску и можно сразу прикрепить медиа,
+// а еще важно передать id группы, то есть в ui это как мне кажется будет выглядеть так,
+// что на экране будут кнопки (подключиться к звонку без перехода на страницу
+// и перейти на доску с переходом и запросом на получение доски), также надо уведомление сделать для участников группы
+
+// 4) обновление урока: изменение привязанных медиа и ссылок, а также наверное можно сделать изменение группы
+// для которой этот урок и длительности, и потом стоит сделать отправку уведомлений, если меняется время, ну или группа
+// само собой
+
+// 5) отмена урока (удаление): удаляет урок и отправляет уведомление всем об отмене, а также можно сделать либо
+// подтверждение, либо возможность в течение секунд 10 отменить действие
+
+// 6) получение уроков за учителя можно сделать отдельной ручкой, но логика примерно, как у обычного получения для
+// учеников, может дто немного отличаться, которое возвращается
+
+// 7) получение уроков по группе, возможно примерно также, как с получением по пользователю или по учителю, но
+// на вход просто id группы
+
+
+// также вот сейчас думаю по поводу домашних заданий и тестов, их как будто тоже можно в отдельные сервисы вынести
+// и работать они будут с разными бд, то есть вот сервис дз работает только с домашними заданиями и там к ним
+// уже можно прикреплять медиа, тесты, также задавать время начала и дедлайн, выбирать группу
+
+// а тесты будут работать только с разными видами тестов и уже тесты можно будет прикреплять к дз
+// возможно будет даже что-то типа банка тестов и банка дз, чтобы это можно было переиспользовать
