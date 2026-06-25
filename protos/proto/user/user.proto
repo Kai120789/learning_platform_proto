@@ -51,6 +51,8 @@ message GetUserByIdResponse {
   int64 user_id = 1;
   string email = 2;
   string password_hash = 3;
+  UserRole role = 4;
+  Status status = 5;
 }
 
 message GetUserDataRequest {
@@ -60,8 +62,10 @@ message GetUserDataRequest {
 message GetUserDataResponse {
   int64 user_id = 1;
   string email = 2;
-  UpdateUserInfoResponse user_info = 3;
-  UpdateUserSettingsResponse user_settings = 4;
+  UserRole role = 3;
+  Status status = 4;
+  UpdateUserInfoResponse user_info = 5;
+  UpdateUserSettingsResponse user_settings = 6;
 }
 
 message ChangePasswordRequest {
@@ -85,7 +89,6 @@ message UpdateUserInfoRequest {
   optional string lastname = 4;
   optional string city = 5;
   optional string about = 6;
-  optional int64 class = 7;
 }
 
 message UpdateUserInfoResponse {
@@ -94,9 +97,6 @@ message UpdateUserInfoResponse {
   optional string lastname = 3;
   optional string city = 4;
   optional string about = 5;
-  UserRole role = 6;
-  Status status = 7;
-  optional int64 class = 8;
 }
 
 message UpdateUserSettingsRequest {
@@ -118,6 +118,8 @@ message GetUserByEmailResponse {
   int64 user_id = 1;
   string email = 2;
   string password_hash = 3;
+  UserRole role = 4;
+  Status status = 5;
 }
 
 message GetAllUsersWithDataRequest {}

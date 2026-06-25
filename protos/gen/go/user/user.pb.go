@@ -302,6 +302,8 @@ type GetUserByIdResponse struct {
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	PasswordHash  string                 `protobuf:"bytes,3,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
+	Role          UserRole               `protobuf:"varint,4,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        Status                 `protobuf:"varint,5,opt,name=status,proto3,enum=user.Status" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -357,6 +359,20 @@ func (x *GetUserByIdResponse) GetPasswordHash() string {
 	return ""
 }
 
+func (x *GetUserByIdResponse) GetRole() UserRole {
+	if x != nil {
+		return x.Role
+	}
+	return UserRole_USER_ROLE_UNSPECIFIED
+}
+
+func (x *GetUserByIdResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_STATUS_UNSPECIFIED
+}
+
 type GetUserDataRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -405,8 +421,10 @@ type GetUserDataResponse struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
 	UserId        int64                       `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                      `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	UserInfo      *UpdateUserInfoResponse     `protobuf:"bytes,3,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
-	UserSettings  *UpdateUserSettingsResponse `protobuf:"bytes,4,opt,name=user_settings,json=userSettings,proto3" json:"user_settings,omitempty"`
+	Role          UserRole                    `protobuf:"varint,3,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        Status                      `protobuf:"varint,4,opt,name=status,proto3,enum=user.Status" json:"status,omitempty"`
+	UserInfo      *UpdateUserInfoResponse     `protobuf:"bytes,5,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	UserSettings  *UpdateUserSettingsResponse `protobuf:"bytes,6,opt,name=user_settings,json=userSettings,proto3" json:"user_settings,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -453,6 +471,20 @@ func (x *GetUserDataResponse) GetEmail() string {
 		return x.Email
 	}
 	return ""
+}
+
+func (x *GetUserDataResponse) GetRole() UserRole {
+	if x != nil {
+		return x.Role
+	}
+	return UserRole_USER_ROLE_UNSPECIFIED
+}
+
+func (x *GetUserDataResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_STATUS_UNSPECIFIED
 }
 
 func (x *GetUserDataResponse) GetUserInfo() *UpdateUserInfoResponse {
@@ -653,7 +685,6 @@ type UpdateUserInfoRequest struct {
 	Lastname      *string                `protobuf:"bytes,4,opt,name=lastname,proto3,oneof" json:"lastname,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
-	Class         *int64                 `protobuf:"varint,7,opt,name=class,proto3,oneof" json:"class,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -730,13 +761,6 @@ func (x *UpdateUserInfoRequest) GetAbout() string {
 	return ""
 }
 
-func (x *UpdateUserInfoRequest) GetClass() int64 {
-	if x != nil && x.Class != nil {
-		return *x.Class
-	}
-	return 0
-}
-
 type UpdateUserInfoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -744,9 +768,6 @@ type UpdateUserInfoResponse struct {
 	Lastname      *string                `protobuf:"bytes,3,opt,name=lastname,proto3,oneof" json:"lastname,omitempty"`
 	City          *string                `protobuf:"bytes,4,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,5,opt,name=about,proto3,oneof" json:"about,omitempty"`
-	Role          UserRole               `protobuf:"varint,6,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Status        Status                 `protobuf:"varint,7,opt,name=status,proto3,enum=user.Status" json:"status,omitempty"`
-	Class         *int64                 `protobuf:"varint,8,opt,name=class,proto3,oneof" json:"class,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -814,27 +835,6 @@ func (x *UpdateUserInfoResponse) GetAbout() string {
 		return *x.About
 	}
 	return ""
-}
-
-func (x *UpdateUserInfoResponse) GetRole() UserRole {
-	if x != nil {
-		return x.Role
-	}
-	return UserRole_USER_ROLE_UNSPECIFIED
-}
-
-func (x *UpdateUserInfoResponse) GetStatus() Status {
-	if x != nil {
-		return x.Status
-	}
-	return Status_STATUS_UNSPECIFIED
-}
-
-func (x *UpdateUserInfoResponse) GetClass() int64 {
-	if x != nil && x.Class != nil {
-		return *x.Class
-	}
-	return 0
 }
 
 type UpdateUserSettingsRequest struct {
@@ -998,6 +998,8 @@ type GetUserByEmailResponse struct {
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	PasswordHash  string                 `protobuf:"bytes,3,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
+	Role          UserRole               `protobuf:"varint,4,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        Status                 `protobuf:"varint,5,opt,name=status,proto3,enum=user.Status" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1051,6 +1053,20 @@ func (x *GetUserByEmailResponse) GetPasswordHash() string {
 		return x.PasswordHash
 	}
 	return ""
+}
+
+func (x *GetUserByEmailResponse) GetRole() UserRole {
+	if x != nil {
+		return x.Role
+	}
+	return UserRole_USER_ROLE_UNSPECIFIED
+}
+
+func (x *GetUserByEmailResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_STATUS_UNSPECIFIED
 }
 
 type GetAllUsersWithDataRequest struct {
@@ -1150,18 +1166,22 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"-\n" +
 	"\x12GetUserByIdRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"i\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\xb3\x01\n" +
 	"\x13GetUserByIdResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12#\n" +
-	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\"-\n" +
+	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\x12\"\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12$\n" +
+	"\x06status\x18\x05 \x01(\x0e2\f.user.StatusR\x06status\"-\n" +
 	"\x12GetUserDataRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\xc6\x01\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\x90\x02\n" +
 	"\x13GetUserDataResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x129\n" +
-	"\tuser_info\x18\x03 \x01(\v2\x1c.user.UpdateUserInfoResponseR\buserInfo\x12E\n" +
-	"\ruser_settings\x18\x04 \x01(\v2 .user.UpdateUserSettingsResponseR\fuserSettings\"S\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\"\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12$\n" +
+	"\x06status\x18\x04 \x01(\x0e2\f.user.StatusR\x06status\x129\n" +
+	"\tuser_info\x18\x05 \x01(\v2\x1c.user.UpdateUserInfoResponseR\buserInfo\x12E\n" +
+	"\ruser_settings\x18\x06 \x01(\v2 .user.UpdateUserSettingsResponseR\fuserSettings\"S\n" +
 	"\x15ChangePasswordRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x18\n" +
@@ -1169,35 +1189,29 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x15\n" +
-	"\x13ChangeEmailResponse\"\x97\x02\n" +
+	"\x13ChangeEmailResponse\"\xf2\x01\n" +
 	"\x15UpdateUserInfoRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1d\n" +
 	"\asurname\x18\x03 \x01(\tH\x01R\asurname\x88\x01\x01\x12\x1f\n" +
 	"\blastname\x18\x04 \x01(\tH\x02R\blastname\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x05 \x01(\tH\x03R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12\x19\n" +
-	"\x05class\x18\a \x01(\x03H\x05R\x05class\x88\x01\x01B\a\n" +
+	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01B\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
 	"\b_surnameB\v\n" +
 	"\t_lastnameB\a\n" +
 	"\x05_cityB\b\n" +
-	"\x06_aboutB\b\n" +
-	"\x06_class\"\xaa\x02\n" +
+	"\x06_about\"\xbb\x01\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
 	"\asurname\x18\x02 \x01(\tR\asurname\x12\x1f\n" +
 	"\blastname\x18\x03 \x01(\tH\x00R\blastname\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x04 \x01(\tH\x01R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x05 \x01(\tH\x02R\x05about\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x06 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12$\n" +
-	"\x06status\x18\a \x01(\x0e2\f.user.StatusR\x06status\x12\x19\n" +
-	"\x05class\x18\b \x01(\x03H\x03R\x05class\x88\x01\x01B\v\n" +
+	"\x05about\x18\x05 \x01(\tH\x02R\x05about\x88\x01\x01B\v\n" +
 	"\t_lastnameB\a\n" +
 	"\x05_cityB\b\n" +
-	"\x06_aboutB\b\n" +
-	"\x06_class\"\xd0\x01\n" +
+	"\x06_about\"\xd0\x01\n" +
 	"\x19UpdateUserSettingsRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12*\n" +
 	"\x0fis_2_fa_enabled\x18\x02 \x01(\bH\x00R\fis2FaEnabled\x88\x01\x01\x12=\n" +
@@ -1208,11 +1222,13 @@ const file_user_user_proto_rawDesc = "" +
 	"\x0fis_2_fa_enabled\x18\x01 \x01(\bR\fis2FaEnabled\x128\n" +
 	"\x18is_notifications_enabled\x18\x02 \x01(\bR\x16isNotificationsEnabled\"-\n" +
 	"\x15GetUserByEmailRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"l\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"\xb6\x01\n" +
 	"\x16GetUserByEmailResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12#\n" +
-	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\"\x1c\n" +
+	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\x12\"\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12$\n" +
+	"\x06status\x18\x05 \x01(\x0e2\f.user.StatusR\x06status\"\x1c\n" +
 	"\x1aGetAllUsersWithDataRequest\"N\n" +
 	"\x1bGetAllUsersWithDataResponse\x12/\n" +
 	"\x05users\x18\x01 \x03(\v2\x19.user.GetUserDataResponseR\x05users*H\n" +
@@ -1278,34 +1294,38 @@ var file_user_user_proto_goTypes = []any{
 }
 var file_user_user_proto_depIdxs = []int32{
 	0,  // 0: user.CreateUserRequest.role:type_name -> user.UserRole
-	13, // 1: user.GetUserDataResponse.user_info:type_name -> user.UpdateUserInfoResponse
-	15, // 2: user.GetUserDataResponse.user_settings:type_name -> user.UpdateUserSettingsResponse
-	0,  // 3: user.UpdateUserInfoResponse.role:type_name -> user.UserRole
-	1,  // 4: user.UpdateUserInfoResponse.status:type_name -> user.Status
-	7,  // 5: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
-	2,  // 6: user.User.CreateUser:input_type -> user.CreateUserRequest
-	4,  // 7: user.User.GetUserById:input_type -> user.GetUserByIdRequest
-	16, // 8: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
-	18, // 9: user.User.GetAllUsersWithData:input_type -> user.GetAllUsersWithDataRequest
-	6,  // 10: user.User.GetUserData:input_type -> user.GetUserDataRequest
-	8,  // 11: user.User.ChangePassword:input_type -> user.ChangePasswordRequest
-	10, // 12: user.User.ChangeEmail:input_type -> user.ChangeEmailRequest
-	12, // 13: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
-	14, // 14: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
-	3,  // 15: user.User.CreateUser:output_type -> user.CreateUserResponse
-	5,  // 16: user.User.GetUserById:output_type -> user.GetUserByIdResponse
-	17, // 17: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
-	19, // 18: user.User.GetAllUsersWithData:output_type -> user.GetAllUsersWithDataResponse
-	7,  // 19: user.User.GetUserData:output_type -> user.GetUserDataResponse
-	9,  // 20: user.User.ChangePassword:output_type -> user.ChangePasswordResponse
-	11, // 21: user.User.ChangeEmail:output_type -> user.ChangeEmailResponse
-	13, // 22: user.User.UpdateUserInfo:output_type -> user.UpdateUserInfoResponse
-	15, // 23: user.User.UpdateUserSettings:output_type -> user.UpdateUserSettingsResponse
-	15, // [15:24] is the sub-list for method output_type
-	6,  // [6:15] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 1: user.GetUserByIdResponse.role:type_name -> user.UserRole
+	1,  // 2: user.GetUserByIdResponse.status:type_name -> user.Status
+	0,  // 3: user.GetUserDataResponse.role:type_name -> user.UserRole
+	1,  // 4: user.GetUserDataResponse.status:type_name -> user.Status
+	13, // 5: user.GetUserDataResponse.user_info:type_name -> user.UpdateUserInfoResponse
+	15, // 6: user.GetUserDataResponse.user_settings:type_name -> user.UpdateUserSettingsResponse
+	0,  // 7: user.GetUserByEmailResponse.role:type_name -> user.UserRole
+	1,  // 8: user.GetUserByEmailResponse.status:type_name -> user.Status
+	7,  // 9: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
+	2,  // 10: user.User.CreateUser:input_type -> user.CreateUserRequest
+	4,  // 11: user.User.GetUserById:input_type -> user.GetUserByIdRequest
+	16, // 12: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
+	18, // 13: user.User.GetAllUsersWithData:input_type -> user.GetAllUsersWithDataRequest
+	6,  // 14: user.User.GetUserData:input_type -> user.GetUserDataRequest
+	8,  // 15: user.User.ChangePassword:input_type -> user.ChangePasswordRequest
+	10, // 16: user.User.ChangeEmail:input_type -> user.ChangeEmailRequest
+	12, // 17: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
+	14, // 18: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
+	3,  // 19: user.User.CreateUser:output_type -> user.CreateUserResponse
+	5,  // 20: user.User.GetUserById:output_type -> user.GetUserByIdResponse
+	17, // 21: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
+	19, // 22: user.User.GetAllUsersWithData:output_type -> user.GetAllUsersWithDataResponse
+	7,  // 23: user.User.GetUserData:output_type -> user.GetUserDataResponse
+	9,  // 24: user.User.ChangePassword:output_type -> user.ChangePasswordResponse
+	11, // 25: user.User.ChangeEmail:output_type -> user.ChangeEmailResponse
+	13, // 26: user.User.UpdateUserInfo:output_type -> user.UpdateUserInfoResponse
+	15, // 27: user.User.UpdateUserSettings:output_type -> user.UpdateUserSettingsResponse
+	19, // [19:28] is the sub-list for method output_type
+	10, // [10:19] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }
