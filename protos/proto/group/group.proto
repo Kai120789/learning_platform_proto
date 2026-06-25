@@ -29,7 +29,7 @@ message CreateGroupRequest {
   int64 subject_id = 3;
   int64 tutor_id = 4;
   optional string tg_group_link = 5;
-  optional int64 tg_chat_id = 6;
+  optional string tg_chat_id = 6;
 }
 
 message CreateGroupResponse {
@@ -39,7 +39,7 @@ message CreateGroupResponse {
   int64 subject_id = 4;
   int64 tutor_id = 5;
   optional string tg_group_link = 6;
-  optional int64 tg_chat_id = 7;
+  optional string tg_chat_id = 7;
 }
 
 message UpdateGroupRequest {
@@ -47,7 +47,7 @@ message UpdateGroupRequest {
   string title = 2;
   string description = 3;
   optional string tg_group_link = 4;
-  optional int64 tg_chat_id = 5;
+  optional string tg_chat_id = 5;
 }
 
 message UpdateGroupResponse {
@@ -57,7 +57,7 @@ message UpdateGroupResponse {
   int64 subject_id = 4;
   int64 tutor_id = 5;
   optional string tg_group_link = 6;
-  optional int64 tg_chat_id = 7;
+  optional string tg_chat_id = 7;
 }
 
 message RemoveGroupRequest {
@@ -77,7 +77,7 @@ message GetGroupByIdResponse {
   int64 subject_id = 4;
   int64 tutor_id = 5;
   optional string tg_group_link = 6;
-  optional int64 tg_chat_id = 7;
+  optional string tg_chat_id = 7;
 }
 
 message GetGroupsRequest {}
