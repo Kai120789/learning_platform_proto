@@ -17,12 +17,6 @@ service Group {
   rpc GetGroupUsers (GetGroupUsersRequest) returns (GetGroupUsersResponse);
 }
 
-message UserShortInfo {
-  int64 id = 1;
-  string name = 2;
-  string email = 3;
-}
-
 message CreateGroupRequest {
   string title = 1;
   string description = 2;
@@ -93,7 +87,7 @@ message AddUsersToGroupRequest {
 
 message AddUsersToGroupResponse {
   int64 group_id = 1;
-  repeated UserShortInfo users = 2;
+  repeated int64 user_ids = 2;
 }
 
 message RemoveUserFromGroupRequest {
@@ -124,5 +118,5 @@ message GetGroupUsersRequest {
 }
 
 message GetGroupUsersResponse {
-  repeated UserShortInfo users = 1;
+  repeated int64 user_ids = 1;
 }
