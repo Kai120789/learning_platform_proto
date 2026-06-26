@@ -77,6 +77,55 @@ func (LessonStatus) EnumDescriptor() ([]byte, []int) {
 	return file_lesson_lesson_proto_rawDescGZIP(), []int{0}
 }
 
+type MediaType int32
+
+const (
+	MediaType_MEDIA_TYPE_UNSPECIFIED MediaType = 0
+	MediaType_IMAGE                  MediaType = 1
+	MediaType_VIDEO                  MediaType = 2
+)
+
+// Enum value maps for MediaType.
+var (
+	MediaType_name = map[int32]string{
+		0: "MEDIA_TYPE_UNSPECIFIED",
+		1: "IMAGE",
+		2: "VIDEO",
+	}
+	MediaType_value = map[string]int32{
+		"MEDIA_TYPE_UNSPECIFIED": 0,
+		"IMAGE":                  1,
+		"VIDEO":                  2,
+	}
+)
+
+func (x MediaType) Enum() *MediaType {
+	p := new(MediaType)
+	*p = x
+	return p
+}
+
+func (x MediaType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (MediaType) Descriptor() protoreflect.EnumDescriptor {
+	return file_lesson_lesson_proto_enumTypes[1].Descriptor()
+}
+
+func (MediaType) Type() protoreflect.EnumType {
+	return &file_lesson_lesson_proto_enumTypes[1]
+}
+
+func (x MediaType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use MediaType.Descriptor instead.
+func (MediaType) EnumDescriptor() ([]byte, []int) {
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
+}
+
 type GetOneLessonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -121,6 +170,82 @@ func (x *GetOneLessonRequest) GetId() int64 {
 	return 0
 }
 
+type MediaItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	LessonId      int64                  `protobuf:"varint,2,opt,name=lesson_id,json=lessonId,proto3" json:"lesson_id,omitempty"`
+	S3Link        string                 `protobuf:"bytes,3,opt,name=s3_link,json=s3Link,proto3" json:"s3_link,omitempty"`
+	S3Preview     string                 `protobuf:"bytes,4,opt,name=s3_preview,json=s3Preview,proto3" json:"s3_preview,omitempty"`
+	Type          MediaType              `protobuf:"varint,5,opt,name=type,proto3,enum=lesson.MediaType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MediaItem) Reset() {
+	*x = MediaItem{}
+	mi := &file_lesson_lesson_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MediaItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MediaItem) ProtoMessage() {}
+
+func (x *MediaItem) ProtoReflect() protoreflect.Message {
+	mi := &file_lesson_lesson_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MediaItem.ProtoReflect.Descriptor instead.
+func (*MediaItem) Descriptor() ([]byte, []int) {
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *MediaItem) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *MediaItem) GetLessonId() int64 {
+	if x != nil {
+		return x.LessonId
+	}
+	return 0
+}
+
+func (x *MediaItem) GetS3Link() string {
+	if x != nil {
+		return x.S3Link
+	}
+	return ""
+}
+
+func (x *MediaItem) GetS3Preview() string {
+	if x != nil {
+		return x.S3Preview
+	}
+	return ""
+}
+
+func (x *MediaItem) GetType() MediaType {
+	if x != nil {
+		return x.Type
+	}
+	return MediaType_MEDIA_TYPE_UNSPECIFIED
+}
+
 type GetOneLessonResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -128,7 +253,7 @@ type GetOneLessonResponse struct {
 	BoardId       *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink      *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []string               `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems    []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration      int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
 	TutorId       int64                  `protobuf:"varint,8,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	Status        LessonStatus           `protobuf:"varint,9,opt,name=status,proto3,enum=lesson.LessonStatus" json:"status,omitempty"`
@@ -138,7 +263,7 @@ type GetOneLessonResponse struct {
 
 func (x *GetOneLessonResponse) Reset() {
 	*x = GetOneLessonResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[1]
+	mi := &file_lesson_lesson_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -150,7 +275,7 @@ func (x *GetOneLessonResponse) String() string {
 func (*GetOneLessonResponse) ProtoMessage() {}
 
 func (x *GetOneLessonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[1]
+	mi := &file_lesson_lesson_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -163,7 +288,7 @@ func (x *GetOneLessonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOneLessonResponse.ProtoReflect.Descriptor instead.
 func (*GetOneLessonResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetOneLessonResponse) GetId() int64 {
@@ -201,7 +326,7 @@ func (x *GetOneLessonResponse) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *GetOneLessonResponse) GetMediaItems() []string {
+func (x *GetOneLessonResponse) GetMediaItems() []*MediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -238,7 +363,7 @@ type GetLessonsByUserIdRequest struct {
 
 func (x *GetLessonsByUserIdRequest) Reset() {
 	*x = GetLessonsByUserIdRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[2]
+	mi := &file_lesson_lesson_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -250,7 +375,7 @@ func (x *GetLessonsByUserIdRequest) String() string {
 func (*GetLessonsByUserIdRequest) ProtoMessage() {}
 
 func (x *GetLessonsByUserIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[2]
+	mi := &file_lesson_lesson_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -263,7 +388,7 @@ func (x *GetLessonsByUserIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByUserIdRequest.ProtoReflect.Descriptor instead.
 func (*GetLessonsByUserIdRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{2}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetLessonsByUserIdRequest) GetUserId() int64 {
@@ -282,7 +407,7 @@ type GetLessonsByUserIdResponse struct {
 
 func (x *GetLessonsByUserIdResponse) Reset() {
 	*x = GetLessonsByUserIdResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[3]
+	mi := &file_lesson_lesson_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -294,7 +419,7 @@ func (x *GetLessonsByUserIdResponse) String() string {
 func (*GetLessonsByUserIdResponse) ProtoMessage() {}
 
 func (x *GetLessonsByUserIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[3]
+	mi := &file_lesson_lesson_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -307,7 +432,7 @@ func (x *GetLessonsByUserIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByUserIdResponse.ProtoReflect.Descriptor instead.
 func (*GetLessonsByUserIdResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{3}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetLessonsByUserIdResponse) GetLessons() []*GetOneLessonResponse {
@@ -323,7 +448,7 @@ type CreateLessonRequest struct {
 	BoardId       *int64                 `protobuf:"varint,2,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink      *string                `protobuf:"bytes,3,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []string               `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems    []*MediaItem           `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration      int64                  `protobuf:"varint,6,opt,name=duration,proto3" json:"duration,omitempty"`
 	TutorId       int64                  `protobuf:"varint,7,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -332,7 +457,7 @@ type CreateLessonRequest struct {
 
 func (x *CreateLessonRequest) Reset() {
 	*x = CreateLessonRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[4]
+	mi := &file_lesson_lesson_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -344,7 +469,7 @@ func (x *CreateLessonRequest) String() string {
 func (*CreateLessonRequest) ProtoMessage() {}
 
 func (x *CreateLessonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[4]
+	mi := &file_lesson_lesson_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -357,7 +482,7 @@ func (x *CreateLessonRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLessonRequest.ProtoReflect.Descriptor instead.
 func (*CreateLessonRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{4}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateLessonRequest) GetGroupId() int64 {
@@ -388,7 +513,7 @@ func (x *CreateLessonRequest) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *CreateLessonRequest) GetMediaItems() []string {
+func (x *CreateLessonRequest) GetMediaItems() []*MediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -416,7 +541,7 @@ type CreateLessonResponse struct {
 	BoardId       *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink      *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []string               `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems    []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration      int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
 	TutorId       int64                  `protobuf:"varint,8,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	Status        LessonStatus           `protobuf:"varint,9,opt,name=status,proto3,enum=lesson.LessonStatus" json:"status,omitempty"`
@@ -426,7 +551,7 @@ type CreateLessonResponse struct {
 
 func (x *CreateLessonResponse) Reset() {
 	*x = CreateLessonResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[5]
+	mi := &file_lesson_lesson_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -438,7 +563,7 @@ func (x *CreateLessonResponse) String() string {
 func (*CreateLessonResponse) ProtoMessage() {}
 
 func (x *CreateLessonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[5]
+	mi := &file_lesson_lesson_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -451,7 +576,7 @@ func (x *CreateLessonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLessonResponse.ProtoReflect.Descriptor instead.
 func (*CreateLessonResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{5}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateLessonResponse) GetId() int64 {
@@ -489,7 +614,7 @@ func (x *CreateLessonResponse) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *CreateLessonResponse) GetMediaItems() []string {
+func (x *CreateLessonResponse) GetMediaItems() []*MediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -524,7 +649,7 @@ type UpdateLessonRequest struct {
 	BoardId       *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink      *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []string               `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems    []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration      int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -532,7 +657,7 @@ type UpdateLessonRequest struct {
 
 func (x *UpdateLessonRequest) Reset() {
 	*x = UpdateLessonRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[6]
+	mi := &file_lesson_lesson_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -544,7 +669,7 @@ func (x *UpdateLessonRequest) String() string {
 func (*UpdateLessonRequest) ProtoMessage() {}
 
 func (x *UpdateLessonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[6]
+	mi := &file_lesson_lesson_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -557,7 +682,7 @@ func (x *UpdateLessonRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLessonRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLessonRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{6}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateLessonRequest) GetId() int64 {
@@ -595,7 +720,7 @@ func (x *UpdateLessonRequest) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *UpdateLessonRequest) GetMediaItems() []string {
+func (x *UpdateLessonRequest) GetMediaItems() []*MediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -616,7 +741,7 @@ type UpdateLessonResponse struct {
 	BoardId       *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink      *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []string               `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems    []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration      int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
 	TutorId       int64                  `protobuf:"varint,8,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	Status        LessonStatus           `protobuf:"varint,9,opt,name=status,proto3,enum=lesson.LessonStatus" json:"status,omitempty"`
@@ -626,7 +751,7 @@ type UpdateLessonResponse struct {
 
 func (x *UpdateLessonResponse) Reset() {
 	*x = UpdateLessonResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[7]
+	mi := &file_lesson_lesson_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -638,7 +763,7 @@ func (x *UpdateLessonResponse) String() string {
 func (*UpdateLessonResponse) ProtoMessage() {}
 
 func (x *UpdateLessonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[7]
+	mi := &file_lesson_lesson_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -651,7 +776,7 @@ func (x *UpdateLessonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLessonResponse.ProtoReflect.Descriptor instead.
 func (*UpdateLessonResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{7}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateLessonResponse) GetId() int64 {
@@ -689,7 +814,7 @@ func (x *UpdateLessonResponse) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *UpdateLessonResponse) GetMediaItems() []string {
+func (x *UpdateLessonResponse) GetMediaItems() []*MediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -726,7 +851,7 @@ type CancelLessonRequest struct {
 
 func (x *CancelLessonRequest) Reset() {
 	*x = CancelLessonRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[8]
+	mi := &file_lesson_lesson_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -738,7 +863,7 @@ func (x *CancelLessonRequest) String() string {
 func (*CancelLessonRequest) ProtoMessage() {}
 
 func (x *CancelLessonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[8]
+	mi := &file_lesson_lesson_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -751,7 +876,7 @@ func (x *CancelLessonRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelLessonRequest.ProtoReflect.Descriptor instead.
 func (*CancelLessonRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{8}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CancelLessonRequest) GetId() int64 {
@@ -769,7 +894,7 @@ type CancelLessonResponse struct {
 
 func (x *CancelLessonResponse) Reset() {
 	*x = CancelLessonResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[9]
+	mi := &file_lesson_lesson_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -781,7 +906,7 @@ func (x *CancelLessonResponse) String() string {
 func (*CancelLessonResponse) ProtoMessage() {}
 
 func (x *CancelLessonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[9]
+	mi := &file_lesson_lesson_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -794,7 +919,7 @@ func (x *CancelLessonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelLessonResponse.ProtoReflect.Descriptor instead.
 func (*CancelLessonResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{9}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{10}
 }
 
 type GetLessonsByTutorIdRequest struct {
@@ -806,7 +931,7 @@ type GetLessonsByTutorIdRequest struct {
 
 func (x *GetLessonsByTutorIdRequest) Reset() {
 	*x = GetLessonsByTutorIdRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[10]
+	mi := &file_lesson_lesson_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -818,7 +943,7 @@ func (x *GetLessonsByTutorIdRequest) String() string {
 func (*GetLessonsByTutorIdRequest) ProtoMessage() {}
 
 func (x *GetLessonsByTutorIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[10]
+	mi := &file_lesson_lesson_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -831,7 +956,7 @@ func (x *GetLessonsByTutorIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByTutorIdRequest.ProtoReflect.Descriptor instead.
 func (*GetLessonsByTutorIdRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{10}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetLessonsByTutorIdRequest) GetTutorId() int64 {
@@ -850,7 +975,7 @@ type GetLessonsByTutorIdResponse struct {
 
 func (x *GetLessonsByTutorIdResponse) Reset() {
 	*x = GetLessonsByTutorIdResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[11]
+	mi := &file_lesson_lesson_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -862,7 +987,7 @@ func (x *GetLessonsByTutorIdResponse) String() string {
 func (*GetLessonsByTutorIdResponse) ProtoMessage() {}
 
 func (x *GetLessonsByTutorIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[11]
+	mi := &file_lesson_lesson_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -875,7 +1000,7 @@ func (x *GetLessonsByTutorIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByTutorIdResponse.ProtoReflect.Descriptor instead.
 func (*GetLessonsByTutorIdResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{11}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetLessonsByTutorIdResponse) GetLessons() []*GetOneLessonResponse {
@@ -894,7 +1019,7 @@ type GetLessonsByGroupIdRequest struct {
 
 func (x *GetLessonsByGroupIdRequest) Reset() {
 	*x = GetLessonsByGroupIdRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[12]
+	mi := &file_lesson_lesson_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -906,7 +1031,7 @@ func (x *GetLessonsByGroupIdRequest) String() string {
 func (*GetLessonsByGroupIdRequest) ProtoMessage() {}
 
 func (x *GetLessonsByGroupIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[12]
+	mi := &file_lesson_lesson_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,7 +1044,7 @@ func (x *GetLessonsByGroupIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByGroupIdRequest.ProtoReflect.Descriptor instead.
 func (*GetLessonsByGroupIdRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{12}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetLessonsByGroupIdRequest) GetGroupId() int64 {
@@ -938,7 +1063,7 @@ type GetLessonsByGroupIdResponse struct {
 
 func (x *GetLessonsByGroupIdResponse) Reset() {
 	*x = GetLessonsByGroupIdResponse{}
-	mi := &file_lesson_lesson_proto_msgTypes[13]
+	mi := &file_lesson_lesson_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -950,7 +1075,7 @@ func (x *GetLessonsByGroupIdResponse) String() string {
 func (*GetLessonsByGroupIdResponse) ProtoMessage() {}
 
 func (x *GetLessonsByGroupIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[13]
+	mi := &file_lesson_lesson_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -963,7 +1088,7 @@ func (x *GetLessonsByGroupIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLessonsByGroupIdResponse.ProtoReflect.Descriptor instead.
 func (*GetLessonsByGroupIdResponse) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{13}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetLessonsByGroupIdResponse) GetLessons() []*GetOneLessonResponse {
@@ -979,15 +1104,22 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\n" +
 	"\x13lesson/lesson.proto\x12\x06lesson\x1a\x1fgoogle/protobuf/timestamp.proto\"%\n" +
 	"\x13GetOneLessonRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xdf\x02\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x97\x01\n" +
+	"\tMediaItem\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
+	"\tlesson_id\x18\x02 \x01(\x03R\blessonId\x12\x17\n" +
+	"\as3_link\x18\x03 \x01(\tR\x06s3Link\x12\x1d\n" +
+	"\n" +
+	"s3_preview\x18\x04 \x01(\tR\ts3Preview\x12%\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x11.lesson.MediaTypeR\x04type\"\xf2\x02\n" +
 	"\x14GetOneLessonResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x1e\n" +
 	"\bboard_id\x18\x03 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x04 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
-	"\vmedia_items\x18\x06 \x03(\tR\n" +
+	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
+	"\vmedia_items\x18\x06 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\a \x01(\x03R\bduration\x12\x19\n" +
 	"\btutor_id\x18\b \x01(\x03R\atutorId\x12,\n" +
@@ -998,56 +1130,56 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\x19GetLessonsByUserIdRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"T\n" +
 	"\x1aGetLessonsByUserIdResponse\x126\n" +
-	"\alessons\x18\x01 \x03(\v2\x1c.lesson.GetOneLessonResponseR\alessons\"\xa0\x02\n" +
+	"\alessons\x18\x01 \x03(\v2\x1c.lesson.GetOneLessonResponseR\alessons\"\xb3\x02\n" +
 	"\x13CreateLessonRequest\x12\x19\n" +
 	"\bgroup_id\x18\x01 \x01(\x03R\agroupId\x12\x1e\n" +
 	"\bboard_id\x18\x02 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x03 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
-	"\vmedia_items\x18\x05 \x03(\tR\n" +
+	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
+	"\vmedia_items\x18\x05 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\x06 \x01(\x03R\bduration\x12\x19\n" +
 	"\btutor_id\x18\a \x01(\x03R\atutorIdB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\xdf\x02\n" +
+	"_meet_link\"\xf2\x02\n" +
 	"\x14CreateLessonResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x1e\n" +
 	"\bboard_id\x18\x03 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x04 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
-	"\vmedia_items\x18\x06 \x03(\tR\n" +
+	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
+	"\vmedia_items\x18\x06 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\a \x01(\x03R\bduration\x12\x19\n" +
 	"\btutor_id\x18\b \x01(\x03R\atutorId\x12,\n" +
 	"\x06status\x18\t \x01(\x0e2\x14.lesson.LessonStatusR\x06statusB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\x95\x02\n" +
+	"_meet_link\"\xa8\x02\n" +
 	"\x13UpdateLessonRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x1e\n" +
 	"\bboard_id\x18\x03 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x04 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
-	"\vmedia_items\x18\x06 \x03(\tR\n" +
+	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
+	"\vmedia_items\x18\x06 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\a \x01(\x03R\bdurationB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\xdf\x02\n" +
+	"_meet_link\"\xf2\x02\n" +
 	"\x14UpdateLessonResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x1e\n" +
 	"\bboard_id\x18\x03 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x04 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
-	"\vmedia_items\x18\x06 \x03(\tR\n" +
+	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
+	"\vmedia_items\x18\x06 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\a \x01(\x03R\bduration\x12\x19\n" +
 	"\btutor_id\x18\b \x01(\x03R\atutorId\x12,\n" +
@@ -1072,7 +1204,11 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\n" +
 	"IN_PROCESS\x10\x02\x12\r\n" +
 	"\tCOMPLETED\x10\x03\x12\r\n" +
-	"\tCANCELLED\x10\x042\xd1\x04\n" +
+	"\tCANCELLED\x10\x04*=\n" +
+	"\tMediaType\x12\x1a\n" +
+	"\x16MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\t\n" +
+	"\x05IMAGE\x10\x01\x12\t\n" +
+	"\x05VIDEO\x10\x022\xd1\x04\n" +
 	"\x06Lesson\x12I\n" +
 	"\fGetOneLesson\x12\x1b.lesson.GetOneLessonRequest\x1a\x1c.lesson.GetOneLessonResponse\x12[\n" +
 	"\x12GetLessonsByUserId\x12!.lesson.GetLessonsByUserIdRequest\x1a\".lesson.GetLessonsByUserIdResponse\x12I\n" +
@@ -1094,57 +1230,65 @@ func file_lesson_lesson_proto_rawDescGZIP() []byte {
 	return file_lesson_lesson_proto_rawDescData
 }
 
-var file_lesson_lesson_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_lesson_lesson_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_lesson_lesson_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_lesson_lesson_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_lesson_lesson_proto_goTypes = []any{
 	(LessonStatus)(0),                   // 0: lesson.LessonStatus
-	(*GetOneLessonRequest)(nil),         // 1: lesson.GetOneLessonRequest
-	(*GetOneLessonResponse)(nil),        // 2: lesson.GetOneLessonResponse
-	(*GetLessonsByUserIdRequest)(nil),   // 3: lesson.GetLessonsByUserIdRequest
-	(*GetLessonsByUserIdResponse)(nil),  // 4: lesson.GetLessonsByUserIdResponse
-	(*CreateLessonRequest)(nil),         // 5: lesson.CreateLessonRequest
-	(*CreateLessonResponse)(nil),        // 6: lesson.CreateLessonResponse
-	(*UpdateLessonRequest)(nil),         // 7: lesson.UpdateLessonRequest
-	(*UpdateLessonResponse)(nil),        // 8: lesson.UpdateLessonResponse
-	(*CancelLessonRequest)(nil),         // 9: lesson.CancelLessonRequest
-	(*CancelLessonResponse)(nil),        // 10: lesson.CancelLessonResponse
-	(*GetLessonsByTutorIdRequest)(nil),  // 11: lesson.GetLessonsByTutorIdRequest
-	(*GetLessonsByTutorIdResponse)(nil), // 12: lesson.GetLessonsByTutorIdResponse
-	(*GetLessonsByGroupIdRequest)(nil),  // 13: lesson.GetLessonsByGroupIdRequest
-	(*GetLessonsByGroupIdResponse)(nil), // 14: lesson.GetLessonsByGroupIdResponse
-	(*timestamppb.Timestamp)(nil),       // 15: google.protobuf.Timestamp
+	(MediaType)(0),                      // 1: lesson.MediaType
+	(*GetOneLessonRequest)(nil),         // 2: lesson.GetOneLessonRequest
+	(*MediaItem)(nil),                   // 3: lesson.MediaItem
+	(*GetOneLessonResponse)(nil),        // 4: lesson.GetOneLessonResponse
+	(*GetLessonsByUserIdRequest)(nil),   // 5: lesson.GetLessonsByUserIdRequest
+	(*GetLessonsByUserIdResponse)(nil),  // 6: lesson.GetLessonsByUserIdResponse
+	(*CreateLessonRequest)(nil),         // 7: lesson.CreateLessonRequest
+	(*CreateLessonResponse)(nil),        // 8: lesson.CreateLessonResponse
+	(*UpdateLessonRequest)(nil),         // 9: lesson.UpdateLessonRequest
+	(*UpdateLessonResponse)(nil),        // 10: lesson.UpdateLessonResponse
+	(*CancelLessonRequest)(nil),         // 11: lesson.CancelLessonRequest
+	(*CancelLessonResponse)(nil),        // 12: lesson.CancelLessonResponse
+	(*GetLessonsByTutorIdRequest)(nil),  // 13: lesson.GetLessonsByTutorIdRequest
+	(*GetLessonsByTutorIdResponse)(nil), // 14: lesson.GetLessonsByTutorIdResponse
+	(*GetLessonsByGroupIdRequest)(nil),  // 15: lesson.GetLessonsByGroupIdRequest
+	(*GetLessonsByGroupIdResponse)(nil), // 16: lesson.GetLessonsByGroupIdResponse
+	(*timestamppb.Timestamp)(nil),       // 17: google.protobuf.Timestamp
 }
 var file_lesson_lesson_proto_depIdxs = []int32{
-	15, // 0: lesson.GetOneLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	0,  // 1: lesson.GetOneLessonResponse.status:type_name -> lesson.LessonStatus
-	2,  // 2: lesson.GetLessonsByUserIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
-	15, // 3: lesson.CreateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
-	15, // 4: lesson.CreateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	0,  // 5: lesson.CreateLessonResponse.status:type_name -> lesson.LessonStatus
-	15, // 6: lesson.UpdateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
-	15, // 7: lesson.UpdateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	0,  // 8: lesson.UpdateLessonResponse.status:type_name -> lesson.LessonStatus
-	2,  // 9: lesson.GetLessonsByTutorIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
-	2,  // 10: lesson.GetLessonsByGroupIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
-	1,  // 11: lesson.Lesson.GetOneLesson:input_type -> lesson.GetOneLessonRequest
-	3,  // 12: lesson.Lesson.GetLessonsByUserId:input_type -> lesson.GetLessonsByUserIdRequest
-	5,  // 13: lesson.Lesson.CreateLesson:input_type -> lesson.CreateLessonRequest
-	7,  // 14: lesson.Lesson.UpdateLesson:input_type -> lesson.UpdateLessonRequest
-	9,  // 15: lesson.Lesson.CancelLesson:input_type -> lesson.CancelLessonRequest
-	11, // 16: lesson.Lesson.GetLessonsByTutorId:input_type -> lesson.GetLessonsByTutorIdRequest
-	13, // 17: lesson.Lesson.GetLessonsByGroupId:input_type -> lesson.GetLessonsByGroupIdRequest
-	2,  // 18: lesson.Lesson.GetOneLesson:output_type -> lesson.GetOneLessonResponse
-	4,  // 19: lesson.Lesson.GetLessonsByUserId:output_type -> lesson.GetLessonsByUserIdResponse
-	6,  // 20: lesson.Lesson.CreateLesson:output_type -> lesson.CreateLessonResponse
-	8,  // 21: lesson.Lesson.UpdateLesson:output_type -> lesson.UpdateLessonResponse
-	10, // 22: lesson.Lesson.CancelLesson:output_type -> lesson.CancelLessonResponse
-	12, // 23: lesson.Lesson.GetLessonsByTutorId:output_type -> lesson.GetLessonsByTutorIdResponse
-	14, // 24: lesson.Lesson.GetLessonsByGroupId:output_type -> lesson.GetLessonsByGroupIdResponse
-	18, // [18:25] is the sub-list for method output_type
-	11, // [11:18] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	1,  // 0: lesson.MediaItem.type:type_name -> lesson.MediaType
+	17, // 1: lesson.GetOneLessonResponse.start_time:type_name -> google.protobuf.Timestamp
+	3,  // 2: lesson.GetOneLessonResponse.media_items:type_name -> lesson.MediaItem
+	0,  // 3: lesson.GetOneLessonResponse.status:type_name -> lesson.LessonStatus
+	4,  // 4: lesson.GetLessonsByUserIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
+	17, // 5: lesson.CreateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
+	3,  // 6: lesson.CreateLessonRequest.media_items:type_name -> lesson.MediaItem
+	17, // 7: lesson.CreateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
+	3,  // 8: lesson.CreateLessonResponse.media_items:type_name -> lesson.MediaItem
+	0,  // 9: lesson.CreateLessonResponse.status:type_name -> lesson.LessonStatus
+	17, // 10: lesson.UpdateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
+	3,  // 11: lesson.UpdateLessonRequest.media_items:type_name -> lesson.MediaItem
+	17, // 12: lesson.UpdateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
+	3,  // 13: lesson.UpdateLessonResponse.media_items:type_name -> lesson.MediaItem
+	0,  // 14: lesson.UpdateLessonResponse.status:type_name -> lesson.LessonStatus
+	4,  // 15: lesson.GetLessonsByTutorIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
+	4,  // 16: lesson.GetLessonsByGroupIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
+	2,  // 17: lesson.Lesson.GetOneLesson:input_type -> lesson.GetOneLessonRequest
+	5,  // 18: lesson.Lesson.GetLessonsByUserId:input_type -> lesson.GetLessonsByUserIdRequest
+	7,  // 19: lesson.Lesson.CreateLesson:input_type -> lesson.CreateLessonRequest
+	9,  // 20: lesson.Lesson.UpdateLesson:input_type -> lesson.UpdateLessonRequest
+	11, // 21: lesson.Lesson.CancelLesson:input_type -> lesson.CancelLessonRequest
+	13, // 22: lesson.Lesson.GetLessonsByTutorId:input_type -> lesson.GetLessonsByTutorIdRequest
+	15, // 23: lesson.Lesson.GetLessonsByGroupId:input_type -> lesson.GetLessonsByGroupIdRequest
+	4,  // 24: lesson.Lesson.GetOneLesson:output_type -> lesson.GetOneLessonResponse
+	6,  // 25: lesson.Lesson.GetLessonsByUserId:output_type -> lesson.GetLessonsByUserIdResponse
+	8,  // 26: lesson.Lesson.CreateLesson:output_type -> lesson.CreateLessonResponse
+	10, // 27: lesson.Lesson.UpdateLesson:output_type -> lesson.UpdateLessonResponse
+	12, // 28: lesson.Lesson.CancelLesson:output_type -> lesson.CancelLessonResponse
+	14, // 29: lesson.Lesson.GetLessonsByTutorId:output_type -> lesson.GetLessonsByTutorIdResponse
+	16, // 30: lesson.Lesson.GetLessonsByGroupId:output_type -> lesson.GetLessonsByGroupIdResponse
+	24, // [24:31] is the sub-list for method output_type
+	17, // [17:24] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_lesson_lesson_proto_init() }
@@ -1152,18 +1296,18 @@ func file_lesson_lesson_proto_init() {
 	if File_lesson_lesson_proto != nil {
 		return
 	}
-	file_lesson_lesson_proto_msgTypes[1].OneofWrappers = []any{}
-	file_lesson_lesson_proto_msgTypes[4].OneofWrappers = []any{}
+	file_lesson_lesson_proto_msgTypes[2].OneofWrappers = []any{}
 	file_lesson_lesson_proto_msgTypes[5].OneofWrappers = []any{}
 	file_lesson_lesson_proto_msgTypes[6].OneofWrappers = []any{}
 	file_lesson_lesson_proto_msgTypes[7].OneofWrappers = []any{}
+	file_lesson_lesson_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_lesson_lesson_proto_rawDesc), len(file_lesson_lesson_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   14,
+			NumEnums:      2,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
