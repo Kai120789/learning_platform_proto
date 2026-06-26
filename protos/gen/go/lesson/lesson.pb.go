@@ -643,16 +643,17 @@ func (x *CreateLessonResponse) GetStatus() LessonStatus {
 }
 
 type UpdateLessonRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	GroupId       int64                  `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
-	BoardId       *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
-	MeetLink      *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
-	Duration      int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	GroupId         int64                  `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	BoardId         *int64                 `protobuf:"varint,3,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
+	MeetLink        *string                `protobuf:"bytes,4,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
+	StartTime       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	MediaItems      []*MediaItem           `protobuf:"bytes,6,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	Duration        int64                  `protobuf:"varint,7,opt,name=duration,proto3" json:"duration,omitempty"`
+	DeletedMediaIds []int64                `protobuf:"varint,8,rep,packed,name=deleted_media_ids,json=deletedMediaIds,proto3" json:"deleted_media_ids,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *UpdateLessonRequest) Reset() {
@@ -732,6 +733,13 @@ func (x *UpdateLessonRequest) GetDuration() int64 {
 		return x.Duration
 	}
 	return 0
+}
+
+func (x *UpdateLessonRequest) GetDeletedMediaIds() []int64 {
+	if x != nil {
+		return x.DeletedMediaIds
+	}
+	return nil
 }
 
 type UpdateLessonResponse struct {
@@ -1158,7 +1166,7 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\x06status\x18\t \x01(\x0e2\x14.lesson.LessonStatusR\x06statusB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\xa8\x02\n" +
+	"_meet_link\"\xd4\x02\n" +
 	"\x13UpdateLessonRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x1e\n" +
@@ -1168,7 +1176,8 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"start_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
 	"\vmedia_items\x18\x06 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
-	"\bduration\x18\a \x01(\x03R\bdurationB\v\n" +
+	"\bduration\x18\a \x01(\x03R\bduration\x12*\n" +
+	"\x11deleted_media_ids\x18\b \x03(\x03R\x0fdeletedMediaIdsB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
 	"_meet_link\"\xf2\x02\n" +
