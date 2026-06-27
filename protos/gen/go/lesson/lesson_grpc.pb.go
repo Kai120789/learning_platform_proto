@@ -23,9 +23,8 @@ const (
 	Lesson_GetLessonsByUserId_FullMethodName  = "/lesson.Lesson/GetLessonsByUserId"
 	Lesson_CreateLesson_FullMethodName        = "/lesson.Lesson/CreateLesson"
 	Lesson_UpdateLesson_FullMethodName        = "/lesson.Lesson/UpdateLesson"
-	Lesson_CancelLesson_FullMethodName        = "/lesson.Lesson/CancelLesson"
+	Lesson_UpdateLessonStatus_FullMethodName  = "/lesson.Lesson/UpdateLessonStatus"
 	Lesson_GetLessonsByTutorId_FullMethodName = "/lesson.Lesson/GetLessonsByTutorId"
-	Lesson_GetLessonsByGroupId_FullMethodName = "/lesson.Lesson/GetLessonsByGroupId"
 )
 
 // LessonClient is the client API for Lesson service.
@@ -36,9 +35,8 @@ type LessonClient interface {
 	GetLessonsByUserId(ctx context.Context, in *GetLessonsByUserIdRequest, opts ...grpc.CallOption) (*GetLessonsByUserIdResponse, error)
 	CreateLesson(ctx context.Context, in *CreateLessonRequest, opts ...grpc.CallOption) (*CreateLessonResponse, error)
 	UpdateLesson(ctx context.Context, in *UpdateLessonRequest, opts ...grpc.CallOption) (*UpdateLessonResponse, error)
-	CancelLesson(ctx context.Context, in *CancelLessonRequest, opts ...grpc.CallOption) (*CancelLessonResponse, error)
+	UpdateLessonStatus(ctx context.Context, in *UpdateLessonStatusRequest, opts ...grpc.CallOption) (*UpdateLessonStatusResponse, error)
 	GetLessonsByTutorId(ctx context.Context, in *GetLessonsByTutorIdRequest, opts ...grpc.CallOption) (*GetLessonsByTutorIdResponse, error)
-	GetLessonsByGroupId(ctx context.Context, in *GetLessonsByGroupIdRequest, opts ...grpc.CallOption) (*GetLessonsByGroupIdResponse, error)
 }
 
 type lessonClient struct {
@@ -89,10 +87,10 @@ func (c *lessonClient) UpdateLesson(ctx context.Context, in *UpdateLessonRequest
 	return out, nil
 }
 
-func (c *lessonClient) CancelLesson(ctx context.Context, in *CancelLessonRequest, opts ...grpc.CallOption) (*CancelLessonResponse, error) {
+func (c *lessonClient) UpdateLessonStatus(ctx context.Context, in *UpdateLessonStatusRequest, opts ...grpc.CallOption) (*UpdateLessonStatusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelLessonResponse)
-	err := c.cc.Invoke(ctx, Lesson_CancelLesson_FullMethodName, in, out, cOpts...)
+	out := new(UpdateLessonStatusResponse)
+	err := c.cc.Invoke(ctx, Lesson_UpdateLessonStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,16 +107,6 @@ func (c *lessonClient) GetLessonsByTutorId(ctx context.Context, in *GetLessonsBy
 	return out, nil
 }
 
-func (c *lessonClient) GetLessonsByGroupId(ctx context.Context, in *GetLessonsByGroupIdRequest, opts ...grpc.CallOption) (*GetLessonsByGroupIdResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetLessonsByGroupIdResponse)
-	err := c.cc.Invoke(ctx, Lesson_GetLessonsByGroupId_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // LessonServer is the server API for Lesson service.
 // All implementations must embed UnimplementedLessonServer
 // for forward compatibility.
@@ -127,9 +115,8 @@ type LessonServer interface {
 	GetLessonsByUserId(context.Context, *GetLessonsByUserIdRequest) (*GetLessonsByUserIdResponse, error)
 	CreateLesson(context.Context, *CreateLessonRequest) (*CreateLessonResponse, error)
 	UpdateLesson(context.Context, *UpdateLessonRequest) (*UpdateLessonResponse, error)
-	CancelLesson(context.Context, *CancelLessonRequest) (*CancelLessonResponse, error)
+	UpdateLessonStatus(context.Context, *UpdateLessonStatusRequest) (*UpdateLessonStatusResponse, error)
 	GetLessonsByTutorId(context.Context, *GetLessonsByTutorIdRequest) (*GetLessonsByTutorIdResponse, error)
-	GetLessonsByGroupId(context.Context, *GetLessonsByGroupIdRequest) (*GetLessonsByGroupIdResponse, error)
 	mustEmbedUnimplementedLessonServer()
 }
 
@@ -152,14 +139,11 @@ func (UnimplementedLessonServer) CreateLesson(context.Context, *CreateLessonRequ
 func (UnimplementedLessonServer) UpdateLesson(context.Context, *UpdateLessonRequest) (*UpdateLessonResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLesson not implemented")
 }
-func (UnimplementedLessonServer) CancelLesson(context.Context, *CancelLessonRequest) (*CancelLessonResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelLesson not implemented")
+func (UnimplementedLessonServer) UpdateLessonStatus(context.Context, *UpdateLessonStatusRequest) (*UpdateLessonStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLessonStatus not implemented")
 }
 func (UnimplementedLessonServer) GetLessonsByTutorId(context.Context, *GetLessonsByTutorIdRequest) (*GetLessonsByTutorIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLessonsByTutorId not implemented")
-}
-func (UnimplementedLessonServer) GetLessonsByGroupId(context.Context, *GetLessonsByGroupIdRequest) (*GetLessonsByGroupIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetLessonsByGroupId not implemented")
 }
 func (UnimplementedLessonServer) mustEmbedUnimplementedLessonServer() {}
 func (UnimplementedLessonServer) testEmbeddedByValue()                {}
@@ -254,20 +238,20 @@ func _Lesson_UpdateLesson_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Lesson_CancelLesson_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CancelLessonRequest)
+func _Lesson_UpdateLessonStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLessonStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LessonServer).CancelLesson(ctx, in)
+		return srv.(LessonServer).UpdateLessonStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Lesson_CancelLesson_FullMethodName,
+		FullMethod: Lesson_UpdateLessonStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LessonServer).CancelLesson(ctx, req.(*CancelLessonRequest))
+		return srv.(LessonServer).UpdateLessonStatus(ctx, req.(*UpdateLessonStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -286,24 +270,6 @@ func _Lesson_GetLessonsByTutorId_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LessonServer).GetLessonsByTutorId(ctx, req.(*GetLessonsByTutorIdRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Lesson_GetLessonsByGroupId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLessonsByGroupIdRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LessonServer).GetLessonsByGroupId(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Lesson_GetLessonsByGroupId_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LessonServer).GetLessonsByGroupId(ctx, req.(*GetLessonsByGroupIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -332,16 +298,12 @@ var Lesson_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Lesson_UpdateLesson_Handler,
 		},
 		{
-			MethodName: "CancelLesson",
-			Handler:    _Lesson_CancelLesson_Handler,
+			MethodName: "UpdateLessonStatus",
+			Handler:    _Lesson_UpdateLessonStatus_Handler,
 		},
 		{
 			MethodName: "GetLessonsByTutorId",
 			Handler:    _Lesson_GetLessonsByTutorId_Handler,
-		},
-		{
-			MethodName: "GetLessonsByGroupId",
-			Handler:    _Lesson_GetLessonsByGroupId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
