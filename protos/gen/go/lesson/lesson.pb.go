@@ -659,7 +659,8 @@ type UpdateLessonRequest struct {
 	MediaItems      []*MediaItem           `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration        int64                  `protobuf:"varint,6,opt,name=duration,proto3" json:"duration,omitempty"`
 	UserIds         []int64                `protobuf:"varint,7,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
-	DeletedMediaIds []int64                `protobuf:"varint,8,rep,packed,name=deleted_media_ids,json=deletedMediaIds,proto3" json:"deleted_media_ids,omitempty"`
+	DeletedUserIds  []int64                `protobuf:"varint,8,rep,packed,name=deleted_user_ids,json=deletedUserIds,proto3" json:"deleted_user_ids,omitempty"`
+	DeletedMediaIds []int64                `protobuf:"varint,9,rep,packed,name=deleted_media_ids,json=deletedMediaIds,proto3" json:"deleted_media_ids,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -739,6 +740,13 @@ func (x *UpdateLessonRequest) GetDuration() int64 {
 func (x *UpdateLessonRequest) GetUserIds() []int64 {
 	if x != nil {
 		return x.UserIds
+	}
+	return nil
+}
+
+func (x *UpdateLessonRequest) GetDeletedUserIds() []int64 {
+	if x != nil {
+		return x.DeletedUserIds
 	}
 	return nil
 }
@@ -1095,7 +1103,7 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\x06status\x18\t \x01(\x0e2\x14.lesson.LessonStatusR\x06statusB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\xd4\x02\n" +
+	"_meet_link\"\xfe\x02\n" +
 	"\x13UpdateLessonRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\bboard_id\x18\x02 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
@@ -1105,8 +1113,9 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\vmedia_items\x18\x05 \x03(\v2\x11.lesson.MediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\x06 \x01(\x03R\bduration\x12\x19\n" +
-	"\buser_ids\x18\a \x03(\x03R\auserIds\x12*\n" +
-	"\x11deleted_media_ids\x18\b \x03(\x03R\x0fdeletedMediaIdsB\v\n" +
+	"\buser_ids\x18\a \x03(\x03R\auserIds\x12(\n" +
+	"\x10deleted_user_ids\x18\b \x03(\x03R\x0edeletedUserIds\x12*\n" +
+	"\x11deleted_media_ids\x18\t \x03(\x03R\x0fdeletedMediaIdsB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
 	"_meet_link\"\xf2\x02\n" +

@@ -92,7 +92,8 @@ message UpdateLessonRequest {
   repeated MediaItem media_items = 5;
   int64 duration = 6;
   repeated int64 user_ids = 7;
-  repeated int64 deleted_media_ids = 8;
+  repeated int64 deleted_user_ids = 8;
+  repeated int64 deleted_media_ids = 9;
 }
 
 message UpdateLessonResponse {
