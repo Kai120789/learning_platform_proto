@@ -734,11 +734,10 @@ func (x *CreateScheduleResponse) GetSlots() []*ScheduleSlot {
 type UpdateScheduleRequest struct {
 	state                  protoimpl.MessageState `protogen:"open.v1"`
 	Id                     int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TutorId                int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	StartTime              *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime                *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Slots                  []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
-	DeletedScheduleSlotIds []int64                `protobuf:"varint,6,rep,packed,name=deleted_schedule_slot_ids,json=deletedScheduleSlotIds,proto3" json:"deleted_schedule_slot_ids,omitempty"`
+	StartTime              *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime                *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Slots                  []*ScheduleSlot        `protobuf:"bytes,4,rep,name=slots,proto3" json:"slots,omitempty"`
+	DeletedScheduleSlotIds []int64                `protobuf:"varint,5,rep,packed,name=deleted_schedule_slot_ids,json=deletedScheduleSlotIds,proto3" json:"deleted_schedule_slot_ids,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -776,13 +775,6 @@ func (*UpdateScheduleRequest) Descriptor() ([]byte, []int) {
 func (x *UpdateScheduleRequest) GetId() int64 {
 	if x != nil {
 		return x.Id
-	}
-	return 0
-}
-
-func (x *UpdateScheduleRequest) GetTutorId() int64 {
-	if x != nil {
-		return x.TutorId
 	}
 	return 0
 }
@@ -1119,15 +1111,14 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\n" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"\x9d\x02\n" +
+	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"\x82\x02\n" +
 	"\x15UpdateScheduleRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
-	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x129\n" +
 	"\n" +
-	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\x129\n" +
-	"\x19deleted_schedule_slot_ids\x18\x06 \x03(\x03R\x16deletedScheduleSlotIds\"\xe3\x01\n" +
+	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
+	"\x05slots\x18\x04 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\x129\n" +
+	"\x19deleted_schedule_slot_ids\x18\x05 \x03(\x03R\x16deletedScheduleSlotIds\"\xe3\x01\n" +
 	"\x16UpdateScheduleResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
