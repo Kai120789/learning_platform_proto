@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package subject;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/subject";
+
+service Subject {
+  rpc GetOneSubject(GetOneSubjectRequest) returns (GetOneSubjectResponse);
+  rpc GetAllSubjects(GetAllSubjectsRequest) returns (GetAllSubjectsResponse);
+  rpc GetUserSubjects(GetUserSubjectsRequest) returns (GetUserSubjectsResponse);
+  rpc SetUserSubjects(SetUserSubjectsRequest) returns (SetUserSubjectsResponse);
+  rpc UpdateUserSubjects(UpdateUserSubjectsRequest) returns (UpdateUserSubjectsResponse);
+}
+
+enum SubjectType {
+  MEDIA_TYPE_UNSPECIFIED = 0;
+  EGE = 1;
+  OGE = 2;
+  IMPROVE = 3;
+}
+
+message GetOneSubjectRequest {
+  int64 id = 1;
+}
+
+message GetOneSubjectResponse {
+  int64 id = 1;
+  string code = 2;
+  string title = 3;
+  SubjectType type = 4;
+}
+
+message GetAllSubjectsRequest {
+
+}
+
+message GetAllSubjectsResponse {
+  repeated GetAllSubjectsResponse subjects = 1;
+}
+
+message GetUserSubjectsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserSubjectsResponse {
+  repeated GetAllSubjectsResponse subjects = 1;
+}
+
+message SetUserSubjectsRequest {
+  int64 user_id = 1;
+  repeated int64 subject_ids = 2;
+}
+
+message SetUserSubjectsResponse {
+  repeated GetAllSubjectsResponse subjects = 1;
+}
+
+message UpdateUserSubjectsRequest {
+  int64 user_id = 1;
+  repeated int64 subject_ids = 2;
+  repeated int64 deleted_subject_ids = 3;
+}
+
+message UpdateUserSubjectsResponse {
+  repeated GetAllSubjectsResponse subjects = 1;
+}
