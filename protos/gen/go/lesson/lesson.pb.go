@@ -716,7 +716,7 @@ type UpdateLessonRequest struct {
 	BoardId         *int64                 `protobuf:"varint,2,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
 	MeetLink        *string                `protobuf:"bytes,3,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
 	StartTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems      []*MediaItem           `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	MediaItems      []*CreateMediaItem     `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
 	Duration        int64                  `protobuf:"varint,6,opt,name=duration,proto3" json:"duration,omitempty"`
 	UserIds         []int64                `protobuf:"varint,7,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	DeletedUserIds  []int64                `protobuf:"varint,8,rep,packed,name=deleted_user_ids,json=deletedUserIds,proto3" json:"deleted_user_ids,omitempty"`
@@ -783,7 +783,7 @@ func (x *UpdateLessonRequest) GetStartTime() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *UpdateLessonRequest) GetMediaItems() []*MediaItem {
+func (x *UpdateLessonRequest) GetMediaItems() []*CreateMediaItem {
 	if x != nil {
 		return x.MediaItems
 	}
@@ -1168,14 +1168,14 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\x06status\x18\t \x01(\x0e2\x14.lesson.LessonStatusR\x06statusB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
-	"_meet_link\"\xfe\x02\n" +
+	"_meet_link\"\x84\x03\n" +
 	"\x13UpdateLessonRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\bboard_id\x18\x02 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
 	"\tmeet_link\x18\x03 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x122\n" +
-	"\vmedia_items\x18\x05 \x03(\v2\x11.lesson.MediaItemR\n" +
+	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x128\n" +
+	"\vmedia_items\x18\x05 \x03(\v2\x17.lesson.CreateMediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
 	"\bduration\x18\x06 \x01(\x03R\bduration\x12\x19\n" +
 	"\buser_ids\x18\a \x03(\x03R\auserIds\x12(\n" +
@@ -1272,7 +1272,7 @@ var file_lesson_lesson_proto_depIdxs = []int32{
 	4,  // 9: lesson.CreateLessonResponse.media_items:type_name -> lesson.MediaItem
 	0,  // 10: lesson.CreateLessonResponse.status:type_name -> lesson.LessonStatus
 	16, // 11: lesson.UpdateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 12: lesson.UpdateLessonRequest.media_items:type_name -> lesson.MediaItem
+	3,  // 12: lesson.UpdateLessonRequest.media_items:type_name -> lesson.CreateMediaItem
 	16, // 13: lesson.UpdateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
 	4,  // 14: lesson.UpdateLessonResponse.media_items:type_name -> lesson.MediaItem
 	0,  // 15: lesson.UpdateLessonResponse.status:type_name -> lesson.LessonStatus

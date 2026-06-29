@@ -95,7 +95,7 @@ message UpdateLessonRequest {
   optional int64 board_id = 2;
   optional string meet_link = 3;
   google.protobuf.Timestamp start_time = 4;
-  repeated MediaItem media_items = 5;
+  repeated CreateMediaItem media_items = 5;
   int64 duration = 6;
   repeated int64 user_ids = 7;
   repeated int64 deleted_user_ids = 8;
