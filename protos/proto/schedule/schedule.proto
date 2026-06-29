@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package schedule;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/schedule";
+
+service Schedule {
+  rpc GetAllSchedules (GetAllSchedulesRequest) returns (GetAllSchedulesResponse);
+  rpc GetScheduleByID (GetScheduleByIDRequest) returns (GetScheduleByIDResponse);
+  rpc GetScheduleByTutorID (GetSchedulesByTutorIDRequest) returns (GetSchedulesByTutorIDResponse);
+  rpc CreateSchedule (CreateScheduleRequest) returns (CreateScheduleResponse);
+  rpc UpdateSchedule (UpdateScheduleRequest) returns (UpdateScheduleResponse);
+  rpc DeleteSchedule (DeleteScheduleRequest) returns (DeleteScheduleResponse);
+  rpc BindLessonToScheduleSlot (BindLessonToScheduleSlotRequest) returns (BindLessonToScheduleSlotResponse);
+}
+
+enum Status {
+  SCHEDULE_STATUS_UNSPECIFIED = 0;
+  FREE = 1;
+  BOOKED = 2;
+}
+
+message ScheduleSlot {
+  int64 id = 1;
+  int64 schedule_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  Status status = 4;
+  int64 duration = 5;
+  optional int64 lesson_id = 6;
+}
+
+message CreateScheduleSlot {
+  google.protobuf.Timestamp start_time = 1;
+  Status status = 2;
+  int64 duration = 3;
+  optional int64 lesson_id = 4;
+}
+
+message OneSchedule {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
+}
+
+message GetAllSchedulesRequest {
+
+}
+
+message GetAllSchedulesResponse {
+  repeated OneSchedule schedules = 1;
+}
+
+message GetScheduleByIDRequest {
+  int64 schedule_id = 1;
+}
+
+message GetScheduleByIDResponse {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
+}
+
+message GetSchedulesByTutorIDRequest {
+  int64 tutor_id = 1;
+}
+
+message GetSchedulesByTutorIDResponse {
+  repeated OneSchedule schedules = 1;
+}
+
+message CreateScheduleRequest {
+  int64 tutor_id = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+  repeated CreateScheduleSlot slots = 4;
+}
+
+message CreateScheduleResponse {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
+}
+
+message UpdateScheduleRequest {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
+  repeated int64 deleted_schedule_slot_ids = 6;
+}
+
+message UpdateScheduleResponse {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
+}
+
+message DeleteScheduleRequest {
+  int64 schedule_id = 1;
+}
+
+message DeleteScheduleResponse {
+
+}
+
+message BindLessonToScheduleSlotRequest {
+  int64 schedule_id = 1;
+  int64 lesson_id = 2;
+}
+
+message BindLessonToScheduleSlotResponse {
+
+}
