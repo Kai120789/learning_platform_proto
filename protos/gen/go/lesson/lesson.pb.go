@@ -4,7 +4,7 @@
 // 	protoc        v6.33.0
 // source: lesson/lesson.proto
 
-package group
+package lesson
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -504,14 +504,13 @@ func (x *GetLessonsByUserIdResponse) GetLessons() []*GetOneLessonResponse {
 
 type CreateLessonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	GroupId       int64                  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
-	BoardId       *int64                 `protobuf:"varint,2,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
-	MeetLink      *string                `protobuf:"bytes,3,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	MediaItems    []*CreateMediaItem     `protobuf:"bytes,5,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
-	Duration      int64                  `protobuf:"varint,6,opt,name=duration,proto3" json:"duration,omitempty"`
-	TutorId       int64                  `protobuf:"varint,7,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	UserIds       []int64                `protobuf:"varint,8,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
+	BoardId       *int64                 `protobuf:"varint,1,opt,name=board_id,json=boardId,proto3,oneof" json:"board_id,omitempty"`
+	MeetLink      *string                `protobuf:"bytes,2,opt,name=meet_link,json=meetLink,proto3,oneof" json:"meet_link,omitempty"`
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	MediaItems    []*CreateMediaItem     `protobuf:"bytes,4,rep,name=media_items,json=mediaItems,proto3" json:"media_items,omitempty"`
+	Duration      int64                  `protobuf:"varint,5,opt,name=duration,proto3" json:"duration,omitempty"`
+	TutorId       int64                  `protobuf:"varint,6,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	UserIds       []int64                `protobuf:"varint,7,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -544,13 +543,6 @@ func (x *CreateLessonRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateLessonRequest.ProtoReflect.Descriptor instead.
 func (*CreateLessonRequest) Descriptor() ([]byte, []int) {
 	return file_lesson_lesson_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *CreateLessonRequest) GetGroupId() int64 {
-	if x != nil {
-		return x.GroupId
-	}
-	return 0
 }
 
 func (x *CreateLessonRequest) GetBoardId() int64 {
@@ -1139,18 +1131,17 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\x19GetLessonsByUserIdRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"T\n" +
 	"\x1aGetLessonsByUserIdResponse\x126\n" +
-	"\alessons\x18\x01 \x03(\v2\x1c.lesson.GetOneLessonResponseR\alessons\"\xd4\x02\n" +
-	"\x13CreateLessonRequest\x12\x19\n" +
-	"\bgroup_id\x18\x01 \x01(\x03R\agroupId\x12\x1e\n" +
-	"\bboard_id\x18\x02 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
-	"\tmeet_link\x18\x03 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
+	"\alessons\x18\x01 \x03(\v2\x1c.lesson.GetOneLessonResponseR\alessons\"\xb9\x02\n" +
+	"\x13CreateLessonRequest\x12\x1e\n" +
+	"\bboard_id\x18\x01 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
+	"\tmeet_link\x18\x02 \x01(\tH\x01R\bmeetLink\x88\x01\x01\x129\n" +
 	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x128\n" +
-	"\vmedia_items\x18\x05 \x03(\v2\x17.lesson.CreateMediaItemR\n" +
+	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x128\n" +
+	"\vmedia_items\x18\x04 \x03(\v2\x17.lesson.CreateMediaItemR\n" +
 	"mediaItems\x12\x1a\n" +
-	"\bduration\x18\x06 \x01(\x03R\bduration\x12\x19\n" +
-	"\btutor_id\x18\a \x01(\x03R\atutorId\x12\x19\n" +
-	"\buser_ids\x18\b \x03(\x03R\auserIdsB\v\n" +
+	"\bduration\x18\x05 \x01(\x03R\bduration\x12\x19\n" +
+	"\btutor_id\x18\x06 \x01(\x03R\atutorId\x12\x19\n" +
+	"\buser_ids\x18\a \x03(\x03R\auserIdsB\v\n" +
 	"\t_board_idB\f\n" +
 	"\n" +
 	"_meet_link\"\xf2\x02\n" +
@@ -1224,7 +1215,7 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\fCreateLesson\x12\x1b.lesson.CreateLessonRequest\x1a\x1c.lesson.CreateLessonResponse\x12I\n" +
 	"\fUpdateLesson\x12\x1b.lesson.UpdateLessonRequest\x1a\x1c.lesson.UpdateLessonResponse\x12[\n" +
 	"\x12UpdateLessonStatus\x12!.lesson.UpdateLessonStatusRequest\x1a\".lesson.UpdateLessonStatusResponse\x12^\n" +
-	"\x13GetLessonsByTutorId\x12\".lesson.GetLessonsByTutorIdRequest\x1a#.lesson.GetLessonsByTutorIdResponseBTZRgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/groupb\x06proto3"
+	"\x13GetLessonsByTutorId\x12\".lesson.GetLessonsByTutorIdRequest\x1a#.lesson.GetLessonsByTutorIdResponseBUZSgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/lessonb\x06proto3"
 
 var (
 	file_lesson_lesson_proto_rawDescOnce sync.Once

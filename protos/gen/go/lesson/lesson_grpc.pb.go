@@ -4,7 +4,7 @@
 // - protoc             v6.33.0
 // source: lesson/lesson.proto
 
-package group
+package lesson
 
 import (
 	context "context"

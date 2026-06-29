@@ -4,7 +4,7 @@ import "google/protobuf/timestamp.proto";
 
 package lesson;
 
-option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/group";
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/lesson";
 
 service Lesson {
   rpc GetOneLesson (GetOneLessonRequest) returns (GetOneLessonResponse);
@@ -68,14 +68,13 @@ message GetLessonsByUserIdResponse {
 }
 
 message CreateLessonRequest {
-  int64 group_id = 1;
-  optional int64 board_id = 2;
-  optional string meet_link = 3;
-  google.protobuf.Timestamp start_time = 4;
-  repeated CreateMediaItem media_items = 5;
-  int64 duration = 6;
-  int64 tutor_id = 7;
-  repeated int64 user_ids = 8;
+  optional int64 board_id = 1;
+  optional string meet_link = 2;
+  google.protobuf.Timestamp start_time = 3;
+  repeated CreateMediaItem media_items = 4;
+  int64 duration = 5;
+  int64 tutor_id = 6;
+  repeated int64 user_ids = 7;
 }
 
 message CreateLessonResponse {
