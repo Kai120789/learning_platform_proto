@@ -222,8 +222,8 @@ func (*GetAllSubjectsRequest) Descriptor() ([]byte, []int) {
 }
 
 type GetAllSubjectsResponse struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Subjects      []*GetAllSubjectsResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Subjects      []*GetOneSubjectResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -258,7 +258,7 @@ func (*GetAllSubjectsResponse) Descriptor() ([]byte, []int) {
 	return file_subject_subject_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetAllSubjectsResponse) GetSubjects() []*GetAllSubjectsResponse {
+func (x *GetAllSubjectsResponse) GetSubjects() []*GetOneSubjectResponse {
 	if x != nil {
 		return x.Subjects
 	}
@@ -310,8 +310,8 @@ func (x *GetUserSubjectsRequest) GetUserId() int64 {
 }
 
 type GetUserSubjectsResponse struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Subjects      []*GetAllSubjectsResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Subjects      []*GetOneSubjectResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -346,7 +346,7 @@ func (*GetUserSubjectsResponse) Descriptor() ([]byte, []int) {
 	return file_subject_subject_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetUserSubjectsResponse) GetSubjects() []*GetAllSubjectsResponse {
+func (x *GetUserSubjectsResponse) GetSubjects() []*GetOneSubjectResponse {
 	if x != nil {
 		return x.Subjects
 	}
@@ -406,8 +406,8 @@ func (x *SetUserSubjectsRequest) GetSubjectIds() []int64 {
 }
 
 type SetUserSubjectsResponse struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Subjects      []*GetAllSubjectsResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Subjects      []*GetOneSubjectResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -442,7 +442,7 @@ func (*SetUserSubjectsResponse) Descriptor() ([]byte, []int) {
 	return file_subject_subject_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *SetUserSubjectsResponse) GetSubjects() []*GetAllSubjectsResponse {
+func (x *SetUserSubjectsResponse) GetSubjects() []*GetOneSubjectResponse {
 	if x != nil {
 		return x.Subjects
 	}
@@ -510,8 +510,8 @@ func (x *UpdateUserSubjectsRequest) GetDeletedSubjectIds() []int64 {
 }
 
 type UpdateUserSubjectsResponse struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Subjects      []*GetAllSubjectsResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Subjects      []*GetOneSubjectResponse `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -546,7 +546,7 @@ func (*UpdateUserSubjectsResponse) Descriptor() ([]byte, []int) {
 	return file_subject_subject_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *UpdateUserSubjectsResponse) GetSubjects() []*GetAllSubjectsResponse {
+func (x *UpdateUserSubjectsResponse) GetSubjects() []*GetOneSubjectResponse {
 	if x != nil {
 		return x.Subjects
 	}
@@ -565,26 +565,26 @@ const file_subject_subject_proto_rawDesc = "" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x14\n" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12(\n" +
 	"\x04type\x18\x04 \x01(\x0e2\x14.subject.SubjectTypeR\x04type\"\x17\n" +
-	"\x15GetAllSubjectsRequest\"U\n" +
-	"\x16GetAllSubjectsResponse\x12;\n" +
-	"\bsubjects\x18\x01 \x03(\v2\x1f.subject.GetAllSubjectsResponseR\bsubjects\"1\n" +
+	"\x15GetAllSubjectsRequest\"T\n" +
+	"\x16GetAllSubjectsResponse\x12:\n" +
+	"\bsubjects\x18\x01 \x03(\v2\x1e.subject.GetOneSubjectResponseR\bsubjects\"1\n" +
 	"\x16GetUserSubjectsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"V\n" +
-	"\x17GetUserSubjectsResponse\x12;\n" +
-	"\bsubjects\x18\x01 \x03(\v2\x1f.subject.GetAllSubjectsResponseR\bsubjects\"R\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"U\n" +
+	"\x17GetUserSubjectsResponse\x12:\n" +
+	"\bsubjects\x18\x01 \x03(\v2\x1e.subject.GetOneSubjectResponseR\bsubjects\"R\n" +
 	"\x16SetUserSubjectsRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
 	"\vsubject_ids\x18\x02 \x03(\x03R\n" +
-	"subjectIds\"V\n" +
-	"\x17SetUserSubjectsResponse\x12;\n" +
-	"\bsubjects\x18\x01 \x03(\v2\x1f.subject.GetAllSubjectsResponseR\bsubjects\"\x85\x01\n" +
+	"subjectIds\"U\n" +
+	"\x17SetUserSubjectsResponse\x12:\n" +
+	"\bsubjects\x18\x01 \x03(\v2\x1e.subject.GetOneSubjectResponseR\bsubjects\"\x85\x01\n" +
 	"\x19UpdateUserSubjectsRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
 	"\vsubject_ids\x18\x02 \x03(\x03R\n" +
 	"subjectIds\x12.\n" +
-	"\x13deleted_subject_ids\x18\x03 \x03(\x03R\x11deletedSubjectIds\"Y\n" +
-	"\x1aUpdateUserSubjectsResponse\x12;\n" +
-	"\bsubjects\x18\x01 \x03(\v2\x1f.subject.GetAllSubjectsResponseR\bsubjects*H\n" +
+	"\x13deleted_subject_ids\x18\x03 \x03(\x03R\x11deletedSubjectIds\"X\n" +
+	"\x1aUpdateUserSubjectsResponse\x12:\n" +
+	"\bsubjects\x18\x01 \x03(\v2\x1e.subject.GetOneSubjectResponseR\bsubjects*H\n" +
 	"\vSubjectType\x12\x1a\n" +
 	"\x16MEDIA_TYPE_UNSPECIFIED\x10\x00\x12\a\n" +
 	"\x03EGE\x10\x01\x12\a\n" +
@@ -626,10 +626,10 @@ var file_subject_subject_proto_goTypes = []any{
 }
 var file_subject_subject_proto_depIdxs = []int32{
 	0,  // 0: subject.GetOneSubjectResponse.type:type_name -> subject.SubjectType
-	4,  // 1: subject.GetAllSubjectsResponse.subjects:type_name -> subject.GetAllSubjectsResponse
-	4,  // 2: subject.GetUserSubjectsResponse.subjects:type_name -> subject.GetAllSubjectsResponse
-	4,  // 3: subject.SetUserSubjectsResponse.subjects:type_name -> subject.GetAllSubjectsResponse
-	4,  // 4: subject.UpdateUserSubjectsResponse.subjects:type_name -> subject.GetAllSubjectsResponse
+	2,  // 1: subject.GetAllSubjectsResponse.subjects:type_name -> subject.GetOneSubjectResponse
+	2,  // 2: subject.GetUserSubjectsResponse.subjects:type_name -> subject.GetOneSubjectResponse
+	2,  // 3: subject.SetUserSubjectsResponse.subjects:type_name -> subject.GetOneSubjectResponse
+	2,  // 4: subject.UpdateUserSubjectsResponse.subjects:type_name -> subject.GetOneSubjectResponse
 	1,  // 5: subject.Subject.GetOneSubject:input_type -> subject.GetOneSubjectRequest
 	3,  // 6: subject.Subject.GetAllSubjects:input_type -> subject.GetAllSubjectsRequest
 	5,  // 7: subject.Subject.GetUserSubjects:input_type -> subject.GetUserSubjectsRequest

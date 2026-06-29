@@ -35,7 +35,7 @@ message GetAllSubjectsRequest {
 }
 
 message GetAllSubjectsResponse {
-  repeated GetAllSubjectsResponse subjects = 1;
+  repeated GetOneSubjectResponse subjects = 1;
 }
 
 message GetUserSubjectsRequest {
@@ -43,7 +43,7 @@ message GetUserSubjectsRequest {
 }
 
 message GetUserSubjectsResponse {
-  repeated GetAllSubjectsResponse subjects = 1;
+  repeated GetOneSubjectResponse subjects = 1;
 }
 
 message SetUserSubjectsRequest {
@@ -52,7 +52,7 @@ message SetUserSubjectsRequest {
 }
 
 message SetUserSubjectsResponse {
-  repeated GetAllSubjectsResponse subjects = 1;
+  repeated GetOneSubjectResponse subjects = 1;
 }
 
 message UpdateUserSubjectsRequest {
@@ -62,5 +62,5 @@ message UpdateUserSubjectsRequest {
 }
 
 message UpdateUserSubjectsResponse {
-  repeated GetAllSubjectsResponse subjects = 1;
+  repeated GetOneSubjectResponse subjects = 1;
 }
