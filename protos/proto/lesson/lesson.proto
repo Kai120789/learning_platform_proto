@@ -15,10 +15,6 @@ service Lesson {
   rpc GetLessonsByTutorId (GetLessonsByTutorIdRequest) returns (GetLessonsByTutorIdResponse);
 }
 
-message GetOneLessonRequest {
-  int64 id = 1;
-}
-
 enum LessonStatus {
     LESSON_STATUS_UNSPECIFIED = 0;
     SCHEDULED = 1;
@@ -45,6 +41,10 @@ message MediaItem {
   string s3_link = 3;
   string s3_preview = 4;
   MediaType type = 5;
+}
+
+message GetOneLessonRequest {
+  int64 id = 1;
 }
 
 message GetOneLessonResponse {

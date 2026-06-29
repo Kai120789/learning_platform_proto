@@ -126,50 +126,6 @@ func (MediaType) EnumDescriptor() ([]byte, []int) {
 	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
 }
 
-type GetOneLessonRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetOneLessonRequest) Reset() {
-	*x = GetOneLessonRequest{}
-	mi := &file_lesson_lesson_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetOneLessonRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetOneLessonRequest) ProtoMessage() {}
-
-func (x *GetOneLessonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetOneLessonRequest.ProtoReflect.Descriptor instead.
-func (*GetOneLessonRequest) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *GetOneLessonRequest) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
 type CreateMediaItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	S3Link        string                 `protobuf:"bytes,1,opt,name=s3_link,json=s3Link,proto3" json:"s3_link,omitempty"`
@@ -181,7 +137,7 @@ type CreateMediaItem struct {
 
 func (x *CreateMediaItem) Reset() {
 	*x = CreateMediaItem{}
-	mi := &file_lesson_lesson_proto_msgTypes[1]
+	mi := &file_lesson_lesson_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -193,7 +149,7 @@ func (x *CreateMediaItem) String() string {
 func (*CreateMediaItem) ProtoMessage() {}
 
 func (x *CreateMediaItem) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[1]
+	mi := &file_lesson_lesson_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +162,7 @@ func (x *CreateMediaItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMediaItem.ProtoReflect.Descriptor instead.
 func (*CreateMediaItem) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateMediaItem) GetS3Link() string {
@@ -243,7 +199,7 @@ type MediaItem struct {
 
 func (x *MediaItem) Reset() {
 	*x = MediaItem{}
-	mi := &file_lesson_lesson_proto_msgTypes[2]
+	mi := &file_lesson_lesson_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -255,7 +211,7 @@ func (x *MediaItem) String() string {
 func (*MediaItem) ProtoMessage() {}
 
 func (x *MediaItem) ProtoReflect() protoreflect.Message {
-	mi := &file_lesson_lesson_proto_msgTypes[2]
+	mi := &file_lesson_lesson_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -268,7 +224,7 @@ func (x *MediaItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MediaItem.ProtoReflect.Descriptor instead.
 func (*MediaItem) Descriptor() ([]byte, []int) {
-	return file_lesson_lesson_proto_rawDescGZIP(), []int{2}
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MediaItem) GetId() int64 {
@@ -304,6 +260,50 @@ func (x *MediaItem) GetType() MediaType {
 		return x.Type
 	}
 	return MediaType_MEDIA_TYPE_UNSPECIFIED
+}
+
+type GetOneLessonRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOneLessonRequest) Reset() {
+	*x = GetOneLessonRequest{}
+	mi := &file_lesson_lesson_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOneLessonRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOneLessonRequest) ProtoMessage() {}
+
+func (x *GetOneLessonRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_lesson_lesson_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOneLessonRequest.ProtoReflect.Descriptor instead.
+func (*GetOneLessonRequest) Descriptor() ([]byte, []int) {
+	return file_lesson_lesson_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetOneLessonRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
 }
 
 type GetOneLessonResponse struct {
@@ -1098,9 +1098,7 @@ var File_lesson_lesson_proto protoreflect.FileDescriptor
 
 const file_lesson_lesson_proto_rawDesc = "" +
 	"\n" +
-	"\x13lesson/lesson.proto\x12\x06lesson\x1a\x1fgoogle/protobuf/timestamp.proto\"%\n" +
-	"\x13GetOneLessonRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"p\n" +
+	"\x13lesson/lesson.proto\x12\x06lesson\x1a\x1fgoogle/protobuf/timestamp.proto\"p\n" +
 	"\x0fCreateMediaItem\x12\x17\n" +
 	"\as3_link\x18\x01 \x01(\tR\x06s3Link\x12\x1d\n" +
 	"\n" +
@@ -1112,7 +1110,9 @@ const file_lesson_lesson_proto_rawDesc = "" +
 	"\as3_link\x18\x03 \x01(\tR\x06s3Link\x12\x1d\n" +
 	"\n" +
 	"s3_preview\x18\x04 \x01(\tR\ts3Preview\x12%\n" +
-	"\x04type\x18\x05 \x01(\x0e2\x11.lesson.MediaTypeR\x04type\"\xf2\x02\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x11.lesson.MediaTypeR\x04type\"%\n" +
+	"\x13GetOneLessonRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xf2\x02\n" +
 	"\x14GetOneLessonResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\bboard_id\x18\x02 \x01(\x03H\x00R\aboardId\x88\x01\x01\x12 \n" +
@@ -1234,9 +1234,9 @@ var file_lesson_lesson_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_lesson_lesson_proto_goTypes = []any{
 	(LessonStatus)(0),                   // 0: lesson.LessonStatus
 	(MediaType)(0),                      // 1: lesson.MediaType
-	(*GetOneLessonRequest)(nil),         // 2: lesson.GetOneLessonRequest
-	(*CreateMediaItem)(nil),             // 3: lesson.CreateMediaItem
-	(*MediaItem)(nil),                   // 4: lesson.MediaItem
+	(*CreateMediaItem)(nil),             // 2: lesson.CreateMediaItem
+	(*MediaItem)(nil),                   // 3: lesson.MediaItem
+	(*GetOneLessonRequest)(nil),         // 4: lesson.GetOneLessonRequest
 	(*GetOneLessonResponse)(nil),        // 5: lesson.GetOneLessonResponse
 	(*GetLessonsByUserIdRequest)(nil),   // 6: lesson.GetLessonsByUserIdRequest
 	(*GetLessonsByUserIdResponse)(nil),  // 7: lesson.GetLessonsByUserIdResponse
@@ -1254,22 +1254,22 @@ var file_lesson_lesson_proto_depIdxs = []int32{
 	1,  // 0: lesson.CreateMediaItem.type:type_name -> lesson.MediaType
 	1,  // 1: lesson.MediaItem.type:type_name -> lesson.MediaType
 	16, // 2: lesson.GetOneLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 3: lesson.GetOneLessonResponse.media_items:type_name -> lesson.MediaItem
+	3,  // 3: lesson.GetOneLessonResponse.media_items:type_name -> lesson.MediaItem
 	0,  // 4: lesson.GetOneLessonResponse.status:type_name -> lesson.LessonStatus
 	5,  // 5: lesson.GetLessonsByUserIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
 	16, // 6: lesson.CreateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
-	3,  // 7: lesson.CreateLessonRequest.media_items:type_name -> lesson.CreateMediaItem
+	2,  // 7: lesson.CreateLessonRequest.media_items:type_name -> lesson.CreateMediaItem
 	16, // 8: lesson.CreateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 9: lesson.CreateLessonResponse.media_items:type_name -> lesson.MediaItem
+	3,  // 9: lesson.CreateLessonResponse.media_items:type_name -> lesson.MediaItem
 	0,  // 10: lesson.CreateLessonResponse.status:type_name -> lesson.LessonStatus
 	16, // 11: lesson.UpdateLessonRequest.start_time:type_name -> google.protobuf.Timestamp
-	3,  // 12: lesson.UpdateLessonRequest.media_items:type_name -> lesson.CreateMediaItem
+	2,  // 12: lesson.UpdateLessonRequest.media_items:type_name -> lesson.CreateMediaItem
 	16, // 13: lesson.UpdateLessonResponse.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 14: lesson.UpdateLessonResponse.media_items:type_name -> lesson.MediaItem
+	3,  // 14: lesson.UpdateLessonResponse.media_items:type_name -> lesson.MediaItem
 	0,  // 15: lesson.UpdateLessonResponse.status:type_name -> lesson.LessonStatus
 	0,  // 16: lesson.UpdateLessonStatusRequest.status:type_name -> lesson.LessonStatus
 	5,  // 17: lesson.GetLessonsByTutorIdResponse.lessons:type_name -> lesson.GetOneLessonResponse
-	2,  // 18: lesson.Lesson.GetOneLesson:input_type -> lesson.GetOneLessonRequest
+	4,  // 18: lesson.Lesson.GetOneLesson:input_type -> lesson.GetOneLessonRequest
 	6,  // 19: lesson.Lesson.GetLessonsByUserId:input_type -> lesson.GetLessonsByUserIdRequest
 	8,  // 20: lesson.Lesson.CreateLesson:input_type -> lesson.CreateLessonRequest
 	10, // 21: lesson.Lesson.UpdateLesson:input_type -> lesson.UpdateLessonRequest
