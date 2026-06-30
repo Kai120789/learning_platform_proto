@@ -77,7 +77,7 @@ type ScheduleSlot struct {
 	ScheduleId    int64                  `protobuf:"varint,2,opt,name=schedule_id,json=scheduleId,proto3" json:"schedule_id,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	Status        Status                 `protobuf:"varint,4,opt,name=status,proto3,enum=schedule.Status" json:"status,omitempty"`
-	Duration      int64                  `protobuf:"varint,5,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration      *int64                 `protobuf:"varint,5,opt,name=duration,proto3,oneof" json:"duration,omitempty"`
 	LessonId      *int64                 `protobuf:"varint,6,opt,name=lesson_id,json=lessonId,proto3,oneof" json:"lesson_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -142,8 +142,8 @@ func (x *ScheduleSlot) GetStatus() Status {
 }
 
 func (x *ScheduleSlot) GetDuration() int64 {
-	if x != nil {
-		return x.Duration
+	if x != nil && x.Duration != nil {
+		return *x.Duration
 	}
 	return 0
 }
@@ -158,7 +158,7 @@ func (x *ScheduleSlot) GetLessonId() int64 {
 type CreateScheduleSlot struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	Duration      int64                  `protobuf:"varint,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration      *int64                 `protobuf:"varint,2,opt,name=duration,proto3,oneof" json:"duration,omitempty"`
 	LessonId      *int64                 `protobuf:"varint,3,opt,name=lesson_id,json=lessonId,proto3,oneof" json:"lesson_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -202,8 +202,8 @@ func (x *CreateScheduleSlot) GetStartTime() *timestamppb.Timestamp {
 }
 
 func (x *CreateScheduleSlot) GetDuration() int64 {
-	if x != nil {
-		return x.Duration
+	if x != nil && x.Duration != nil {
+		return *x.Duration
 	}
 	return 0
 }
@@ -1047,7 +1047,7 @@ type UpdateScheduleSlotRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	Duration      int64                  `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration      *int64                 `protobuf:"varint,3,opt,name=duration,proto3,oneof" json:"duration,omitempty"`
 	LessonId      *int64                 `protobuf:"varint,4,opt,name=lesson_id,json=lessonId,proto3,oneof" json:"lesson_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1098,8 +1098,8 @@ func (x *UpdateScheduleSlotRequest) GetStartTime() *timestamppb.Timestamp {
 }
 
 func (x *UpdateScheduleSlotRequest) GetDuration() int64 {
-	if x != nil {
-		return x.Duration
+	if x != nil && x.Duration != nil {
+		return *x.Duration
 	}
 	return 0
 }
@@ -1117,7 +1117,7 @@ type UpdateScheduleSlotResponse struct {
 	ScheduleId    int64                  `protobuf:"varint,2,opt,name=schedule_id,json=scheduleId,proto3" json:"schedule_id,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	Status        Status                 `protobuf:"varint,4,opt,name=status,proto3,enum=schedule.Status" json:"status,omitempty"`
-	Duration      int64                  `protobuf:"varint,5,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration      *int64                 `protobuf:"varint,5,opt,name=duration,proto3,oneof" json:"duration,omitempty"`
 	LessonId      *int64                 `protobuf:"varint,6,opt,name=lesson_id,json=lessonId,proto3,oneof" json:"lesson_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1182,8 +1182,8 @@ func (x *UpdateScheduleSlotResponse) GetStatus() Status {
 }
 
 func (x *UpdateScheduleSlotResponse) GetDuration() int64 {
-	if x != nil {
-		return x.Duration
+	if x != nil && x.Duration != nil {
+		return *x.Duration
 	}
 	return 0
 }
@@ -1279,23 +1279,25 @@ var File_schedule_schedule_proto protoreflect.FileDescriptor
 
 const file_schedule_schedule_proto_rawDesc = "" +
 	"\n" +
-	"\x17schedule/schedule.proto\x12\bschedule\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf0\x01\n" +
+	"\x17schedule/schedule.proto\x12\bschedule\x1a\x1fgoogle/protobuf/timestamp.proto\"\x82\x02\n" +
 	"\fScheduleSlot\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
 	"\vschedule_id\x18\x02 \x01(\x03R\n" +
 	"scheduleId\x129\n" +
 	"\n" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12(\n" +
-	"\x06status\x18\x04 \x01(\x0e2\x10.schedule.StatusR\x06status\x12\x1a\n" +
-	"\bduration\x18\x05 \x01(\x03R\bduration\x12 \n" +
-	"\tlesson_id\x18\x06 \x01(\x03H\x00R\blessonId\x88\x01\x01B\f\n" +
+	"\x06status\x18\x04 \x01(\x0e2\x10.schedule.StatusR\x06status\x12\x1f\n" +
+	"\bduration\x18\x05 \x01(\x03H\x00R\bduration\x88\x01\x01\x12 \n" +
+	"\tlesson_id\x18\x06 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
+	"\t_durationB\f\n" +
 	"\n" +
-	"_lesson_id\"\x9b\x01\n" +
+	"_lesson_id\"\xad\x01\n" +
 	"\x12CreateScheduleSlot\x129\n" +
 	"\n" +
-	"start_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1a\n" +
-	"\bduration\x18\x02 \x01(\x03R\bduration\x12 \n" +
-	"\tlesson_id\x18\x03 \x01(\x03H\x00R\blessonId\x88\x01\x01B\f\n" +
+	"start_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
+	"\bduration\x18\x02 \x01(\x03H\x00R\bduration\x88\x01\x01\x12 \n" +
+	"\tlesson_id\x18\x03 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
+	"\t_durationB\f\n" +
 	"\n" +
 	"_lesson_id\"\xd8\x01\n" +
 	"\vOneSchedule\x12\x0e\n" +
@@ -1357,24 +1359,26 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
 	"scheduleId\x12\x1b\n" +
 	"\tlesson_id\x18\x02 \x01(\x03R\blessonId\"\"\n" +
-	" BindLessonToScheduleSlotResponse\"\xb2\x01\n" +
+	" BindLessonToScheduleSlotResponse\"\xc4\x01\n" +
 	"\x19UpdateScheduleSlotRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x129\n" +
 	"\n" +
-	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1a\n" +
-	"\bduration\x18\x03 \x01(\x03R\bduration\x12 \n" +
-	"\tlesson_id\x18\x04 \x01(\x03H\x00R\blessonId\x88\x01\x01B\f\n" +
+	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12\x1f\n" +
+	"\bduration\x18\x03 \x01(\x03H\x00R\bduration\x88\x01\x01\x12 \n" +
+	"\tlesson_id\x18\x04 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
+	"\t_durationB\f\n" +
 	"\n" +
-	"_lesson_id\"\xfe\x01\n" +
+	"_lesson_id\"\x90\x02\n" +
 	"\x1aUpdateScheduleSlotResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
 	"\vschedule_id\x18\x02 \x01(\x03R\n" +
 	"scheduleId\x129\n" +
 	"\n" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x12(\n" +
-	"\x06status\x18\x04 \x01(\x0e2\x10.schedule.StatusR\x06status\x12\x1a\n" +
-	"\bduration\x18\x05 \x01(\x03R\bduration\x12 \n" +
-	"\tlesson_id\x18\x06 \x01(\x03H\x00R\blessonId\x88\x01\x01B\f\n" +
+	"\x06status\x18\x04 \x01(\x0e2\x10.schedule.StatusR\x06status\x12\x1f\n" +
+	"\bduration\x18\x05 \x01(\x03H\x00R\bduration\x88\x01\x01\x12 \n" +
+	"\tlesson_id\x18\x06 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
+	"\t_durationB\f\n" +
 	"\n" +
 	"_lesson_id\"F\n" +
 	"#DeleteLessonFromScheduleSlotRequest\x12\x1f\n" +

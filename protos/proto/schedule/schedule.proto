@@ -29,13 +29,13 @@ message ScheduleSlot {
   int64 schedule_id = 2;
   google.protobuf.Timestamp start_time = 3;
   Status status = 4;
-  int64 duration = 5;
+  optional int64 duration = 5;
   optional int64 lesson_id = 6;
 }
 
 message CreateScheduleSlot {
   google.protobuf.Timestamp start_time = 1;
-  int64 duration = 2;
+  optional int64 duration = 2;
   optional int64 lesson_id = 3;
 }
 
@@ -126,7 +126,7 @@ message BindLessonToScheduleSlotResponse {
 message UpdateScheduleSlotRequest {
   int64 id = 1;
   google.protobuf.Timestamp start_time = 2;
-  int64 duration = 3;
+  optional int64 duration = 3;
   optional int64 lesson_id = 4;
 }
 
@@ -135,7 +135,7 @@ message UpdateScheduleSlotResponse {
   int64 schedule_id = 2;
   google.protobuf.Timestamp start_time = 3;
   Status status = 4;
-  int64 duration = 5;
+  optional int64 duration = 5;
   optional int64 lesson_id = 6;
 }
 
