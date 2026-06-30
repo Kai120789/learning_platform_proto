@@ -19,13 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Schedule_GetAllSchedules_FullMethodName          = "/schedule.Schedule/GetAllSchedules"
-	Schedule_GetScheduleByID_FullMethodName          = "/schedule.Schedule/GetScheduleByID"
-	Schedule_GetScheduleByTutorID_FullMethodName     = "/schedule.Schedule/GetScheduleByTutorID"
-	Schedule_CreateSchedule_FullMethodName           = "/schedule.Schedule/CreateSchedule"
-	Schedule_UpdateSchedule_FullMethodName           = "/schedule.Schedule/UpdateSchedule"
-	Schedule_DeleteSchedule_FullMethodName           = "/schedule.Schedule/DeleteSchedule"
-	Schedule_BindLessonToScheduleSlot_FullMethodName = "/schedule.Schedule/BindLessonToScheduleSlot"
+	Schedule_GetAllSchedules_FullMethodName              = "/schedule.Schedule/GetAllSchedules"
+	Schedule_GetScheduleByID_FullMethodName              = "/schedule.Schedule/GetScheduleByID"
+	Schedule_GetScheduleByTutorID_FullMethodName         = "/schedule.Schedule/GetScheduleByTutorID"
+	Schedule_CreateSchedule_FullMethodName               = "/schedule.Schedule/CreateSchedule"
+	Schedule_UpdateSchedule_FullMethodName               = "/schedule.Schedule/UpdateSchedule"
+	Schedule_DeleteSchedule_FullMethodName               = "/schedule.Schedule/DeleteSchedule"
+	Schedule_UpdateScheduleSlot_FullMethodName           = "/schedule.Schedule/UpdateScheduleSlot"
+	Schedule_BindLessonToScheduleSlot_FullMethodName     = "/schedule.Schedule/BindLessonToScheduleSlot"
+	Schedule_DeleteLessonFromScheduleSlot_FullMethodName = "/schedule.Schedule/DeleteLessonFromScheduleSlot"
 )
 
 // ScheduleClient is the client API for Schedule service.
@@ -38,7 +40,9 @@ type ScheduleClient interface {
 	CreateSchedule(ctx context.Context, in *CreateScheduleRequest, opts ...grpc.CallOption) (*CreateScheduleResponse, error)
 	UpdateSchedule(ctx context.Context, in *UpdateScheduleRequest, opts ...grpc.CallOption) (*UpdateScheduleResponse, error)
 	DeleteSchedule(ctx context.Context, in *DeleteScheduleRequest, opts ...grpc.CallOption) (*DeleteScheduleResponse, error)
+	UpdateScheduleSlot(ctx context.Context, in *UpdateScheduleSlotRequest, opts ...grpc.CallOption) (*UpdateScheduleSlotResponse, error)
 	BindLessonToScheduleSlot(ctx context.Context, in *BindLessonToScheduleSlotRequest, opts ...grpc.CallOption) (*BindLessonToScheduleSlotResponse, error)
+	DeleteLessonFromScheduleSlot(ctx context.Context, in *DeleteLessonFromScheduleSlotRequest, opts ...grpc.CallOption) (*DeleteLessonFromScheduleSlotResponse, error)
 }
 
 type scheduleClient struct {
@@ -109,10 +113,30 @@ func (c *scheduleClient) DeleteSchedule(ctx context.Context, in *DeleteScheduleR
 	return out, nil
 }
 
+func (c *scheduleClient) UpdateScheduleSlot(ctx context.Context, in *UpdateScheduleSlotRequest, opts ...grpc.CallOption) (*UpdateScheduleSlotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateScheduleSlotResponse)
+	err := c.cc.Invoke(ctx, Schedule_UpdateScheduleSlot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *scheduleClient) BindLessonToScheduleSlot(ctx context.Context, in *BindLessonToScheduleSlotRequest, opts ...grpc.CallOption) (*BindLessonToScheduleSlotResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BindLessonToScheduleSlotResponse)
 	err := c.cc.Invoke(ctx, Schedule_BindLessonToScheduleSlot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scheduleClient) DeleteLessonFromScheduleSlot(ctx context.Context, in *DeleteLessonFromScheduleSlotRequest, opts ...grpc.CallOption) (*DeleteLessonFromScheduleSlotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteLessonFromScheduleSlotResponse)
+	err := c.cc.Invoke(ctx, Schedule_DeleteLessonFromScheduleSlot_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +153,9 @@ type ScheduleServer interface {
 	CreateSchedule(context.Context, *CreateScheduleRequest) (*CreateScheduleResponse, error)
 	UpdateSchedule(context.Context, *UpdateScheduleRequest) (*UpdateScheduleResponse, error)
 	DeleteSchedule(context.Context, *DeleteScheduleRequest) (*DeleteScheduleResponse, error)
+	UpdateScheduleSlot(context.Context, *UpdateScheduleSlotRequest) (*UpdateScheduleSlotResponse, error)
 	BindLessonToScheduleSlot(context.Context, *BindLessonToScheduleSlotRequest) (*BindLessonToScheduleSlotResponse, error)
+	DeleteLessonFromScheduleSlot(context.Context, *DeleteLessonFromScheduleSlotRequest) (*DeleteLessonFromScheduleSlotResponse, error)
 	mustEmbedUnimplementedScheduleServer()
 }
 
@@ -158,8 +184,14 @@ func (UnimplementedScheduleServer) UpdateSchedule(context.Context, *UpdateSchedu
 func (UnimplementedScheduleServer) DeleteSchedule(context.Context, *DeleteScheduleRequest) (*DeleteScheduleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSchedule not implemented")
 }
+func (UnimplementedScheduleServer) UpdateScheduleSlot(context.Context, *UpdateScheduleSlotRequest) (*UpdateScheduleSlotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateScheduleSlot not implemented")
+}
 func (UnimplementedScheduleServer) BindLessonToScheduleSlot(context.Context, *BindLessonToScheduleSlotRequest) (*BindLessonToScheduleSlotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BindLessonToScheduleSlot not implemented")
+}
+func (UnimplementedScheduleServer) DeleteLessonFromScheduleSlot(context.Context, *DeleteLessonFromScheduleSlotRequest) (*DeleteLessonFromScheduleSlotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteLessonFromScheduleSlot not implemented")
 }
 func (UnimplementedScheduleServer) mustEmbedUnimplementedScheduleServer() {}
 func (UnimplementedScheduleServer) testEmbeddedByValue()                  {}
@@ -290,6 +322,24 @@ func _Schedule_DeleteSchedule_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Schedule_UpdateScheduleSlot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateScheduleSlotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScheduleServer).UpdateScheduleSlot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Schedule_UpdateScheduleSlot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScheduleServer).UpdateScheduleSlot(ctx, req.(*UpdateScheduleSlotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Schedule_BindLessonToScheduleSlot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindLessonToScheduleSlotRequest)
 	if err := dec(in); err != nil {
@@ -304,6 +354,24 @@ func _Schedule_BindLessonToScheduleSlot_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ScheduleServer).BindLessonToScheduleSlot(ctx, req.(*BindLessonToScheduleSlotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Schedule_DeleteLessonFromScheduleSlot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteLessonFromScheduleSlotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScheduleServer).DeleteLessonFromScheduleSlot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Schedule_DeleteLessonFromScheduleSlot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScheduleServer).DeleteLessonFromScheduleSlot(ctx, req.(*DeleteLessonFromScheduleSlotRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -340,8 +408,16 @@ var Schedule_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Schedule_DeleteSchedule_Handler,
 		},
 		{
+			MethodName: "UpdateScheduleSlot",
+			Handler:    _Schedule_UpdateScheduleSlot_Handler,
+		},
+		{
 			MethodName: "BindLessonToScheduleSlot",
 			Handler:    _Schedule_BindLessonToScheduleSlot_Handler,
+		},
+		{
+			MethodName: "DeleteLessonFromScheduleSlot",
+			Handler:    _Schedule_DeleteLessonFromScheduleSlot_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
