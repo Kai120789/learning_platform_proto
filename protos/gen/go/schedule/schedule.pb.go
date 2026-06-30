@@ -1385,11 +1385,11 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\x1bSCHEDULE_STATUS_UNSPECIFIED\x10\x00\x12\b\n" +
 	"\x04FREE\x10\x01\x12\n" +
 	"\n" +
-	"\x06BOOKED\x10\x022\xf5\x06\n" +
+	"\x06BOOKED\x10\x022\xf6\x06\n" +
 	"\bSchedule\x12V\n" +
 	"\x0fGetAllSchedules\x12 .schedule.GetAllSchedulesRequest\x1a!.schedule.GetAllSchedulesResponse\x12V\n" +
-	"\x0fGetScheduleByID\x12 .schedule.GetScheduleByIDRequest\x1a!.schedule.GetScheduleByIDResponse\x12g\n" +
-	"\x14GetScheduleByTutorID\x12&.schedule.GetSchedulesByTutorIDRequest\x1a'.schedule.GetSchedulesByTutorIDResponse\x12S\n" +
+	"\x0fGetScheduleByID\x12 .schedule.GetScheduleByIDRequest\x1a!.schedule.GetScheduleByIDResponse\x12h\n" +
+	"\x15GetSchedulesByTutorID\x12&.schedule.GetSchedulesByTutorIDRequest\x1a'.schedule.GetSchedulesByTutorIDResponse\x12S\n" +
 	"\x0eCreateSchedule\x12\x1f.schedule.CreateScheduleRequest\x1a .schedule.CreateScheduleResponse\x12S\n" +
 	"\x0eUpdateSchedule\x12\x1f.schedule.UpdateScheduleRequest\x1a .schedule.UpdateScheduleResponse\x12S\n" +
 	"\x0eDeleteSchedule\x12\x1f.schedule.DeleteScheduleRequest\x1a .schedule.DeleteScheduleResponse\x12_\n" +
@@ -1465,7 +1465,7 @@ var file_schedule_schedule_proto_depIdxs = []int32{
 	0,  // 25: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
 	4,  // 26: schedule.Schedule.GetAllSchedules:input_type -> schedule.GetAllSchedulesRequest
 	6,  // 27: schedule.Schedule.GetScheduleByID:input_type -> schedule.GetScheduleByIDRequest
-	8,  // 28: schedule.Schedule.GetScheduleByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
+	8,  // 28: schedule.Schedule.GetSchedulesByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
 	10, // 29: schedule.Schedule.CreateSchedule:input_type -> schedule.CreateScheduleRequest
 	12, // 30: schedule.Schedule.UpdateSchedule:input_type -> schedule.UpdateScheduleRequest
 	14, // 31: schedule.Schedule.DeleteSchedule:input_type -> schedule.DeleteScheduleRequest
@@ -1474,7 +1474,7 @@ var file_schedule_schedule_proto_depIdxs = []int32{
 	20, // 34: schedule.Schedule.DeleteLessonFromScheduleSlot:input_type -> schedule.DeleteLessonFromScheduleSlotRequest
 	5,  // 35: schedule.Schedule.GetAllSchedules:output_type -> schedule.GetAllSchedulesResponse
 	7,  // 36: schedule.Schedule.GetScheduleByID:output_type -> schedule.GetScheduleByIDResponse
-	9,  // 37: schedule.Schedule.GetScheduleByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
+	9,  // 37: schedule.Schedule.GetSchedulesByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
 	11, // 38: schedule.Schedule.CreateSchedule:output_type -> schedule.CreateScheduleResponse
 	13, // 39: schedule.Schedule.UpdateSchedule:output_type -> schedule.UpdateScheduleResponse
 	15, // 40: schedule.Schedule.DeleteSchedule:output_type -> schedule.DeleteScheduleResponse

@@ -9,7 +9,7 @@ option go_package = "github.com/Kai120789/learning_platform/learning_platform_pr
 service Schedule {
   rpc GetAllSchedules (GetAllSchedulesRequest) returns (GetAllSchedulesResponse);
   rpc GetScheduleByID (GetScheduleByIDRequest) returns (GetScheduleByIDResponse);
-  rpc GetScheduleByTutorID (GetSchedulesByTutorIDRequest) returns (GetSchedulesByTutorIDResponse);
+  rpc GetSchedulesByTutorID (GetSchedulesByTutorIDRequest) returns (GetSchedulesByTutorIDResponse);
   rpc CreateSchedule (CreateScheduleRequest) returns (CreateScheduleResponse);
   rpc UpdateSchedule (UpdateScheduleRequest) returns (UpdateScheduleResponse);
   rpc DeleteSchedule (DeleteScheduleRequest) returns (DeleteScheduleResponse);

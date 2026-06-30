@@ -21,7 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Schedule_GetAllSchedules_FullMethodName              = "/schedule.Schedule/GetAllSchedules"
 	Schedule_GetScheduleByID_FullMethodName              = "/schedule.Schedule/GetScheduleByID"
-	Schedule_GetScheduleByTutorID_FullMethodName         = "/schedule.Schedule/GetScheduleByTutorID"
+	Schedule_GetSchedulesByTutorID_FullMethodName        = "/schedule.Schedule/GetSchedulesByTutorID"
 	Schedule_CreateSchedule_FullMethodName               = "/schedule.Schedule/CreateSchedule"
 	Schedule_UpdateSchedule_FullMethodName               = "/schedule.Schedule/UpdateSchedule"
 	Schedule_DeleteSchedule_FullMethodName               = "/schedule.Schedule/DeleteSchedule"
@@ -36,7 +36,7 @@ const (
 type ScheduleClient interface {
 	GetAllSchedules(ctx context.Context, in *GetAllSchedulesRequest, opts ...grpc.CallOption) (*GetAllSchedulesResponse, error)
 	GetScheduleByID(ctx context.Context, in *GetScheduleByIDRequest, opts ...grpc.CallOption) (*GetScheduleByIDResponse, error)
-	GetScheduleByTutorID(ctx context.Context, in *GetSchedulesByTutorIDRequest, opts ...grpc.CallOption) (*GetSchedulesByTutorIDResponse, error)
+	GetSchedulesByTutorID(ctx context.Context, in *GetSchedulesByTutorIDRequest, opts ...grpc.CallOption) (*GetSchedulesByTutorIDResponse, error)
 	CreateSchedule(ctx context.Context, in *CreateScheduleRequest, opts ...grpc.CallOption) (*CreateScheduleResponse, error)
 	UpdateSchedule(ctx context.Context, in *UpdateScheduleRequest, opts ...grpc.CallOption) (*UpdateScheduleResponse, error)
 	DeleteSchedule(ctx context.Context, in *DeleteScheduleRequest, opts ...grpc.CallOption) (*DeleteScheduleResponse, error)
@@ -73,10 +73,10 @@ func (c *scheduleClient) GetScheduleByID(ctx context.Context, in *GetScheduleByI
 	return out, nil
 }
 
-func (c *scheduleClient) GetScheduleByTutorID(ctx context.Context, in *GetSchedulesByTutorIDRequest, opts ...grpc.CallOption) (*GetSchedulesByTutorIDResponse, error) {
+func (c *scheduleClient) GetSchedulesByTutorID(ctx context.Context, in *GetSchedulesByTutorIDRequest, opts ...grpc.CallOption) (*GetSchedulesByTutorIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetSchedulesByTutorIDResponse)
-	err := c.cc.Invoke(ctx, Schedule_GetScheduleByTutorID_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Schedule_GetSchedulesByTutorID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -149,7 +149,7 @@ func (c *scheduleClient) DeleteLessonFromScheduleSlot(ctx context.Context, in *D
 type ScheduleServer interface {
 	GetAllSchedules(context.Context, *GetAllSchedulesRequest) (*GetAllSchedulesResponse, error)
 	GetScheduleByID(context.Context, *GetScheduleByIDRequest) (*GetScheduleByIDResponse, error)
-	GetScheduleByTutorID(context.Context, *GetSchedulesByTutorIDRequest) (*GetSchedulesByTutorIDResponse, error)
+	GetSchedulesByTutorID(context.Context, *GetSchedulesByTutorIDRequest) (*GetSchedulesByTutorIDResponse, error)
 	CreateSchedule(context.Context, *CreateScheduleRequest) (*CreateScheduleResponse, error)
 	UpdateSchedule(context.Context, *UpdateScheduleRequest) (*UpdateScheduleResponse, error)
 	DeleteSchedule(context.Context, *DeleteScheduleRequest) (*DeleteScheduleResponse, error)
@@ -172,8 +172,8 @@ func (UnimplementedScheduleServer) GetAllSchedules(context.Context, *GetAllSched
 func (UnimplementedScheduleServer) GetScheduleByID(context.Context, *GetScheduleByIDRequest) (*GetScheduleByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetScheduleByID not implemented")
 }
-func (UnimplementedScheduleServer) GetScheduleByTutorID(context.Context, *GetSchedulesByTutorIDRequest) (*GetSchedulesByTutorIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetScheduleByTutorID not implemented")
+func (UnimplementedScheduleServer) GetSchedulesByTutorID(context.Context, *GetSchedulesByTutorIDRequest) (*GetSchedulesByTutorIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSchedulesByTutorID not implemented")
 }
 func (UnimplementedScheduleServer) CreateSchedule(context.Context, *CreateScheduleRequest) (*CreateScheduleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSchedule not implemented")
@@ -250,20 +250,20 @@ func _Schedule_GetScheduleByID_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Schedule_GetScheduleByTutorID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Schedule_GetSchedulesByTutorID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSchedulesByTutorIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScheduleServer).GetScheduleByTutorID(ctx, in)
+		return srv.(ScheduleServer).GetSchedulesByTutorID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Schedule_GetScheduleByTutorID_FullMethodName,
+		FullMethod: Schedule_GetSchedulesByTutorID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScheduleServer).GetScheduleByTutorID(ctx, req.(*GetSchedulesByTutorIDRequest))
+		return srv.(ScheduleServer).GetSchedulesByTutorID(ctx, req.(*GetSchedulesByTutorIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -392,8 +392,8 @@ var Schedule_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Schedule_GetScheduleByID_Handler,
 		},
 		{
-			MethodName: "GetScheduleByTutorID",
-			Handler:    _Schedule_GetScheduleByTutorID_Handler,
+			MethodName: "GetSchedulesByTutorID",
+			Handler:    _Schedule_GetSchedulesByTutorID_Handler,
 		},
 		{
 			MethodName: "CreateSchedule",
