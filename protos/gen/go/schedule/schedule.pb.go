@@ -956,11 +956,11 @@ func (*DeleteScheduleResponse) Descriptor() ([]byte, []int) {
 }
 
 type BindLessonToScheduleSlotRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ScheduleId    int64                  `protobuf:"varint,1,opt,name=schedule_id,json=scheduleId,proto3" json:"schedule_id,omitempty"`
-	LessonId      int64                  `protobuf:"varint,2,opt,name=lesson_id,json=lessonId,proto3" json:"lesson_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	ScheduleSlotId int64                  `protobuf:"varint,1,opt,name=schedule_slot_id,json=scheduleSlotId,proto3" json:"schedule_slot_id,omitempty"`
+	LessonId       int64                  `protobuf:"varint,2,opt,name=lesson_id,json=lessonId,proto3" json:"lesson_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *BindLessonToScheduleSlotRequest) Reset() {
@@ -993,9 +993,9 @@ func (*BindLessonToScheduleSlotRequest) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *BindLessonToScheduleSlotRequest) GetScheduleId() int64 {
+func (x *BindLessonToScheduleSlotRequest) GetScheduleSlotId() int64 {
 	if x != nil {
-		return x.ScheduleId
+		return x.ScheduleSlotId
 	}
 	return 0
 }
@@ -1196,10 +1196,10 @@ func (x *UpdateScheduleSlotResponse) GetLessonId() int64 {
 }
 
 type DeleteLessonFromScheduleSlotRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ScheduleId    int64                  `protobuf:"varint,1,opt,name=schedule_id,json=scheduleId,proto3" json:"schedule_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	ScheduleSlotId int64                  `protobuf:"varint,1,opt,name=schedule_slot_id,json=scheduleSlotId,proto3" json:"schedule_slot_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *DeleteLessonFromScheduleSlotRequest) Reset() {
@@ -1232,9 +1232,9 @@ func (*DeleteLessonFromScheduleSlotRequest) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *DeleteLessonFromScheduleSlotRequest) GetScheduleId() int64 {
+func (x *DeleteLessonFromScheduleSlotRequest) GetScheduleSlotId() int64 {
 	if x != nil {
-		return x.ScheduleId
+		return x.ScheduleSlotId
 	}
 	return 0
 }
@@ -1354,10 +1354,9 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\x15DeleteScheduleRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
 	"scheduleId\"\x18\n" +
-	"\x16DeleteScheduleResponse\"_\n" +
-	"\x1fBindLessonToScheduleSlotRequest\x12\x1f\n" +
-	"\vschedule_id\x18\x01 \x01(\x03R\n" +
-	"scheduleId\x12\x1b\n" +
+	"\x16DeleteScheduleResponse\"h\n" +
+	"\x1fBindLessonToScheduleSlotRequest\x12(\n" +
+	"\x10schedule_slot_id\x18\x01 \x01(\x03R\x0escheduleSlotId\x12\x1b\n" +
 	"\tlesson_id\x18\x02 \x01(\x03R\blessonId\"\"\n" +
 	" BindLessonToScheduleSlotResponse\"\xc4\x01\n" +
 	"\x19UpdateScheduleSlotRequest\x12\x0e\n" +
@@ -1380,10 +1379,9 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\tlesson_id\x18\x06 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
 	"\t_durationB\f\n" +
 	"\n" +
-	"_lesson_id\"F\n" +
-	"#DeleteLessonFromScheduleSlotRequest\x12\x1f\n" +
-	"\vschedule_id\x18\x01 \x01(\x03R\n" +
-	"scheduleId\"&\n" +
+	"_lesson_id\"O\n" +
+	"#DeleteLessonFromScheduleSlotRequest\x12(\n" +
+	"\x10schedule_slot_id\x18\x01 \x01(\x03R\x0escheduleSlotId\"&\n" +
 	"$DeleteLessonFromScheduleSlotResponse*?\n" +
 	"\x06Status\x12\x1f\n" +
 	"\x1bSCHEDULE_STATUS_UNSPECIFIED\x10\x00\x12\b\n" +
