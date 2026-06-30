@@ -33,9 +33,8 @@ message ScheduleSlot {
 
 message CreateScheduleSlot {
   google.protobuf.Timestamp start_time = 1;
-  Status status = 2;
-  int64 duration = 3;
-  optional int64 lesson_id = 4;
+  int64 duration = 2;
+  optional int64 lesson_id = 3;
 }
 
 message OneSchedule {
@@ -93,7 +92,7 @@ message UpdateScheduleRequest {
   int64 id = 1;
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
-  repeated ScheduleSlot slots = 4;
+  repeated CreateScheduleSlot slots = 4;
   repeated int64 deleted_schedule_slot_ids = 5;
 }
 
