@@ -78,15 +78,7 @@ message CreateLessonRequest {
 }
 
 message CreateLessonResponse {
-  int64 id = 1;
-  optional int64 board_id = 2;
-  optional string meet_link = 3;
-  google.protobuf.Timestamp start_time = 4;
-  repeated MediaItem media_items = 5;
-  int64 duration = 6;
-  int64 tutor_id = 7;
-  repeated int64 user_ids = 8;
-  LessonStatus status = 9;
+  GetOneLessonResponse lesson = 1;
 }
 
 message UpdateLessonRequest {
@@ -102,15 +94,7 @@ message UpdateLessonRequest {
 }
 
 message UpdateLessonResponse {
-  int64 id = 1;
-  optional int64 board_id = 2;
-  optional string meet_link = 3;
-  google.protobuf.Timestamp start_time = 4;
-  repeated MediaItem media_items = 5;
-  int64 duration = 6;
-  int64 tutor_id = 7;
-  repeated int64 user_ids = 8;
-  LessonStatus status = 9;
+  GetOneLessonResponse lesson = 1;
 }
 
 message UpdateLessonStatusRequest {
