@@ -44,7 +44,7 @@ message GetScheduleByIDRequest {
 }
 
 message GetScheduleByIDResponse {
-  GetScheduleByIDResponse schedules = 1;
+  GetScheduleByIDResponse schedule = 1;
 }
 
 message GetAllSchedulesRequest {
@@ -71,7 +71,7 @@ message CreateScheduleRequest {
 }
 
 message CreateScheduleResponse {
-  GetScheduleByIDResponse schedules = 1;
+  GetScheduleByIDResponse schedule = 1;
 }
 
 message UpdateScheduleRequest {
@@ -83,7 +83,7 @@ message UpdateScheduleRequest {
 }
 
 message UpdateScheduleResponse {
-  GetScheduleByIDResponse schedules = 1;
+  GetScheduleByIDResponse schedule = 1;
 }
 
 message DeleteScheduleRequest {

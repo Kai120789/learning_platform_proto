@@ -261,7 +261,7 @@ func (x *GetScheduleByIDRequest) GetScheduleId() int64 {
 
 type GetScheduleByIDResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
+	Schedule      *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedule,proto3" json:"schedule,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,9 +296,9 @@ func (*GetScheduleByIDResponse) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetScheduleByIDResponse) GetSchedules() *GetScheduleByIDResponse {
+func (x *GetScheduleByIDResponse) GetSchedule() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Schedules
+		return x.Schedule
 	}
 	return nil
 }
@@ -541,7 +541,7 @@ func (x *CreateScheduleRequest) GetSlots() []*CreateScheduleSlot {
 
 type CreateScheduleResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
+	Schedule      *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedule,proto3" json:"schedule,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -576,9 +576,9 @@ func (*CreateScheduleResponse) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *CreateScheduleResponse) GetSchedules() *GetScheduleByIDResponse {
+func (x *CreateScheduleResponse) GetSchedule() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Schedules
+		return x.Schedule
 	}
 	return nil
 }
@@ -661,7 +661,7 @@ func (x *UpdateScheduleRequest) GetDeletedScheduleSlotIds() []int64 {
 
 type UpdateScheduleResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
+	Schedule      *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedule,proto3" json:"schedule,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -696,9 +696,9 @@ func (*UpdateScheduleResponse) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *UpdateScheduleResponse) GetSchedules() *GetScheduleByIDResponse {
+func (x *UpdateScheduleResponse) GetSchedule() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Schedules
+		return x.Schedule
 	}
 	return nil
 }
@@ -1130,9 +1130,9 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"_lesson_id\"9\n" +
 	"\x16GetScheduleByIDRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
-	"scheduleId\"Z\n" +
-	"\x17GetScheduleByIDResponse\x12?\n" +
-	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"\x18\n" +
+	"scheduleId\"X\n" +
+	"\x17GetScheduleByIDResponse\x12=\n" +
+	"\bschedule\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\bschedule\"\x18\n" +
 	"\x16GetAllSchedulesRequest\"Z\n" +
 	"\x17GetAllSchedulesResponse\x12?\n" +
 	"\tschedules\x18\x01 \x03(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"9\n" +
@@ -1145,18 +1145,18 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x122\n" +
-	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\"Y\n" +
-	"\x16CreateScheduleResponse\x12?\n" +
-	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"\x88\x02\n" +
+	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\"W\n" +
+	"\x16CreateScheduleResponse\x12=\n" +
+	"\bschedule\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\bschedule\"\x88\x02\n" +
 	"\x15UpdateScheduleRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x122\n" +
 	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\x129\n" +
-	"\x19deleted_schedule_slot_ids\x18\x05 \x03(\x03R\x16deletedScheduleSlotIds\"Y\n" +
-	"\x16UpdateScheduleResponse\x12?\n" +
-	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"8\n" +
+	"\x19deleted_schedule_slot_ids\x18\x05 \x03(\x03R\x16deletedScheduleSlotIds\"W\n" +
+	"\x16UpdateScheduleResponse\x12=\n" +
+	"\bschedule\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\bschedule\"8\n" +
 	"\x15DeleteScheduleRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
 	"scheduleId\"\x18\n" +
@@ -1247,17 +1247,17 @@ var file_schedule_schedule_proto_depIdxs = []int32{
 	21, // 0: schedule.ScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
 	0,  // 1: schedule.ScheduleSlot.status:type_name -> schedule.Status
 	21, // 2: schedule.CreateScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 3: schedule.GetScheduleByIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 3: schedule.GetScheduleByIDResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
 	4,  // 4: schedule.GetAllSchedulesResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
 	4,  // 5: schedule.GetSchedulesByTutorIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
 	21, // 6: schedule.CreateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
 	21, // 7: schedule.CreateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
 	2,  // 8: schedule.CreateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	4,  // 9: schedule.CreateScheduleResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 9: schedule.CreateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
 	21, // 10: schedule.UpdateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
 	21, // 11: schedule.UpdateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
 	2,  // 12: schedule.UpdateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	4,  // 13: schedule.UpdateScheduleResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 13: schedule.UpdateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
 	21, // 14: schedule.UpdateScheduleSlotRequest.start_time:type_name -> google.protobuf.Timestamp
 	21, // 15: schedule.UpdateScheduleSlotResponse.start_time:type_name -> google.protobuf.Timestamp
 	0,  // 16: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
