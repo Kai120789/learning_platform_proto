@@ -215,162 +215,6 @@ func (x *CreateScheduleSlot) GetLessonId() int64 {
 	return 0
 }
 
-type OneSchedule struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TutorId       int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Slots         []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *OneSchedule) Reset() {
-	*x = OneSchedule{}
-	mi := &file_schedule_schedule_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *OneSchedule) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*OneSchedule) ProtoMessage() {}
-
-func (x *OneSchedule) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use OneSchedule.ProtoReflect.Descriptor instead.
-func (*OneSchedule) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *OneSchedule) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *OneSchedule) GetTutorId() int64 {
-	if x != nil {
-		return x.TutorId
-	}
-	return 0
-}
-
-func (x *OneSchedule) GetStartTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartTime
-	}
-	return nil
-}
-
-func (x *OneSchedule) GetEndTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.EndTime
-	}
-	return nil
-}
-
-func (x *OneSchedule) GetSlots() []*ScheduleSlot {
-	if x != nil {
-		return x.Slots
-	}
-	return nil
-}
-
-type GetAllSchedulesRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllSchedulesRequest) Reset() {
-	*x = GetAllSchedulesRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllSchedulesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllSchedulesRequest) ProtoMessage() {}
-
-func (x *GetAllSchedulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllSchedulesRequest.ProtoReflect.Descriptor instead.
-func (*GetAllSchedulesRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{3}
-}
-
-type GetAllSchedulesResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Schedules     []*OneSchedule         `protobuf:"bytes,1,rep,name=schedules,proto3" json:"schedules,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllSchedulesResponse) Reset() {
-	*x = GetAllSchedulesResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllSchedulesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllSchedulesResponse) ProtoMessage() {}
-
-func (x *GetAllSchedulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllSchedulesResponse.ProtoReflect.Descriptor instead.
-func (*GetAllSchedulesResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetAllSchedulesResponse) GetSchedules() []*OneSchedule {
-	if x != nil {
-		return x.Schedules
-	}
-	return nil
-}
-
 type GetScheduleByIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ScheduleId    int64                  `protobuf:"varint,1,opt,name=schedule_id,json=scheduleId,proto3" json:"schedule_id,omitempty"`
@@ -380,7 +224,7 @@ type GetScheduleByIDRequest struct {
 
 func (x *GetScheduleByIDRequest) Reset() {
 	*x = GetScheduleByIDRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[5]
+	mi := &file_schedule_schedule_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -392,7 +236,7 @@ func (x *GetScheduleByIDRequest) String() string {
 func (*GetScheduleByIDRequest) ProtoMessage() {}
 
 func (x *GetScheduleByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[5]
+	mi := &file_schedule_schedule_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -405,7 +249,7 @@ func (x *GetScheduleByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetScheduleByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetScheduleByIDRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{5}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetScheduleByIDRequest) GetScheduleId() int64 {
@@ -416,19 +260,15 @@ func (x *GetScheduleByIDRequest) GetScheduleId() int64 {
 }
 
 type GetScheduleByIDResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TutorId       int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Slots         []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetScheduleByIDResponse) Reset() {
 	*x = GetScheduleByIDResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[6]
+	mi := &file_schedule_schedule_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -440,7 +280,7 @@ func (x *GetScheduleByIDResponse) String() string {
 func (*GetScheduleByIDResponse) ProtoMessage() {}
 
 func (x *GetScheduleByIDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[6]
+	mi := &file_schedule_schedule_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,40 +293,92 @@ func (x *GetScheduleByIDResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetScheduleByIDResponse.ProtoReflect.Descriptor instead.
 func (*GetScheduleByIDResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{6}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetScheduleByIDResponse) GetId() int64 {
+func (x *GetScheduleByIDResponse) GetSchedules() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *GetScheduleByIDResponse) GetTutorId() int64 {
-	if x != nil {
-		return x.TutorId
-	}
-	return 0
-}
-
-func (x *GetScheduleByIDResponse) GetStartTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartTime
+		return x.Schedules
 	}
 	return nil
 }
 
-func (x *GetScheduleByIDResponse) GetEndTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.EndTime
-	}
-	return nil
+type GetAllSchedulesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetScheduleByIDResponse) GetSlots() []*ScheduleSlot {
+func (x *GetAllSchedulesRequest) Reset() {
+	*x = GetAllSchedulesRequest{}
+	mi := &file_schedule_schedule_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllSchedulesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSchedulesRequest) ProtoMessage() {}
+
+func (x *GetAllSchedulesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_schedule_schedule_proto_msgTypes[4]
 	if x != nil {
-		return x.Slots
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSchedulesRequest.ProtoReflect.Descriptor instead.
+func (*GetAllSchedulesRequest) Descriptor() ([]byte, []int) {
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{4}
+}
+
+type GetAllSchedulesResponse struct {
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Schedules     []*GetScheduleByIDResponse `protobuf:"bytes,1,rep,name=schedules,proto3" json:"schedules,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllSchedulesResponse) Reset() {
+	*x = GetAllSchedulesResponse{}
+	mi := &file_schedule_schedule_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllSchedulesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSchedulesResponse) ProtoMessage() {}
+
+func (x *GetAllSchedulesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_schedule_schedule_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSchedulesResponse.ProtoReflect.Descriptor instead.
+func (*GetAllSchedulesResponse) Descriptor() ([]byte, []int) {
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetAllSchedulesResponse) GetSchedules() []*GetScheduleByIDResponse {
+	if x != nil {
+		return x.Schedules
 	}
 	return nil
 }
@@ -500,7 +392,7 @@ type GetSchedulesByTutorIDRequest struct {
 
 func (x *GetSchedulesByTutorIDRequest) Reset() {
 	*x = GetSchedulesByTutorIDRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[7]
+	mi := &file_schedule_schedule_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +404,7 @@ func (x *GetSchedulesByTutorIDRequest) String() string {
 func (*GetSchedulesByTutorIDRequest) ProtoMessage() {}
 
 func (x *GetSchedulesByTutorIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[7]
+	mi := &file_schedule_schedule_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +417,7 @@ func (x *GetSchedulesByTutorIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSchedulesByTutorIDRequest.ProtoReflect.Descriptor instead.
 func (*GetSchedulesByTutorIDRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{7}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetSchedulesByTutorIDRequest) GetTutorId() int64 {
@@ -536,15 +428,15 @@ func (x *GetSchedulesByTutorIDRequest) GetTutorId() int64 {
 }
 
 type GetSchedulesByTutorIDResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Schedules     []*OneSchedule         `protobuf:"bytes,1,rep,name=schedules,proto3" json:"schedules,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Schedules     []*GetScheduleByIDResponse `protobuf:"bytes,1,rep,name=schedules,proto3" json:"schedules,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetSchedulesByTutorIDResponse) Reset() {
 	*x = GetSchedulesByTutorIDResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[8]
+	mi := &file_schedule_schedule_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -556,7 +448,7 @@ func (x *GetSchedulesByTutorIDResponse) String() string {
 func (*GetSchedulesByTutorIDResponse) ProtoMessage() {}
 
 func (x *GetSchedulesByTutorIDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[8]
+	mi := &file_schedule_schedule_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,10 +461,10 @@ func (x *GetSchedulesByTutorIDResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSchedulesByTutorIDResponse.ProtoReflect.Descriptor instead.
 func (*GetSchedulesByTutorIDResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{8}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GetSchedulesByTutorIDResponse) GetSchedules() []*OneSchedule {
+func (x *GetSchedulesByTutorIDResponse) GetSchedules() []*GetScheduleByIDResponse {
 	if x != nil {
 		return x.Schedules
 	}
@@ -591,7 +483,7 @@ type CreateScheduleRequest struct {
 
 func (x *CreateScheduleRequest) Reset() {
 	*x = CreateScheduleRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[9]
+	mi := &file_schedule_schedule_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -603,7 +495,7 @@ func (x *CreateScheduleRequest) String() string {
 func (*CreateScheduleRequest) ProtoMessage() {}
 
 func (x *CreateScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[9]
+	mi := &file_schedule_schedule_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -616,7 +508,7 @@ func (x *CreateScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateScheduleRequest.ProtoReflect.Descriptor instead.
 func (*CreateScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{9}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CreateScheduleRequest) GetTutorId() int64 {
@@ -648,19 +540,15 @@ func (x *CreateScheduleRequest) GetSlots() []*CreateScheduleSlot {
 }
 
 type CreateScheduleResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TutorId       int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Slots         []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateScheduleResponse) Reset() {
 	*x = CreateScheduleResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[10]
+	mi := &file_schedule_schedule_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -672,7 +560,7 @@ func (x *CreateScheduleResponse) String() string {
 func (*CreateScheduleResponse) ProtoMessage() {}
 
 func (x *CreateScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[10]
+	mi := &file_schedule_schedule_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -685,40 +573,12 @@ func (x *CreateScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateScheduleResponse.ProtoReflect.Descriptor instead.
 func (*CreateScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{10}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *CreateScheduleResponse) GetId() int64 {
+func (x *CreateScheduleResponse) GetSchedules() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *CreateScheduleResponse) GetTutorId() int64 {
-	if x != nil {
-		return x.TutorId
-	}
-	return 0
-}
-
-func (x *CreateScheduleResponse) GetStartTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartTime
-	}
-	return nil
-}
-
-func (x *CreateScheduleResponse) GetEndTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.EndTime
-	}
-	return nil
-}
-
-func (x *CreateScheduleResponse) GetSlots() []*ScheduleSlot {
-	if x != nil {
-		return x.Slots
+		return x.Schedules
 	}
 	return nil
 }
@@ -736,7 +596,7 @@ type UpdateScheduleRequest struct {
 
 func (x *UpdateScheduleRequest) Reset() {
 	*x = UpdateScheduleRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[11]
+	mi := &file_schedule_schedule_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -748,7 +608,7 @@ func (x *UpdateScheduleRequest) String() string {
 func (*UpdateScheduleRequest) ProtoMessage() {}
 
 func (x *UpdateScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[11]
+	mi := &file_schedule_schedule_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -761,7 +621,7 @@ func (x *UpdateScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateScheduleRequest.ProtoReflect.Descriptor instead.
 func (*UpdateScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{11}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateScheduleRequest) GetId() int64 {
@@ -800,19 +660,15 @@ func (x *UpdateScheduleRequest) GetDeletedScheduleSlotIds() []int64 {
 }
 
 type UpdateScheduleResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	TutorId       int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Slots         []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Schedules     *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedules,proto3" json:"schedules,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateScheduleResponse) Reset() {
 	*x = UpdateScheduleResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[12]
+	mi := &file_schedule_schedule_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -824,7 +680,7 @@ func (x *UpdateScheduleResponse) String() string {
 func (*UpdateScheduleResponse) ProtoMessage() {}
 
 func (x *UpdateScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[12]
+	mi := &file_schedule_schedule_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -837,40 +693,12 @@ func (x *UpdateScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateScheduleResponse.ProtoReflect.Descriptor instead.
 func (*UpdateScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{12}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *UpdateScheduleResponse) GetId() int64 {
+func (x *UpdateScheduleResponse) GetSchedules() *GetScheduleByIDResponse {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *UpdateScheduleResponse) GetTutorId() int64 {
-	if x != nil {
-		return x.TutorId
-	}
-	return 0
-}
-
-func (x *UpdateScheduleResponse) GetStartTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartTime
-	}
-	return nil
-}
-
-func (x *UpdateScheduleResponse) GetEndTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.EndTime
-	}
-	return nil
-}
-
-func (x *UpdateScheduleResponse) GetSlots() []*ScheduleSlot {
-	if x != nil {
-		return x.Slots
+		return x.Schedules
 	}
 	return nil
 }
@@ -884,7 +712,7 @@ type DeleteScheduleRequest struct {
 
 func (x *DeleteScheduleRequest) Reset() {
 	*x = DeleteScheduleRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[13]
+	mi := &file_schedule_schedule_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -896,7 +724,7 @@ func (x *DeleteScheduleRequest) String() string {
 func (*DeleteScheduleRequest) ProtoMessage() {}
 
 func (x *DeleteScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[13]
+	mi := &file_schedule_schedule_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -909,7 +737,7 @@ func (x *DeleteScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteScheduleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{13}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteScheduleRequest) GetScheduleId() int64 {
@@ -927,7 +755,7 @@ type DeleteScheduleResponse struct {
 
 func (x *DeleteScheduleResponse) Reset() {
 	*x = DeleteScheduleResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[14]
+	mi := &file_schedule_schedule_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -939,7 +767,7 @@ func (x *DeleteScheduleResponse) String() string {
 func (*DeleteScheduleResponse) ProtoMessage() {}
 
 func (x *DeleteScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[14]
+	mi := &file_schedule_schedule_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -952,7 +780,7 @@ func (x *DeleteScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteScheduleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{14}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{13}
 }
 
 type BindLessonToScheduleSlotRequest struct {
@@ -965,7 +793,7 @@ type BindLessonToScheduleSlotRequest struct {
 
 func (x *BindLessonToScheduleSlotRequest) Reset() {
 	*x = BindLessonToScheduleSlotRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[15]
+	mi := &file_schedule_schedule_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -977,7 +805,7 @@ func (x *BindLessonToScheduleSlotRequest) String() string {
 func (*BindLessonToScheduleSlotRequest) ProtoMessage() {}
 
 func (x *BindLessonToScheduleSlotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[15]
+	mi := &file_schedule_schedule_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -990,7 +818,7 @@ func (x *BindLessonToScheduleSlotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BindLessonToScheduleSlotRequest.ProtoReflect.Descriptor instead.
 func (*BindLessonToScheduleSlotRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{15}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *BindLessonToScheduleSlotRequest) GetScheduleSlotId() int64 {
@@ -1015,7 +843,7 @@ type BindLessonToScheduleSlotResponse struct {
 
 func (x *BindLessonToScheduleSlotResponse) Reset() {
 	*x = BindLessonToScheduleSlotResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[16]
+	mi := &file_schedule_schedule_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1027,7 +855,7 @@ func (x *BindLessonToScheduleSlotResponse) String() string {
 func (*BindLessonToScheduleSlotResponse) ProtoMessage() {}
 
 func (x *BindLessonToScheduleSlotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[16]
+	mi := &file_schedule_schedule_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1040,7 +868,7 @@ func (x *BindLessonToScheduleSlotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BindLessonToScheduleSlotResponse.ProtoReflect.Descriptor instead.
 func (*BindLessonToScheduleSlotResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{16}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{15}
 }
 
 type UpdateScheduleSlotRequest struct {
@@ -1055,7 +883,7 @@ type UpdateScheduleSlotRequest struct {
 
 func (x *UpdateScheduleSlotRequest) Reset() {
 	*x = UpdateScheduleSlotRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[17]
+	mi := &file_schedule_schedule_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1067,7 +895,7 @@ func (x *UpdateScheduleSlotRequest) String() string {
 func (*UpdateScheduleSlotRequest) ProtoMessage() {}
 
 func (x *UpdateScheduleSlotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[17]
+	mi := &file_schedule_schedule_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1080,7 +908,7 @@ func (x *UpdateScheduleSlotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateScheduleSlotRequest.ProtoReflect.Descriptor instead.
 func (*UpdateScheduleSlotRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{17}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateScheduleSlotRequest) GetId() int64 {
@@ -1125,7 +953,7 @@ type UpdateScheduleSlotResponse struct {
 
 func (x *UpdateScheduleSlotResponse) Reset() {
 	*x = UpdateScheduleSlotResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[18]
+	mi := &file_schedule_schedule_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1137,7 +965,7 @@ func (x *UpdateScheduleSlotResponse) String() string {
 func (*UpdateScheduleSlotResponse) ProtoMessage() {}
 
 func (x *UpdateScheduleSlotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[18]
+	mi := &file_schedule_schedule_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,7 +978,7 @@ func (x *UpdateScheduleSlotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateScheduleSlotResponse.ProtoReflect.Descriptor instead.
 func (*UpdateScheduleSlotResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{18}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UpdateScheduleSlotResponse) GetId() int64 {
@@ -1204,7 +1032,7 @@ type DeleteLessonFromScheduleSlotRequest struct {
 
 func (x *DeleteLessonFromScheduleSlotRequest) Reset() {
 	*x = DeleteLessonFromScheduleSlotRequest{}
-	mi := &file_schedule_schedule_proto_msgTypes[19]
+	mi := &file_schedule_schedule_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1216,7 +1044,7 @@ func (x *DeleteLessonFromScheduleSlotRequest) String() string {
 func (*DeleteLessonFromScheduleSlotRequest) ProtoMessage() {}
 
 func (x *DeleteLessonFromScheduleSlotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[19]
+	mi := &file_schedule_schedule_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1229,7 +1057,7 @@ func (x *DeleteLessonFromScheduleSlotRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use DeleteLessonFromScheduleSlotRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLessonFromScheduleSlotRequest) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{19}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteLessonFromScheduleSlotRequest) GetScheduleSlotId() int64 {
@@ -1247,7 +1075,7 @@ type DeleteLessonFromScheduleSlotResponse struct {
 
 func (x *DeleteLessonFromScheduleSlotResponse) Reset() {
 	*x = DeleteLessonFromScheduleSlotResponse{}
-	mi := &file_schedule_schedule_proto_msgTypes[20]
+	mi := &file_schedule_schedule_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1259,7 +1087,7 @@ func (x *DeleteLessonFromScheduleSlotResponse) String() string {
 func (*DeleteLessonFromScheduleSlotResponse) ProtoMessage() {}
 
 func (x *DeleteLessonFromScheduleSlotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_schedule_schedule_proto_msgTypes[20]
+	mi := &file_schedule_schedule_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1272,7 +1100,7 @@ func (x *DeleteLessonFromScheduleSlotResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use DeleteLessonFromScheduleSlotResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLessonFromScheduleSlotResponse) Descriptor() ([]byte, []int) {
-	return file_schedule_schedule_proto_rawDescGZIP(), []int{20}
+	return file_schedule_schedule_proto_rawDescGZIP(), []int{19}
 }
 
 var File_schedule_schedule_proto protoreflect.FileDescriptor
@@ -1299,58 +1127,36 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\tlesson_id\x18\x03 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
 	"\t_durationB\f\n" +
 	"\n" +
-	"_lesson_id\"\xd8\x01\n" +
-	"\vOneSchedule\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
-	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
-	"\n" +
-	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"\x18\n" +
-	"\x16GetAllSchedulesRequest\"N\n" +
-	"\x17GetAllSchedulesResponse\x123\n" +
-	"\tschedules\x18\x01 \x03(\v2\x15.schedule.OneScheduleR\tschedules\"9\n" +
+	"_lesson_id\"9\n" +
 	"\x16GetScheduleByIDRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
-	"scheduleId\"\xe4\x01\n" +
-	"\x17GetScheduleByIDResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
-	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
-	"\n" +
-	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"9\n" +
+	"scheduleId\"Z\n" +
+	"\x17GetScheduleByIDResponse\x12?\n" +
+	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"\x18\n" +
+	"\x16GetAllSchedulesRequest\"Z\n" +
+	"\x17GetAllSchedulesResponse\x12?\n" +
+	"\tschedules\x18\x01 \x03(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"9\n" +
 	"\x1cGetSchedulesByTutorIDRequest\x12\x19\n" +
-	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"T\n" +
-	"\x1dGetSchedulesByTutorIDResponse\x123\n" +
-	"\tschedules\x18\x01 \x03(\v2\x15.schedule.OneScheduleR\tschedules\"\xd8\x01\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"`\n" +
+	"\x1dGetSchedulesByTutorIDResponse\x12?\n" +
+	"\tschedules\x18\x01 \x03(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"\xd8\x01\n" +
 	"\x15CreateScheduleRequest\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x122\n" +
-	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\"\xe3\x01\n" +
-	"\x16CreateScheduleResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
-	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
-	"\n" +
-	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"\x88\x02\n" +
+	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\"Y\n" +
+	"\x16CreateScheduleResponse\x12?\n" +
+	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"\x88\x02\n" +
 	"\x15UpdateScheduleRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x122\n" +
 	"\x05slots\x18\x04 \x03(\v2\x1c.schedule.CreateScheduleSlotR\x05slots\x129\n" +
-	"\x19deleted_schedule_slot_ids\x18\x05 \x03(\x03R\x16deletedScheduleSlotIds\"\xe3\x01\n" +
-	"\x16UpdateScheduleResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
-	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
-	"\n" +
-	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
-	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"8\n" +
+	"\x19deleted_schedule_slot_ids\x18\x05 \x03(\x03R\x16deletedScheduleSlotIds\"Y\n" +
+	"\x16UpdateScheduleResponse\x12?\n" +
+	"\tschedules\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"8\n" +
 	"\x15DeleteScheduleRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
 	"scheduleId\"\x18\n" +
@@ -1412,82 +1218,72 @@ func file_schedule_schedule_proto_rawDescGZIP() []byte {
 }
 
 var file_schedule_schedule_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_schedule_schedule_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_schedule_schedule_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_schedule_schedule_proto_goTypes = []any{
 	(Status)(0),                                  // 0: schedule.Status
 	(*ScheduleSlot)(nil),                         // 1: schedule.ScheduleSlot
 	(*CreateScheduleSlot)(nil),                   // 2: schedule.CreateScheduleSlot
-	(*OneSchedule)(nil),                          // 3: schedule.OneSchedule
-	(*GetAllSchedulesRequest)(nil),               // 4: schedule.GetAllSchedulesRequest
-	(*GetAllSchedulesResponse)(nil),              // 5: schedule.GetAllSchedulesResponse
-	(*GetScheduleByIDRequest)(nil),               // 6: schedule.GetScheduleByIDRequest
-	(*GetScheduleByIDResponse)(nil),              // 7: schedule.GetScheduleByIDResponse
-	(*GetSchedulesByTutorIDRequest)(nil),         // 8: schedule.GetSchedulesByTutorIDRequest
-	(*GetSchedulesByTutorIDResponse)(nil),        // 9: schedule.GetSchedulesByTutorIDResponse
-	(*CreateScheduleRequest)(nil),                // 10: schedule.CreateScheduleRequest
-	(*CreateScheduleResponse)(nil),               // 11: schedule.CreateScheduleResponse
-	(*UpdateScheduleRequest)(nil),                // 12: schedule.UpdateScheduleRequest
-	(*UpdateScheduleResponse)(nil),               // 13: schedule.UpdateScheduleResponse
-	(*DeleteScheduleRequest)(nil),                // 14: schedule.DeleteScheduleRequest
-	(*DeleteScheduleResponse)(nil),               // 15: schedule.DeleteScheduleResponse
-	(*BindLessonToScheduleSlotRequest)(nil),      // 16: schedule.BindLessonToScheduleSlotRequest
-	(*BindLessonToScheduleSlotResponse)(nil),     // 17: schedule.BindLessonToScheduleSlotResponse
-	(*UpdateScheduleSlotRequest)(nil),            // 18: schedule.UpdateScheduleSlotRequest
-	(*UpdateScheduleSlotResponse)(nil),           // 19: schedule.UpdateScheduleSlotResponse
-	(*DeleteLessonFromScheduleSlotRequest)(nil),  // 20: schedule.DeleteLessonFromScheduleSlotRequest
-	(*DeleteLessonFromScheduleSlotResponse)(nil), // 21: schedule.DeleteLessonFromScheduleSlotResponse
-	(*timestamppb.Timestamp)(nil),                // 22: google.protobuf.Timestamp
+	(*GetScheduleByIDRequest)(nil),               // 3: schedule.GetScheduleByIDRequest
+	(*GetScheduleByIDResponse)(nil),              // 4: schedule.GetScheduleByIDResponse
+	(*GetAllSchedulesRequest)(nil),               // 5: schedule.GetAllSchedulesRequest
+	(*GetAllSchedulesResponse)(nil),              // 6: schedule.GetAllSchedulesResponse
+	(*GetSchedulesByTutorIDRequest)(nil),         // 7: schedule.GetSchedulesByTutorIDRequest
+	(*GetSchedulesByTutorIDResponse)(nil),        // 8: schedule.GetSchedulesByTutorIDResponse
+	(*CreateScheduleRequest)(nil),                // 9: schedule.CreateScheduleRequest
+	(*CreateScheduleResponse)(nil),               // 10: schedule.CreateScheduleResponse
+	(*UpdateScheduleRequest)(nil),                // 11: schedule.UpdateScheduleRequest
+	(*UpdateScheduleResponse)(nil),               // 12: schedule.UpdateScheduleResponse
+	(*DeleteScheduleRequest)(nil),                // 13: schedule.DeleteScheduleRequest
+	(*DeleteScheduleResponse)(nil),               // 14: schedule.DeleteScheduleResponse
+	(*BindLessonToScheduleSlotRequest)(nil),      // 15: schedule.BindLessonToScheduleSlotRequest
+	(*BindLessonToScheduleSlotResponse)(nil),     // 16: schedule.BindLessonToScheduleSlotResponse
+	(*UpdateScheduleSlotRequest)(nil),            // 17: schedule.UpdateScheduleSlotRequest
+	(*UpdateScheduleSlotResponse)(nil),           // 18: schedule.UpdateScheduleSlotResponse
+	(*DeleteLessonFromScheduleSlotRequest)(nil),  // 19: schedule.DeleteLessonFromScheduleSlotRequest
+	(*DeleteLessonFromScheduleSlotResponse)(nil), // 20: schedule.DeleteLessonFromScheduleSlotResponse
+	(*timestamppb.Timestamp)(nil),                // 21: google.protobuf.Timestamp
 }
 var file_schedule_schedule_proto_depIdxs = []int32{
-	22, // 0: schedule.ScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
+	21, // 0: schedule.ScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
 	0,  // 1: schedule.ScheduleSlot.status:type_name -> schedule.Status
-	22, // 2: schedule.CreateScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
-	22, // 3: schedule.OneSchedule.start_time:type_name -> google.protobuf.Timestamp
-	22, // 4: schedule.OneSchedule.end_time:type_name -> google.protobuf.Timestamp
-	1,  // 5: schedule.OneSchedule.slots:type_name -> schedule.ScheduleSlot
-	3,  // 6: schedule.GetAllSchedulesResponse.schedules:type_name -> schedule.OneSchedule
-	22, // 7: schedule.GetScheduleByIDResponse.start_time:type_name -> google.protobuf.Timestamp
-	22, // 8: schedule.GetScheduleByIDResponse.end_time:type_name -> google.protobuf.Timestamp
-	1,  // 9: schedule.GetScheduleByIDResponse.slots:type_name -> schedule.ScheduleSlot
-	3,  // 10: schedule.GetSchedulesByTutorIDResponse.schedules:type_name -> schedule.OneSchedule
-	22, // 11: schedule.CreateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
-	22, // 12: schedule.CreateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
-	2,  // 13: schedule.CreateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	22, // 14: schedule.CreateScheduleResponse.start_time:type_name -> google.protobuf.Timestamp
-	22, // 15: schedule.CreateScheduleResponse.end_time:type_name -> google.protobuf.Timestamp
-	1,  // 16: schedule.CreateScheduleResponse.slots:type_name -> schedule.ScheduleSlot
-	22, // 17: schedule.UpdateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
-	22, // 18: schedule.UpdateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
-	2,  // 19: schedule.UpdateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	22, // 20: schedule.UpdateScheduleResponse.start_time:type_name -> google.protobuf.Timestamp
-	22, // 21: schedule.UpdateScheduleResponse.end_time:type_name -> google.protobuf.Timestamp
-	1,  // 22: schedule.UpdateScheduleResponse.slots:type_name -> schedule.ScheduleSlot
-	22, // 23: schedule.UpdateScheduleSlotRequest.start_time:type_name -> google.protobuf.Timestamp
-	22, // 24: schedule.UpdateScheduleSlotResponse.start_time:type_name -> google.protobuf.Timestamp
-	0,  // 25: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
-	4,  // 26: schedule.Schedule.GetAllSchedules:input_type -> schedule.GetAllSchedulesRequest
-	6,  // 27: schedule.Schedule.GetScheduleByID:input_type -> schedule.GetScheduleByIDRequest
-	8,  // 28: schedule.Schedule.GetSchedulesByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
-	10, // 29: schedule.Schedule.CreateSchedule:input_type -> schedule.CreateScheduleRequest
-	12, // 30: schedule.Schedule.UpdateSchedule:input_type -> schedule.UpdateScheduleRequest
-	14, // 31: schedule.Schedule.DeleteSchedule:input_type -> schedule.DeleteScheduleRequest
-	18, // 32: schedule.Schedule.UpdateScheduleSlot:input_type -> schedule.UpdateScheduleSlotRequest
-	16, // 33: schedule.Schedule.BindLessonToScheduleSlot:input_type -> schedule.BindLessonToScheduleSlotRequest
-	20, // 34: schedule.Schedule.DeleteLessonFromScheduleSlot:input_type -> schedule.DeleteLessonFromScheduleSlotRequest
-	5,  // 35: schedule.Schedule.GetAllSchedules:output_type -> schedule.GetAllSchedulesResponse
-	7,  // 36: schedule.Schedule.GetScheduleByID:output_type -> schedule.GetScheduleByIDResponse
-	9,  // 37: schedule.Schedule.GetSchedulesByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
-	11, // 38: schedule.Schedule.CreateSchedule:output_type -> schedule.CreateScheduleResponse
-	13, // 39: schedule.Schedule.UpdateSchedule:output_type -> schedule.UpdateScheduleResponse
-	15, // 40: schedule.Schedule.DeleteSchedule:output_type -> schedule.DeleteScheduleResponse
-	19, // 41: schedule.Schedule.UpdateScheduleSlot:output_type -> schedule.UpdateScheduleSlotResponse
-	17, // 42: schedule.Schedule.BindLessonToScheduleSlot:output_type -> schedule.BindLessonToScheduleSlotResponse
-	21, // 43: schedule.Schedule.DeleteLessonFromScheduleSlot:output_type -> schedule.DeleteLessonFromScheduleSlotResponse
-	35, // [35:44] is the sub-list for method output_type
-	26, // [26:35] is the sub-list for method input_type
-	26, // [26:26] is the sub-list for extension type_name
-	26, // [26:26] is the sub-list for extension extendee
-	0,  // [0:26] is the sub-list for field type_name
+	21, // 2: schedule.CreateScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
+	4,  // 3: schedule.GetScheduleByIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 4: schedule.GetAllSchedulesResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 5: schedule.GetSchedulesByTutorIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	21, // 6: schedule.CreateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 7: schedule.CreateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
+	2,  // 8: schedule.CreateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
+	4,  // 9: schedule.CreateScheduleResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	21, // 10: schedule.UpdateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 11: schedule.UpdateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
+	2,  // 12: schedule.UpdateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
+	4,  // 13: schedule.UpdateScheduleResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	21, // 14: schedule.UpdateScheduleSlotRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 15: schedule.UpdateScheduleSlotResponse.start_time:type_name -> google.protobuf.Timestamp
+	0,  // 16: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
+	5,  // 17: schedule.Schedule.GetAllSchedules:input_type -> schedule.GetAllSchedulesRequest
+	3,  // 18: schedule.Schedule.GetScheduleByID:input_type -> schedule.GetScheduleByIDRequest
+	7,  // 19: schedule.Schedule.GetSchedulesByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
+	9,  // 20: schedule.Schedule.CreateSchedule:input_type -> schedule.CreateScheduleRequest
+	11, // 21: schedule.Schedule.UpdateSchedule:input_type -> schedule.UpdateScheduleRequest
+	13, // 22: schedule.Schedule.DeleteSchedule:input_type -> schedule.DeleteScheduleRequest
+	17, // 23: schedule.Schedule.UpdateScheduleSlot:input_type -> schedule.UpdateScheduleSlotRequest
+	15, // 24: schedule.Schedule.BindLessonToScheduleSlot:input_type -> schedule.BindLessonToScheduleSlotRequest
+	19, // 25: schedule.Schedule.DeleteLessonFromScheduleSlot:input_type -> schedule.DeleteLessonFromScheduleSlotRequest
+	6,  // 26: schedule.Schedule.GetAllSchedules:output_type -> schedule.GetAllSchedulesResponse
+	4,  // 27: schedule.Schedule.GetScheduleByID:output_type -> schedule.GetScheduleByIDResponse
+	8,  // 28: schedule.Schedule.GetSchedulesByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
+	10, // 29: schedule.Schedule.CreateSchedule:output_type -> schedule.CreateScheduleResponse
+	12, // 30: schedule.Schedule.UpdateSchedule:output_type -> schedule.UpdateScheduleResponse
+	14, // 31: schedule.Schedule.DeleteSchedule:output_type -> schedule.DeleteScheduleResponse
+	18, // 32: schedule.Schedule.UpdateScheduleSlot:output_type -> schedule.UpdateScheduleSlotResponse
+	16, // 33: schedule.Schedule.BindLessonToScheduleSlot:output_type -> schedule.BindLessonToScheduleSlotResponse
+	20, // 34: schedule.Schedule.DeleteLessonFromScheduleSlot:output_type -> schedule.DeleteLessonFromScheduleSlotResponse
+	26, // [26:35] is the sub-list for method output_type
+	17, // [17:26] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_schedule_schedule_proto_init() }
@@ -1497,15 +1293,15 @@ func file_schedule_schedule_proto_init() {
 	}
 	file_schedule_schedule_proto_msgTypes[0].OneofWrappers = []any{}
 	file_schedule_schedule_proto_msgTypes[1].OneofWrappers = []any{}
+	file_schedule_schedule_proto_msgTypes[16].OneofWrappers = []any{}
 	file_schedule_schedule_proto_msgTypes[17].OneofWrappers = []any{}
-	file_schedule_schedule_proto_msgTypes[18].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_schedule_schedule_proto_rawDesc), len(file_schedule_schedule_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   21,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
