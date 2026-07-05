@@ -44,7 +44,11 @@ message GetScheduleByIDRequest {
 }
 
 message GetScheduleByIDResponse {
-  GetScheduleByIDResponse schedule = 1;
+  int64 id = 1;
+  int64 tutor_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  repeated ScheduleSlot slots = 5;
 }
 
 message GetAllSchedulesRequest {

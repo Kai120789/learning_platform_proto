@@ -260,8 +260,12 @@ func (x *GetScheduleByIDRequest) GetScheduleId() int64 {
 }
 
 type GetScheduleByIDResponse struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Schedule      *GetScheduleByIDResponse `protobuf:"bytes,1,opt,name=schedule,proto3" json:"schedule,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	TutorId       int64                  `protobuf:"varint,2,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Slots         []*ScheduleSlot        `protobuf:"bytes,5,rep,name=slots,proto3" json:"slots,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,9 +300,37 @@ func (*GetScheduleByIDResponse) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetScheduleByIDResponse) GetSchedule() *GetScheduleByIDResponse {
+func (x *GetScheduleByIDResponse) GetId() int64 {
 	if x != nil {
-		return x.Schedule
+		return x.Id
+	}
+	return 0
+}
+
+func (x *GetScheduleByIDResponse) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
+}
+
+func (x *GetScheduleByIDResponse) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
+	}
+	return nil
+}
+
+func (x *GetScheduleByIDResponse) GetEndTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndTime
+	}
+	return nil
+}
+
+func (x *GetScheduleByIDResponse) GetSlots() []*ScheduleSlot {
+	if x != nil {
+		return x.Slots
 	}
 	return nil
 }
@@ -1130,9 +1162,14 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"_lesson_id\"9\n" +
 	"\x16GetScheduleByIDRequest\x12\x1f\n" +
 	"\vschedule_id\x18\x01 \x01(\x03R\n" +
-	"scheduleId\"X\n" +
-	"\x17GetScheduleByIDResponse\x12=\n" +
-	"\bschedule\x18\x01 \x01(\v2!.schedule.GetScheduleByIDResponseR\bschedule\"\x18\n" +
+	"scheduleId\"\xe4\x01\n" +
+	"\x17GetScheduleByIDResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
+	"\btutor_id\x18\x02 \x01(\x03R\atutorId\x129\n" +
+	"\n" +
+	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12,\n" +
+	"\x05slots\x18\x05 \x03(\v2\x16.schedule.ScheduleSlotR\x05slots\"\x18\n" +
 	"\x16GetAllSchedulesRequest\"Z\n" +
 	"\x17GetAllSchedulesResponse\x12?\n" +
 	"\tschedules\x18\x01 \x03(\v2!.schedule.GetScheduleByIDResponseR\tschedules\"9\n" +
@@ -1247,43 +1284,45 @@ var file_schedule_schedule_proto_depIdxs = []int32{
 	21, // 0: schedule.ScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
 	0,  // 1: schedule.ScheduleSlot.status:type_name -> schedule.Status
 	21, // 2: schedule.CreateScheduleSlot.start_time:type_name -> google.protobuf.Timestamp
-	4,  // 3: schedule.GetScheduleByIDResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
-	4,  // 4: schedule.GetAllSchedulesResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
-	4,  // 5: schedule.GetSchedulesByTutorIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
-	21, // 6: schedule.CreateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
-	21, // 7: schedule.CreateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
-	2,  // 8: schedule.CreateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	4,  // 9: schedule.CreateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
-	21, // 10: schedule.UpdateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
-	21, // 11: schedule.UpdateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
-	2,  // 12: schedule.UpdateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
-	4,  // 13: schedule.UpdateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
-	21, // 14: schedule.UpdateScheduleSlotRequest.start_time:type_name -> google.protobuf.Timestamp
-	21, // 15: schedule.UpdateScheduleSlotResponse.start_time:type_name -> google.protobuf.Timestamp
-	0,  // 16: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
-	5,  // 17: schedule.Schedule.GetAllSchedules:input_type -> schedule.GetAllSchedulesRequest
-	3,  // 18: schedule.Schedule.GetScheduleByID:input_type -> schedule.GetScheduleByIDRequest
-	7,  // 19: schedule.Schedule.GetSchedulesByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
-	9,  // 20: schedule.Schedule.CreateSchedule:input_type -> schedule.CreateScheduleRequest
-	11, // 21: schedule.Schedule.UpdateSchedule:input_type -> schedule.UpdateScheduleRequest
-	13, // 22: schedule.Schedule.DeleteSchedule:input_type -> schedule.DeleteScheduleRequest
-	17, // 23: schedule.Schedule.UpdateScheduleSlot:input_type -> schedule.UpdateScheduleSlotRequest
-	15, // 24: schedule.Schedule.BindLessonToScheduleSlot:input_type -> schedule.BindLessonToScheduleSlotRequest
-	19, // 25: schedule.Schedule.DeleteLessonFromScheduleSlot:input_type -> schedule.DeleteLessonFromScheduleSlotRequest
-	6,  // 26: schedule.Schedule.GetAllSchedules:output_type -> schedule.GetAllSchedulesResponse
-	4,  // 27: schedule.Schedule.GetScheduleByID:output_type -> schedule.GetScheduleByIDResponse
-	8,  // 28: schedule.Schedule.GetSchedulesByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
-	10, // 29: schedule.Schedule.CreateSchedule:output_type -> schedule.CreateScheduleResponse
-	12, // 30: schedule.Schedule.UpdateSchedule:output_type -> schedule.UpdateScheduleResponse
-	14, // 31: schedule.Schedule.DeleteSchedule:output_type -> schedule.DeleteScheduleResponse
-	18, // 32: schedule.Schedule.UpdateScheduleSlot:output_type -> schedule.UpdateScheduleSlotResponse
-	16, // 33: schedule.Schedule.BindLessonToScheduleSlot:output_type -> schedule.BindLessonToScheduleSlotResponse
-	20, // 34: schedule.Schedule.DeleteLessonFromScheduleSlot:output_type -> schedule.DeleteLessonFromScheduleSlotResponse
-	26, // [26:35] is the sub-list for method output_type
-	17, // [17:26] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	21, // 3: schedule.GetScheduleByIDResponse.start_time:type_name -> google.protobuf.Timestamp
+	21, // 4: schedule.GetScheduleByIDResponse.end_time:type_name -> google.protobuf.Timestamp
+	1,  // 5: schedule.GetScheduleByIDResponse.slots:type_name -> schedule.ScheduleSlot
+	4,  // 6: schedule.GetAllSchedulesResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	4,  // 7: schedule.GetSchedulesByTutorIDResponse.schedules:type_name -> schedule.GetScheduleByIDResponse
+	21, // 8: schedule.CreateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 9: schedule.CreateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
+	2,  // 10: schedule.CreateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
+	4,  // 11: schedule.CreateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
+	21, // 12: schedule.UpdateScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 13: schedule.UpdateScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
+	2,  // 14: schedule.UpdateScheduleRequest.slots:type_name -> schedule.CreateScheduleSlot
+	4,  // 15: schedule.UpdateScheduleResponse.schedule:type_name -> schedule.GetScheduleByIDResponse
+	21, // 16: schedule.UpdateScheduleSlotRequest.start_time:type_name -> google.protobuf.Timestamp
+	21, // 17: schedule.UpdateScheduleSlotResponse.start_time:type_name -> google.protobuf.Timestamp
+	0,  // 18: schedule.UpdateScheduleSlotResponse.status:type_name -> schedule.Status
+	5,  // 19: schedule.Schedule.GetAllSchedules:input_type -> schedule.GetAllSchedulesRequest
+	3,  // 20: schedule.Schedule.GetScheduleByID:input_type -> schedule.GetScheduleByIDRequest
+	7,  // 21: schedule.Schedule.GetSchedulesByTutorID:input_type -> schedule.GetSchedulesByTutorIDRequest
+	9,  // 22: schedule.Schedule.CreateSchedule:input_type -> schedule.CreateScheduleRequest
+	11, // 23: schedule.Schedule.UpdateSchedule:input_type -> schedule.UpdateScheduleRequest
+	13, // 24: schedule.Schedule.DeleteSchedule:input_type -> schedule.DeleteScheduleRequest
+	17, // 25: schedule.Schedule.UpdateScheduleSlot:input_type -> schedule.UpdateScheduleSlotRequest
+	15, // 26: schedule.Schedule.BindLessonToScheduleSlot:input_type -> schedule.BindLessonToScheduleSlotRequest
+	19, // 27: schedule.Schedule.DeleteLessonFromScheduleSlot:input_type -> schedule.DeleteLessonFromScheduleSlotRequest
+	6,  // 28: schedule.Schedule.GetAllSchedules:output_type -> schedule.GetAllSchedulesResponse
+	4,  // 29: schedule.Schedule.GetScheduleByID:output_type -> schedule.GetScheduleByIDResponse
+	8,  // 30: schedule.Schedule.GetSchedulesByTutorID:output_type -> schedule.GetSchedulesByTutorIDResponse
+	10, // 31: schedule.Schedule.CreateSchedule:output_type -> schedule.CreateScheduleResponse
+	12, // 32: schedule.Schedule.UpdateSchedule:output_type -> schedule.UpdateScheduleResponse
+	14, // 33: schedule.Schedule.DeleteSchedule:output_type -> schedule.DeleteScheduleResponse
+	18, // 34: schedule.Schedule.UpdateScheduleSlot:output_type -> schedule.UpdateScheduleSlotResponse
+	16, // 35: schedule.Schedule.BindLessonToScheduleSlot:output_type -> schedule.BindLessonToScheduleSlotResponse
+	20, // 36: schedule.Schedule.DeleteLessonFromScheduleSlot:output_type -> schedule.DeleteLessonFromScheduleSlotResponse
+	28, // [28:37] is the sub-list for method output_type
+	19, // [19:28] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_schedule_schedule_proto_init() }
