@@ -28,6 +28,8 @@ const (
 	User_ChangeEmail_FullMethodName         = "/user.User/ChangeEmail"
 	User_UpdateUserInfo_FullMethodName      = "/user.User/UpdateUserInfo"
 	User_UpdateUserSettings_FullMethodName  = "/user.User/UpdateUserSettings"
+	User_UpdateUserTheme_FullMethodName     = "/user.User/UpdateUserTheme"
+	User_UpdateUserAvatar_FullMethodName    = "/user.User/UpdateUserAvatar"
 )
 
 // UserClient is the client API for User service.
@@ -43,6 +45,8 @@ type UserClient interface {
 	ChangeEmail(ctx context.Context, in *ChangeEmailRequest, opts ...grpc.CallOption) (*ChangeEmailResponse, error)
 	UpdateUserInfo(ctx context.Context, in *UpdateUserInfoRequest, opts ...grpc.CallOption) (*UpdateUserInfoResponse, error)
 	UpdateUserSettings(ctx context.Context, in *UpdateUserSettingsRequest, opts ...grpc.CallOption) (*UpdateUserSettingsResponse, error)
+	UpdateUserTheme(ctx context.Context, in *UpdateUserThemeRequest, opts ...grpc.CallOption) (*UpdateUserThemeResponse, error)
+	UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarRequest, opts ...grpc.CallOption) (*UpdateUserAvatarResponse, error)
 }
 
 type userClient struct {
@@ -143,6 +147,26 @@ func (c *userClient) UpdateUserSettings(ctx context.Context, in *UpdateUserSetti
 	return out, nil
 }
 
+func (c *userClient) UpdateUserTheme(ctx context.Context, in *UpdateUserThemeRequest, opts ...grpc.CallOption) (*UpdateUserThemeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserThemeResponse)
+	err := c.cc.Invoke(ctx, User_UpdateUserTheme_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarRequest, opts ...grpc.CallOption) (*UpdateUserAvatarResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserAvatarResponse)
+	err := c.cc.Invoke(ctx, User_UpdateUserAvatar_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility.
@@ -156,6 +180,8 @@ type UserServer interface {
 	ChangeEmail(context.Context, *ChangeEmailRequest) (*ChangeEmailResponse, error)
 	UpdateUserInfo(context.Context, *UpdateUserInfoRequest) (*UpdateUserInfoResponse, error)
 	UpdateUserSettings(context.Context, *UpdateUserSettingsRequest) (*UpdateUserSettingsResponse, error)
+	UpdateUserTheme(context.Context, *UpdateUserThemeRequest) (*UpdateUserThemeResponse, error)
+	UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -192,6 +218,12 @@ func (UnimplementedUserServer) UpdateUserInfo(context.Context, *UpdateUserInfoRe
 }
 func (UnimplementedUserServer) UpdateUserSettings(context.Context, *UpdateUserSettingsRequest) (*UpdateUserSettingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserSettings not implemented")
+}
+func (UnimplementedUserServer) UpdateUserTheme(context.Context, *UpdateUserThemeRequest) (*UpdateUserThemeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserTheme not implemented")
+}
+func (UnimplementedUserServer) UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserAvatar not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 func (UnimplementedUserServer) testEmbeddedByValue()              {}
@@ -376,6 +408,42 @@ func _User_UpdateUserSettings_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_UpdateUserTheme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserThemeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateUserTheme(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_UpdateUserTheme_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateUserTheme(ctx, req.(*UpdateUserThemeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserAvatarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateUserAvatar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_UpdateUserAvatar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateUserAvatar(ctx, req.(*UpdateUserAvatarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -418,6 +486,14 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserSettings",
 			Handler:    _User_UpdateUserSettings_Handler,
+		},
+		{
+			MethodName: "UpdateUserTheme",
+			Handler:    _User_UpdateUserTheme_Handler,
+		},
+		{
+			MethodName: "UpdateUserAvatar",
+			Handler:    _User_UpdateUserAvatar_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

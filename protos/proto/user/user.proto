@@ -14,6 +14,8 @@ service User {
   rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
   rpc UpdateUserInfo (UpdateUserInfoRequest) returns (UpdateUserInfoResponse);
   rpc UpdateUserSettings (UpdateUserSettingsRequest) returns (UpdateUserSettingsResponse);
+  rpc UpdateUserTheme (UpdateUserThemeRequest) returns (UpdateUserThemeResponse);
+  rpc UpdateUserAvatar (UpdateUserAvatarRequest) returns (UpdateUserAvatarResponse);
 }
 
 enum UserRole {
@@ -23,11 +25,35 @@ enum UserRole {
   ADMIN = 3;
 }
 
-enum Status {
+enum UserStatus {
   STATUS_UNSPECIFIED = 0;
   ACTIVE = 1;
   INACTIVE= 2;
   BANNED = 3;
+}
+
+enum UserGender {
+  ENUM_GENDER_UNSPECIFIED = 0;
+  MALE = 1;
+  FEMALE = 2;
+}
+
+enum UserTheme {
+  ENUM_THEME_UNSPECIFIED = 0;
+  LIGHT = 1;
+  DARK = 2;
+}
+
+enum UserLanguage {
+  ENUM_LANGUAGE_UNSPECIFIED = 0;
+  RU = 1;
+  EN = 2;
+}
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
 }
 
 message CreateUserRequest {
@@ -36,7 +62,10 @@ message CreateUserRequest {
   string surname = 3;
   optional string last_name = 4;
   UserRole role = 5;
-  string password_hash = 6;
+  UserGender gender = 6;
+  UserLanguage language = 7;
+  string password_hash = 8;
+  optional Date birth_date = 9;
 }
 
 message CreateUserResponse {
@@ -52,7 +81,7 @@ message GetUserByIdResponse {
   string email = 2;
   string password_hash = 3;
   UserRole role = 4;
-  Status status = 5;
+  UserStatus status = 5;
 }
 
 message GetUserDataRequest {
@@ -63,7 +92,7 @@ message GetUserDataResponse {
   int64 user_id = 1;
   string email = 2;
   UserRole role = 3;
-  Status status = 4;
+  UserStatus status = 4;
   UpdateUserInfoResponse user_info = 5;
   UpdateUserSettingsResponse user_settings = 6;
 }
@@ -89,6 +118,8 @@ message UpdateUserInfoRequest {
   optional string lastname = 4;
   optional string city = 5;
   optional string about = 6;
+  UserGender gender = 7;
+  optional Date birth_date = 8;
 }
 
 message UpdateUserInfoResponse {
@@ -97,17 +128,22 @@ message UpdateUserInfoResponse {
   optional string lastname = 3;
   optional string city = 4;
   optional string about = 5;
+  optional string avatar = 6;
+  UserGender gender = 7;
+  optional Date birth_date = 8;
 }
 
 message UpdateUserSettingsRequest {
   int64 user_id = 1;
   optional bool is_2_fa_enabled = 2;
   optional bool is_notifications_enabled = 3;
+  UserLanguage language = 4;
 }
 
 message UpdateUserSettingsResponse {
   bool is_2_fa_enabled = 1;
   bool is_notifications_enabled = 2;
+  UserLanguage language = 3;
 }
 
 message GetUserByEmailRequest {
@@ -119,7 +155,7 @@ message GetUserByEmailResponse {
   string email = 2;
   string password_hash = 3;
   UserRole role = 4;
-  Status status = 5;
+  UserStatus status = 5;
 }
 
 message GetAllUsersWithDataRequest {}
@@ -127,3 +163,17 @@ message GetAllUsersWithDataRequest {}
 message GetAllUsersWithDataResponse {
   repeated GetUserDataResponse users = 1;
 }
+
+message UpdateUserThemeRequest {
+  int64 user_id = 1;
+  UserTheme theme = 2;
+}
+
+message UpdateUserThemeResponse {}
+
+message UpdateUserAvatarResponse {
+  int64 user_id = 1;
+  string avatar_url = 2;
+}
+
+message UpdateUserAvatarRequest {}
