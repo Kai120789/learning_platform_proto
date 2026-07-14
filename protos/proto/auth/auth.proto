@@ -24,6 +24,24 @@ enum UserRole {
   STUDENT = 2;
 }
 
+enum UserGender {
+  ENUM_GENDER_UNSPECIFIED = 0;
+  MALE = 1;
+  FEMALE = 2;
+}
+
+enum UserLanguage {
+  ENUM_LANGUAGE_UNSPECIFIED = 0;
+  RU = 1;
+  EN = 2;
+}
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
 message LoginRequest {
   int64 user_id = 1;
   string email = 2;
@@ -31,8 +49,7 @@ message LoginRequest {
 }
 
 message LoginResponse  {
-  int64 user_id = 1;
-  string session_id = 2;
+  string session_id = 1;
 }
 
 message RegisterRequest {
@@ -40,14 +57,16 @@ message RegisterRequest {
   string email = 2;
   string name = 3;
   string surname = 4;
-  optional string last_name = 5;
+  optional string lastname = 5;
   UserRole role = 6;
-  string password = 7;
+  UserGender gender = 7;
+  UserLanguage language = 8;
+  optional Date birth_date = 9;
+  string password = 10;
 }
 
 message RegisterResponse {
-  int64 user_id = 1;
-  string session_id = 2;
+  string session_id = 1;
 }
 
 message RefreshTokensRequest {}
