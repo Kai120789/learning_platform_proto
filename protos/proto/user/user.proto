@@ -115,7 +115,7 @@ message UpdateUserInfoRequest {
   int64 user_id = 1;
   optional string name = 2;
   optional string surname = 3;
-  optional string lastname = 4;
+  optional string patronymic = 4;
   optional string city = 5;
   optional string about = 6;
   UserGender gender = 7;
@@ -125,7 +125,7 @@ message UpdateUserInfoRequest {
 message UpdateUserInfoResponse {
   string name = 1;
   string surname = 2;
-  optional string lastname = 3;
+  optional string patronymic = 3;
   optional string city = 4;
   optional string about = 5;
   optional string avatar = 6;

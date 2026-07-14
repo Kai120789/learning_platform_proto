@@ -913,7 +913,7 @@ type UpdateUserInfoRequest struct {
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	Surname       *string                `protobuf:"bytes,3,opt,name=surname,proto3,oneof" json:"surname,omitempty"`
-	Lastname      *string                `protobuf:"bytes,4,opt,name=lastname,proto3,oneof" json:"lastname,omitempty"`
+	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
 	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
@@ -973,9 +973,9 @@ func (x *UpdateUserInfoRequest) GetSurname() string {
 	return ""
 }
 
-func (x *UpdateUserInfoRequest) GetLastname() string {
-	if x != nil && x.Lastname != nil {
-		return *x.Lastname
+func (x *UpdateUserInfoRequest) GetPatronymic() string {
+	if x != nil && x.Patronymic != nil {
+		return *x.Patronymic
 	}
 	return ""
 }
@@ -1012,7 +1012,7 @@ type UpdateUserInfoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,2,opt,name=surname,proto3" json:"surname,omitempty"`
-	Lastname      *string                `protobuf:"bytes,3,opt,name=lastname,proto3,oneof" json:"lastname,omitempty"`
+	Patronymic    *string                `protobuf:"bytes,3,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	City          *string                `protobuf:"bytes,4,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,5,opt,name=about,proto3,oneof" json:"about,omitempty"`
 	Avatar        *string                `protobuf:"bytes,6,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
@@ -1066,9 +1066,9 @@ func (x *UpdateUserInfoResponse) GetSurname() string {
 	return ""
 }
 
-func (x *UpdateUserInfoResponse) GetLastname() string {
-	if x != nil && x.Lastname != nil {
-		return *x.Lastname
+func (x *UpdateUserInfoResponse) GetPatronymic() string {
+	if x != nil && x.Patronymic != nil {
+		return *x.Patronymic
 	}
 	return ""
 }
@@ -1662,12 +1662,14 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x15\n" +
-	"\x13ChangeEmailResponse\"\xdb\x02\n" +
+	"\x13ChangeEmailResponse\"\xe1\x02\n" +
 	"\x15UpdateUserInfoRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1d\n" +
-	"\asurname\x18\x03 \x01(\tH\x01R\asurname\x88\x01\x01\x12\x1f\n" +
-	"\blastname\x18\x04 \x01(\tH\x02R\blastname\x88\x01\x01\x12\x17\n" +
+	"\asurname\x18\x03 \x01(\tH\x01R\asurname\x88\x01\x01\x12#\n" +
+	"\n" +
+	"patronymic\x18\x04 \x01(\tH\x02R\n" +
+	"patronymic\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x05 \x01(\tH\x03R\x04city\x88\x01\x01\x12\x19\n" +
 	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12(\n" +
 	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
@@ -1676,23 +1678,25 @@ const file_user_user_proto_rawDesc = "" +
 	".user.DateH\x05R\tbirthDate\x88\x01\x01B\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
-	"\b_surnameB\v\n" +
-	"\t_lastnameB\a\n" +
+	"\b_surnameB\r\n" +
+	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\r\n" +
-	"\v_birth_date\"\xcc\x02\n" +
+	"\v_birth_date\"\xd2\x02\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x02 \x01(\tR\asurname\x12\x1f\n" +
-	"\blastname\x18\x03 \x01(\tH\x00R\blastname\x88\x01\x01\x12\x17\n" +
+	"\asurname\x18\x02 \x01(\tR\asurname\x12#\n" +
+	"\n" +
+	"patronymic\x18\x03 \x01(\tH\x00R\n" +
+	"patronymic\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x04 \x01(\tH\x01R\x04city\x88\x01\x01\x12\x19\n" +
 	"\x05about\x18\x05 \x01(\tH\x02R\x05about\x88\x01\x01\x12\x1b\n" +
 	"\x06avatar\x18\x06 \x01(\tH\x03R\x06avatar\x88\x01\x01\x12(\n" +
 	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\n" +
 	"birth_date\x18\b \x01(\v2\n" +
-	".user.DateH\x04R\tbirthDate\x88\x01\x01B\v\n" +
-	"\t_lastnameB\a\n" +
+	".user.DateH\x04R\tbirthDate\x88\x01\x01B\r\n" +
+	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\t\n" +
 	"\a_avatarB\r\n" +
