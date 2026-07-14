@@ -57,7 +57,7 @@ message RegisterRequest {
   string email = 2;
   string name = 3;
   string surname = 4;
-  optional string lastname = 5;
+  optional string patronymic = 5;
   UserRole role = 6;
   UserGender gender = 7;
   UserLanguage language = 8;

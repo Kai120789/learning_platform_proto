@@ -338,7 +338,7 @@ type RegisterRequest struct {
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,4,opt,name=surname,proto3" json:"surname,omitempty"`
-	Lastname      *string                `protobuf:"bytes,5,opt,name=lastname,proto3,oneof" json:"lastname,omitempty"`
+	Patronymic    *string                `protobuf:"bytes,5,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	Role          UserRole               `protobuf:"varint,6,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
 	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=auth.UserGender" json:"gender,omitempty"`
 	Language      UserLanguage           `protobuf:"varint,8,opt,name=language,proto3,enum=auth.UserLanguage" json:"language,omitempty"`
@@ -406,9 +406,9 @@ func (x *RegisterRequest) GetSurname() string {
 	return ""
 }
 
-func (x *RegisterRequest) GetLastname() string {
-	if x != nil && x.Lastname != nil {
-		return *x.Lastname
+func (x *RegisterRequest) GetPatronymic() string {
+	if x != nil && x.Patronymic != nil {
+		return *x.Patronymic
 	}
 	return ""
 }
@@ -1299,13 +1299,15 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\".\n" +
 	"\rLoginResponse\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x01 \x01(\tR\tsessionId\"\xf5\x02\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"\xfb\x02\n" +
 	"\x0fRegisterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x04 \x01(\tR\asurname\x12\x1f\n" +
-	"\blastname\x18\x05 \x01(\tH\x00R\blastname\x88\x01\x01\x12\"\n" +
+	"\asurname\x18\x04 \x01(\tR\asurname\x12#\n" +
+	"\n" +
+	"patronymic\x18\x05 \x01(\tH\x00R\n" +
+	"patronymic\x88\x01\x01\x12\"\n" +
 	"\x04role\x18\x06 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12(\n" +
 	"\x06gender\x18\a \x01(\x0e2\x10.auth.UserGenderR\x06gender\x12.\n" +
 	"\blanguage\x18\b \x01(\x0e2\x12.auth.UserLanguageR\blanguage\x12.\n" +
@@ -1313,8 +1315,8 @@ const file_auth_auth_proto_rawDesc = "" +
 	"birth_date\x18\t \x01(\v2\n" +
 	".auth.DateH\x01R\tbirthDate\x88\x01\x01\x12\x1a\n" +
 	"\bpassword\x18\n" +
-	" \x01(\tR\bpasswordB\v\n" +
-	"\t_lastnameB\r\n" +
+	" \x01(\tR\bpasswordB\r\n" +
+	"\v_patronymicB\r\n" +
 	"\v_birth_date\"1\n" +
 	"\x10RegisterResponse\x12\x1d\n" +
 	"\n" +
