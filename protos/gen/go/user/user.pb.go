@@ -1181,6 +1181,7 @@ type UpdateUserSettingsResponse struct {
 	Is_2FaEnabled          bool                   `protobuf:"varint,1,opt,name=is_2_fa_enabled,json=is2FaEnabled,proto3" json:"is_2_fa_enabled,omitempty"`
 	IsNotificationsEnabled bool                   `protobuf:"varint,2,opt,name=is_notifications_enabled,json=isNotificationsEnabled,proto3" json:"is_notifications_enabled,omitempty"`
 	Language               UserLanguage           `protobuf:"varint,3,opt,name=language,proto3,enum=user.UserLanguage" json:"language,omitempty"`
+	Theme                  UserTheme              `protobuf:"varint,4,opt,name=theme,proto3,enum=user.UserTheme" json:"theme,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -1234,6 +1235,13 @@ func (x *UpdateUserSettingsResponse) GetLanguage() UserLanguage {
 		return x.Language
 	}
 	return UserLanguage_ENUM_LANGUAGE_UNSPECIFIED
+}
+
+func (x *UpdateUserSettingsResponse) GetTheme() UserTheme {
+	if x != nil {
+		return x.Theme
+	}
+	return UserTheme_ENUM_THEME_UNSPECIFIED
 }
 
 type GetUserByEmailRequest struct {
@@ -1707,11 +1715,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\x18is_notifications_enabled\x18\x03 \x01(\bH\x01R\x16isNotificationsEnabled\x88\x01\x01\x12.\n" +
 	"\blanguage\x18\x04 \x01(\x0e2\x12.user.UserLanguageR\blanguageB\x12\n" +
 	"\x10_is_2_fa_enabledB\x1b\n" +
-	"\x19_is_notifications_enabled\"\xad\x01\n" +
+	"\x19_is_notifications_enabled\"\xd4\x01\n" +
 	"\x1aUpdateUserSettingsResponse\x12%\n" +
 	"\x0fis_2_fa_enabled\x18\x01 \x01(\bR\fis2FaEnabled\x128\n" +
 	"\x18is_notifications_enabled\x18\x02 \x01(\bR\x16isNotificationsEnabled\x12.\n" +
-	"\blanguage\x18\x03 \x01(\x0e2\x12.user.UserLanguageR\blanguage\"-\n" +
+	"\blanguage\x18\x03 \x01(\x0e2\x12.user.UserLanguageR\blanguage\x12%\n" +
+	"\x05theme\x18\x04 \x01(\x0e2\x0f.user.UserThemeR\x05theme\"-\n" +
 	"\x15GetUserByEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"\xba\x01\n" +
 	"\x16GetUserByEmailResponse\x12\x17\n" +
@@ -1834,37 +1843,38 @@ var file_user_user_proto_depIdxs = []int32{
 	5,  // 13: user.UpdateUserInfoResponse.birth_date:type_name -> user.Date
 	4,  // 14: user.UpdateUserSettingsRequest.language:type_name -> user.UserLanguage
 	4,  // 15: user.UpdateUserSettingsResponse.language:type_name -> user.UserLanguage
-	0,  // 16: user.GetUserByEmailResponse.role:type_name -> user.UserRole
-	1,  // 17: user.GetUserByEmailResponse.status:type_name -> user.UserStatus
-	11, // 18: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
-	3,  // 19: user.UpdateUserThemeRequest.theme:type_name -> user.UserTheme
-	6,  // 20: user.User.CreateUser:input_type -> user.CreateUserRequest
-	8,  // 21: user.User.GetUserById:input_type -> user.GetUserByIdRequest
-	20, // 22: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
-	22, // 23: user.User.GetAllUsersWithData:input_type -> user.GetAllUsersWithDataRequest
-	10, // 24: user.User.GetUserData:input_type -> user.GetUserDataRequest
-	12, // 25: user.User.ChangePassword:input_type -> user.ChangePasswordRequest
-	14, // 26: user.User.ChangeEmail:input_type -> user.ChangeEmailRequest
-	16, // 27: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
-	18, // 28: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
-	24, // 29: user.User.UpdateUserTheme:input_type -> user.UpdateUserThemeRequest
-	27, // 30: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
-	7,  // 31: user.User.CreateUser:output_type -> user.CreateUserResponse
-	9,  // 32: user.User.GetUserById:output_type -> user.GetUserByIdResponse
-	21, // 33: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
-	23, // 34: user.User.GetAllUsersWithData:output_type -> user.GetAllUsersWithDataResponse
-	11, // 35: user.User.GetUserData:output_type -> user.GetUserDataResponse
-	13, // 36: user.User.ChangePassword:output_type -> user.ChangePasswordResponse
-	15, // 37: user.User.ChangeEmail:output_type -> user.ChangeEmailResponse
-	17, // 38: user.User.UpdateUserInfo:output_type -> user.UpdateUserInfoResponse
-	19, // 39: user.User.UpdateUserSettings:output_type -> user.UpdateUserSettingsResponse
-	25, // 40: user.User.UpdateUserTheme:output_type -> user.UpdateUserThemeResponse
-	26, // 41: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
-	31, // [31:42] is the sub-list for method output_type
-	20, // [20:31] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	3,  // 16: user.UpdateUserSettingsResponse.theme:type_name -> user.UserTheme
+	0,  // 17: user.GetUserByEmailResponse.role:type_name -> user.UserRole
+	1,  // 18: user.GetUserByEmailResponse.status:type_name -> user.UserStatus
+	11, // 19: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
+	3,  // 20: user.UpdateUserThemeRequest.theme:type_name -> user.UserTheme
+	6,  // 21: user.User.CreateUser:input_type -> user.CreateUserRequest
+	8,  // 22: user.User.GetUserById:input_type -> user.GetUserByIdRequest
+	20, // 23: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
+	22, // 24: user.User.GetAllUsersWithData:input_type -> user.GetAllUsersWithDataRequest
+	10, // 25: user.User.GetUserData:input_type -> user.GetUserDataRequest
+	12, // 26: user.User.ChangePassword:input_type -> user.ChangePasswordRequest
+	14, // 27: user.User.ChangeEmail:input_type -> user.ChangeEmailRequest
+	16, // 28: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
+	18, // 29: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
+	24, // 30: user.User.UpdateUserTheme:input_type -> user.UpdateUserThemeRequest
+	27, // 31: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
+	7,  // 32: user.User.CreateUser:output_type -> user.CreateUserResponse
+	9,  // 33: user.User.GetUserById:output_type -> user.GetUserByIdResponse
+	21, // 34: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
+	23, // 35: user.User.GetAllUsersWithData:output_type -> user.GetAllUsersWithDataResponse
+	11, // 36: user.User.GetUserData:output_type -> user.GetUserDataResponse
+	13, // 37: user.User.ChangePassword:output_type -> user.ChangePasswordResponse
+	15, // 38: user.User.ChangeEmail:output_type -> user.ChangeEmailResponse
+	17, // 39: user.User.UpdateUserInfo:output_type -> user.UpdateUserInfoResponse
+	19, // 40: user.User.UpdateUserSettings:output_type -> user.UpdateUserSettingsResponse
+	25, // 41: user.User.UpdateUserTheme:output_type -> user.UpdateUserThemeResponse
+	26, // 42: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
+	32, // [32:43] is the sub-list for method output_type
+	21, // [21:32] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }

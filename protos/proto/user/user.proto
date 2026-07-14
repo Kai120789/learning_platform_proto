@@ -144,6 +144,7 @@ message UpdateUserSettingsResponse {
   bool is_2_fa_enabled = 1;
   bool is_notifications_enabled = 2;
   UserLanguage language = 3;
+  UserTheme theme = 4;
 }
 
 message GetUserByEmailRequest {
