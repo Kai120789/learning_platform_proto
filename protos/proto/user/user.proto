@@ -172,9 +172,9 @@ message UpdateUserThemeRequest {
 
 message UpdateUserThemeResponse {}
 
-message UpdateUserAvatarResponse {
+message UpdateUserAvatarRequest {
   int64 user_id = 1;
   string avatar_url = 2;
 }
 
-message UpdateUserAvatarRequest {}
+message UpdateUserAvatarResponse {}

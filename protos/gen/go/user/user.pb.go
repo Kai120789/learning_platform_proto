@@ -1532,7 +1532,7 @@ func (*UpdateUserThemeResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{20}
 }
 
-type UpdateUserAvatarResponse struct {
+type UpdateUserAvatarRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	AvatarUrl     string                 `protobuf:"bytes,2,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
@@ -1540,59 +1540,9 @@ type UpdateUserAvatarResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserAvatarResponse) Reset() {
-	*x = UpdateUserAvatarResponse{}
-	mi := &file_user_user_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateUserAvatarResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateUserAvatarResponse) ProtoMessage() {}
-
-func (x *UpdateUserAvatarResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateUserAvatarResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUserAvatarResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UpdateUserAvatarResponse) GetUserId() int64 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
-}
-
-func (x *UpdateUserAvatarResponse) GetAvatarUrl() string {
-	if x != nil {
-		return x.AvatarUrl
-	}
-	return ""
-}
-
-type UpdateUserAvatarRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
 func (x *UpdateUserAvatarRequest) Reset() {
 	*x = UpdateUserAvatarRequest{}
-	mi := &file_user_user_proto_msgTypes[22]
+	mi := &file_user_user_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1604,7 +1554,7 @@ func (x *UpdateUserAvatarRequest) String() string {
 func (*UpdateUserAvatarRequest) ProtoMessage() {}
 
 func (x *UpdateUserAvatarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[22]
+	mi := &file_user_user_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1617,6 +1567,56 @@ func (x *UpdateUserAvatarRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserAvatarRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserAvatarRequest) Descriptor() ([]byte, []int) {
+	return file_user_user_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UpdateUserAvatarRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *UpdateUserAvatarRequest) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
+type UpdateUserAvatarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserAvatarResponse) Reset() {
+	*x = UpdateUserAvatarResponse{}
+	mi := &file_user_user_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserAvatarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserAvatarResponse) ProtoMessage() {}
+
+func (x *UpdateUserAvatarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_user_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserAvatarResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserAvatarResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{22}
 }
 
@@ -1735,12 +1735,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\x16UpdateUserThemeRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12%\n" +
 	"\x05theme\x18\x02 \x01(\x0e2\x0f.user.UserThemeR\x05theme\"\x19\n" +
-	"\x17UpdateUserThemeResponse\"R\n" +
-	"\x18UpdateUserAvatarResponse\x12\x17\n" +
+	"\x17UpdateUserThemeResponse\"Q\n" +
+	"\x17UpdateUserAvatarRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1d\n" +
 	"\n" +
-	"avatar_url\x18\x02 \x01(\tR\tavatarUrl\"\x19\n" +
-	"\x17UpdateUserAvatarRequest*H\n" +
+	"avatar_url\x18\x02 \x01(\tR\tavatarUrl\"\x1a\n" +
+	"\x18UpdateUserAvatarResponse*H\n" +
 	"\bUserRole\x12\x19\n" +
 	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05TUTOR\x10\x01\x12\v\n" +
@@ -1823,8 +1823,8 @@ var file_user_user_proto_goTypes = []any{
 	(*GetAllUsersWithDataResponse)(nil), // 23: user.GetAllUsersWithDataResponse
 	(*UpdateUserThemeRequest)(nil),      // 24: user.UpdateUserThemeRequest
 	(*UpdateUserThemeResponse)(nil),     // 25: user.UpdateUserThemeResponse
-	(*UpdateUserAvatarResponse)(nil),    // 26: user.UpdateUserAvatarResponse
-	(*UpdateUserAvatarRequest)(nil),     // 27: user.UpdateUserAvatarRequest
+	(*UpdateUserAvatarRequest)(nil),     // 26: user.UpdateUserAvatarRequest
+	(*UpdateUserAvatarResponse)(nil),    // 27: user.UpdateUserAvatarResponse
 }
 var file_user_user_proto_depIdxs = []int32{
 	0,  // 0: user.CreateUserRequest.role:type_name -> user.UserRole
@@ -1858,7 +1858,7 @@ var file_user_user_proto_depIdxs = []int32{
 	16, // 28: user.User.UpdateUserInfo:input_type -> user.UpdateUserInfoRequest
 	18, // 29: user.User.UpdateUserSettings:input_type -> user.UpdateUserSettingsRequest
 	24, // 30: user.User.UpdateUserTheme:input_type -> user.UpdateUserThemeRequest
-	27, // 31: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
+	26, // 31: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
 	7,  // 32: user.User.CreateUser:output_type -> user.CreateUserResponse
 	9,  // 33: user.User.GetUserById:output_type -> user.GetUserByIdResponse
 	21, // 34: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
@@ -1869,7 +1869,7 @@ var file_user_user_proto_depIdxs = []int32{
 	17, // 39: user.User.UpdateUserInfo:output_type -> user.UpdateUserInfoResponse
 	19, // 40: user.User.UpdateUserSettings:output_type -> user.UpdateUserSettingsResponse
 	25, // 41: user.User.UpdateUserTheme:output_type -> user.UpdateUserThemeResponse
-	26, // 42: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
+	27, // 42: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
 	32, // [32:43] is the sub-list for method output_type
 	21, // [21:32] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name
