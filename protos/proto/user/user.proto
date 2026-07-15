@@ -62,7 +62,7 @@ message CreateUserRequest {
   string surname = 3;
   optional string patronymic = 4;
   UserRole role = 5;
-  UserGender gender = 6;
+  optional UserGender gender = 6;
   UserLanguage language = 7;
   string password_hash = 8;
   optional Date birth_date = 9;
@@ -118,7 +118,7 @@ message UpdateUserInfoRequest {
   optional string patronymic = 4;
   optional string city = 5;
   optional string about = 6;
-  UserGender gender = 7;
+  optional UserGender gender = 7;
   optional Date birth_date = 8;
 }
 

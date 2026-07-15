@@ -339,7 +339,7 @@ type CreateUserRequest struct {
 	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Gender        UserGender             `protobuf:"varint,6,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
+	Gender        *UserGender            `protobuf:"varint,6,opt,name=gender,proto3,enum=user.UserGender,oneof" json:"gender,omitempty"`
 	Language      UserLanguage           `protobuf:"varint,7,opt,name=language,proto3,enum=user.UserLanguage" json:"language,omitempty"`
 	PasswordHash  string                 `protobuf:"bytes,8,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
 	BirthDate     *Date                  `protobuf:"bytes,9,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
@@ -413,8 +413,8 @@ func (x *CreateUserRequest) GetRole() UserRole {
 }
 
 func (x *CreateUserRequest) GetGender() UserGender {
-	if x != nil {
-		return x.Gender
+	if x != nil && x.Gender != nil {
+		return *x.Gender
 	}
 	return UserGender_ENUM_GENDER_UNSPECIFIED
 }
@@ -916,7 +916,7 @@ type UpdateUserInfoRequest struct {
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
-	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
+	Gender        *UserGender            `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender,oneof" json:"gender,omitempty"`
 	BirthDate     *Date                  `protobuf:"bytes,8,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -995,8 +995,8 @@ func (x *UpdateUserInfoRequest) GetAbout() string {
 }
 
 func (x *UpdateUserInfoRequest) GetGender() UserGender {
-	if x != nil {
-		return x.Gender
+	if x != nil && x.Gender != nil {
+		return *x.Gender
 	}
 	return UserGender_ENUM_GENDER_UNSPECIFIED
 }
@@ -1628,7 +1628,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\xed\x02\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"\xfd\x02\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -1636,14 +1636,15 @@ const file_user_user_proto_rawDesc = "" +
 	"\n" +
 	"patronymic\x18\x04 \x01(\tH\x00R\n" +
 	"patronymic\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
-	"\x06gender\x18\x06 \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12-\n" +
+	"\x06gender\x18\x06 \x01(\x0e2\x10.user.UserGenderH\x01R\x06gender\x88\x01\x01\x12.\n" +
 	"\blanguage\x18\a \x01(\x0e2\x12.user.UserLanguageR\blanguage\x12#\n" +
 	"\rpassword_hash\x18\b \x01(\tR\fpasswordHash\x12.\n" +
 	"\n" +
 	"birth_date\x18\t \x01(\v2\n" +
-	".user.DateH\x01R\tbirthDate\x88\x01\x01B\r\n" +
-	"\v_patronymicB\r\n" +
+	".user.DateH\x02R\tbirthDate\x88\x01\x01B\r\n" +
+	"\v_patronymicB\t\n" +
+	"\a_genderB\r\n" +
 	"\v_birth_date\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"-\n" +
@@ -1671,7 +1672,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x15\n" +
-	"\x13ChangeEmailResponse\"\xe1\x02\n" +
+	"\x13ChangeEmailResponse\"\xf1\x02\n" +
 	"\x15UpdateUserInfoRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1d\n" +
@@ -1680,17 +1681,18 @@ const file_user_user_proto_rawDesc = "" +
 	"patronymic\x18\x04 \x01(\tH\x02R\n" +
 	"patronymic\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x05 \x01(\tH\x03R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12(\n" +
-	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
+	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12-\n" +
+	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderH\x05R\x06gender\x88\x01\x01\x12.\n" +
 	"\n" +
 	"birth_date\x18\b \x01(\v2\n" +
-	".user.DateH\x05R\tbirthDate\x88\x01\x01B\a\n" +
+	".user.DateH\x06R\tbirthDate\x88\x01\x01B\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
 	"\b_surnameB\r\n" +
 	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
-	"\x06_aboutB\r\n" +
+	"\x06_aboutB\t\n" +
+	"\a_genderB\r\n" +
 	"\v_birth_date\"\xd2\x02\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
