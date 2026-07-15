@@ -21,153 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type UserRole int32
-
-const (
-	UserRole_ENUM_NAME_UNSPECIFIED UserRole = 0
-	UserRole_TUTOR                 UserRole = 1
-	UserRole_STUDENT               UserRole = 2
-)
-
-// Enum value maps for UserRole.
-var (
-	UserRole_name = map[int32]string{
-		0: "ENUM_NAME_UNSPECIFIED",
-		1: "TUTOR",
-		2: "STUDENT",
-	}
-	UserRole_value = map[string]int32{
-		"ENUM_NAME_UNSPECIFIED": 0,
-		"TUTOR":                 1,
-		"STUDENT":               2,
-	}
-)
-
-func (x UserRole) Enum() *UserRole {
-	p := new(UserRole)
-	*p = x
-	return p
-}
-
-func (x UserRole) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (UserRole) Descriptor() protoreflect.EnumDescriptor {
-	return file_auth_auth_proto_enumTypes[0].Descriptor()
-}
-
-func (UserRole) Type() protoreflect.EnumType {
-	return &file_auth_auth_proto_enumTypes[0]
-}
-
-func (x UserRole) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use UserRole.Descriptor instead.
-func (UserRole) EnumDescriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{0}
-}
-
-type UserGender int32
-
-const (
-	UserGender_ENUM_GENDER_UNSPECIFIED UserGender = 0
-	UserGender_MALE                    UserGender = 1
-	UserGender_FEMALE                  UserGender = 2
-)
-
-// Enum value maps for UserGender.
-var (
-	UserGender_name = map[int32]string{
-		0: "ENUM_GENDER_UNSPECIFIED",
-		1: "MALE",
-		2: "FEMALE",
-	}
-	UserGender_value = map[string]int32{
-		"ENUM_GENDER_UNSPECIFIED": 0,
-		"MALE":                    1,
-		"FEMALE":                  2,
-	}
-)
-
-func (x UserGender) Enum() *UserGender {
-	p := new(UserGender)
-	*p = x
-	return p
-}
-
-func (x UserGender) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (UserGender) Descriptor() protoreflect.EnumDescriptor {
-	return file_auth_auth_proto_enumTypes[1].Descriptor()
-}
-
-func (UserGender) Type() protoreflect.EnumType {
-	return &file_auth_auth_proto_enumTypes[1]
-}
-
-func (x UserGender) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use UserGender.Descriptor instead.
-func (UserGender) EnumDescriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{1}
-}
-
-type UserLanguage int32
-
-const (
-	UserLanguage_ENUM_LANGUAGE_UNSPECIFIED UserLanguage = 0
-	UserLanguage_RU                        UserLanguage = 1
-	UserLanguage_EN                        UserLanguage = 2
-)
-
-// Enum value maps for UserLanguage.
-var (
-	UserLanguage_name = map[int32]string{
-		0: "ENUM_LANGUAGE_UNSPECIFIED",
-		1: "RU",
-		2: "EN",
-	}
-	UserLanguage_value = map[string]int32{
-		"ENUM_LANGUAGE_UNSPECIFIED": 0,
-		"RU":                        1,
-		"EN":                        2,
-	}
-)
-
-func (x UserLanguage) Enum() *UserLanguage {
-	p := new(UserLanguage)
-	*p = x
-	return p
-}
-
-func (x UserLanguage) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (UserLanguage) Descriptor() protoreflect.EnumDescriptor {
-	return file_auth_auth_proto_enumTypes[2].Descriptor()
-}
-
-func (UserLanguage) Type() protoreflect.EnumType {
-	return &file_auth_auth_proto_enumTypes[2]
-}
-
-func (x UserLanguage) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use UserLanguage.Descriptor instead.
-func (UserLanguage) EnumDescriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{2}
-}
-
 type Date struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Year          int32                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
@@ -1288,21 +1141,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x17ForceChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x1a\n" +
-	"\x18ForceChangeEmailResponse*=\n" +
-	"\bUserRole\x12\x19\n" +
-	"\x15ENUM_NAME_UNSPECIFIED\x10\x00\x12\t\n" +
-	"\x05TUTOR\x10\x01\x12\v\n" +
-	"\aSTUDENT\x10\x02*?\n" +
-	"\n" +
-	"UserGender\x12\x1b\n" +
-	"\x17ENUM_GENDER_UNSPECIFIED\x10\x00\x12\b\n" +
-	"\x04MALE\x10\x01\x12\n" +
-	"\n" +
-	"\x06FEMALE\x10\x02*=\n" +
-	"\fUserLanguage\x12\x1d\n" +
-	"\x19ENUM_LANGUAGE_UNSPECIFIED\x10\x00\x12\x06\n" +
-	"\x02RU\x10\x01\x12\x06\n" +
-	"\x02EN\x10\x022\x99\x06\n" +
+	"\x18ForceChangeEmailResponse2\x99\x06\n" +
 	"\x04Auth\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12H\n" +
@@ -1328,59 +1167,55 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_auth_auth_proto_goTypes = []any{
-	(UserRole)(0),                        // 0: auth.UserRole
-	(UserGender)(0),                      // 1: auth.UserGender
-	(UserLanguage)(0),                    // 2: auth.UserLanguage
-	(*Date)(nil),                         // 3: auth.Date
-	(*LoginRequest)(nil),                 // 4: auth.LoginRequest
-	(*LoginResponse)(nil),                // 5: auth.LoginResponse
-	(*RegisterRequest)(nil),              // 6: auth.RegisterRequest
-	(*RegisterResponse)(nil),             // 7: auth.RegisterResponse
-	(*RefreshTokensRequest)(nil),         // 8: auth.RefreshTokensRequest
-	(*RefreshTokensResponse)(nil),        // 9: auth.RefreshTokensResponse
-	(*CheckPasswordRequest)(nil),         // 10: auth.CheckPasswordRequest
-	(*CheckPasswordResponse)(nil),        // 11: auth.CheckPasswordResponse
-	(*GeneratePasswordHashRequest)(nil),  // 12: auth.GeneratePasswordHashRequest
-	(*GeneratePasswordHashResponse)(nil), // 13: auth.GeneratePasswordHashResponse
-	(*LogoutRequest)(nil),                // 14: auth.LogoutRequest
-	(*LogoutResponse)(nil),               // 15: auth.LogoutResponse
-	(*LogoutAllRequest)(nil),             // 16: auth.LogoutAllRequest
-	(*LogoutAllResponse)(nil),            // 17: auth.LogoutAllResponse
-	(*ChangePasswordRequest)(nil),        // 18: auth.ChangePasswordRequest
-	(*ChangePasswordResponse)(nil),       // 19: auth.ChangePasswordResponse
-	(*ForceChangePasswordRequest)(nil),   // 20: auth.ForceChangePasswordRequest
-	(*ForceChangePasswordResponse)(nil),  // 21: auth.ForceChangePasswordResponse
-	(*ChangeEmailRequest)(nil),           // 22: auth.ChangeEmailRequest
-	(*ChangeEmailResponse)(nil),          // 23: auth.ChangeEmailResponse
-	(*ForceChangeEmailRequest)(nil),      // 24: auth.ForceChangeEmailRequest
-	(*ForceChangeEmailResponse)(nil),     // 25: auth.ForceChangeEmailResponse
+	(*Date)(nil),                         // 0: auth.Date
+	(*LoginRequest)(nil),                 // 1: auth.LoginRequest
+	(*LoginResponse)(nil),                // 2: auth.LoginResponse
+	(*RegisterRequest)(nil),              // 3: auth.RegisterRequest
+	(*RegisterResponse)(nil),             // 4: auth.RegisterResponse
+	(*RefreshTokensRequest)(nil),         // 5: auth.RefreshTokensRequest
+	(*RefreshTokensResponse)(nil),        // 6: auth.RefreshTokensResponse
+	(*CheckPasswordRequest)(nil),         // 7: auth.CheckPasswordRequest
+	(*CheckPasswordResponse)(nil),        // 8: auth.CheckPasswordResponse
+	(*GeneratePasswordHashRequest)(nil),  // 9: auth.GeneratePasswordHashRequest
+	(*GeneratePasswordHashResponse)(nil), // 10: auth.GeneratePasswordHashResponse
+	(*LogoutRequest)(nil),                // 11: auth.LogoutRequest
+	(*LogoutResponse)(nil),               // 12: auth.LogoutResponse
+	(*LogoutAllRequest)(nil),             // 13: auth.LogoutAllRequest
+	(*LogoutAllResponse)(nil),            // 14: auth.LogoutAllResponse
+	(*ChangePasswordRequest)(nil),        // 15: auth.ChangePasswordRequest
+	(*ChangePasswordResponse)(nil),       // 16: auth.ChangePasswordResponse
+	(*ForceChangePasswordRequest)(nil),   // 17: auth.ForceChangePasswordRequest
+	(*ForceChangePasswordResponse)(nil),  // 18: auth.ForceChangePasswordResponse
+	(*ChangeEmailRequest)(nil),           // 19: auth.ChangeEmailRequest
+	(*ChangeEmailResponse)(nil),          // 20: auth.ChangeEmailResponse
+	(*ForceChangeEmailRequest)(nil),      // 21: auth.ForceChangeEmailRequest
+	(*ForceChangeEmailResponse)(nil),     // 22: auth.ForceChangeEmailResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	4,  // 0: auth.Auth.Login:input_type -> auth.LoginRequest
-	6,  // 1: auth.Auth.Register:input_type -> auth.RegisterRequest
-	8,  // 2: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
-	10, // 3: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
-	12, // 4: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
-	14, // 5: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	16, // 6: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
-	18, // 7: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
-	20, // 8: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
-	22, // 9: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
-	24, // 10: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
-	5,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
-	7,  // 12: auth.Auth.Register:output_type -> auth.RegisterResponse
-	9,  // 13: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
-	11, // 14: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
-	13, // 15: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
-	15, // 16: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	17, // 17: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
-	19, // 18: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
-	21, // 19: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
-	23, // 20: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
-	25, // 21: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
+	1,  // 0: auth.Auth.Login:input_type -> auth.LoginRequest
+	3,  // 1: auth.Auth.Register:input_type -> auth.RegisterRequest
+	5,  // 2: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
+	7,  // 3: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
+	9,  // 4: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
+	11, // 5: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	13, // 6: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
+	15, // 7: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
+	17, // 8: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
+	19, // 9: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
+	21, // 10: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
+	2,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
+	4,  // 12: auth.Auth.Register:output_type -> auth.RegisterResponse
+	6,  // 13: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
+	8,  // 14: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
+	10, // 15: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
+	12, // 16: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	14, // 17: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
+	16, // 18: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
+	18, // 19: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
+	20, // 20: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
+	22, // 21: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
 	11, // [11:22] is the sub-list for method output_type
 	0,  // [0:11] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
@@ -1398,14 +1233,13 @@ func file_auth_auth_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
-			NumEnums:      3,
+			NumEnums:      0,
 			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_auth_auth_proto_goTypes,
 		DependencyIndexes: file_auth_auth_proto_depIdxs,
-		EnumInfos:         file_auth_auth_proto_enumTypes,
 		MessageInfos:      file_auth_auth_proto_msgTypes,
 	}.Build()
 	File_auth_auth_proto = out.File

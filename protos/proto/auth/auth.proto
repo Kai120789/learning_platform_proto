@@ -18,24 +18,6 @@ service Auth {
   rpc ForceChangeEmail (ForceChangeEmailRequest) returns (ForceChangeEmailResponse);
 }
 
-enum UserRole {
-  ENUM_NAME_UNSPECIFIED = 0;
-  TUTOR = 1;
-  STUDENT = 2;
-}
-
-enum UserGender {
-  ENUM_GENDER_UNSPECIFIED = 0;
-  MALE = 1;
-  FEMALE = 2;
-}
-
-enum UserLanguage {
-  ENUM_LANGUAGE_UNSPECIFIED = 0;
-  RU = 1;
-  EN = 2;
-}
-
 message Date {
   int32 year = 1;
   int32 month = 2;
