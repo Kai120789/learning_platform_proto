@@ -337,7 +337,7 @@ type CreateUserRequest struct {
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
-	LastName      *string                `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
 	Gender        UserGender             `protobuf:"varint,6,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
 	Language      UserLanguage           `protobuf:"varint,7,opt,name=language,proto3,enum=user.UserLanguage" json:"language,omitempty"`
@@ -398,9 +398,9 @@ func (x *CreateUserRequest) GetSurname() string {
 	return ""
 }
 
-func (x *CreateUserRequest) GetLastName() string {
-	if x != nil && x.LastName != nil {
-		return *x.LastName
+func (x *CreateUserRequest) GetPatronymic() string {
+	if x != nil && x.Patronymic != nil {
+		return *x.Patronymic
 	}
 	return ""
 }
@@ -1628,21 +1628,22 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\xe9\x02\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"\xed\x02\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x03 \x01(\tR\asurname\x12 \n" +
-	"\tlast_name\x18\x04 \x01(\tH\x00R\blastName\x88\x01\x01\x12\"\n" +
+	"\asurname\x18\x03 \x01(\tR\asurname\x12#\n" +
+	"\n" +
+	"patronymic\x18\x04 \x01(\tH\x00R\n" +
+	"patronymic\x88\x01\x01\x12\"\n" +
 	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
 	"\x06gender\x18\x06 \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\blanguage\x18\a \x01(\x0e2\x12.user.UserLanguageR\blanguage\x12#\n" +
 	"\rpassword_hash\x18\b \x01(\tR\fpasswordHash\x12.\n" +
 	"\n" +
 	"birth_date\x18\t \x01(\v2\n" +
-	".user.DateH\x01R\tbirthDate\x88\x01\x01B\f\n" +
-	"\n" +
-	"_last_nameB\r\n" +
+	".user.DateH\x01R\tbirthDate\x88\x01\x01B\r\n" +
+	"\v_patronymicB\r\n" +
 	"\v_birth_date\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"-\n" +

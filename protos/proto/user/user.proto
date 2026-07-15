@@ -60,7 +60,7 @@ message CreateUserRequest {
   string email = 1;
   string name = 2;
   string surname = 3;
-  optional string last_name = 4;
+  optional string patronymic = 4;
   UserRole role = 5;
   UserGender gender = 6;
   UserLanguage language = 7;
