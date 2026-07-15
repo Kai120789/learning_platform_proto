@@ -36,6 +36,7 @@ enum UserGender {
   ENUM_GENDER_UNSPECIFIED = 0;
   MALE = 1;
   FEMALE = 2;
+  UNKNOWN = 3;
 }
 
 enum UserTheme {
@@ -62,7 +63,7 @@ message CreateUserRequest {
   string surname = 3;
   optional string patronymic = 4;
   UserRole role = 5;
-  optional UserGender gender = 6;
+  UserGender gender = 6;
   UserLanguage language = 7;
   string password_hash = 8;
   optional Date birth_date = 9;

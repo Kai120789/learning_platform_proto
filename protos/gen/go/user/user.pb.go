@@ -131,6 +131,7 @@ const (
 	UserGender_ENUM_GENDER_UNSPECIFIED UserGender = 0
 	UserGender_MALE                    UserGender = 1
 	UserGender_FEMALE                  UserGender = 2
+	UserGender_UNKNOWN                 UserGender = 3
 )
 
 // Enum value maps for UserGender.
@@ -139,11 +140,13 @@ var (
 		0: "ENUM_GENDER_UNSPECIFIED",
 		1: "MALE",
 		2: "FEMALE",
+		3: "UNKNOWN",
 	}
 	UserGender_value = map[string]int32{
 		"ENUM_GENDER_UNSPECIFIED": 0,
 		"MALE":                    1,
 		"FEMALE":                  2,
+		"UNKNOWN":                 3,
 	}
 )
 
@@ -339,7 +342,7 @@ type CreateUserRequest struct {
 	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Gender        *UserGender            `protobuf:"varint,6,opt,name=gender,proto3,enum=user.UserGender,oneof" json:"gender,omitempty"`
+	Gender        UserGender             `protobuf:"varint,6,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
 	Language      UserLanguage           `protobuf:"varint,7,opt,name=language,proto3,enum=user.UserLanguage" json:"language,omitempty"`
 	PasswordHash  string                 `protobuf:"bytes,8,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
 	BirthDate     *Date                  `protobuf:"bytes,9,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
@@ -413,8 +416,8 @@ func (x *CreateUserRequest) GetRole() UserRole {
 }
 
 func (x *CreateUserRequest) GetGender() UserGender {
-	if x != nil && x.Gender != nil {
-		return *x.Gender
+	if x != nil {
+		return x.Gender
 	}
 	return UserGender_ENUM_GENDER_UNSPECIFIED
 }
@@ -1628,7 +1631,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\xfd\x02\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"\xed\x02\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -1636,15 +1639,14 @@ const file_user_user_proto_rawDesc = "" +
 	"\n" +
 	"patronymic\x18\x04 \x01(\tH\x00R\n" +
 	"patronymic\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12-\n" +
-	"\x06gender\x18\x06 \x01(\x0e2\x10.user.UserGenderH\x01R\x06gender\x88\x01\x01\x12.\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
+	"\x06gender\x18\x06 \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\blanguage\x18\a \x01(\x0e2\x12.user.UserLanguageR\blanguage\x12#\n" +
 	"\rpassword_hash\x18\b \x01(\tR\fpasswordHash\x12.\n" +
 	"\n" +
 	"birth_date\x18\t \x01(\v2\n" +
-	".user.DateH\x02R\tbirthDate\x88\x01\x01B\r\n" +
-	"\v_patronymicB\t\n" +
-	"\a_genderB\r\n" +
+	".user.DateH\x01R\tbirthDate\x88\x01\x01B\r\n" +
+	"\v_patronymicB\r\n" +
 	"\v_birth_date\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"-\n" +
@@ -1756,13 +1758,14 @@ const file_user_user_proto_rawDesc = "" +
 	"\x06ACTIVE\x10\x01\x12\f\n" +
 	"\bINACTIVE\x10\x02\x12\n" +
 	"\n" +
-	"\x06BANNED\x10\x03*?\n" +
+	"\x06BANNED\x10\x03*L\n" +
 	"\n" +
 	"UserGender\x12\x1b\n" +
 	"\x17ENUM_GENDER_UNSPECIFIED\x10\x00\x12\b\n" +
 	"\x04MALE\x10\x01\x12\n" +
 	"\n" +
-	"\x06FEMALE\x10\x02*<\n" +
+	"\x06FEMALE\x10\x02\x12\v\n" +
+	"\aUNKNOWN\x10\x03*<\n" +
 	"\tUserTheme\x12\x1a\n" +
 	"\x16ENUM_THEME_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05LIGHT\x10\x01\x12\b\n" +
