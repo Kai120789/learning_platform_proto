@@ -55,14 +55,7 @@ message LoginResponse  {
 message RegisterRequest {
   int64 user_id = 1;
   string email = 2;
-  string name = 3;
-  string surname = 4;
-  optional string patronymic = 5;
-  UserRole role = 6;
-  UserGender gender = 7;
-  UserLanguage language = 8;
-  optional Date birth_date = 9;
-  string password = 10;
+  string password = 3;
 }
 
 message RegisterResponse {

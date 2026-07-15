@@ -336,14 +336,7 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Surname       string                 `protobuf:"bytes,4,opt,name=surname,proto3" json:"surname,omitempty"`
-	Patronymic    *string                `protobuf:"bytes,5,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
-	Role          UserRole               `protobuf:"varint,6,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
-	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=auth.UserGender" json:"gender,omitempty"`
-	Language      UserLanguage           `protobuf:"varint,8,opt,name=language,proto3,enum=auth.UserLanguage" json:"language,omitempty"`
-	BirthDate     *Date                  `protobuf:"bytes,9,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
-	Password      string                 `protobuf:"bytes,10,opt,name=password,proto3" json:"password,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -390,55 +383,6 @@ func (x *RegisterRequest) GetEmail() string {
 		return x.Email
 	}
 	return ""
-}
-
-func (x *RegisterRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *RegisterRequest) GetSurname() string {
-	if x != nil {
-		return x.Surname
-	}
-	return ""
-}
-
-func (x *RegisterRequest) GetPatronymic() string {
-	if x != nil && x.Patronymic != nil {
-		return *x.Patronymic
-	}
-	return ""
-}
-
-func (x *RegisterRequest) GetRole() UserRole {
-	if x != nil {
-		return x.Role
-	}
-	return UserRole_ENUM_NAME_UNSPECIFIED
-}
-
-func (x *RegisterRequest) GetGender() UserGender {
-	if x != nil {
-		return x.Gender
-	}
-	return UserGender_ENUM_GENDER_UNSPECIFIED
-}
-
-func (x *RegisterRequest) GetLanguage() UserLanguage {
-	if x != nil {
-		return x.Language
-	}
-	return UserLanguage_ENUM_LANGUAGE_UNSPECIFIED
-}
-
-func (x *RegisterRequest) GetBirthDate() *Date {
-	if x != nil {
-		return x.BirthDate
-	}
-	return nil
 }
 
 func (x *RegisterRequest) GetPassword() string {
@@ -1299,25 +1243,11 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\".\n" +
 	"\rLoginResponse\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x01 \x01(\tR\tsessionId\"\xfb\x02\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"\\\n" +
 	"\x0fRegisterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x04 \x01(\tR\asurname\x12#\n" +
-	"\n" +
-	"patronymic\x18\x05 \x01(\tH\x00R\n" +
-	"patronymic\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x06 \x01(\x0e2\x0e.auth.UserRoleR\x04role\x12(\n" +
-	"\x06gender\x18\a \x01(\x0e2\x10.auth.UserGenderR\x06gender\x12.\n" +
-	"\blanguage\x18\b \x01(\x0e2\x12.auth.UserLanguageR\blanguage\x12.\n" +
-	"\n" +
-	"birth_date\x18\t \x01(\v2\n" +
-	".auth.DateH\x01R\tbirthDate\x88\x01\x01\x12\x1a\n" +
-	"\bpassword\x18\n" +
-	" \x01(\tR\bpasswordB\r\n" +
-	"\v_patronymicB\r\n" +
-	"\v_birth_date\"1\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"1\n" +
 	"\x10RegisterResponse\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\"\x16\n" +
@@ -1429,37 +1359,33 @@ var file_auth_auth_proto_goTypes = []any{
 	(*ForceChangeEmailResponse)(nil),     // 25: auth.ForceChangeEmailResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	0,  // 0: auth.RegisterRequest.role:type_name -> auth.UserRole
-	1,  // 1: auth.RegisterRequest.gender:type_name -> auth.UserGender
-	2,  // 2: auth.RegisterRequest.language:type_name -> auth.UserLanguage
-	3,  // 3: auth.RegisterRequest.birth_date:type_name -> auth.Date
-	4,  // 4: auth.Auth.Login:input_type -> auth.LoginRequest
-	6,  // 5: auth.Auth.Register:input_type -> auth.RegisterRequest
-	8,  // 6: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
-	10, // 7: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
-	12, // 8: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
-	14, // 9: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	16, // 10: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
-	18, // 11: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
-	20, // 12: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
-	22, // 13: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
-	24, // 14: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
-	5,  // 15: auth.Auth.Login:output_type -> auth.LoginResponse
-	7,  // 16: auth.Auth.Register:output_type -> auth.RegisterResponse
-	9,  // 17: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
-	11, // 18: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
-	13, // 19: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
-	15, // 20: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	17, // 21: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
-	19, // 22: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
-	21, // 23: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
-	23, // 24: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
-	25, // 25: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
-	15, // [15:26] is the sub-list for method output_type
-	4,  // [4:15] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	4,  // 0: auth.Auth.Login:input_type -> auth.LoginRequest
+	6,  // 1: auth.Auth.Register:input_type -> auth.RegisterRequest
+	8,  // 2: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
+	10, // 3: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
+	12, // 4: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
+	14, // 5: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	16, // 6: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
+	18, // 7: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
+	20, // 8: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
+	22, // 9: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
+	24, // 10: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
+	5,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
+	7,  // 12: auth.Auth.Register:output_type -> auth.RegisterResponse
+	9,  // 13: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
+	11, // 14: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
+	13, // 15: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
+	15, // 16: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	17, // 17: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
+	19, // 18: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
+	21, // 19: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
+	23, // 20: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
+	25, // 21: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
+	11, // [11:22] is the sub-list for method output_type
+	0,  // [0:11] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -1467,7 +1393,6 @@ func file_auth_auth_proto_init() {
 	if File_auth_auth_proto != nil {
 		return
 	}
-	file_auth_auth_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
