@@ -119,7 +119,7 @@ message UpdateUserInfoRequest {
   optional string patronymic = 4;
   optional string city = 5;
   optional string about = 6;
-  optional UserGender gender = 7;
+  UserGender gender = 7;
   optional Date birth_date = 8;
 }
 

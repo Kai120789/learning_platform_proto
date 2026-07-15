@@ -919,7 +919,7 @@ type UpdateUserInfoRequest struct {
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
-	Gender        *UserGender            `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender,oneof" json:"gender,omitempty"`
+	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
 	BirthDate     *Date                  `protobuf:"bytes,8,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -998,8 +998,8 @@ func (x *UpdateUserInfoRequest) GetAbout() string {
 }
 
 func (x *UpdateUserInfoRequest) GetGender() UserGender {
-	if x != nil && x.Gender != nil {
-		return *x.Gender
+	if x != nil {
+		return x.Gender
 	}
 	return UserGender_ENUM_GENDER_UNSPECIFIED
 }
@@ -1674,7 +1674,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x15\n" +
-	"\x13ChangeEmailResponse\"\xf1\x02\n" +
+	"\x13ChangeEmailResponse\"\xe1\x02\n" +
 	"\x15UpdateUserInfoRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1d\n" +
@@ -1683,18 +1683,17 @@ const file_user_user_proto_rawDesc = "" +
 	"patronymic\x18\x04 \x01(\tH\x02R\n" +
 	"patronymic\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x05 \x01(\tH\x03R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12-\n" +
-	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderH\x05R\x06gender\x88\x01\x01\x12.\n" +
+	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12(\n" +
+	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\n" +
 	"birth_date\x18\b \x01(\v2\n" +
-	".user.DateH\x06R\tbirthDate\x88\x01\x01B\a\n" +
+	".user.DateH\x05R\tbirthDate\x88\x01\x01B\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
 	"\b_surnameB\r\n" +
 	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
-	"\x06_aboutB\t\n" +
-	"\a_genderB\r\n" +
+	"\x06_aboutB\r\n" +
 	"\v_birth_date\"\xd2\x02\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
