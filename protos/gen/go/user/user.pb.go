@@ -914,8 +914,8 @@ func (*ChangeEmailResponse) Descriptor() ([]byte, []int) {
 type UpdateUserInfoRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Surname       *string                `protobuf:"bytes,3,opt,name=surname,proto3,oneof" json:"surname,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
@@ -963,15 +963,15 @@ func (x *UpdateUserInfoRequest) GetUserId() int64 {
 }
 
 func (x *UpdateUserInfoRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
 func (x *UpdateUserInfoRequest) GetSurname() string {
-	if x != nil && x.Surname != nil {
-		return *x.Surname
+	if x != nil {
+		return x.Surname
 	}
 	return ""
 }
@@ -1114,8 +1114,8 @@ func (x *UpdateUserInfoResponse) GetBirthDate() *Date {
 type UpdateUserSettingsRequest struct {
 	state                  protoimpl.MessageState `protogen:"open.v1"`
 	UserId                 int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Is_2FaEnabled          *bool                  `protobuf:"varint,2,opt,name=is_2_fa_enabled,json=is2FaEnabled,proto3,oneof" json:"is_2_fa_enabled,omitempty"`
-	IsNotificationsEnabled *bool                  `protobuf:"varint,3,opt,name=is_notifications_enabled,json=isNotificationsEnabled,proto3,oneof" json:"is_notifications_enabled,omitempty"`
+	Is_2FaEnabled          bool                   `protobuf:"varint,2,opt,name=is_2_fa_enabled,json=is2FaEnabled,proto3" json:"is_2_fa_enabled,omitempty"`
+	IsNotificationsEnabled bool                   `protobuf:"varint,3,opt,name=is_notifications_enabled,json=isNotificationsEnabled,proto3" json:"is_notifications_enabled,omitempty"`
 	Language               UserLanguage           `protobuf:"varint,4,opt,name=language,proto3,enum=user.UserLanguage" json:"language,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
@@ -1159,15 +1159,15 @@ func (x *UpdateUserSettingsRequest) GetUserId() int64 {
 }
 
 func (x *UpdateUserSettingsRequest) GetIs_2FaEnabled() bool {
-	if x != nil && x.Is_2FaEnabled != nil {
-		return *x.Is_2FaEnabled
+	if x != nil {
+		return x.Is_2FaEnabled
 	}
 	return false
 }
 
 func (x *UpdateUserSettingsRequest) GetIsNotificationsEnabled() bool {
-	if x != nil && x.IsNotificationsEnabled != nil {
-		return *x.IsNotificationsEnabled
+	if x != nil {
+		return x.IsNotificationsEnabled
 	}
 	return false
 }
@@ -1674,23 +1674,20 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12ChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x15\n" +
-	"\x13ChangeEmailResponse\"\xe1\x02\n" +
+	"\x13ChangeEmailResponse\"\xc2\x02\n" +
 	"\x15UpdateUserInfoRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1d\n" +
-	"\asurname\x18\x03 \x01(\tH\x01R\asurname\x88\x01\x01\x12#\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\asurname\x18\x03 \x01(\tR\asurname\x12#\n" +
 	"\n" +
-	"patronymic\x18\x04 \x01(\tH\x02R\n" +
+	"patronymic\x18\x04 \x01(\tH\x00R\n" +
 	"patronymic\x88\x01\x01\x12\x17\n" +
-	"\x04city\x18\x05 \x01(\tH\x03R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x06 \x01(\tH\x04R\x05about\x88\x01\x01\x12(\n" +
+	"\x04city\x18\x05 \x01(\tH\x01R\x04city\x88\x01\x01\x12\x19\n" +
+	"\x05about\x18\x06 \x01(\tH\x02R\x05about\x88\x01\x01\x12(\n" +
 	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\n" +
 	"birth_date\x18\b \x01(\v2\n" +
-	".user.DateH\x05R\tbirthDate\x88\x01\x01B\a\n" +
-	"\x05_nameB\n" +
-	"\n" +
-	"\b_surnameB\r\n" +
+	".user.DateH\x03R\tbirthDate\x88\x01\x01B\r\n" +
 	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\r\n" +
@@ -1712,14 +1709,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\t\n" +
 	"\a_avatarB\r\n" +
-	"\v_birth_date\"\x80\x02\n" +
+	"\v_birth_date\"\xc5\x01\n" +
 	"\x19UpdateUserSettingsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12*\n" +
-	"\x0fis_2_fa_enabled\x18\x02 \x01(\bH\x00R\fis2FaEnabled\x88\x01\x01\x12=\n" +
-	"\x18is_notifications_enabled\x18\x03 \x01(\bH\x01R\x16isNotificationsEnabled\x88\x01\x01\x12.\n" +
-	"\blanguage\x18\x04 \x01(\x0e2\x12.user.UserLanguageR\blanguageB\x12\n" +
-	"\x10_is_2_fa_enabledB\x1b\n" +
-	"\x19_is_notifications_enabled\"\xd4\x01\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12%\n" +
+	"\x0fis_2_fa_enabled\x18\x02 \x01(\bR\fis2FaEnabled\x128\n" +
+	"\x18is_notifications_enabled\x18\x03 \x01(\bR\x16isNotificationsEnabled\x12.\n" +
+	"\blanguage\x18\x04 \x01(\x0e2\x12.user.UserLanguageR\blanguage\"\xd4\x01\n" +
 	"\x1aUpdateUserSettingsResponse\x12%\n" +
 	"\x0fis_2_fa_enabled\x18\x01 \x01(\bR\fis2FaEnabled\x128\n" +
 	"\x18is_notifications_enabled\x18\x02 \x01(\bR\x16isNotificationsEnabled\x12.\n" +
@@ -1890,7 +1885,6 @@ func file_user_user_proto_init() {
 	file_user_user_proto_msgTypes[1].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[11].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[12].OneofWrappers = []any{}
-	file_user_user_proto_msgTypes[13].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
