@@ -27,9 +27,8 @@ message GetGroupByIdResponse {
   string description = 3;
   int64 subject_id = 4;
   int64 tutor_id = 5;
-  int64 users_count = 6;
-  optional string tg_group_link = 7;
-  optional string tg_chat_id = 8;
+  optional string tg_group_link = 6;
+  optional string tg_chat_id = 7;
 }
 
 message GetGroupsRequest {}

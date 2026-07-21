@@ -72,9 +72,8 @@ type GetGroupByIdResponse struct {
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	SubjectId     int64                  `protobuf:"varint,4,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
 	TutorId       int64                  `protobuf:"varint,5,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
-	UsersCount    int64                  `protobuf:"varint,6,opt,name=users_count,json=usersCount,proto3" json:"users_count,omitempty"`
-	TgGroupLink   *string                `protobuf:"bytes,7,opt,name=tg_group_link,json=tgGroupLink,proto3,oneof" json:"tg_group_link,omitempty"`
-	TgChatId      *string                `protobuf:"bytes,8,opt,name=tg_chat_id,json=tgChatId,proto3,oneof" json:"tg_chat_id,omitempty"`
+	TgGroupLink   *string                `protobuf:"bytes,6,opt,name=tg_group_link,json=tgGroupLink,proto3,oneof" json:"tg_group_link,omitempty"`
+	TgChatId      *string                `protobuf:"bytes,7,opt,name=tg_chat_id,json=tgChatId,proto3,oneof" json:"tg_chat_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -140,13 +139,6 @@ func (x *GetGroupByIdResponse) GetSubjectId() int64 {
 func (x *GetGroupByIdResponse) GetTutorId() int64 {
 	if x != nil {
 		return x.TutorId
-	}
-	return 0
-}
-
-func (x *GetGroupByIdResponse) GetUsersCount() int64 {
-	if x != nil {
-		return x.UsersCount
 	}
 	return 0
 }
@@ -1035,19 +1027,17 @@ const file_group_group_proto_rawDesc = "" +
 	"\n" +
 	"\x11group/group.proto\x12\x05group\"%\n" +
 	"\x13GetGroupByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xa6\x02\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x85\x02\n" +
 	"\x14GetGroupByIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x04 \x01(\x03R\tsubjectId\x12\x19\n" +
-	"\btutor_id\x18\x05 \x01(\x03R\atutorId\x12\x1f\n" +
-	"\vusers_count\x18\x06 \x01(\x03R\n" +
-	"usersCount\x12'\n" +
-	"\rtg_group_link\x18\a \x01(\tH\x00R\vtgGroupLink\x88\x01\x01\x12!\n" +
+	"\btutor_id\x18\x05 \x01(\x03R\atutorId\x12'\n" +
+	"\rtg_group_link\x18\x06 \x01(\tH\x00R\vtgGroupLink\x88\x01\x01\x12!\n" +
 	"\n" +
-	"tg_chat_id\x18\b \x01(\tH\x01R\btgChatId\x88\x01\x01B\x10\n" +
+	"tg_chat_id\x18\a \x01(\tH\x01R\btgChatId\x88\x01\x01B\x10\n" +
 	"\x0e_tg_group_linkB\r\n" +
 	"\v_tg_chat_id\"\x12\n" +
 	"\x10GetGroupsRequest\"H\n" +
