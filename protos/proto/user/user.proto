@@ -17,7 +17,7 @@ service User {
   rpc UpdateUserTheme (UpdateUserThemeRequest) returns (UpdateUserThemeResponse);
   rpc UpdateUserAvatar (UpdateUserAvatarRequest) returns (UpdateUserAvatarResponse);
   rpc GetUsersShortInfo (GetUsersShortInfoRequest) returns (GetUsersShortInfoResponse);
-  rpc UpdateUserTgLink (UpdateUserTgLinkRequest) returns (UpdateUserTgLinkResponse);
+  rpc UpdateUserTgUsername (UpdateUserTgUsernameRequest) returns (UpdateUserTgUsernameResponse);
 }
 
 enum UserRole {
@@ -64,7 +64,7 @@ message UserShortInfo {
   string name = 2;
   string surname = 3;
   optional string patronymic = 4;
-  optional string tg_link = 5;
+  optional string tg_username = 5;
 }
 
 message CreateUserRequest {
@@ -137,7 +137,7 @@ message UpdateUserInfoResponse {
   string name = 1;
   string surname = 2;
   optional string patronymic = 3;
-  optional string tg_link = 4;
+  optional string tg_username = 4;
   optional string city = 5;
   optional string about = 6;
   optional string avatar = 7;
@@ -199,9 +199,9 @@ message GetUsersShortInfoResponse {
   repeated UserShortInfo users = 1;
 }
 
-message UpdateUserTgLinkRequest {
+message UpdateUserTgUsernameRequest {
   int64 user_id = 1;
-  string tg_link = 2;
+  string tg_username = 2;
 }
 
-message UpdateUserTgLinkResponse {}
+message UpdateUserTgUsernameResponse {}

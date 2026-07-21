@@ -19,19 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	User_CreateUser_FullMethodName          = "/user.User/CreateUser"
-	User_GetUserById_FullMethodName         = "/user.User/GetUserById"
-	User_GetUserByEmail_FullMethodName      = "/user.User/GetUserByEmail"
-	User_GetAllUsersWithData_FullMethodName = "/user.User/GetAllUsersWithData"
-	User_GetUserData_FullMethodName         = "/user.User/GetUserData"
-	User_ChangePassword_FullMethodName      = "/user.User/ChangePassword"
-	User_ChangeEmail_FullMethodName         = "/user.User/ChangeEmail"
-	User_UpdateUserInfo_FullMethodName      = "/user.User/UpdateUserInfo"
-	User_UpdateUserSettings_FullMethodName  = "/user.User/UpdateUserSettings"
-	User_UpdateUserTheme_FullMethodName     = "/user.User/UpdateUserTheme"
-	User_UpdateUserAvatar_FullMethodName    = "/user.User/UpdateUserAvatar"
-	User_GetUsersShortInfo_FullMethodName   = "/user.User/GetUsersShortInfo"
-	User_UpdateUserTgLink_FullMethodName    = "/user.User/UpdateUserTgLink"
+	User_CreateUser_FullMethodName           = "/user.User/CreateUser"
+	User_GetUserById_FullMethodName          = "/user.User/GetUserById"
+	User_GetUserByEmail_FullMethodName       = "/user.User/GetUserByEmail"
+	User_GetAllUsersWithData_FullMethodName  = "/user.User/GetAllUsersWithData"
+	User_GetUserData_FullMethodName          = "/user.User/GetUserData"
+	User_ChangePassword_FullMethodName       = "/user.User/ChangePassword"
+	User_ChangeEmail_FullMethodName          = "/user.User/ChangeEmail"
+	User_UpdateUserInfo_FullMethodName       = "/user.User/UpdateUserInfo"
+	User_UpdateUserSettings_FullMethodName   = "/user.User/UpdateUserSettings"
+	User_UpdateUserTheme_FullMethodName      = "/user.User/UpdateUserTheme"
+	User_UpdateUserAvatar_FullMethodName     = "/user.User/UpdateUserAvatar"
+	User_GetUsersShortInfo_FullMethodName    = "/user.User/GetUsersShortInfo"
+	User_UpdateUserTgUsername_FullMethodName = "/user.User/UpdateUserTgUsername"
 )
 
 // UserClient is the client API for User service.
@@ -50,7 +50,7 @@ type UserClient interface {
 	UpdateUserTheme(ctx context.Context, in *UpdateUserThemeRequest, opts ...grpc.CallOption) (*UpdateUserThemeResponse, error)
 	UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarRequest, opts ...grpc.CallOption) (*UpdateUserAvatarResponse, error)
 	GetUsersShortInfo(ctx context.Context, in *GetUsersShortInfoRequest, opts ...grpc.CallOption) (*GetUsersShortInfoResponse, error)
-	UpdateUserTgLink(ctx context.Context, in *UpdateUserTgLinkRequest, opts ...grpc.CallOption) (*UpdateUserTgLinkResponse, error)
+	UpdateUserTgUsername(ctx context.Context, in *UpdateUserTgUsernameRequest, opts ...grpc.CallOption) (*UpdateUserTgUsernameResponse, error)
 }
 
 type userClient struct {
@@ -181,10 +181,10 @@ func (c *userClient) GetUsersShortInfo(ctx context.Context, in *GetUsersShortInf
 	return out, nil
 }
 
-func (c *userClient) UpdateUserTgLink(ctx context.Context, in *UpdateUserTgLinkRequest, opts ...grpc.CallOption) (*UpdateUserTgLinkResponse, error) {
+func (c *userClient) UpdateUserTgUsername(ctx context.Context, in *UpdateUserTgUsernameRequest, opts ...grpc.CallOption) (*UpdateUserTgUsernameResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateUserTgLinkResponse)
-	err := c.cc.Invoke(ctx, User_UpdateUserTgLink_FullMethodName, in, out, cOpts...)
+	out := new(UpdateUserTgUsernameResponse)
+	err := c.cc.Invoke(ctx, User_UpdateUserTgUsername_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -207,7 +207,7 @@ type UserServer interface {
 	UpdateUserTheme(context.Context, *UpdateUserThemeRequest) (*UpdateUserThemeResponse, error)
 	UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error)
 	GetUsersShortInfo(context.Context, *GetUsersShortInfoRequest) (*GetUsersShortInfoResponse, error)
-	UpdateUserTgLink(context.Context, *UpdateUserTgLinkRequest) (*UpdateUserTgLinkResponse, error)
+	UpdateUserTgUsername(context.Context, *UpdateUserTgUsernameRequest) (*UpdateUserTgUsernameResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -254,8 +254,8 @@ func (UnimplementedUserServer) UpdateUserAvatar(context.Context, *UpdateUserAvat
 func (UnimplementedUserServer) GetUsersShortInfo(context.Context, *GetUsersShortInfoRequest) (*GetUsersShortInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUsersShortInfo not implemented")
 }
-func (UnimplementedUserServer) UpdateUserTgLink(context.Context, *UpdateUserTgLinkRequest) (*UpdateUserTgLinkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserTgLink not implemented")
+func (UnimplementedUserServer) UpdateUserTgUsername(context.Context, *UpdateUserTgUsernameRequest) (*UpdateUserTgUsernameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserTgUsername not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 func (UnimplementedUserServer) testEmbeddedByValue()              {}
@@ -494,20 +494,20 @@ func _User_GetUsersShortInfo_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_UpdateUserTgLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUserTgLinkRequest)
+func _User_UpdateUserTgUsername_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserTgUsernameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).UpdateUserTgLink(ctx, in)
+		return srv.(UserServer).UpdateUserTgUsername(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_UpdateUserTgLink_FullMethodName,
+		FullMethod: User_UpdateUserTgUsername_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).UpdateUserTgLink(ctx, req.(*UpdateUserTgLinkRequest))
+		return srv.(UserServer).UpdateUserTgUsername(ctx, req.(*UpdateUserTgUsernameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -568,8 +568,8 @@ var User_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _User_GetUsersShortInfo_Handler,
 		},
 		{
-			MethodName: "UpdateUserTgLink",
-			Handler:    _User_UpdateUserTgLink_Handler,
+			MethodName: "UpdateUserTgUsername",
+			Handler:    _User_UpdateUserTgUsername_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

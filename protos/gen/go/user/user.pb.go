@@ -341,7 +341,7 @@ type UserShortInfo struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
-	TgLink        *string                `protobuf:"bytes,5,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
+	TgUsername    *string                `protobuf:"bytes,5,opt,name=tg_username,json=tgUsername,proto3,oneof" json:"tg_username,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -404,9 +404,9 @@ func (x *UserShortInfo) GetPatronymic() string {
 	return ""
 }
 
-func (x *UserShortInfo) GetTgLink() string {
-	if x != nil && x.TgLink != nil {
-		return *x.TgLink
+func (x *UserShortInfo) GetTgUsername() string {
+	if x != nil && x.TgUsername != nil {
+		return *x.TgUsername
 	}
 	return ""
 }
@@ -1092,7 +1092,7 @@ type UpdateUserInfoResponse struct {
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,2,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,3,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
-	TgLink        *string                `protobuf:"bytes,4,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
+	TgUsername    *string                `protobuf:"bytes,4,opt,name=tg_username,json=tgUsername,proto3,oneof" json:"tg_username,omitempty"`
 	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
 	Avatar        *string                `protobuf:"bytes,7,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
@@ -1153,9 +1153,9 @@ func (x *UpdateUserInfoResponse) GetPatronymic() string {
 	return ""
 }
 
-func (x *UpdateUserInfoResponse) GetTgLink() string {
-	if x != nil && x.TgLink != nil {
-		return *x.TgLink
+func (x *UpdateUserInfoResponse) GetTgUsername() string {
+	if x != nil && x.TgUsername != nil {
+		return *x.TgUsername
 	}
 	return ""
 }
@@ -1795,28 +1795,28 @@ func (x *GetUsersShortInfoResponse) GetUsers() []*UserShortInfo {
 	return nil
 }
 
-type UpdateUserTgLinkRequest struct {
+type UpdateUserTgUsernameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	TgLink        string                 `protobuf:"bytes,2,opt,name=tg_link,json=tgLink,proto3" json:"tg_link,omitempty"`
+	TgUsername    string                 `protobuf:"bytes,2,opt,name=tg_username,json=tgUsername,proto3" json:"tg_username,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserTgLinkRequest) Reset() {
-	*x = UpdateUserTgLinkRequest{}
+func (x *UpdateUserTgUsernameRequest) Reset() {
+	*x = UpdateUserTgUsernameRequest{}
 	mi := &file_user_user_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserTgLinkRequest) String() string {
+func (x *UpdateUserTgUsernameRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserTgLinkRequest) ProtoMessage() {}
+func (*UpdateUserTgUsernameRequest) ProtoMessage() {}
 
-func (x *UpdateUserTgLinkRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserTgUsernameRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1828,45 +1828,45 @@ func (x *UpdateUserTgLinkRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserTgLinkRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUserTgLinkRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserTgUsernameRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserTgUsernameRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *UpdateUserTgLinkRequest) GetUserId() int64 {
+func (x *UpdateUserTgUsernameRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *UpdateUserTgLinkRequest) GetTgLink() string {
+func (x *UpdateUserTgUsernameRequest) GetTgUsername() string {
 	if x != nil {
-		return x.TgLink
+		return x.TgUsername
 	}
 	return ""
 }
 
-type UpdateUserTgLinkResponse struct {
+type UpdateUserTgUsernameResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserTgLinkResponse) Reset() {
-	*x = UpdateUserTgLinkResponse{}
+func (x *UpdateUserTgUsernameResponse) Reset() {
+	*x = UpdateUserTgUsernameResponse{}
 	mi := &file_user_user_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserTgLinkResponse) String() string {
+func (x *UpdateUserTgUsernameResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserTgLinkResponse) ProtoMessage() {}
+func (*UpdateUserTgUsernameResponse) ProtoMessage() {}
 
-func (x *UpdateUserTgLinkResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserTgUsernameResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1878,8 +1878,8 @@ func (x *UpdateUserTgLinkResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserTgLinkResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUserTgLinkResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserTgUsernameResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserTgUsernameResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{27}
 }
 
@@ -1891,18 +1891,18 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\xab\x01\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"\xb7\x01\n" +
 	"\rUserShortInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
 	"\asurname\x18\x03 \x01(\tR\asurname\x12#\n" +
 	"\n" +
 	"patronymic\x18\x04 \x01(\tH\x00R\n" +
-	"patronymic\x88\x01\x01\x12\x1c\n" +
-	"\atg_link\x18\x05 \x01(\tH\x01R\x06tgLink\x88\x01\x01B\r\n" +
-	"\v_patronymicB\n" +
-	"\n" +
-	"\b_tg_link\"\xed\x02\n" +
+	"patronymic\x88\x01\x01\x12$\n" +
+	"\vtg_username\x18\x05 \x01(\tH\x01R\n" +
+	"tgUsername\x88\x01\x01B\r\n" +
+	"\v_patronymicB\x0e\n" +
+	"\f_tg_username\"\xed\x02\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -1962,14 +1962,15 @@ const file_user_user_proto_rawDesc = "" +
 	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\r\n" +
-	"\v_birth_date\"\xfc\x02\n" +
+	"\v_birth_date\"\x88\x03\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
 	"\asurname\x18\x02 \x01(\tR\asurname\x12#\n" +
 	"\n" +
 	"patronymic\x18\x03 \x01(\tH\x00R\n" +
-	"patronymic\x88\x01\x01\x12\x1c\n" +
-	"\atg_link\x18\x04 \x01(\tH\x01R\x06tgLink\x88\x01\x01\x12\x17\n" +
+	"patronymic\x88\x01\x01\x12$\n" +
+	"\vtg_username\x18\x04 \x01(\tH\x01R\n" +
+	"tgUsername\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x05 \x01(\tH\x02R\x04city\x88\x01\x01\x12\x19\n" +
 	"\x05about\x18\x06 \x01(\tH\x03R\x05about\x88\x01\x01\x12\x1b\n" +
 	"\x06avatar\x18\a \x01(\tH\x04R\x06avatar\x88\x01\x01\x12(\n" +
@@ -1977,9 +1978,8 @@ const file_user_user_proto_rawDesc = "" +
 	"\n" +
 	"birth_date\x18\t \x01(\v2\n" +
 	".user.DateH\x05R\tbirthDate\x88\x01\x01B\r\n" +
-	"\v_patronymicB\n" +
-	"\n" +
-	"\b_tg_linkB\a\n" +
+	"\v_patronymicB\x0e\n" +
+	"\f_tg_usernameB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\t\n" +
 	"\a_avatarB\r\n" +
@@ -2017,11 +2017,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\x18GetUsersShortInfoRequest\x12\x19\n" +
 	"\buser_ids\x18\x01 \x03(\x03R\auserIds\"F\n" +
 	"\x19GetUsersShortInfoResponse\x12)\n" +
-	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users\"K\n" +
-	"\x17UpdateUserTgLinkRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\atg_link\x18\x02 \x01(\tR\x06tgLink\"\x1a\n" +
-	"\x18UpdateUserTgLinkResponse*H\n" +
+	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users\"W\n" +
+	"\x1bUpdateUserTgUsernameRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
+	"\vtg_username\x18\x02 \x01(\tR\n" +
+	"tgUsername\"\x1e\n" +
+	"\x1cUpdateUserTgUsernameResponse*H\n" +
 	"\bUserRole\x12\x19\n" +
 	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05TUTOR\x10\x01\x12\v\n" +
@@ -2049,7 +2050,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\fUserLanguage\x12\x1d\n" +
 	"\x19ENUM_LANGUAGE_UNSPECIFIED\x10\x00\x12\x06\n" +
 	"\x02RU\x10\x01\x12\x06\n" +
-	"\x02EN\x10\x022\xfb\a\n" +
+	"\x02EN\x10\x022\x87\b\n" +
 	"\x04User\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12B\n" +
@@ -2063,8 +2064,8 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12UpdateUserSettings\x12\x1f.user.UpdateUserSettingsRequest\x1a .user.UpdateUserSettingsResponse\x12N\n" +
 	"\x0fUpdateUserTheme\x12\x1c.user.UpdateUserThemeRequest\x1a\x1d.user.UpdateUserThemeResponse\x12Q\n" +
 	"\x10UpdateUserAvatar\x12\x1d.user.UpdateUserAvatarRequest\x1a\x1e.user.UpdateUserAvatarResponse\x12T\n" +
-	"\x11GetUsersShortInfo\x12\x1e.user.GetUsersShortInfoRequest\x1a\x1f.user.GetUsersShortInfoResponse\x12Q\n" +
-	"\x10UpdateUserTgLink\x12\x1d.user.UpdateUserTgLinkRequest\x1a\x1e.user.UpdateUserTgLinkResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/userb\x06proto3"
+	"\x11GetUsersShortInfo\x12\x1e.user.GetUsersShortInfoRequest\x1a\x1f.user.GetUsersShortInfoResponse\x12]\n" +
+	"\x14UpdateUserTgUsername\x12!.user.UpdateUserTgUsernameRequest\x1a\".user.UpdateUserTgUsernameResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -2081,39 +2082,39 @@ func file_user_user_proto_rawDescGZIP() []byte {
 var file_user_user_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
 var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_user_user_proto_goTypes = []any{
-	(UserRole)(0),                       // 0: user.UserRole
-	(UserStatus)(0),                     // 1: user.UserStatus
-	(UserGender)(0),                     // 2: user.UserGender
-	(UserTheme)(0),                      // 3: user.UserTheme
-	(UserLanguage)(0),                   // 4: user.UserLanguage
-	(*Date)(nil),                        // 5: user.Date
-	(*UserShortInfo)(nil),               // 6: user.UserShortInfo
-	(*CreateUserRequest)(nil),           // 7: user.CreateUserRequest
-	(*CreateUserResponse)(nil),          // 8: user.CreateUserResponse
-	(*GetUserByIdRequest)(nil),          // 9: user.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),         // 10: user.GetUserByIdResponse
-	(*GetUserDataRequest)(nil),          // 11: user.GetUserDataRequest
-	(*GetUserDataResponse)(nil),         // 12: user.GetUserDataResponse
-	(*ChangePasswordRequest)(nil),       // 13: user.ChangePasswordRequest
-	(*ChangePasswordResponse)(nil),      // 14: user.ChangePasswordResponse
-	(*ChangeEmailRequest)(nil),          // 15: user.ChangeEmailRequest
-	(*ChangeEmailResponse)(nil),         // 16: user.ChangeEmailResponse
-	(*UpdateUserInfoRequest)(nil),       // 17: user.UpdateUserInfoRequest
-	(*UpdateUserInfoResponse)(nil),      // 18: user.UpdateUserInfoResponse
-	(*UpdateUserSettingsRequest)(nil),   // 19: user.UpdateUserSettingsRequest
-	(*UpdateUserSettingsResponse)(nil),  // 20: user.UpdateUserSettingsResponse
-	(*GetUserByEmailRequest)(nil),       // 21: user.GetUserByEmailRequest
-	(*GetUserByEmailResponse)(nil),      // 22: user.GetUserByEmailResponse
-	(*GetAllUsersWithDataRequest)(nil),  // 23: user.GetAllUsersWithDataRequest
-	(*GetAllUsersWithDataResponse)(nil), // 24: user.GetAllUsersWithDataResponse
-	(*UpdateUserThemeRequest)(nil),      // 25: user.UpdateUserThemeRequest
-	(*UpdateUserThemeResponse)(nil),     // 26: user.UpdateUserThemeResponse
-	(*UpdateUserAvatarRequest)(nil),     // 27: user.UpdateUserAvatarRequest
-	(*UpdateUserAvatarResponse)(nil),    // 28: user.UpdateUserAvatarResponse
-	(*GetUsersShortInfoRequest)(nil),    // 29: user.GetUsersShortInfoRequest
-	(*GetUsersShortInfoResponse)(nil),   // 30: user.GetUsersShortInfoResponse
-	(*UpdateUserTgLinkRequest)(nil),     // 31: user.UpdateUserTgLinkRequest
-	(*UpdateUserTgLinkResponse)(nil),    // 32: user.UpdateUserTgLinkResponse
+	(UserRole)(0),                        // 0: user.UserRole
+	(UserStatus)(0),                      // 1: user.UserStatus
+	(UserGender)(0),                      // 2: user.UserGender
+	(UserTheme)(0),                       // 3: user.UserTheme
+	(UserLanguage)(0),                    // 4: user.UserLanguage
+	(*Date)(nil),                         // 5: user.Date
+	(*UserShortInfo)(nil),                // 6: user.UserShortInfo
+	(*CreateUserRequest)(nil),            // 7: user.CreateUserRequest
+	(*CreateUserResponse)(nil),           // 8: user.CreateUserResponse
+	(*GetUserByIdRequest)(nil),           // 9: user.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),          // 10: user.GetUserByIdResponse
+	(*GetUserDataRequest)(nil),           // 11: user.GetUserDataRequest
+	(*GetUserDataResponse)(nil),          // 12: user.GetUserDataResponse
+	(*ChangePasswordRequest)(nil),        // 13: user.ChangePasswordRequest
+	(*ChangePasswordResponse)(nil),       // 14: user.ChangePasswordResponse
+	(*ChangeEmailRequest)(nil),           // 15: user.ChangeEmailRequest
+	(*ChangeEmailResponse)(nil),          // 16: user.ChangeEmailResponse
+	(*UpdateUserInfoRequest)(nil),        // 17: user.UpdateUserInfoRequest
+	(*UpdateUserInfoResponse)(nil),       // 18: user.UpdateUserInfoResponse
+	(*UpdateUserSettingsRequest)(nil),    // 19: user.UpdateUserSettingsRequest
+	(*UpdateUserSettingsResponse)(nil),   // 20: user.UpdateUserSettingsResponse
+	(*GetUserByEmailRequest)(nil),        // 21: user.GetUserByEmailRequest
+	(*GetUserByEmailResponse)(nil),       // 22: user.GetUserByEmailResponse
+	(*GetAllUsersWithDataRequest)(nil),   // 23: user.GetAllUsersWithDataRequest
+	(*GetAllUsersWithDataResponse)(nil),  // 24: user.GetAllUsersWithDataResponse
+	(*UpdateUserThemeRequest)(nil),       // 25: user.UpdateUserThemeRequest
+	(*UpdateUserThemeResponse)(nil),      // 26: user.UpdateUserThemeResponse
+	(*UpdateUserAvatarRequest)(nil),      // 27: user.UpdateUserAvatarRequest
+	(*UpdateUserAvatarResponse)(nil),     // 28: user.UpdateUserAvatarResponse
+	(*GetUsersShortInfoRequest)(nil),     // 29: user.GetUsersShortInfoRequest
+	(*GetUsersShortInfoResponse)(nil),    // 30: user.GetUsersShortInfoResponse
+	(*UpdateUserTgUsernameRequest)(nil),  // 31: user.UpdateUserTgUsernameRequest
+	(*UpdateUserTgUsernameResponse)(nil), // 32: user.UpdateUserTgUsernameResponse
 }
 var file_user_user_proto_depIdxs = []int32{
 	0,  // 0: user.CreateUserRequest.role:type_name -> user.UserRole
@@ -2150,7 +2151,7 @@ var file_user_user_proto_depIdxs = []int32{
 	25, // 31: user.User.UpdateUserTheme:input_type -> user.UpdateUserThemeRequest
 	27, // 32: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
 	29, // 33: user.User.GetUsersShortInfo:input_type -> user.GetUsersShortInfoRequest
-	31, // 34: user.User.UpdateUserTgLink:input_type -> user.UpdateUserTgLinkRequest
+	31, // 34: user.User.UpdateUserTgUsername:input_type -> user.UpdateUserTgUsernameRequest
 	8,  // 35: user.User.CreateUser:output_type -> user.CreateUserResponse
 	10, // 36: user.User.GetUserById:output_type -> user.GetUserByIdResponse
 	22, // 37: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
@@ -2163,7 +2164,7 @@ var file_user_user_proto_depIdxs = []int32{
 	26, // 44: user.User.UpdateUserTheme:output_type -> user.UpdateUserThemeResponse
 	28, // 45: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
 	30, // 46: user.User.GetUsersShortInfo:output_type -> user.GetUsersShortInfoResponse
-	32, // 47: user.User.UpdateUserTgLink:output_type -> user.UpdateUserTgLinkResponse
+	32, // 47: user.User.UpdateUserTgUsername:output_type -> user.UpdateUserTgUsernameResponse
 	35, // [35:48] is the sub-list for method output_type
 	22, // [22:35] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
