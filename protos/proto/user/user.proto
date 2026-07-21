@@ -63,8 +63,8 @@ message UserShortInfo {
   int64 id = 1;
   string name = 2;
   string surname = 3;
-  string patronymic = 4;
-  string tg_link = 5;
+  optional string patronymic = 4;
+  optional string tg_link = 5;
 }
 
 message CreateUserRequest {

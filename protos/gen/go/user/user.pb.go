@@ -340,8 +340,8 @@ type UserShortInfo struct {
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
-	Patronymic    string                 `protobuf:"bytes,4,opt,name=patronymic,proto3" json:"patronymic,omitempty"`
-	TgLink        string                 `protobuf:"bytes,5,opt,name=tg_link,json=tgLink,proto3" json:"tg_link,omitempty"`
+	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
+	TgLink        *string                `protobuf:"bytes,5,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -398,15 +398,15 @@ func (x *UserShortInfo) GetSurname() string {
 }
 
 func (x *UserShortInfo) GetPatronymic() string {
-	if x != nil {
-		return x.Patronymic
+	if x != nil && x.Patronymic != nil {
+		return *x.Patronymic
 	}
 	return ""
 }
 
 func (x *UserShortInfo) GetTgLink() string {
-	if x != nil {
-		return x.TgLink
+	if x != nil && x.TgLink != nil {
+		return *x.TgLink
 	}
 	return ""
 }
@@ -1891,15 +1891,18 @@ const file_user_user_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\x86\x01\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"\xab\x01\n" +
 	"\rUserShortInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x03 \x01(\tR\asurname\x12\x1e\n" +
+	"\asurname\x18\x03 \x01(\tR\asurname\x12#\n" +
 	"\n" +
-	"patronymic\x18\x04 \x01(\tR\n" +
-	"patronymic\x12\x17\n" +
-	"\atg_link\x18\x05 \x01(\tR\x06tgLink\"\xed\x02\n" +
+	"patronymic\x18\x04 \x01(\tH\x00R\n" +
+	"patronymic\x88\x01\x01\x12\x1c\n" +
+	"\atg_link\x18\x05 \x01(\tH\x01R\x06tgLink\x88\x01\x01B\r\n" +
+	"\v_patronymicB\n" +
+	"\n" +
+	"\b_tg_link\"\xed\x02\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -2173,6 +2176,7 @@ func file_user_user_proto_init() {
 	if File_user_user_proto != nil {
 		return
 	}
+	file_user_user_proto_msgTypes[1].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[2].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[12].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[13].OneofWrappers = []any{}
