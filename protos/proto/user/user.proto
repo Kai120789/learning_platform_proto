@@ -16,6 +16,8 @@ service User {
   rpc UpdateUserSettings (UpdateUserSettingsRequest) returns (UpdateUserSettingsResponse);
   rpc UpdateUserTheme (UpdateUserThemeRequest) returns (UpdateUserThemeResponse);
   rpc UpdateUserAvatar (UpdateUserAvatarRequest) returns (UpdateUserAvatarResponse);
+  rpc GetUsersShortInfo (GetUsersShortInfoRequest) returns (GetUsersShortInfoResponse);
+  rpc UpdateUserTgLink (UpdateUserTgLinkRequest) returns (UpdateUserTgLinkResponse);
 }
 
 enum UserRole {
@@ -57,6 +59,14 @@ message Date {
   int32 day = 3;
 }
 
+message UserShortInfo {
+  int64 id = 1;
+  string name = 2;
+  string surname = 3;
+  string patronymic = 4;
+  string tg_link = 5;
+}
+
 message CreateUserRequest {
   string email = 1;
   string name = 2;
@@ -80,9 +90,10 @@ message GetUserByIdRequest {
 message GetUserByIdResponse {
   int64 user_id = 1;
   string email = 2;
-  string password_hash = 3;
-  UserRole role = 4;
-  UserStatus status = 5;
+  optional string tg_link = 3;
+  string password_hash = 4;
+  UserRole role = 5;
+  UserStatus status = 6;
 }
 
 message GetUserDataRequest {
@@ -92,10 +103,11 @@ message GetUserDataRequest {
 message GetUserDataResponse {
   int64 user_id = 1;
   string email = 2;
-  UserRole role = 3;
-  UserStatus status = 4;
-  UpdateUserInfoResponse user_info = 5;
-  UpdateUserSettingsResponse user_settings = 6;
+  optional string tg_link = 3;
+  UserRole role = 4;
+  UserStatus status = 5;
+  UpdateUserInfoResponse user_info = 6;
+  UpdateUserSettingsResponse user_settings = 7;
 }
 
 message ChangePasswordRequest {
@@ -155,9 +167,10 @@ message GetUserByEmailRequest {
 message GetUserByEmailResponse {
   int64 user_id = 1;
   string email = 2;
-  string password_hash = 3;
-  UserRole role = 4;
-  UserStatus status = 5;
+  optional string tg_link = 3;
+  string password_hash = 4;
+  UserRole role = 5;
+  UserStatus status = 6;
 }
 
 message GetAllUsersWithDataRequest {}
@@ -179,3 +192,18 @@ message UpdateUserAvatarRequest {
 }
 
 message UpdateUserAvatarResponse {}
+
+message GetUsersShortInfoRequest {
+  repeated int64 user_ids = 1;
+}
+
+message GetUsersShortInfoResponse {
+  repeated UserShortInfo users = 1;
+}
+
+message UpdateUserTgLinkRequest {
+  int64 user_id = 1;
+  string tg_link = 2;
+}
+
+message UpdateUserTgLinkResponse {}

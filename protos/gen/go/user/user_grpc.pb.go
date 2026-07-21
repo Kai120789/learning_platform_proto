@@ -30,6 +30,8 @@ const (
 	User_UpdateUserSettings_FullMethodName  = "/user.User/UpdateUserSettings"
 	User_UpdateUserTheme_FullMethodName     = "/user.User/UpdateUserTheme"
 	User_UpdateUserAvatar_FullMethodName    = "/user.User/UpdateUserAvatar"
+	User_GetUsersShortInfo_FullMethodName   = "/user.User/GetUsersShortInfo"
+	User_UpdateUserTgLink_FullMethodName    = "/user.User/UpdateUserTgLink"
 )
 
 // UserClient is the client API for User service.
@@ -47,6 +49,8 @@ type UserClient interface {
 	UpdateUserSettings(ctx context.Context, in *UpdateUserSettingsRequest, opts ...grpc.CallOption) (*UpdateUserSettingsResponse, error)
 	UpdateUserTheme(ctx context.Context, in *UpdateUserThemeRequest, opts ...grpc.CallOption) (*UpdateUserThemeResponse, error)
 	UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarRequest, opts ...grpc.CallOption) (*UpdateUserAvatarResponse, error)
+	GetUsersShortInfo(ctx context.Context, in *GetUsersShortInfoRequest, opts ...grpc.CallOption) (*GetUsersShortInfoResponse, error)
+	UpdateUserTgLink(ctx context.Context, in *UpdateUserTgLinkRequest, opts ...grpc.CallOption) (*UpdateUserTgLinkResponse, error)
 }
 
 type userClient struct {
@@ -167,6 +171,26 @@ func (c *userClient) UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarR
 	return out, nil
 }
 
+func (c *userClient) GetUsersShortInfo(ctx context.Context, in *GetUsersShortInfoRequest, opts ...grpc.CallOption) (*GetUsersShortInfoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUsersShortInfoResponse)
+	err := c.cc.Invoke(ctx, User_GetUsersShortInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateUserTgLink(ctx context.Context, in *UpdateUserTgLinkRequest, opts ...grpc.CallOption) (*UpdateUserTgLinkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserTgLinkResponse)
+	err := c.cc.Invoke(ctx, User_UpdateUserTgLink_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility.
@@ -182,6 +206,8 @@ type UserServer interface {
 	UpdateUserSettings(context.Context, *UpdateUserSettingsRequest) (*UpdateUserSettingsResponse, error)
 	UpdateUserTheme(context.Context, *UpdateUserThemeRequest) (*UpdateUserThemeResponse, error)
 	UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error)
+	GetUsersShortInfo(context.Context, *GetUsersShortInfoRequest) (*GetUsersShortInfoResponse, error)
+	UpdateUserTgLink(context.Context, *UpdateUserTgLinkRequest) (*UpdateUserTgLinkResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -224,6 +250,12 @@ func (UnimplementedUserServer) UpdateUserTheme(context.Context, *UpdateUserTheme
 }
 func (UnimplementedUserServer) UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserAvatar not implemented")
+}
+func (UnimplementedUserServer) GetUsersShortInfo(context.Context, *GetUsersShortInfoRequest) (*GetUsersShortInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUsersShortInfo not implemented")
+}
+func (UnimplementedUserServer) UpdateUserTgLink(context.Context, *UpdateUserTgLinkRequest) (*UpdateUserTgLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserTgLink not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 func (UnimplementedUserServer) testEmbeddedByValue()              {}
@@ -444,6 +476,42 @@ func _User_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_GetUsersShortInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUsersShortInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetUsersShortInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_GetUsersShortInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetUsersShortInfo(ctx, req.(*GetUsersShortInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateUserTgLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserTgLinkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateUserTgLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_UpdateUserTgLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateUserTgLink(ctx, req.(*UpdateUserTgLinkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -494,6 +562,14 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserAvatar",
 			Handler:    _User_UpdateUserAvatar_Handler,
+		},
+		{
+			MethodName: "GetUsersShortInfo",
+			Handler:    _User_GetUsersShortInfo_Handler,
+		},
+		{
+			MethodName: "UpdateUserTgLink",
+			Handler:    _User_UpdateUserTgLink_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
