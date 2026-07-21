@@ -90,10 +90,9 @@ message GetUserByIdRequest {
 message GetUserByIdResponse {
   int64 user_id = 1;
   string email = 2;
-  optional string tg_link = 3;
-  string password_hash = 4;
-  UserRole role = 5;
-  UserStatus status = 6;
+  string password_hash = 3;
+  UserRole role = 4;
+  UserStatus status = 5;
 }
 
 message GetUserDataRequest {
@@ -103,11 +102,10 @@ message GetUserDataRequest {
 message GetUserDataResponse {
   int64 user_id = 1;
   string email = 2;
-  optional string tg_link = 3;
-  UserRole role = 4;
-  UserStatus status = 5;
-  UpdateUserInfoResponse user_info = 6;
-  UpdateUserSettingsResponse user_settings = 7;
+  UserRole role = 3;
+  UserStatus status = 4;
+  UpdateUserInfoResponse user_info = 5;
+  UpdateUserSettingsResponse user_settings = 6;
 }
 
 message ChangePasswordRequest {
@@ -139,11 +137,12 @@ message UpdateUserInfoResponse {
   string name = 1;
   string surname = 2;
   optional string patronymic = 3;
-  optional string city = 4;
-  optional string about = 5;
-  optional string avatar = 6;
-  UserGender gender = 7;
-  optional Date birth_date = 8;
+  optional string tg_link = 4;
+  optional string city = 5;
+  optional string about = 6;
+  optional string avatar = 7;
+  UserGender gender = 8;
+  optional Date birth_date = 9;
 }
 
 message UpdateUserSettingsRequest {
@@ -167,10 +166,9 @@ message GetUserByEmailRequest {
 message GetUserByEmailResponse {
   int64 user_id = 1;
   string email = 2;
-  optional string tg_link = 3;
-  string password_hash = 4;
-  UserRole role = 5;
-  UserStatus status = 6;
+  string password_hash = 3;
+  UserRole role = 4;
+  UserStatus status = 5;
 }
 
 message GetAllUsersWithDataRequest {}

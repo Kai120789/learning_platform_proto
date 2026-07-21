@@ -611,10 +611,9 @@ type GetUserByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	TgLink        *string                `protobuf:"bytes,3,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
-	PasswordHash  string                 `protobuf:"bytes,4,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
-	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Status        UserStatus             `protobuf:"varint,6,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
+	PasswordHash  string                 `protobuf:"bytes,3,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
+	Role          UserRole               `protobuf:"varint,4,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        UserStatus             `protobuf:"varint,5,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -659,13 +658,6 @@ func (x *GetUserByIdResponse) GetUserId() int64 {
 func (x *GetUserByIdResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *GetUserByIdResponse) GetTgLink() string {
-	if x != nil && x.TgLink != nil {
-		return *x.TgLink
 	}
 	return ""
 }
@@ -739,11 +731,10 @@ type GetUserDataResponse struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
 	UserId        int64                       `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                      `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	TgLink        *string                     `protobuf:"bytes,3,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
-	Role          UserRole                    `protobuf:"varint,4,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Status        UserStatus                  `protobuf:"varint,5,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
-	UserInfo      *UpdateUserInfoResponse     `protobuf:"bytes,6,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
-	UserSettings  *UpdateUserSettingsResponse `protobuf:"bytes,7,opt,name=user_settings,json=userSettings,proto3" json:"user_settings,omitempty"`
+	Role          UserRole                    `protobuf:"varint,3,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        UserStatus                  `protobuf:"varint,4,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
+	UserInfo      *UpdateUserInfoResponse     `protobuf:"bytes,5,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	UserSettings  *UpdateUserSettingsResponse `protobuf:"bytes,6,opt,name=user_settings,json=userSettings,proto3" json:"user_settings,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -788,13 +779,6 @@ func (x *GetUserDataResponse) GetUserId() int64 {
 func (x *GetUserDataResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *GetUserDataResponse) GetTgLink() string {
-	if x != nil && x.TgLink != nil {
-		return *x.TgLink
 	}
 	return ""
 }
@@ -1108,11 +1092,12 @@ type UpdateUserInfoResponse struct {
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,2,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    *string                `protobuf:"bytes,3,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
-	City          *string                `protobuf:"bytes,4,opt,name=city,proto3,oneof" json:"city,omitempty"`
-	About         *string                `protobuf:"bytes,5,opt,name=about,proto3,oneof" json:"about,omitempty"`
-	Avatar        *string                `protobuf:"bytes,6,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
-	Gender        UserGender             `protobuf:"varint,7,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
-	BirthDate     *Date                  `protobuf:"bytes,8,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
+	TgLink        *string                `protobuf:"bytes,4,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
+	City          *string                `protobuf:"bytes,5,opt,name=city,proto3,oneof" json:"city,omitempty"`
+	About         *string                `protobuf:"bytes,6,opt,name=about,proto3,oneof" json:"about,omitempty"`
+	Avatar        *string                `protobuf:"bytes,7,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
+	Gender        UserGender             `protobuf:"varint,8,opt,name=gender,proto3,enum=user.UserGender" json:"gender,omitempty"`
+	BirthDate     *Date                  `protobuf:"bytes,9,opt,name=birth_date,json=birthDate,proto3,oneof" json:"birth_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1164,6 +1149,13 @@ func (x *UpdateUserInfoResponse) GetSurname() string {
 func (x *UpdateUserInfoResponse) GetPatronymic() string {
 	if x != nil && x.Patronymic != nil {
 		return *x.Patronymic
+	}
+	return ""
+}
+
+func (x *UpdateUserInfoResponse) GetTgLink() string {
+	if x != nil && x.TgLink != nil {
+		return *x.TgLink
 	}
 	return ""
 }
@@ -1387,10 +1379,9 @@ type GetUserByEmailResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	TgLink        *string                `protobuf:"bytes,3,opt,name=tg_link,json=tgLink,proto3,oneof" json:"tg_link,omitempty"`
-	PasswordHash  string                 `protobuf:"bytes,4,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
-	Role          UserRole               `protobuf:"varint,5,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
-	Status        UserStatus             `protobuf:"varint,6,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
+	PasswordHash  string                 `protobuf:"bytes,3,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
+	Role          UserRole               `protobuf:"varint,4,opt,name=role,proto3,enum=user.UserRole" json:"role,omitempty"`
+	Status        UserStatus             `protobuf:"varint,5,opt,name=status,proto3,enum=user.UserStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1435,13 +1426,6 @@ func (x *GetUserByEmailResponse) GetUserId() int64 {
 func (x *GetUserByEmailResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *GetUserByEmailResponse) GetTgLink() string {
-	if x != nil && x.TgLink != nil {
-		return *x.TgLink
 	}
 	return ""
 }
@@ -1935,28 +1919,22 @@ const file_user_user_proto_rawDesc = "" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"-\n" +
 	"\x12GetUserByIdRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\xe1\x01\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\xb7\x01\n" +
 	"\x13GetUserByIdResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1c\n" +
-	"\atg_link\x18\x03 \x01(\tH\x00R\x06tgLink\x88\x01\x01\x12#\n" +
-	"\rpassword_hash\x18\x04 \x01(\tR\fpasswordHash\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
-	"\x06status\x18\x06 \x01(\x0e2\x10.user.UserStatusR\x06statusB\n" +
-	"\n" +
-	"\b_tg_link\"-\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12#\n" +
+	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\x12\"\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
+	"\x06status\x18\x05 \x01(\x0e2\x10.user.UserStatusR\x06status\"-\n" +
 	"\x12GetUserDataRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\xbe\x02\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\x94\x02\n" +
 	"\x13GetUserDataResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1c\n" +
-	"\atg_link\x18\x03 \x01(\tH\x00R\x06tgLink\x88\x01\x01\x12\"\n" +
-	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
-	"\x06status\x18\x05 \x01(\x0e2\x10.user.UserStatusR\x06status\x129\n" +
-	"\tuser_info\x18\x06 \x01(\v2\x1c.user.UpdateUserInfoResponseR\buserInfo\x12E\n" +
-	"\ruser_settings\x18\a \x01(\v2 .user.UpdateUserSettingsResponseR\fuserSettingsB\n" +
-	"\n" +
-	"\b_tg_link\"S\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\"\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
+	"\x06status\x18\x04 \x01(\x0e2\x10.user.UserStatusR\x06status\x129\n" +
+	"\tuser_info\x18\x05 \x01(\v2\x1c.user.UpdateUserInfoResponseR\buserInfo\x12E\n" +
+	"\ruser_settings\x18\x06 \x01(\v2 .user.UpdateUserSettingsResponseR\fuserSettings\"S\n" +
 	"\x15ChangePasswordRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x18\n" +
@@ -1981,21 +1959,24 @@ const file_user_user_proto_rawDesc = "" +
 	"\v_patronymicB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\r\n" +
-	"\v_birth_date\"\xd2\x02\n" +
+	"\v_birth_date\"\xfc\x02\n" +
 	"\x16UpdateUserInfoResponse\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
 	"\asurname\x18\x02 \x01(\tR\asurname\x12#\n" +
 	"\n" +
 	"patronymic\x18\x03 \x01(\tH\x00R\n" +
-	"patronymic\x88\x01\x01\x12\x17\n" +
-	"\x04city\x18\x04 \x01(\tH\x01R\x04city\x88\x01\x01\x12\x19\n" +
-	"\x05about\x18\x05 \x01(\tH\x02R\x05about\x88\x01\x01\x12\x1b\n" +
-	"\x06avatar\x18\x06 \x01(\tH\x03R\x06avatar\x88\x01\x01\x12(\n" +
-	"\x06gender\x18\a \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
+	"patronymic\x88\x01\x01\x12\x1c\n" +
+	"\atg_link\x18\x04 \x01(\tH\x01R\x06tgLink\x88\x01\x01\x12\x17\n" +
+	"\x04city\x18\x05 \x01(\tH\x02R\x04city\x88\x01\x01\x12\x19\n" +
+	"\x05about\x18\x06 \x01(\tH\x03R\x05about\x88\x01\x01\x12\x1b\n" +
+	"\x06avatar\x18\a \x01(\tH\x04R\x06avatar\x88\x01\x01\x12(\n" +
+	"\x06gender\x18\b \x01(\x0e2\x10.user.UserGenderR\x06gender\x12.\n" +
 	"\n" +
-	"birth_date\x18\b \x01(\v2\n" +
-	".user.DateH\x04R\tbirthDate\x88\x01\x01B\r\n" +
-	"\v_patronymicB\a\n" +
+	"birth_date\x18\t \x01(\v2\n" +
+	".user.DateH\x05R\tbirthDate\x88\x01\x01B\r\n" +
+	"\v_patronymicB\n" +
+	"\n" +
+	"\b_tg_linkB\a\n" +
 	"\x05_cityB\b\n" +
 	"\x06_aboutB\t\n" +
 	"\a_avatarB\r\n" +
@@ -2011,16 +1992,13 @@ const file_user_user_proto_rawDesc = "" +
 	"\blanguage\x18\x03 \x01(\x0e2\x12.user.UserLanguageR\blanguage\x12%\n" +
 	"\x05theme\x18\x04 \x01(\x0e2\x0f.user.UserThemeR\x05theme\"-\n" +
 	"\x15GetUserByEmailRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"\xe4\x01\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"\xba\x01\n" +
 	"\x16GetUserByEmailResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1c\n" +
-	"\atg_link\x18\x03 \x01(\tH\x00R\x06tgLink\x88\x01\x01\x12#\n" +
-	"\rpassword_hash\x18\x04 \x01(\tR\fpasswordHash\x12\"\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
-	"\x06status\x18\x06 \x01(\x0e2\x10.user.UserStatusR\x06statusB\n" +
-	"\n" +
-	"\b_tg_link\"\x1c\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12#\n" +
+	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\x12\"\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\x12(\n" +
+	"\x06status\x18\x05 \x01(\x0e2\x10.user.UserStatusR\x06status\"\x1c\n" +
 	"\x1aGetAllUsersWithDataRequest\"N\n" +
 	"\x1bGetAllUsersWithDataResponse\x12/\n" +
 	"\x05users\x18\x01 \x03(\v2\x19.user.GetUserDataResponseR\x05users\"X\n" +
@@ -2196,11 +2174,8 @@ func file_user_user_proto_init() {
 		return
 	}
 	file_user_user_proto_msgTypes[2].OneofWrappers = []any{}
-	file_user_user_proto_msgTypes[5].OneofWrappers = []any{}
-	file_user_user_proto_msgTypes[7].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[12].OneofWrappers = []any{}
 	file_user_user_proto_msgTypes[13].OneofWrappers = []any{}
-	file_user_user_proto_msgTypes[17].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
