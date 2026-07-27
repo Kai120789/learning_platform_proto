@@ -1883,7 +1883,7 @@ func (*UpdateUserTgUsernameResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{27}
 }
 
-type GetAllUsersRequest struct {
+type GetUsersWithPaginationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Search        string                 `protobuf:"bytes,1,opt,name=search,proto3" json:"search,omitempty"`
 	Page          int64                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
@@ -1892,20 +1892,20 @@ type GetAllUsersRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetAllUsersRequest) Reset() {
-	*x = GetAllUsersRequest{}
+func (x *GetUsersWithPaginationRequest) Reset() {
+	*x = GetUsersWithPaginationRequest{}
 	mi := &file_user_user_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetAllUsersRequest) String() string {
+func (x *GetUsersWithPaginationRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAllUsersRequest) ProtoMessage() {}
+func (*GetUsersWithPaginationRequest) ProtoMessage() {}
 
-func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
+func (x *GetUsersWithPaginationRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1917,53 +1917,53 @@ func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAllUsersRequest.ProtoReflect.Descriptor instead.
-func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetUsersWithPaginationRequest.ProtoReflect.Descriptor instead.
+func (*GetUsersWithPaginationRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *GetAllUsersRequest) GetSearch() string {
+func (x *GetUsersWithPaginationRequest) GetSearch() string {
 	if x != nil {
 		return x.Search
 	}
 	return ""
 }
 
-func (x *GetAllUsersRequest) GetPage() int64 {
+func (x *GetUsersWithPaginationRequest) GetPage() int64 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *GetAllUsersRequest) GetLimit() int64 {
+func (x *GetUsersWithPaginationRequest) GetLimit() int64 {
 	if x != nil {
 		return x.Limit
 	}
 	return 0
 }
 
-type GetAllUsersResponse struct {
+type GetUsersWithPaginationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*UserShortInfo       `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetAllUsersResponse) Reset() {
-	*x = GetAllUsersResponse{}
+func (x *GetUsersWithPaginationResponse) Reset() {
+	*x = GetUsersWithPaginationResponse{}
 	mi := &file_user_user_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetAllUsersResponse) String() string {
+func (x *GetUsersWithPaginationResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAllUsersResponse) ProtoMessage() {}
+func (*GetUsersWithPaginationResponse) ProtoMessage() {}
 
-func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
+func (x *GetUsersWithPaginationResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_user_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1975,12 +1975,12 @@ func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAllUsersResponse.ProtoReflect.Descriptor instead.
-func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetUsersWithPaginationResponse.ProtoReflect.Descriptor instead.
+func (*GetUsersWithPaginationResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{29}
 }
 
-func (x *GetAllUsersResponse) GetUsers() []*UserShortInfo {
+func (x *GetUsersWithPaginationResponse) GetUsers() []*UserShortInfo {
 	if x != nil {
 		return x.Users
 	}
@@ -2126,12 +2126,12 @@ const file_user_user_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
 	"\vtg_username\x18\x02 \x01(\tR\n" +
 	"tgUsername\"\x1e\n" +
-	"\x1cUpdateUserTgUsernameResponse\"V\n" +
-	"\x12GetAllUsersRequest\x12\x16\n" +
+	"\x1cUpdateUserTgUsernameResponse\"a\n" +
+	"\x1dGetUsersWithPaginationRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x03R\x04page\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x03R\x05limit\"@\n" +
-	"\x13GetAllUsersResponse\x12)\n" +
+	"\x05limit\x18\x03 \x01(\x03R\x05limit\"K\n" +
+	"\x1eGetUsersWithPaginationResponse\x12)\n" +
 	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users*H\n" +
 	"\bUserRole\x12\x19\n" +
 	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\t\n" +
@@ -2160,7 +2160,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\fUserLanguage\x12\x1d\n" +
 	"\x19ENUM_LANGUAGE_UNSPECIFIED\x10\x00\x12\x06\n" +
 	"\x02RU\x10\x01\x12\x06\n" +
-	"\x02EN\x10\x022\xcb\b\n" +
+	"\x02EN\x10\x022\xec\b\n" +
 	"\x04User\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12B\n" +
@@ -2175,8 +2175,8 @@ const file_user_user_proto_rawDesc = "" +
 	"\x0fUpdateUserTheme\x12\x1c.user.UpdateUserThemeRequest\x1a\x1d.user.UpdateUserThemeResponse\x12Q\n" +
 	"\x10UpdateUserAvatar\x12\x1d.user.UpdateUserAvatarRequest\x1a\x1e.user.UpdateUserAvatarResponse\x12T\n" +
 	"\x11GetUsersShortInfo\x12\x1e.user.GetUsersShortInfoRequest\x1a\x1f.user.GetUsersShortInfoResponse\x12]\n" +
-	"\x14UpdateUserTgUsername\x12!.user.UpdateUserTgUsernameRequest\x1a\".user.UpdateUserTgUsernameResponse\x12B\n" +
-	"\vGetAllUsers\x12\x18.user.GetAllUsersRequest\x1a\x19.user.GetAllUsersResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/userb\x06proto3"
+	"\x14UpdateUserTgUsername\x12!.user.UpdateUserTgUsernameRequest\x1a\".user.UpdateUserTgUsernameResponse\x12c\n" +
+	"\x16GetUsersWithPagination\x12#.user.GetUsersWithPaginationRequest\x1a$.user.GetUsersWithPaginationResponseBSZQgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -2193,41 +2193,41 @@ func file_user_user_proto_rawDescGZIP() []byte {
 var file_user_user_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
 var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_user_user_proto_goTypes = []any{
-	(UserRole)(0),                        // 0: user.UserRole
-	(UserStatus)(0),                      // 1: user.UserStatus
-	(UserGender)(0),                      // 2: user.UserGender
-	(UserTheme)(0),                       // 3: user.UserTheme
-	(UserLanguage)(0),                    // 4: user.UserLanguage
-	(*Date)(nil),                         // 5: user.Date
-	(*UserShortInfo)(nil),                // 6: user.UserShortInfo
-	(*CreateUserRequest)(nil),            // 7: user.CreateUserRequest
-	(*CreateUserResponse)(nil),           // 8: user.CreateUserResponse
-	(*GetUserByIdRequest)(nil),           // 9: user.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),          // 10: user.GetUserByIdResponse
-	(*GetUserDataRequest)(nil),           // 11: user.GetUserDataRequest
-	(*GetUserDataResponse)(nil),          // 12: user.GetUserDataResponse
-	(*ChangePasswordRequest)(nil),        // 13: user.ChangePasswordRequest
-	(*ChangePasswordResponse)(nil),       // 14: user.ChangePasswordResponse
-	(*ChangeEmailRequest)(nil),           // 15: user.ChangeEmailRequest
-	(*ChangeEmailResponse)(nil),          // 16: user.ChangeEmailResponse
-	(*UpdateUserInfoRequest)(nil),        // 17: user.UpdateUserInfoRequest
-	(*UpdateUserInfoResponse)(nil),       // 18: user.UpdateUserInfoResponse
-	(*UpdateUserSettingsRequest)(nil),    // 19: user.UpdateUserSettingsRequest
-	(*UpdateUserSettingsResponse)(nil),   // 20: user.UpdateUserSettingsResponse
-	(*GetUserByEmailRequest)(nil),        // 21: user.GetUserByEmailRequest
-	(*GetUserByEmailResponse)(nil),       // 22: user.GetUserByEmailResponse
-	(*GetAllUsersWithDataRequest)(nil),   // 23: user.GetAllUsersWithDataRequest
-	(*GetAllUsersWithDataResponse)(nil),  // 24: user.GetAllUsersWithDataResponse
-	(*UpdateUserThemeRequest)(nil),       // 25: user.UpdateUserThemeRequest
-	(*UpdateUserThemeResponse)(nil),      // 26: user.UpdateUserThemeResponse
-	(*UpdateUserAvatarRequest)(nil),      // 27: user.UpdateUserAvatarRequest
-	(*UpdateUserAvatarResponse)(nil),     // 28: user.UpdateUserAvatarResponse
-	(*GetUsersShortInfoRequest)(nil),     // 29: user.GetUsersShortInfoRequest
-	(*GetUsersShortInfoResponse)(nil),    // 30: user.GetUsersShortInfoResponse
-	(*UpdateUserTgUsernameRequest)(nil),  // 31: user.UpdateUserTgUsernameRequest
-	(*UpdateUserTgUsernameResponse)(nil), // 32: user.UpdateUserTgUsernameResponse
-	(*GetAllUsersRequest)(nil),           // 33: user.GetAllUsersRequest
-	(*GetAllUsersResponse)(nil),          // 34: user.GetAllUsersResponse
+	(UserRole)(0),                          // 0: user.UserRole
+	(UserStatus)(0),                        // 1: user.UserStatus
+	(UserGender)(0),                        // 2: user.UserGender
+	(UserTheme)(0),                         // 3: user.UserTheme
+	(UserLanguage)(0),                      // 4: user.UserLanguage
+	(*Date)(nil),                           // 5: user.Date
+	(*UserShortInfo)(nil),                  // 6: user.UserShortInfo
+	(*CreateUserRequest)(nil),              // 7: user.CreateUserRequest
+	(*CreateUserResponse)(nil),             // 8: user.CreateUserResponse
+	(*GetUserByIdRequest)(nil),             // 9: user.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),            // 10: user.GetUserByIdResponse
+	(*GetUserDataRequest)(nil),             // 11: user.GetUserDataRequest
+	(*GetUserDataResponse)(nil),            // 12: user.GetUserDataResponse
+	(*ChangePasswordRequest)(nil),          // 13: user.ChangePasswordRequest
+	(*ChangePasswordResponse)(nil),         // 14: user.ChangePasswordResponse
+	(*ChangeEmailRequest)(nil),             // 15: user.ChangeEmailRequest
+	(*ChangeEmailResponse)(nil),            // 16: user.ChangeEmailResponse
+	(*UpdateUserInfoRequest)(nil),          // 17: user.UpdateUserInfoRequest
+	(*UpdateUserInfoResponse)(nil),         // 18: user.UpdateUserInfoResponse
+	(*UpdateUserSettingsRequest)(nil),      // 19: user.UpdateUserSettingsRequest
+	(*UpdateUserSettingsResponse)(nil),     // 20: user.UpdateUserSettingsResponse
+	(*GetUserByEmailRequest)(nil),          // 21: user.GetUserByEmailRequest
+	(*GetUserByEmailResponse)(nil),         // 22: user.GetUserByEmailResponse
+	(*GetAllUsersWithDataRequest)(nil),     // 23: user.GetAllUsersWithDataRequest
+	(*GetAllUsersWithDataResponse)(nil),    // 24: user.GetAllUsersWithDataResponse
+	(*UpdateUserThemeRequest)(nil),         // 25: user.UpdateUserThemeRequest
+	(*UpdateUserThemeResponse)(nil),        // 26: user.UpdateUserThemeResponse
+	(*UpdateUserAvatarRequest)(nil),        // 27: user.UpdateUserAvatarRequest
+	(*UpdateUserAvatarResponse)(nil),       // 28: user.UpdateUserAvatarResponse
+	(*GetUsersShortInfoRequest)(nil),       // 29: user.GetUsersShortInfoRequest
+	(*GetUsersShortInfoResponse)(nil),      // 30: user.GetUsersShortInfoResponse
+	(*UpdateUserTgUsernameRequest)(nil),    // 31: user.UpdateUserTgUsernameRequest
+	(*UpdateUserTgUsernameResponse)(nil),   // 32: user.UpdateUserTgUsernameResponse
+	(*GetUsersWithPaginationRequest)(nil),  // 33: user.GetUsersWithPaginationRequest
+	(*GetUsersWithPaginationResponse)(nil), // 34: user.GetUsersWithPaginationResponse
 }
 var file_user_user_proto_depIdxs = []int32{
 	0,  // 0: user.CreateUserRequest.role:type_name -> user.UserRole
@@ -2252,7 +2252,7 @@ var file_user_user_proto_depIdxs = []int32{
 	12, // 19: user.GetAllUsersWithDataResponse.users:type_name -> user.GetUserDataResponse
 	3,  // 20: user.UpdateUserThemeRequest.theme:type_name -> user.UserTheme
 	6,  // 21: user.GetUsersShortInfoResponse.users:type_name -> user.UserShortInfo
-	6,  // 22: user.GetAllUsersResponse.users:type_name -> user.UserShortInfo
+	6,  // 22: user.GetUsersWithPaginationResponse.users:type_name -> user.UserShortInfo
 	7,  // 23: user.User.CreateUser:input_type -> user.CreateUserRequest
 	9,  // 24: user.User.GetUserById:input_type -> user.GetUserByIdRequest
 	21, // 25: user.User.GetUserByEmail:input_type -> user.GetUserByEmailRequest
@@ -2266,7 +2266,7 @@ var file_user_user_proto_depIdxs = []int32{
 	27, // 33: user.User.UpdateUserAvatar:input_type -> user.UpdateUserAvatarRequest
 	29, // 34: user.User.GetUsersShortInfo:input_type -> user.GetUsersShortInfoRequest
 	31, // 35: user.User.UpdateUserTgUsername:input_type -> user.UpdateUserTgUsernameRequest
-	33, // 36: user.User.GetAllUsers:input_type -> user.GetAllUsersRequest
+	33, // 36: user.User.GetUsersWithPagination:input_type -> user.GetUsersWithPaginationRequest
 	8,  // 37: user.User.CreateUser:output_type -> user.CreateUserResponse
 	10, // 38: user.User.GetUserById:output_type -> user.GetUserByIdResponse
 	22, // 39: user.User.GetUserByEmail:output_type -> user.GetUserByEmailResponse
@@ -2280,7 +2280,7 @@ var file_user_user_proto_depIdxs = []int32{
 	28, // 47: user.User.UpdateUserAvatar:output_type -> user.UpdateUserAvatarResponse
 	30, // 48: user.User.GetUsersShortInfo:output_type -> user.GetUsersShortInfoResponse
 	32, // 49: user.User.UpdateUserTgUsername:output_type -> user.UpdateUserTgUsernameResponse
-	34, // 50: user.User.GetAllUsers:output_type -> user.GetAllUsersResponse
+	34, // 50: user.User.GetUsersWithPagination:output_type -> user.GetUsersWithPaginationResponse
 	37, // [37:51] is the sub-list for method output_type
 	23, // [23:37] is the sub-list for method input_type
 	23, // [23:23] is the sub-list for extension type_name

@@ -18,7 +18,7 @@ service User {
   rpc UpdateUserAvatar (UpdateUserAvatarRequest) returns (UpdateUserAvatarResponse);
   rpc GetUsersShortInfo (GetUsersShortInfoRequest) returns (GetUsersShortInfoResponse);
   rpc UpdateUserTgUsername (UpdateUserTgUsernameRequest) returns (UpdateUserTgUsernameResponse);
-  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse);
+  rpc GetUsersWithPagination (GetUsersWithPaginationRequest) returns (GetUsersWithPaginationResponse);
 }
 
 enum UserRole {
@@ -207,12 +207,12 @@ message UpdateUserTgUsernameRequest {
 
 message UpdateUserTgUsernameResponse {}
 
-message GetAllUsersRequest {
+message GetUsersWithPaginationRequest {
   string search = 1;
   int64 page = 2;
   int64 limit = 3;
 }
 
-message GetAllUsersResponse {
+message GetUsersWithPaginationResponse {
   repeated UserShortInfo users = 1;
 }

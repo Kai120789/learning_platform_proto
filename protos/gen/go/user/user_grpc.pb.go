@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	User_CreateUser_FullMethodName           = "/user.User/CreateUser"
-	User_GetUserById_FullMethodName          = "/user.User/GetUserById"
-	User_GetUserByEmail_FullMethodName       = "/user.User/GetUserByEmail"
-	User_GetAllUsersWithData_FullMethodName  = "/user.User/GetAllUsersWithData"
-	User_GetUserData_FullMethodName          = "/user.User/GetUserData"
-	User_ChangePassword_FullMethodName       = "/user.User/ChangePassword"
-	User_ChangeEmail_FullMethodName          = "/user.User/ChangeEmail"
-	User_UpdateUserInfo_FullMethodName       = "/user.User/UpdateUserInfo"
-	User_UpdateUserSettings_FullMethodName   = "/user.User/UpdateUserSettings"
-	User_UpdateUserTheme_FullMethodName      = "/user.User/UpdateUserTheme"
-	User_UpdateUserAvatar_FullMethodName     = "/user.User/UpdateUserAvatar"
-	User_GetUsersShortInfo_FullMethodName    = "/user.User/GetUsersShortInfo"
-	User_UpdateUserTgUsername_FullMethodName = "/user.User/UpdateUserTgUsername"
-	User_GetAllUsers_FullMethodName          = "/user.User/GetAllUsers"
+	User_CreateUser_FullMethodName             = "/user.User/CreateUser"
+	User_GetUserById_FullMethodName            = "/user.User/GetUserById"
+	User_GetUserByEmail_FullMethodName         = "/user.User/GetUserByEmail"
+	User_GetAllUsersWithData_FullMethodName    = "/user.User/GetAllUsersWithData"
+	User_GetUserData_FullMethodName            = "/user.User/GetUserData"
+	User_ChangePassword_FullMethodName         = "/user.User/ChangePassword"
+	User_ChangeEmail_FullMethodName            = "/user.User/ChangeEmail"
+	User_UpdateUserInfo_FullMethodName         = "/user.User/UpdateUserInfo"
+	User_UpdateUserSettings_FullMethodName     = "/user.User/UpdateUserSettings"
+	User_UpdateUserTheme_FullMethodName        = "/user.User/UpdateUserTheme"
+	User_UpdateUserAvatar_FullMethodName       = "/user.User/UpdateUserAvatar"
+	User_GetUsersShortInfo_FullMethodName      = "/user.User/GetUsersShortInfo"
+	User_UpdateUserTgUsername_FullMethodName   = "/user.User/UpdateUserTgUsername"
+	User_GetUsersWithPagination_FullMethodName = "/user.User/GetUsersWithPagination"
 )
 
 // UserClient is the client API for User service.
@@ -52,7 +52,7 @@ type UserClient interface {
 	UpdateUserAvatar(ctx context.Context, in *UpdateUserAvatarRequest, opts ...grpc.CallOption) (*UpdateUserAvatarResponse, error)
 	GetUsersShortInfo(ctx context.Context, in *GetUsersShortInfoRequest, opts ...grpc.CallOption) (*GetUsersShortInfoResponse, error)
 	UpdateUserTgUsername(ctx context.Context, in *UpdateUserTgUsernameRequest, opts ...grpc.CallOption) (*UpdateUserTgUsernameResponse, error)
-	GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error)
+	GetUsersWithPagination(ctx context.Context, in *GetUsersWithPaginationRequest, opts ...grpc.CallOption) (*GetUsersWithPaginationResponse, error)
 }
 
 type userClient struct {
@@ -193,10 +193,10 @@ func (c *userClient) UpdateUserTgUsername(ctx context.Context, in *UpdateUserTgU
 	return out, nil
 }
 
-func (c *userClient) GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error) {
+func (c *userClient) GetUsersWithPagination(ctx context.Context, in *GetUsersWithPaginationRequest, opts ...grpc.CallOption) (*GetUsersWithPaginationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllUsersResponse)
-	err := c.cc.Invoke(ctx, User_GetAllUsers_FullMethodName, in, out, cOpts...)
+	out := new(GetUsersWithPaginationResponse)
+	err := c.cc.Invoke(ctx, User_GetUsersWithPagination_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -220,7 +220,7 @@ type UserServer interface {
 	UpdateUserAvatar(context.Context, *UpdateUserAvatarRequest) (*UpdateUserAvatarResponse, error)
 	GetUsersShortInfo(context.Context, *GetUsersShortInfoRequest) (*GetUsersShortInfoResponse, error)
 	UpdateUserTgUsername(context.Context, *UpdateUserTgUsernameRequest) (*UpdateUserTgUsernameResponse, error)
-	GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error)
+	GetUsersWithPagination(context.Context, *GetUsersWithPaginationRequest) (*GetUsersWithPaginationResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -270,8 +270,8 @@ func (UnimplementedUserServer) GetUsersShortInfo(context.Context, *GetUsersShort
 func (UnimplementedUserServer) UpdateUserTgUsername(context.Context, *UpdateUserTgUsernameRequest) (*UpdateUserTgUsernameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserTgUsername not implemented")
 }
-func (UnimplementedUserServer) GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
+func (UnimplementedUserServer) GetUsersWithPagination(context.Context, *GetUsersWithPaginationRequest) (*GetUsersWithPaginationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUsersWithPagination not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 func (UnimplementedUserServer) testEmbeddedByValue()              {}
@@ -528,20 +528,20 @@ func _User_UpdateUserTgUsername_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_GetAllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllUsersRequest)
+func _User_GetUsersWithPagination_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUsersWithPaginationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).GetAllUsers(ctx, in)
+		return srv.(UserServer).GetUsersWithPagination(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_GetAllUsers_FullMethodName,
+		FullMethod: User_GetUsersWithPagination_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).GetAllUsers(ctx, req.(*GetAllUsersRequest))
+		return srv.(UserServer).GetUsersWithPagination(ctx, req.(*GetUsersWithPaginationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -606,8 +606,8 @@ var User_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _User_UpdateUserTgUsername_Handler,
 		},
 		{
-			MethodName: "GetAllUsers",
-			Handler:    _User_GetAllUsers_Handler,
+			MethodName: "GetUsersWithPagination",
+			Handler:    _User_GetUsersWithPagination_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
