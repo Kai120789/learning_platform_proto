@@ -1954,6 +1954,7 @@ func (x *GetUsersWithPaginationRequest) GetRole() UserRole {
 type GetUsersWithPaginationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*UserShortInfo       `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Count         int64                  `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1993,6 +1994,13 @@ func (x *GetUsersWithPaginationResponse) GetUsers() []*UserShortInfo {
 		return x.Users
 	}
 	return nil
+}
+
+func (x *GetUsersWithPaginationResponse) GetCount() int64 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
 }
 
 var File_user_user_proto protoreflect.FileDescriptor
@@ -2139,9 +2147,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x03R\x04page\x12\x14\n" +
 	"\x05limit\x18\x03 \x01(\x03R\x05limit\x12\"\n" +
-	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\"K\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x0e.user.UserRoleR\x04role\"a\n" +
 	"\x1eGetUsersWithPaginationResponse\x12)\n" +
-	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users*H\n" +
+	"\x05users\x18\x01 \x03(\v2\x13.user.UserShortInfoR\x05users\x12\x14\n" +
+	"\x05count\x18\x02 \x01(\x03R\x05count*H\n" +
 	"\bUserRole\x12\x19\n" +
 	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05TUTOR\x10\x01\x12\v\n" +

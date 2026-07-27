@@ -216,4 +216,5 @@ message GetUsersWithPaginationRequest {
 
 message GetUsersWithPaginationResponse {
   repeated UserShortInfo users = 1;
+  int64 count = 2;
 }
