@@ -12,7 +12,7 @@ service Group {
   rpc RemoveGroup (RemoveGroupRequest) returns (RemoveGroupResponse);
   rpc AddUsersToGroup (AddUsersToGroupRequest) returns (AddUsersToGroupResponse);
   rpc RemoveUserFromGroup (RemoveUserFromGroupRequest) returns (RemoveUserFromGroupResponse);
-  rpc GetgroupsByStudentId (GetgroupsByStudentIdRequest) returns (GetgroupsByStudentIdResponse);
+  rpc GetGroupsByStudentId (GetGroupsByStudentIdRequest) returns (GetGroupsByStudentIdResponse);
   rpc GetGroupsByTutorId (GetGroupsByTutorIdRequest) returns (GetGroupsByTutorIdResponse);
   rpc GetGroupUsers (GetGroupUsersRequest) returns (GetGroupUsersResponse);
 }
@@ -85,11 +85,11 @@ message RemoveUserFromGroupRequest {
 
 message RemoveUserFromGroupResponse {}
 
-message GetgroupsByStudentIdRequest {
+message GetGroupsByStudentIdRequest {
   int64 user_id = 1;
 }
 
-message GetgroupsByStudentIdResponse {
+message GetGroupsByStudentIdResponse {
   repeated GetGroupByIdResponse groups = 1;
 }
 

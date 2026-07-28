@@ -757,27 +757,27 @@ func (*RemoveUserFromGroupResponse) Descriptor() ([]byte, []int) {
 	return file_group_group_proto_rawDescGZIP(), []int{13}
 }
 
-type GetgroupsByStudentIdRequest struct {
+type GetGroupsByStudentIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetgroupsByStudentIdRequest) Reset() {
-	*x = GetgroupsByStudentIdRequest{}
+func (x *GetGroupsByStudentIdRequest) Reset() {
+	*x = GetGroupsByStudentIdRequest{}
 	mi := &file_group_group_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetgroupsByStudentIdRequest) String() string {
+func (x *GetGroupsByStudentIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetgroupsByStudentIdRequest) ProtoMessage() {}
+func (*GetGroupsByStudentIdRequest) ProtoMessage() {}
 
-func (x *GetgroupsByStudentIdRequest) ProtoReflect() protoreflect.Message {
+func (x *GetGroupsByStudentIdRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_group_group_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -789,39 +789,39 @@ func (x *GetgroupsByStudentIdRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetgroupsByStudentIdRequest.ProtoReflect.Descriptor instead.
-func (*GetgroupsByStudentIdRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetGroupsByStudentIdRequest.ProtoReflect.Descriptor instead.
+func (*GetGroupsByStudentIdRequest) Descriptor() ([]byte, []int) {
 	return file_group_group_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *GetgroupsByStudentIdRequest) GetUserId() int64 {
+func (x *GetGroupsByStudentIdRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type GetgroupsByStudentIdResponse struct {
+type GetGroupsByStudentIdResponse struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
 	Groups        []*GetGroupByIdResponse `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetgroupsByStudentIdResponse) Reset() {
-	*x = GetgroupsByStudentIdResponse{}
+func (x *GetGroupsByStudentIdResponse) Reset() {
+	*x = GetGroupsByStudentIdResponse{}
 	mi := &file_group_group_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetgroupsByStudentIdResponse) String() string {
+func (x *GetGroupsByStudentIdResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetgroupsByStudentIdResponse) ProtoMessage() {}
+func (*GetGroupsByStudentIdResponse) ProtoMessage() {}
 
-func (x *GetgroupsByStudentIdResponse) ProtoReflect() protoreflect.Message {
+func (x *GetGroupsByStudentIdResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_group_group_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -833,12 +833,12 @@ func (x *GetgroupsByStudentIdResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetgroupsByStudentIdResponse.ProtoReflect.Descriptor instead.
-func (*GetgroupsByStudentIdResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetGroupsByStudentIdResponse.ProtoReflect.Descriptor instead.
+func (*GetGroupsByStudentIdResponse) Descriptor() ([]byte, []int) {
 	return file_group_group_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *GetgroupsByStudentIdResponse) GetGroups() []*GetGroupByIdResponse {
+func (x *GetGroupsByStudentIdResponse) GetGroups() []*GetGroupByIdResponse {
 	if x != nil {
 		return x.Groups
 	}
@@ -1080,9 +1080,9 @@ const file_group_group_proto_rawDesc = "" +
 	"\bgroup_id\x18\x01 \x01(\x03R\agroupId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\"\x1d\n" +
 	"\x1bRemoveUserFromGroupResponse\"6\n" +
-	"\x1bGetgroupsByStudentIdRequest\x12\x17\n" +
+	"\x1bGetGroupsByStudentIdRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"S\n" +
-	"\x1cGetgroupsByStudentIdResponse\x123\n" +
+	"\x1cGetGroupsByStudentIdResponse\x123\n" +
 	"\x06groups\x18\x01 \x03(\v2\x1b.group.GetGroupByIdResponseR\x06groups\"6\n" +
 	"\x19GetGroupsByTutorIdRequest\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"Q\n" +
@@ -1100,7 +1100,7 @@ const file_group_group_proto_rawDesc = "" +
 	"\vRemoveGroup\x12\x19.group.RemoveGroupRequest\x1a\x1a.group.RemoveGroupResponse\x12P\n" +
 	"\x0fAddUsersToGroup\x12\x1d.group.AddUsersToGroupRequest\x1a\x1e.group.AddUsersToGroupResponse\x12\\\n" +
 	"\x13RemoveUserFromGroup\x12!.group.RemoveUserFromGroupRequest\x1a\".group.RemoveUserFromGroupResponse\x12_\n" +
-	"\x14GetgroupsByStudentId\x12\".group.GetgroupsByStudentIdRequest\x1a#.group.GetgroupsByStudentIdResponse\x12Y\n" +
+	"\x14GetGroupsByStudentId\x12\".group.GetGroupsByStudentIdRequest\x1a#.group.GetGroupsByStudentIdResponse\x12Y\n" +
 	"\x12GetGroupsByTutorId\x12 .group.GetGroupsByTutorIdRequest\x1a!.group.GetGroupsByTutorIdResponse\x12J\n" +
 	"\rGetGroupUsers\x12\x1b.group.GetGroupUsersRequest\x1a\x1c.group.GetGroupUsersResponseBTZRgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/groupb\x06proto3"
 
@@ -1132,8 +1132,8 @@ var file_group_group_proto_goTypes = []any{
 	(*AddUsersToGroupResponse)(nil),      // 11: group.AddUsersToGroupResponse
 	(*RemoveUserFromGroupRequest)(nil),   // 12: group.RemoveUserFromGroupRequest
 	(*RemoveUserFromGroupResponse)(nil),  // 13: group.RemoveUserFromGroupResponse
-	(*GetgroupsByStudentIdRequest)(nil),  // 14: group.GetgroupsByStudentIdRequest
-	(*GetgroupsByStudentIdResponse)(nil), // 15: group.GetgroupsByStudentIdResponse
+	(*GetGroupsByStudentIdRequest)(nil),  // 14: group.GetGroupsByStudentIdRequest
+	(*GetGroupsByStudentIdResponse)(nil), // 15: group.GetGroupsByStudentIdResponse
 	(*GetGroupsByTutorIdRequest)(nil),    // 16: group.GetGroupsByTutorIdRequest
 	(*GetGroupsByTutorIdResponse)(nil),   // 17: group.GetGroupsByTutorIdResponse
 	(*GetGroupUsersRequest)(nil),         // 18: group.GetGroupUsersRequest
@@ -1143,7 +1143,7 @@ var file_group_group_proto_depIdxs = []int32{
 	1,  // 0: group.GetGroupsResponse.groups:type_name -> group.GetGroupByIdResponse
 	1,  // 1: group.CreateGroupResponse.group:type_name -> group.GetGroupByIdResponse
 	1,  // 2: group.UpdateGroupResponse.group:type_name -> group.GetGroupByIdResponse
-	1,  // 3: group.GetgroupsByStudentIdResponse.groups:type_name -> group.GetGroupByIdResponse
+	1,  // 3: group.GetGroupsByStudentIdResponse.groups:type_name -> group.GetGroupByIdResponse
 	1,  // 4: group.GetGroupsByTutorIdResponse.groups:type_name -> group.GetGroupByIdResponse
 	0,  // 5: group.Group.GetGroupById:input_type -> group.GetGroupByIdRequest
 	2,  // 6: group.Group.GetGroups:input_type -> group.GetGroupsRequest
@@ -1152,7 +1152,7 @@ var file_group_group_proto_depIdxs = []int32{
 	8,  // 9: group.Group.RemoveGroup:input_type -> group.RemoveGroupRequest
 	10, // 10: group.Group.AddUsersToGroup:input_type -> group.AddUsersToGroupRequest
 	12, // 11: group.Group.RemoveUserFromGroup:input_type -> group.RemoveUserFromGroupRequest
-	14, // 12: group.Group.GetgroupsByStudentId:input_type -> group.GetgroupsByStudentIdRequest
+	14, // 12: group.Group.GetGroupsByStudentId:input_type -> group.GetGroupsByStudentIdRequest
 	16, // 13: group.Group.GetGroupsByTutorId:input_type -> group.GetGroupsByTutorIdRequest
 	18, // 14: group.Group.GetGroupUsers:input_type -> group.GetGroupUsersRequest
 	1,  // 15: group.Group.GetGroupById:output_type -> group.GetGroupByIdResponse
@@ -1162,7 +1162,7 @@ var file_group_group_proto_depIdxs = []int32{
 	9,  // 19: group.Group.RemoveGroup:output_type -> group.RemoveGroupResponse
 	11, // 20: group.Group.AddUsersToGroup:output_type -> group.AddUsersToGroupResponse
 	13, // 21: group.Group.RemoveUserFromGroup:output_type -> group.RemoveUserFromGroupResponse
-	15, // 22: group.Group.GetgroupsByStudentId:output_type -> group.GetgroupsByStudentIdResponse
+	15, // 22: group.Group.GetGroupsByStudentId:output_type -> group.GetGroupsByStudentIdResponse
 	17, // 23: group.Group.GetGroupsByTutorId:output_type -> group.GetGroupsByTutorIdResponse
 	19, // 24: group.Group.GetGroupUsers:output_type -> group.GetGroupUsersResponse
 	15, // [15:25] is the sub-list for method output_type
