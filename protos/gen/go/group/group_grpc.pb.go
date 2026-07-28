@@ -19,16 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Group_GetGroupById_FullMethodName        = "/group.Group/GetGroupById"
-	Group_GetGroups_FullMethodName           = "/group.Group/GetGroups"
-	Group_CreateGroup_FullMethodName         = "/group.Group/CreateGroup"
-	Group_UpdateGroup_FullMethodName         = "/group.Group/UpdateGroup"
-	Group_RemoveGroup_FullMethodName         = "/group.Group/RemoveGroup"
-	Group_AddUsersToGroup_FullMethodName     = "/group.Group/AddUsersToGroup"
-	Group_RemoveUserFromGroup_FullMethodName = "/group.Group/RemoveUserFromGroup"
-	Group_GetUserGroups_FullMethodName       = "/group.Group/GetUserGroups"
-	Group_GetGroupsByTutorId_FullMethodName  = "/group.Group/GetGroupsByTutorId"
-	Group_GetGroupUsers_FullMethodName       = "/group.Group/GetGroupUsers"
+	Group_GetGroupById_FullMethodName         = "/group.Group/GetGroupById"
+	Group_GetGroups_FullMethodName            = "/group.Group/GetGroups"
+	Group_CreateGroup_FullMethodName          = "/group.Group/CreateGroup"
+	Group_UpdateGroup_FullMethodName          = "/group.Group/UpdateGroup"
+	Group_RemoveGroup_FullMethodName          = "/group.Group/RemoveGroup"
+	Group_AddUsersToGroup_FullMethodName      = "/group.Group/AddUsersToGroup"
+	Group_RemoveUserFromGroup_FullMethodName  = "/group.Group/RemoveUserFromGroup"
+	Group_GetgroupsByStudentId_FullMethodName = "/group.Group/GetgroupsByStudentId"
+	Group_GetGroupsByTutorId_FullMethodName   = "/group.Group/GetGroupsByTutorId"
+	Group_GetGroupUsers_FullMethodName        = "/group.Group/GetGroupUsers"
 )
 
 // GroupClient is the client API for Group service.
@@ -42,7 +42,7 @@ type GroupClient interface {
 	RemoveGroup(ctx context.Context, in *RemoveGroupRequest, opts ...grpc.CallOption) (*RemoveGroupResponse, error)
 	AddUsersToGroup(ctx context.Context, in *AddUsersToGroupRequest, opts ...grpc.CallOption) (*AddUsersToGroupResponse, error)
 	RemoveUserFromGroup(ctx context.Context, in *RemoveUserFromGroupRequest, opts ...grpc.CallOption) (*RemoveUserFromGroupResponse, error)
-	GetUserGroups(ctx context.Context, in *GetUserGroupsRequest, opts ...grpc.CallOption) (*GetUserGroupsResponse, error)
+	GetgroupsByStudentId(ctx context.Context, in *GetgroupsByStudentIdRequest, opts ...grpc.CallOption) (*GetgroupsByStudentIdResponse, error)
 	GetGroupsByTutorId(ctx context.Context, in *GetGroupsByTutorIdRequest, opts ...grpc.CallOption) (*GetGroupsByTutorIdResponse, error)
 	GetGroupUsers(ctx context.Context, in *GetGroupUsersRequest, opts ...grpc.CallOption) (*GetGroupUsersResponse, error)
 }
@@ -125,10 +125,10 @@ func (c *groupClient) RemoveUserFromGroup(ctx context.Context, in *RemoveUserFro
 	return out, nil
 }
 
-func (c *groupClient) GetUserGroups(ctx context.Context, in *GetUserGroupsRequest, opts ...grpc.CallOption) (*GetUserGroupsResponse, error) {
+func (c *groupClient) GetgroupsByStudentId(ctx context.Context, in *GetgroupsByStudentIdRequest, opts ...grpc.CallOption) (*GetgroupsByStudentIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserGroupsResponse)
-	err := c.cc.Invoke(ctx, Group_GetUserGroups_FullMethodName, in, out, cOpts...)
+	out := new(GetgroupsByStudentIdResponse)
+	err := c.cc.Invoke(ctx, Group_GetgroupsByStudentId_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ type GroupServer interface {
 	RemoveGroup(context.Context, *RemoveGroupRequest) (*RemoveGroupResponse, error)
 	AddUsersToGroup(context.Context, *AddUsersToGroupRequest) (*AddUsersToGroupResponse, error)
 	RemoveUserFromGroup(context.Context, *RemoveUserFromGroupRequest) (*RemoveUserFromGroupResponse, error)
-	GetUserGroups(context.Context, *GetUserGroupsRequest) (*GetUserGroupsResponse, error)
+	GetgroupsByStudentId(context.Context, *GetgroupsByStudentIdRequest) (*GetgroupsByStudentIdResponse, error)
 	GetGroupsByTutorId(context.Context, *GetGroupsByTutorIdRequest) (*GetGroupsByTutorIdResponse, error)
 	GetGroupUsers(context.Context, *GetGroupUsersRequest) (*GetGroupUsersResponse, error)
 	mustEmbedUnimplementedGroupServer()
@@ -200,8 +200,8 @@ func (UnimplementedGroupServer) AddUsersToGroup(context.Context, *AddUsersToGrou
 func (UnimplementedGroupServer) RemoveUserFromGroup(context.Context, *RemoveUserFromGroupRequest) (*RemoveUserFromGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveUserFromGroup not implemented")
 }
-func (UnimplementedGroupServer) GetUserGroups(context.Context, *GetUserGroupsRequest) (*GetUserGroupsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserGroups not implemented")
+func (UnimplementedGroupServer) GetgroupsByStudentId(context.Context, *GetgroupsByStudentIdRequest) (*GetgroupsByStudentIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetgroupsByStudentId not implemented")
 }
 func (UnimplementedGroupServer) GetGroupsByTutorId(context.Context, *GetGroupsByTutorIdRequest) (*GetGroupsByTutorIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGroupsByTutorId not implemented")
@@ -356,20 +356,20 @@ func _Group_RemoveUserFromGroup_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Group_GetUserGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserGroupsRequest)
+func _Group_GetgroupsByStudentId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetgroupsByStudentIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GroupServer).GetUserGroups(ctx, in)
+		return srv.(GroupServer).GetgroupsByStudentId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Group_GetUserGroups_FullMethodName,
+		FullMethod: Group_GetgroupsByStudentId_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GroupServer).GetUserGroups(ctx, req.(*GetUserGroupsRequest))
+		return srv.(GroupServer).GetgroupsByStudentId(ctx, req.(*GetgroupsByStudentIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -446,8 +446,8 @@ var Group_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Group_RemoveUserFromGroup_Handler,
 		},
 		{
-			MethodName: "GetUserGroups",
-			Handler:    _Group_GetUserGroups_Handler,
+			MethodName: "GetgroupsByStudentId",
+			Handler:    _Group_GetgroupsByStudentId_Handler,
 		},
 		{
 			MethodName: "GetGroupsByTutorId",
