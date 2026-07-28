@@ -21,6 +21,58 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UserRole int32
+
+const (
+	UserRole_USER_ROLE_UNSPECIFIED UserRole = 0
+	UserRole_TUTOR                 UserRole = 1
+	UserRole_STUDENT               UserRole = 2
+	UserRole_ADMIN                 UserRole = 3
+)
+
+// Enum value maps for UserRole.
+var (
+	UserRole_name = map[int32]string{
+		0: "USER_ROLE_UNSPECIFIED",
+		1: "TUTOR",
+		2: "STUDENT",
+		3: "ADMIN",
+	}
+	UserRole_value = map[string]int32{
+		"USER_ROLE_UNSPECIFIED": 0,
+		"TUTOR":                 1,
+		"STUDENT":               2,
+		"ADMIN":                 3,
+	}
+)
+
+func (x UserRole) Enum() *UserRole {
+	p := new(UserRole)
+	*p = x
+	return p
+}
+
+func (x UserRole) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (UserRole) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_auth_proto_enumTypes[0].Descriptor()
+}
+
+func (UserRole) Type() protoreflect.EnumType {
+	return &file_auth_auth_proto_enumTypes[0]
+}
+
+func (x UserRole) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use UserRole.Descriptor instead.
+func (UserRole) EnumDescriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{0}
+}
+
 type Date struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Year          int32                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
@@ -85,7 +137,7 @@ type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Role          UserRole               `protobuf:"varint,3,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -134,11 +186,11 @@ func (x *LoginRequest) GetEmail() string {
 	return ""
 }
 
-func (x *LoginRequest) GetPassword() string {
+func (x *LoginRequest) GetRole() UserRole {
 	if x != nil {
-		return x.Password
+		return x.Role
 	}
-	return ""
+	return UserRole_USER_ROLE_UNSPECIFIED
 }
 
 type LoginResponse struct {
@@ -189,7 +241,7 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Role          UserRole               `protobuf:"varint,3,opt,name=role,proto3,enum=auth.UserRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -238,11 +290,11 @@ func (x *RegisterRequest) GetEmail() string {
 	return ""
 }
 
-func (x *RegisterRequest) GetPassword() string {
+func (x *RegisterRequest) GetRole() UserRole {
 	if x != nil {
-		return x.Password
+		return x.Role
 	}
-	return ""
+	return UserRole_USER_ROLE_UNSPECIFIED
 }
 
 type RegisterResponse struct {
@@ -1089,18 +1141,18 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x04Date\x12\x12\n" +
 	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"Y\n" +
+	"\x03day\x18\x03 \x01(\x05R\x03day\"a\n" +
 	"\fLoginRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\".\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\"\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x0e.auth.UserRoleR\x04role\".\n" +
 	"\rLoginResponse\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x01 \x01(\tR\tsessionId\"\\\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\"d\n" +
 	"\x0fRegisterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"1\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\"\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x0e.auth.UserRoleR\x04role\"1\n" +
 	"\x10RegisterResponse\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\"\x16\n" +
@@ -1141,7 +1193,12 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x17ForceChangeEmailRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"\x1a\n" +
-	"\x18ForceChangeEmailResponse2\x99\x06\n" +
+	"\x18ForceChangeEmailResponse*H\n" +
+	"\bUserRole\x12\x19\n" +
+	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\t\n" +
+	"\x05TUTOR\x10\x01\x12\v\n" +
+	"\aSTUDENT\x10\x02\x12\t\n" +
+	"\x05ADMIN\x10\x032\x99\x06\n" +
 	"\x04Auth\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x12H\n" +
@@ -1167,60 +1224,64 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
+var file_auth_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_auth_auth_proto_goTypes = []any{
-	(*Date)(nil),                         // 0: auth.Date
-	(*LoginRequest)(nil),                 // 1: auth.LoginRequest
-	(*LoginResponse)(nil),                // 2: auth.LoginResponse
-	(*RegisterRequest)(nil),              // 3: auth.RegisterRequest
-	(*RegisterResponse)(nil),             // 4: auth.RegisterResponse
-	(*RefreshTokensRequest)(nil),         // 5: auth.RefreshTokensRequest
-	(*RefreshTokensResponse)(nil),        // 6: auth.RefreshTokensResponse
-	(*CheckPasswordRequest)(nil),         // 7: auth.CheckPasswordRequest
-	(*CheckPasswordResponse)(nil),        // 8: auth.CheckPasswordResponse
-	(*GeneratePasswordHashRequest)(nil),  // 9: auth.GeneratePasswordHashRequest
-	(*GeneratePasswordHashResponse)(nil), // 10: auth.GeneratePasswordHashResponse
-	(*LogoutRequest)(nil),                // 11: auth.LogoutRequest
-	(*LogoutResponse)(nil),               // 12: auth.LogoutResponse
-	(*LogoutAllRequest)(nil),             // 13: auth.LogoutAllRequest
-	(*LogoutAllResponse)(nil),            // 14: auth.LogoutAllResponse
-	(*ChangePasswordRequest)(nil),        // 15: auth.ChangePasswordRequest
-	(*ChangePasswordResponse)(nil),       // 16: auth.ChangePasswordResponse
-	(*ForceChangePasswordRequest)(nil),   // 17: auth.ForceChangePasswordRequest
-	(*ForceChangePasswordResponse)(nil),  // 18: auth.ForceChangePasswordResponse
-	(*ChangeEmailRequest)(nil),           // 19: auth.ChangeEmailRequest
-	(*ChangeEmailResponse)(nil),          // 20: auth.ChangeEmailResponse
-	(*ForceChangeEmailRequest)(nil),      // 21: auth.ForceChangeEmailRequest
-	(*ForceChangeEmailResponse)(nil),     // 22: auth.ForceChangeEmailResponse
+	(UserRole)(0),                        // 0: auth.UserRole
+	(*Date)(nil),                         // 1: auth.Date
+	(*LoginRequest)(nil),                 // 2: auth.LoginRequest
+	(*LoginResponse)(nil),                // 3: auth.LoginResponse
+	(*RegisterRequest)(nil),              // 4: auth.RegisterRequest
+	(*RegisterResponse)(nil),             // 5: auth.RegisterResponse
+	(*RefreshTokensRequest)(nil),         // 6: auth.RefreshTokensRequest
+	(*RefreshTokensResponse)(nil),        // 7: auth.RefreshTokensResponse
+	(*CheckPasswordRequest)(nil),         // 8: auth.CheckPasswordRequest
+	(*CheckPasswordResponse)(nil),        // 9: auth.CheckPasswordResponse
+	(*GeneratePasswordHashRequest)(nil),  // 10: auth.GeneratePasswordHashRequest
+	(*GeneratePasswordHashResponse)(nil), // 11: auth.GeneratePasswordHashResponse
+	(*LogoutRequest)(nil),                // 12: auth.LogoutRequest
+	(*LogoutResponse)(nil),               // 13: auth.LogoutResponse
+	(*LogoutAllRequest)(nil),             // 14: auth.LogoutAllRequest
+	(*LogoutAllResponse)(nil),            // 15: auth.LogoutAllResponse
+	(*ChangePasswordRequest)(nil),        // 16: auth.ChangePasswordRequest
+	(*ChangePasswordResponse)(nil),       // 17: auth.ChangePasswordResponse
+	(*ForceChangePasswordRequest)(nil),   // 18: auth.ForceChangePasswordRequest
+	(*ForceChangePasswordResponse)(nil),  // 19: auth.ForceChangePasswordResponse
+	(*ChangeEmailRequest)(nil),           // 20: auth.ChangeEmailRequest
+	(*ChangeEmailResponse)(nil),          // 21: auth.ChangeEmailResponse
+	(*ForceChangeEmailRequest)(nil),      // 22: auth.ForceChangeEmailRequest
+	(*ForceChangeEmailResponse)(nil),     // 23: auth.ForceChangeEmailResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	1,  // 0: auth.Auth.Login:input_type -> auth.LoginRequest
-	3,  // 1: auth.Auth.Register:input_type -> auth.RegisterRequest
-	5,  // 2: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
-	7,  // 3: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
-	9,  // 4: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
-	11, // 5: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	13, // 6: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
-	15, // 7: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
-	17, // 8: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
-	19, // 9: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
-	21, // 10: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
-	2,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
-	4,  // 12: auth.Auth.Register:output_type -> auth.RegisterResponse
-	6,  // 13: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
-	8,  // 14: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
-	10, // 15: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
-	12, // 16: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	14, // 17: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
-	16, // 18: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
-	18, // 19: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
-	20, // 20: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
-	22, // 21: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
-	11, // [11:22] is the sub-list for method output_type
-	0,  // [0:11] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	0,  // 0: auth.LoginRequest.role:type_name -> auth.UserRole
+	0,  // 1: auth.RegisterRequest.role:type_name -> auth.UserRole
+	2,  // 2: auth.Auth.Login:input_type -> auth.LoginRequest
+	4,  // 3: auth.Auth.Register:input_type -> auth.RegisterRequest
+	6,  // 4: auth.Auth.RefreshTokens:input_type -> auth.RefreshTokensRequest
+	8,  // 5: auth.Auth.CheckPassword:input_type -> auth.CheckPasswordRequest
+	10, // 6: auth.Auth.GeneratePasswordHash:input_type -> auth.GeneratePasswordHashRequest
+	12, // 7: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	14, // 8: auth.Auth.LogoutAll:input_type -> auth.LogoutAllRequest
+	16, // 9: auth.Auth.ChangePassword:input_type -> auth.ChangePasswordRequest
+	18, // 10: auth.Auth.ForceChangePassword:input_type -> auth.ForceChangePasswordRequest
+	20, // 11: auth.Auth.ChangeEmail:input_type -> auth.ChangeEmailRequest
+	22, // 12: auth.Auth.ForceChangeEmail:input_type -> auth.ForceChangeEmailRequest
+	3,  // 13: auth.Auth.Login:output_type -> auth.LoginResponse
+	5,  // 14: auth.Auth.Register:output_type -> auth.RegisterResponse
+	7,  // 15: auth.Auth.RefreshTokens:output_type -> auth.RefreshTokensResponse
+	9,  // 16: auth.Auth.CheckPassword:output_type -> auth.CheckPasswordResponse
+	11, // 17: auth.Auth.GeneratePasswordHash:output_type -> auth.GeneratePasswordHashResponse
+	13, // 18: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	15, // 19: auth.Auth.LogoutAll:output_type -> auth.LogoutAllResponse
+	17, // 20: auth.Auth.ChangePassword:output_type -> auth.ChangePasswordResponse
+	19, // 21: auth.Auth.ForceChangePassword:output_type -> auth.ForceChangePasswordResponse
+	21, // 22: auth.Auth.ChangeEmail:output_type -> auth.ChangeEmailResponse
+	23, // 23: auth.Auth.ForceChangeEmail:output_type -> auth.ForceChangeEmailResponse
+	13, // [13:24] is the sub-list for method output_type
+	2,  // [2:13] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -1233,13 +1294,14 @@ func file_auth_auth_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_auth_auth_proto_goTypes,
 		DependencyIndexes: file_auth_auth_proto_depIdxs,
+		EnumInfos:         file_auth_auth_proto_enumTypes,
 		MessageInfos:      file_auth_auth_proto_msgTypes,
 	}.Build()
 	File_auth_auth_proto = out.File

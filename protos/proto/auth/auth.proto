@@ -18,6 +18,13 @@ service Auth {
   rpc ForceChangeEmail (ForceChangeEmailRequest) returns (ForceChangeEmailResponse);
 }
 
+enum UserRole {
+  USER_ROLE_UNSPECIFIED = 0;
+  TUTOR = 1;
+  STUDENT = 2;
+  ADMIN = 3;
+}
+
 message Date {
   int32 year = 1;
   int32 month = 2;
@@ -27,7 +34,7 @@ message Date {
 message LoginRequest {
   int64 user_id = 1;
   string email = 2;
-  string password = 3;
+  UserRole role = 3;
 }
 
 message LoginResponse  {
@@ -37,7 +44,7 @@ message LoginResponse  {
 message RegisterRequest {
   int64 user_id = 1;
   string email = 2;
-  string password = 3;
+  UserRole role = 3;
 }
 
 message RegisterResponse {
