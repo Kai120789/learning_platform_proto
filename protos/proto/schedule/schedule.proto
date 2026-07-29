@@ -13,7 +13,9 @@ service Schedule {
   rpc CreateSchedule (CreateScheduleRequest) returns (CreateScheduleResponse);
   rpc UpdateSchedule (UpdateScheduleRequest) returns (UpdateScheduleResponse);
   rpc DeleteSchedule (DeleteScheduleRequest) returns (DeleteScheduleResponse);
+  rpc CreateScheduleSlot (CreateScheduleSlotRequest) returns (CreateScheduleSlotResponse);
   rpc UpdateScheduleSlot (UpdateScheduleSlotRequest) returns (UpdateScheduleSlotResponse);
+  rpc DeleteScheduleSlot (DeleteScheduleSlotRequest) returns (DeleteScheduleSlotResponse);
   rpc BindLessonToScheduleSlot (BindLessonToScheduleSlotRequest) returns (BindLessonToScheduleSlotResponse);
   rpc DeleteLessonFromScheduleSlot (DeleteLessonFromScheduleSlotRequest) returns (DeleteLessonFromScheduleSlotResponse);
 }
@@ -33,22 +35,17 @@ message ScheduleSlot {
   optional int64 lesson_id = 6;
 }
 
-message CreateScheduleSlot {
-  google.protobuf.Timestamp start_time = 1;
-  optional int64 duration = 2;
-  optional int64 lesson_id = 3;
-}
-
 message GetScheduleByIDRequest {
   int64 schedule_id = 1;
 }
 
 message GetScheduleByIDResponse {
   int64 id = 1;
-  int64 tutor_id = 2;
-  google.protobuf.Timestamp start_time = 3;
-  google.protobuf.Timestamp end_time = 4;
-  repeated ScheduleSlot slots = 5;
+  string title = 2;
+  int64 tutor_id = 3;
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+  repeated ScheduleSlot slots = 6;
 }
 
 message GetAllSchedulesRequest {
@@ -69,9 +66,9 @@ message GetSchedulesByTutorIDResponse {
 
 message CreateScheduleRequest {
   int64 tutor_id = 1;
-  google.protobuf.Timestamp start_time = 2;
-  google.protobuf.Timestamp end_time = 3;
-  repeated CreateScheduleSlot slots = 4;
+  string title = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
 }
 
 message CreateScheduleResponse {
@@ -80,10 +77,9 @@ message CreateScheduleResponse {
 
 message UpdateScheduleRequest {
   int64 id = 1;
-  google.protobuf.Timestamp start_time = 2;
-  google.protobuf.Timestamp end_time = 3;
-  repeated CreateScheduleSlot slots = 4;
-  repeated int64 deleted_schedule_slot_ids = 5;
+  string title = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
 }
 
 message UpdateScheduleResponse {
@@ -107,11 +103,20 @@ message BindLessonToScheduleSlotResponse {
 
 }
 
+message CreateScheduleSlotRequest {
+  google.protobuf.Timestamp start_time = 1;
+  int64 schedule_id = 2;
+  optional int64 duration = 3;
+}
+
+message CreateScheduleSlotResponse {
+  ScheduleSlot slot = 1;
+}
+
 message UpdateScheduleSlotRequest {
   int64 id = 1;
   google.protobuf.Timestamp start_time = 2;
   optional int64 duration = 3;
-  optional int64 lesson_id = 4;
 }
 
 message UpdateScheduleSlotResponse {
@@ -121,6 +126,14 @@ message UpdateScheduleSlotResponse {
   Status status = 4;
   optional int64 duration = 5;
   optional int64 lesson_id = 6;
+}
+
+message DeleteScheduleSlotRequest {
+  int64 slot_id = 1;
+}
+
+message DeleteScheduleSlotResponse {
+
 }
 
 message DeleteLessonFromScheduleSlotRequest {
