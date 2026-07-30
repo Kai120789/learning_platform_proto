@@ -1092,10 +1092,10 @@ func (x *UpdateScheduleSlotResponse) GetLessonId() int64 {
 }
 
 type DeleteScheduleSlotRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	SlotId        int64                  `protobuf:"varint,1,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	ScheduleSlotId int64                  `protobuf:"varint,1,opt,name=schedule_slot_id,json=scheduleSlotId,proto3" json:"schedule_slot_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *DeleteScheduleSlotRequest) Reset() {
@@ -1128,9 +1128,9 @@ func (*DeleteScheduleSlotRequest) Descriptor() ([]byte, []int) {
 	return file_schedule_schedule_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *DeleteScheduleSlotRequest) GetSlotId() int64 {
+func (x *DeleteScheduleSlotRequest) GetScheduleSlotId() int64 {
 	if x != nil {
-		return x.SlotId
+		return x.ScheduleSlotId
 	}
 	return 0
 }
@@ -1336,9 +1336,9 @@ const file_schedule_schedule_proto_rawDesc = "" +
 	"\tlesson_id\x18\x06 \x01(\x03H\x01R\blessonId\x88\x01\x01B\v\n" +
 	"\t_durationB\f\n" +
 	"\n" +
-	"_lesson_id\"4\n" +
-	"\x19DeleteScheduleSlotRequest\x12\x17\n" +
-	"\aslot_id\x18\x01 \x01(\x03R\x06slotId\"\x1c\n" +
+	"_lesson_id\"E\n" +
+	"\x19DeleteScheduleSlotRequest\x12(\n" +
+	"\x10schedule_slot_id\x18\x01 \x01(\x03R\x0escheduleSlotId\"\x1c\n" +
 	"\x1aDeleteScheduleSlotResponse\"O\n" +
 	"#DeleteLessonFromScheduleSlotRequest\x12(\n" +
 	"\x10schedule_slot_id\x18\x01 \x01(\x03R\x0escheduleSlotId\"&\n" +
