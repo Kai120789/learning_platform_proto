@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package media;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/media";
+
+service Media {
+  rpc CreateOne (CreateOneRequest) returns (CreateOneResponse);
+  rpc CreateMany (CreateManyRequest) returns (CreateManyResponse);
+  rpc CreateOneStream (stream CreateOneStreamRequest) returns (CreateOneStreamResponse);
+  rpc GetOne (GetOneRequest) returns (GetOneResponse);
+  rpc GetMany (GetManyRequest) returns (GetManyResponse);
+  rpc DeleteOne (DeleteOneRequest) returns (DeleteOneResponse);
+  rpc DeleteMany (DeleteManyRequest) returns (DeleteManyResponse);
+}
+
+message FileMetadata {
+  string file_name = 1;
+  string content_type = 2;
+  uint64 size = 3;
+}
+
+message FileDataType {
+  FileMetadata file_metadata = 1;
+  bytes data = 2;
+}
+
+message CreateOneRequest {
+  FileDataType file = 1;
+}
+
+message CreateOneResponse {
+  string object_id = 1;
+}
+
+message CreateManyRequest {
+  repeated FileDataType files = 1;
+}
+
+message CreateManyResponse {
+  repeated string object_ids = 1;
+}
+
+message CreateOneStreamRequest {
+  oneof payload {
+    FileMetadata metadata = 1;
+    bytes chunk = 2;
+  }
+}
+
+message CreateOneStreamResponse {
+  string object_id = 1;
+}
+
+message GetOneRequest {
+  string object_id = 1;
+}
+
+message GetOneResponse {
+  string url = 1;
+}
+
+message GetManyRequest {
+  repeated string object_ids = 1;
+}
+
+message GetManyResponse {
+  repeated string urls = 1;
+}
+
+message DeleteOneRequest {
+  string object_id = 1;
+}
+
+message DeleteOneResponse {
+
+}
+
+message DeleteManyRequest {
+  repeated string object_ids = 1;
+}
+
+message DeleteManyResponse {
+
+}
