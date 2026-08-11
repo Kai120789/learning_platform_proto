@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package material;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/material";
+
+service Material {
+  rpc CreateFolder (CreateFolderRequest) returns (CreateFolderResponse);
+  rpc MoveFolder (MoveFolderRequest) returns (MoveFolderResponse);
+  rpc RenameFolder (RenameFolderRequest) returns (RenameFolderResponse);
+  rpc DeleteFolder (DeleteFolderRequest) returns (DeleteFolderResponse);
+  rpc GetStudentMaterials (GetStudentMaterialsRequest) returns (GetStudentMaterialsResponse);
+  rpc GetTutorMaterials (GetTutorMaterialsRequest) returns (GetTutorMaterialsResponse);
+  rpc CreateMaterials (CreateMaterialsRequest) returns (CreateMaterialsResponse);
+  rpc MoveMaterials (MoveMaterialsRequest) returns (MoveMaterialsResponse);
+  rpc RenameMaterial (RenameMaterialRequest) returns (RenameMaterialResponse);
+  rpc DeleteOneMaterial (DeleteOneMaterialRequest) returns (DeleteOneMaterialResponse);
+  rpc DeleteMaterials (DeleteMaterialsRequest) returns (DeleteMaterialsResponse);
+  rpc UpdateUsersOneMaterialAccess (UpdateUsersOneMaterialAccessRequest) returns (UpdateUsersOneMaterialAccessResponse);
+  rpc UpdateUsersMaterialsAccess (UpdateUsersMaterialAccessRequest) returns (UpdateUsersMaterialAccessResponse);
+  rpc UpdateUsersFolderAccess (UpdateUsersFolderAccessRequest) returns (UpdateUsersFolderAccessResponse);
+}
+
+message Folder {
+  int64 id = 1;
+  string title = 2;
+  optional int64 parent_folder_id = 3;
+  int64 tutor_id = 4;
+}
+
+message FolderMaterial {
+  int64 id = 1;
+  string title = 2;
+  uint64 size = 3;
+  optional int64 folder_id = 4;
+  int64 tutor_id = 5;
+  string mime_type = 6;
+  string media_object_id = 7;
+}
+
+message NewFolderMaterial {
+  string title = 1;
+  uint64 size = 2;
+  optional int64 folder_id = 3;
+  int64 tutor_id = 4;
+  string mime_type = 5;
+  string media_object_id = 6;
+}
+
+message CreateFolderRequest {
+  string title = 1;
+  int64 parent_folder_id = 2;
+  int64 tutor_id = 3;
+}
+
+message CreateFolderResponse {
+  Folder folder = 1;
+}
+
+message MoveFolderRequest {
+  int64 folder_id = 1;
+  optional int64 parent_folder_id = 2;
+}
+
+message MoveFolderResponse {
+
+}
+
+message RenameFolderRequest {
+  int64 folder_id = 1;
+  string title = 2;
+}
+
+message RenameFolderResponse {
+  Folder folder = 1;
+}
+
+message DeleteFolderRequest {
+  int64 folder_id = 1;
+}
+
+message DeleteFolderResponse {
+
+}
+
+message GetStudentMaterialsRequest {
+  int64 student_id = 1;
+  optional int64 folder_id = 2;
+}
+
+message GetStudentMaterialsResponse {
+  repeated Folder folders = 1;
+  repeated FolderMaterial materials = 2;
+}
+
+message GetTutorMaterialsRequest {
+  int64 tutor_id = 1;
+  optional int64 folder_id = 2;
+}
+
+message GetTutorMaterialsResponse {
+  repeated Folder folders = 1;
+  repeated FolderMaterial materials = 2;
+}
+
+message CreateMaterialsRequest {
+  repeated NewFolderMaterial materials = 1;
+}
+
+message CreateMaterialsResponse {
+  repeated FolderMaterial materials = 1;
+}
+
+message RenameMaterialRequest {
+  int64 material_id = 1;
+  string title = 2;
+}
+
+message RenameMaterialResponse {
+
+}
+
+message DeleteOneMaterialRequest {
+  int64 material_id = 1;
+}
+
+message DeleteOneMaterialResponse {
+
+}
+
+message DeleteMaterialsRequest {
+  repeated int64 material_ids = 1;
+}
+
+message DeleteMaterialsResponse {
+
+}
+
+message UpdateUsersOneMaterialAccessRequest {
+  int64 material_id = 1;
+  repeated int64 user_ids = 2;
+}
+
+message UpdateUsersOneMaterialAccessResponse {
+
+}
+
+message UpdateUsersMaterialAccessRequest {
+  int64 material_id = 1;
+  repeated int64 user_ids = 2;
+}
+
+message UpdateUsersMaterialAccessResponse {
+
+}
+
+message UpdateUsersFolderAccessRequest {
+  int64 folder_id = 1;
+  repeated int64 user_ids = 2;
+}
+
+message UpdateUsersFolderAccessResponse {
+
+}
+
+message MoveMaterialsRequest {
+  repeated int64 material_ids = 1;
+  optional int64 folder_id = 2;
+}
+
+message MoveMaterialsResponse {
+
+}
