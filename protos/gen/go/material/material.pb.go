@@ -1179,7 +1179,7 @@ func (*DeleteMaterialsResponse) Descriptor() ([]byte, []int) {
 
 type UpdateUsersOneMaterialAccessRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MaterialId    int64                  `protobuf:"varint,1,opt,name=material_id,json=materialId,proto3" json:"material_id,omitempty"`
+	MaterialIds   []int64                `protobuf:"varint,1,rep,packed,name=material_ids,json=materialIds,proto3" json:"material_ids,omitempty"`
 	UserIds       []int64                `protobuf:"varint,2,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1215,11 +1215,11 @@ func (*UpdateUsersOneMaterialAccessRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *UpdateUsersOneMaterialAccessRequest) GetMaterialId() int64 {
+func (x *UpdateUsersOneMaterialAccessRequest) GetMaterialIds() []int64 {
 	if x != nil {
-		return x.MaterialId
+		return x.MaterialIds
 	}
-	return 0
+	return nil
 }
 
 func (x *UpdateUsersOneMaterialAccessRequest) GetUserIds() []int64 {
@@ -1610,10 +1610,9 @@ const file_material_material_proto_rawDesc = "" +
 	"\x19DeleteOneMaterialResponse\";\n" +
 	"\x16DeleteMaterialsRequest\x12!\n" +
 	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\"\x19\n" +
-	"\x17DeleteMaterialsResponse\"a\n" +
-	"#UpdateUsersOneMaterialAccessRequest\x12\x1f\n" +
-	"\vmaterial_id\x18\x01 \x01(\x03R\n" +
-	"materialId\x12\x19\n" +
+	"\x17DeleteMaterialsResponse\"c\n" +
+	"#UpdateUsersOneMaterialAccessRequest\x12!\n" +
+	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\x12\x19\n" +
 	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"&\n" +
 	"$UpdateUsersOneMaterialAccessResponse\"^\n" +
 	" UpdateUsersMaterialAccessRequest\x12\x1f\n" +
