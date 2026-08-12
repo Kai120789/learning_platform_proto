@@ -17,7 +17,7 @@ service Material {
   rpc DeleteOneMaterial (DeleteOneMaterialRequest) returns (DeleteOneMaterialResponse);
   rpc DeleteMaterials (DeleteMaterialsRequest) returns (DeleteMaterialsResponse);
   rpc UpdateUsersOneMaterialAccess (UpdateUsersOneMaterialAccessRequest) returns (UpdateUsersOneMaterialAccessResponse);
-  rpc UpdateUsersMaterialsAccess (UpdateUsersMaterialAccessRequest) returns (UpdateUsersMaterialAccessResponse);
+  rpc UpdateUsersMaterialsAccess (UpdateUsersMaterialsAccessRequest) returns (UpdateUsersMaterialsAccessResponse);
   rpc UpdateUsersFolderAccess (UpdateUsersFolderAccessRequest) returns (UpdateUsersFolderAccessResponse);
 }
 
@@ -145,12 +145,12 @@ message UpdateUsersOneMaterialAccessResponse {
 
 }
 
-message UpdateUsersMaterialAccessRequest {
+message UpdateUsersMaterialsAccessRequest {
   int64 material_id = 1;
   repeated int64 user_ids = 2;
 }
 
-message UpdateUsersMaterialAccessResponse {
+message UpdateUsersMaterialsAccessResponse {
 
 }
 

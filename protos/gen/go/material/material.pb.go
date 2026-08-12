@@ -1265,7 +1265,7 @@ func (*UpdateUsersOneMaterialAccessResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{24}
 }
 
-type UpdateUsersMaterialAccessRequest struct {
+type UpdateUsersMaterialsAccessRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MaterialId    int64                  `protobuf:"varint,1,opt,name=material_id,json=materialId,proto3" json:"material_id,omitempty"`
 	UserIds       []int64                `protobuf:"varint,2,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
@@ -1273,20 +1273,20 @@ type UpdateUsersMaterialAccessRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUsersMaterialAccessRequest) Reset() {
-	*x = UpdateUsersMaterialAccessRequest{}
+func (x *UpdateUsersMaterialsAccessRequest) Reset() {
+	*x = UpdateUsersMaterialsAccessRequest{}
 	mi := &file_material_material_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUsersMaterialAccessRequest) String() string {
+func (x *UpdateUsersMaterialsAccessRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUsersMaterialAccessRequest) ProtoMessage() {}
+func (*UpdateUsersMaterialsAccessRequest) ProtoMessage() {}
 
-func (x *UpdateUsersMaterialAccessRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateUsersMaterialsAccessRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1298,45 +1298,45 @@ func (x *UpdateUsersMaterialAccessRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUsersMaterialAccessRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUsersMaterialAccessRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUsersMaterialsAccessRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUsersMaterialsAccessRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *UpdateUsersMaterialAccessRequest) GetMaterialId() int64 {
+func (x *UpdateUsersMaterialsAccessRequest) GetMaterialId() int64 {
 	if x != nil {
 		return x.MaterialId
 	}
 	return 0
 }
 
-func (x *UpdateUsersMaterialAccessRequest) GetUserIds() []int64 {
+func (x *UpdateUsersMaterialsAccessRequest) GetUserIds() []int64 {
 	if x != nil {
 		return x.UserIds
 	}
 	return nil
 }
 
-type UpdateUsersMaterialAccessResponse struct {
+type UpdateUsersMaterialsAccessResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUsersMaterialAccessResponse) Reset() {
-	*x = UpdateUsersMaterialAccessResponse{}
+func (x *UpdateUsersMaterialsAccessResponse) Reset() {
+	*x = UpdateUsersMaterialsAccessResponse{}
 	mi := &file_material_material_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUsersMaterialAccessResponse) String() string {
+func (x *UpdateUsersMaterialsAccessResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUsersMaterialAccessResponse) ProtoMessage() {}
+func (*UpdateUsersMaterialsAccessResponse) ProtoMessage() {}
 
-func (x *UpdateUsersMaterialAccessResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateUsersMaterialsAccessResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1348,8 +1348,8 @@ func (x *UpdateUsersMaterialAccessResponse) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUsersMaterialAccessResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUsersMaterialAccessResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUsersMaterialsAccessResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUsersMaterialsAccessResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{26}
 }
 
@@ -1614,12 +1614,12 @@ const file_material_material_proto_rawDesc = "" +
 	"#UpdateUsersOneMaterialAccessRequest\x12!\n" +
 	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\x12\x19\n" +
 	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"&\n" +
-	"$UpdateUsersOneMaterialAccessResponse\"^\n" +
-	" UpdateUsersMaterialAccessRequest\x12\x1f\n" +
+	"$UpdateUsersOneMaterialAccessResponse\"_\n" +
+	"!UpdateUsersMaterialsAccessRequest\x12\x1f\n" +
 	"\vmaterial_id\x18\x01 \x01(\x03R\n" +
 	"materialId\x12\x19\n" +
-	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"#\n" +
-	"!UpdateUsersMaterialAccessResponse\"X\n" +
+	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"$\n" +
+	"\"UpdateUsersMaterialsAccessResponse\"X\n" +
 	"\x1eUpdateUsersFolderAccessRequest\x12\x1b\n" +
 	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\x12\x19\n" +
 	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"!\n" +
@@ -1629,7 +1629,7 @@ const file_material_material_proto_rawDesc = "" +
 	"\tfolder_id\x18\x02 \x01(\x03H\x00R\bfolderId\x88\x01\x01B\f\n" +
 	"\n" +
 	"_folder_id\"\x17\n" +
-	"\x15MoveMaterialsResponse2\x9d\n" +
+	"\x15MoveMaterialsResponse2\x9f\n" +
 	"\n" +
 	"\bMaterial\x12M\n" +
 	"\fCreateFolder\x12\x1d.material.CreateFolderRequest\x1a\x1e.material.CreateFolderResponse\x12G\n" +
@@ -1644,8 +1644,8 @@ const file_material_material_proto_rawDesc = "" +
 	"\x0eRenameMaterial\x12\x1f.material.RenameMaterialRequest\x1a .material.RenameMaterialResponse\x12\\\n" +
 	"\x11DeleteOneMaterial\x12\".material.DeleteOneMaterialRequest\x1a#.material.DeleteOneMaterialResponse\x12V\n" +
 	"\x0fDeleteMaterials\x12 .material.DeleteMaterialsRequest\x1a!.material.DeleteMaterialsResponse\x12}\n" +
-	"\x1cUpdateUsersOneMaterialAccess\x12-.material.UpdateUsersOneMaterialAccessRequest\x1a..material.UpdateUsersOneMaterialAccessResponse\x12u\n" +
-	"\x1aUpdateUsersMaterialsAccess\x12*.material.UpdateUsersMaterialAccessRequest\x1a+.material.UpdateUsersMaterialAccessResponse\x12n\n" +
+	"\x1cUpdateUsersOneMaterialAccess\x12-.material.UpdateUsersOneMaterialAccessRequest\x1a..material.UpdateUsersOneMaterialAccessResponse\x12w\n" +
+	"\x1aUpdateUsersMaterialsAccess\x12+.material.UpdateUsersMaterialsAccessRequest\x1a,.material.UpdateUsersMaterialsAccessResponse\x12n\n" +
 	"\x17UpdateUsersFolderAccess\x12(.material.UpdateUsersFolderAccessRequest\x1a).material.UpdateUsersFolderAccessResponseBWZUgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/materialb\x06proto3"
 
 var (
@@ -1687,8 +1687,8 @@ var file_material_material_proto_goTypes = []any{
 	(*DeleteMaterialsResponse)(nil),              // 22: material.DeleteMaterialsResponse
 	(*UpdateUsersOneMaterialAccessRequest)(nil),  // 23: material.UpdateUsersOneMaterialAccessRequest
 	(*UpdateUsersOneMaterialAccessResponse)(nil), // 24: material.UpdateUsersOneMaterialAccessResponse
-	(*UpdateUsersMaterialAccessRequest)(nil),     // 25: material.UpdateUsersMaterialAccessRequest
-	(*UpdateUsersMaterialAccessResponse)(nil),    // 26: material.UpdateUsersMaterialAccessResponse
+	(*UpdateUsersMaterialsAccessRequest)(nil),    // 25: material.UpdateUsersMaterialsAccessRequest
+	(*UpdateUsersMaterialsAccessResponse)(nil),   // 26: material.UpdateUsersMaterialsAccessResponse
 	(*UpdateUsersFolderAccessRequest)(nil),       // 27: material.UpdateUsersFolderAccessRequest
 	(*UpdateUsersFolderAccessResponse)(nil),      // 28: material.UpdateUsersFolderAccessResponse
 	(*MoveMaterialsRequest)(nil),                 // 29: material.MoveMaterialsRequest
@@ -1715,7 +1715,7 @@ var file_material_material_proto_depIdxs = []int32{
 	19, // 17: material.Material.DeleteOneMaterial:input_type -> material.DeleteOneMaterialRequest
 	21, // 18: material.Material.DeleteMaterials:input_type -> material.DeleteMaterialsRequest
 	23, // 19: material.Material.UpdateUsersOneMaterialAccess:input_type -> material.UpdateUsersOneMaterialAccessRequest
-	25, // 20: material.Material.UpdateUsersMaterialsAccess:input_type -> material.UpdateUsersMaterialAccessRequest
+	25, // 20: material.Material.UpdateUsersMaterialsAccess:input_type -> material.UpdateUsersMaterialsAccessRequest
 	27, // 21: material.Material.UpdateUsersFolderAccess:input_type -> material.UpdateUsersFolderAccessRequest
 	4,  // 22: material.Material.CreateFolder:output_type -> material.CreateFolderResponse
 	6,  // 23: material.Material.MoveFolder:output_type -> material.MoveFolderResponse
@@ -1729,7 +1729,7 @@ var file_material_material_proto_depIdxs = []int32{
 	20, // 31: material.Material.DeleteOneMaterial:output_type -> material.DeleteOneMaterialResponse
 	22, // 32: material.Material.DeleteMaterials:output_type -> material.DeleteMaterialsResponse
 	24, // 33: material.Material.UpdateUsersOneMaterialAccess:output_type -> material.UpdateUsersOneMaterialAccessResponse
-	26, // 34: material.Material.UpdateUsersMaterialsAccess:output_type -> material.UpdateUsersMaterialAccessResponse
+	26, // 34: material.Material.UpdateUsersMaterialsAccess:output_type -> material.UpdateUsersMaterialsAccessResponse
 	28, // 35: material.Material.UpdateUsersFolderAccess:output_type -> material.UpdateUsersFolderAccessResponse
 	22, // [22:36] is the sub-list for method output_type
 	8,  // [8:22] is the sub-list for method input_type

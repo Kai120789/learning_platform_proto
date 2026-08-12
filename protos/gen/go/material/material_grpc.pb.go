@@ -51,7 +51,7 @@ type MaterialClient interface {
 	DeleteOneMaterial(ctx context.Context, in *DeleteOneMaterialRequest, opts ...grpc.CallOption) (*DeleteOneMaterialResponse, error)
 	DeleteMaterials(ctx context.Context, in *DeleteMaterialsRequest, opts ...grpc.CallOption) (*DeleteMaterialsResponse, error)
 	UpdateUsersOneMaterialAccess(ctx context.Context, in *UpdateUsersOneMaterialAccessRequest, opts ...grpc.CallOption) (*UpdateUsersOneMaterialAccessResponse, error)
-	UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialAccessResponse, error)
+	UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialsAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialsAccessResponse, error)
 	UpdateUsersFolderAccess(ctx context.Context, in *UpdateUsersFolderAccessRequest, opts ...grpc.CallOption) (*UpdateUsersFolderAccessResponse, error)
 }
 
@@ -183,9 +183,9 @@ func (c *materialClient) UpdateUsersOneMaterialAccess(ctx context.Context, in *U
 	return out, nil
 }
 
-func (c *materialClient) UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialAccessResponse, error) {
+func (c *materialClient) UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialsAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialsAccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateUsersMaterialAccessResponse)
+	out := new(UpdateUsersMaterialsAccessResponse)
 	err := c.cc.Invoke(ctx, Material_UpdateUsersMaterialsAccess_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -219,7 +219,7 @@ type MaterialServer interface {
 	DeleteOneMaterial(context.Context, *DeleteOneMaterialRequest) (*DeleteOneMaterialResponse, error)
 	DeleteMaterials(context.Context, *DeleteMaterialsRequest) (*DeleteMaterialsResponse, error)
 	UpdateUsersOneMaterialAccess(context.Context, *UpdateUsersOneMaterialAccessRequest) (*UpdateUsersOneMaterialAccessResponse, error)
-	UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialAccessRequest) (*UpdateUsersMaterialAccessResponse, error)
+	UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialsAccessRequest) (*UpdateUsersMaterialsAccessResponse, error)
 	UpdateUsersFolderAccess(context.Context, *UpdateUsersFolderAccessRequest) (*UpdateUsersFolderAccessResponse, error)
 	mustEmbedUnimplementedMaterialServer()
 }
@@ -267,7 +267,7 @@ func (UnimplementedMaterialServer) DeleteMaterials(context.Context, *DeleteMater
 func (UnimplementedMaterialServer) UpdateUsersOneMaterialAccess(context.Context, *UpdateUsersOneMaterialAccessRequest) (*UpdateUsersOneMaterialAccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersOneMaterialAccess not implemented")
 }
-func (UnimplementedMaterialServer) UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialAccessRequest) (*UpdateUsersMaterialAccessResponse, error) {
+func (UnimplementedMaterialServer) UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialsAccessRequest) (*UpdateUsersMaterialsAccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersMaterialsAccess not implemented")
 }
 func (UnimplementedMaterialServer) UpdateUsersFolderAccess(context.Context, *UpdateUsersFolderAccessRequest) (*UpdateUsersFolderAccessResponse, error) {
@@ -511,7 +511,7 @@ func _Material_UpdateUsersOneMaterialAccess_Handler(srv interface{}, ctx context
 }
 
 func _Material_UpdateUsersMaterialsAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUsersMaterialAccessRequest)
+	in := new(UpdateUsersMaterialsAccessRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -523,7 +523,7 @@ func _Material_UpdateUsersMaterialsAccess_Handler(srv interface{}, ctx context.C
 		FullMethod: Material_UpdateUsersMaterialsAccess_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaterialServer).UpdateUsersMaterialsAccess(ctx, req.(*UpdateUsersMaterialAccessRequest))
+		return srv.(MaterialServer).UpdateUsersMaterialsAccess(ctx, req.(*UpdateUsersMaterialsAccessRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
