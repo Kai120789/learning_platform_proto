@@ -268,7 +268,7 @@ func (x *NewFolderMaterial) GetMediaObjectId() string {
 type CreateFolderRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Title          string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	ParentFolderId int64                  `protobuf:"varint,2,opt,name=parent_folder_id,json=parentFolderId,proto3" json:"parent_folder_id,omitempty"`
+	ParentFolderId *int64                 `protobuf:"varint,2,opt,name=parent_folder_id,json=parentFolderId,proto3,oneof" json:"parent_folder_id,omitempty"`
 	TutorId        int64                  `protobuf:"varint,3,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -312,8 +312,8 @@ func (x *CreateFolderRequest) GetTitle() string {
 }
 
 func (x *CreateFolderRequest) GetParentFolderId() int64 {
-	if x != nil {
-		return x.ParentFolderId
+	if x != nil && x.ParentFolderId != nil {
+		return *x.ParentFolderId
 	}
 	return 0
 }
@@ -1550,11 +1550,12 @@ const file_material_material_proto_rawDesc = "" +
 	"\tmime_type\x18\x05 \x01(\tR\bmimeType\x12&\n" +
 	"\x0fmedia_object_id\x18\x06 \x01(\tR\rmediaObjectIdB\f\n" +
 	"\n" +
-	"_folder_id\"p\n" +
+	"_folder_id\"\x8a\x01\n" +
 	"\x13CreateFolderRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12(\n" +
-	"\x10parent_folder_id\x18\x02 \x01(\x03R\x0eparentFolderId\x12\x19\n" +
-	"\btutor_id\x18\x03 \x01(\x03R\atutorId\"@\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12-\n" +
+	"\x10parent_folder_id\x18\x02 \x01(\x03H\x00R\x0eparentFolderId\x88\x01\x01\x12\x19\n" +
+	"\btutor_id\x18\x03 \x01(\x03R\atutorIdB\x13\n" +
+	"\x11_parent_folder_id\"@\n" +
 	"\x14CreateFolderResponse\x12(\n" +
 	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"w\n" +
 	"\x12MoveFoldersRequest\x12\x1d\n" +
@@ -1738,6 +1739,7 @@ func file_material_material_proto_init() {
 	file_material_material_proto_msgTypes[0].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[1].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[2].OneofWrappers = []any{}
+	file_material_material_proto_msgTypes[3].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[5].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[13].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[15].OneofWrappers = []any{}
