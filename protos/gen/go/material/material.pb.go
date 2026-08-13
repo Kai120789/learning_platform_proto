@@ -511,7 +511,6 @@ func (x *RenameFolderRequest) GetTitle() string {
 
 type RenameFolderResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Folder        *Folder                `protobuf:"bytes,1,opt,name=folder,proto3" json:"folder,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -544,13 +543,6 @@ func (x *RenameFolderResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RenameFolderResponse.ProtoReflect.Descriptor instead.
 func (*RenameFolderResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *RenameFolderResponse) GetFolder() *Folder {
-	if x != nil {
-		return x.Folder
-	}
-	return nil
 }
 
 type DeleteOneFolderRequest struct {
@@ -1566,9 +1558,8 @@ const file_material_material_proto_rawDesc = "" +
 	"\x13MoveFoldersResponse\"H\n" +
 	"\x13RenameFolderRequest\x12\x1b\n" +
 	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\"@\n" +
-	"\x14RenameFolderResponse\x12(\n" +
-	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"5\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\"\x16\n" +
+	"\x14RenameFolderResponse\"5\n" +
 	"\x16DeleteOneFolderRequest\x12\x1b\n" +
 	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\"\x19\n" +
 	"\x17DeleteOneFolderResponse\"5\n" +
@@ -1689,46 +1680,45 @@ var file_material_material_proto_goTypes = []any{
 }
 var file_material_material_proto_depIdxs = []int32{
 	0,  // 0: material.CreateFolderResponse.folder:type_name -> material.Folder
-	0,  // 1: material.RenameFolderResponse.folder:type_name -> material.Folder
-	0,  // 2: material.GetStudentMaterialsResponse.folders:type_name -> material.Folder
-	1,  // 3: material.GetStudentMaterialsResponse.materials:type_name -> material.FolderMaterial
-	0,  // 4: material.GetTutorMaterialsResponse.folders:type_name -> material.Folder
-	1,  // 5: material.GetTutorMaterialsResponse.materials:type_name -> material.FolderMaterial
-	2,  // 6: material.CreateMaterialsRequest.materials:type_name -> material.NewFolderMaterial
-	1,  // 7: material.CreateMaterialsResponse.materials:type_name -> material.FolderMaterial
-	3,  // 8: material.Material.CreateFolder:input_type -> material.CreateFolderRequest
-	5,  // 9: material.Material.MoveFolders:input_type -> material.MoveFoldersRequest
-	7,  // 10: material.Material.RenameFolder:input_type -> material.RenameFolderRequest
-	9,  // 11: material.Material.DeleteOneFolder:input_type -> material.DeleteOneFolderRequest
-	11, // 12: material.Material.DeleteFolders:input_type -> material.DeleteFoldersRequest
-	13, // 13: material.Material.GetStudentMaterials:input_type -> material.GetStudentMaterialsRequest
-	15, // 14: material.Material.GetTutorMaterials:input_type -> material.GetTutorMaterialsRequest
-	17, // 15: material.Material.CreateMaterials:input_type -> material.CreateMaterialsRequest
-	29, // 16: material.Material.MoveMaterials:input_type -> material.MoveMaterialsRequest
-	19, // 17: material.Material.RenameMaterial:input_type -> material.RenameMaterialRequest
-	21, // 18: material.Material.DeleteOneMaterial:input_type -> material.DeleteOneMaterialRequest
-	23, // 19: material.Material.DeleteMaterials:input_type -> material.DeleteMaterialsRequest
-	25, // 20: material.Material.UpdateUsersMaterialsAccess:input_type -> material.UpdateUsersMaterialsAccessRequest
-	27, // 21: material.Material.UpdateUsersFoldersAccess:input_type -> material.UpdateUsersFoldersAccessRequest
-	4,  // 22: material.Material.CreateFolder:output_type -> material.CreateFolderResponse
-	6,  // 23: material.Material.MoveFolders:output_type -> material.MoveFoldersResponse
-	8,  // 24: material.Material.RenameFolder:output_type -> material.RenameFolderResponse
-	10, // 25: material.Material.DeleteOneFolder:output_type -> material.DeleteOneFolderResponse
-	12, // 26: material.Material.DeleteFolders:output_type -> material.DeleteFoldersResponse
-	14, // 27: material.Material.GetStudentMaterials:output_type -> material.GetStudentMaterialsResponse
-	16, // 28: material.Material.GetTutorMaterials:output_type -> material.GetTutorMaterialsResponse
-	18, // 29: material.Material.CreateMaterials:output_type -> material.CreateMaterialsResponse
-	30, // 30: material.Material.MoveMaterials:output_type -> material.MoveMaterialsResponse
-	20, // 31: material.Material.RenameMaterial:output_type -> material.RenameMaterialResponse
-	22, // 32: material.Material.DeleteOneMaterial:output_type -> material.DeleteOneMaterialResponse
-	24, // 33: material.Material.DeleteMaterials:output_type -> material.DeleteMaterialsResponse
-	26, // 34: material.Material.UpdateUsersMaterialsAccess:output_type -> material.UpdateUsersMaterialsAccessResponse
-	28, // 35: material.Material.UpdateUsersFoldersAccess:output_type -> material.UpdateUsersFoldersAccessResponse
-	22, // [22:36] is the sub-list for method output_type
-	8,  // [8:22] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	0,  // 1: material.GetStudentMaterialsResponse.folders:type_name -> material.Folder
+	1,  // 2: material.GetStudentMaterialsResponse.materials:type_name -> material.FolderMaterial
+	0,  // 3: material.GetTutorMaterialsResponse.folders:type_name -> material.Folder
+	1,  // 4: material.GetTutorMaterialsResponse.materials:type_name -> material.FolderMaterial
+	2,  // 5: material.CreateMaterialsRequest.materials:type_name -> material.NewFolderMaterial
+	1,  // 6: material.CreateMaterialsResponse.materials:type_name -> material.FolderMaterial
+	3,  // 7: material.Material.CreateFolder:input_type -> material.CreateFolderRequest
+	5,  // 8: material.Material.MoveFolders:input_type -> material.MoveFoldersRequest
+	7,  // 9: material.Material.RenameFolder:input_type -> material.RenameFolderRequest
+	9,  // 10: material.Material.DeleteOneFolder:input_type -> material.DeleteOneFolderRequest
+	11, // 11: material.Material.DeleteFolders:input_type -> material.DeleteFoldersRequest
+	13, // 12: material.Material.GetStudentMaterials:input_type -> material.GetStudentMaterialsRequest
+	15, // 13: material.Material.GetTutorMaterials:input_type -> material.GetTutorMaterialsRequest
+	17, // 14: material.Material.CreateMaterials:input_type -> material.CreateMaterialsRequest
+	29, // 15: material.Material.MoveMaterials:input_type -> material.MoveMaterialsRequest
+	19, // 16: material.Material.RenameMaterial:input_type -> material.RenameMaterialRequest
+	21, // 17: material.Material.DeleteOneMaterial:input_type -> material.DeleteOneMaterialRequest
+	23, // 18: material.Material.DeleteMaterials:input_type -> material.DeleteMaterialsRequest
+	25, // 19: material.Material.UpdateUsersMaterialsAccess:input_type -> material.UpdateUsersMaterialsAccessRequest
+	27, // 20: material.Material.UpdateUsersFoldersAccess:input_type -> material.UpdateUsersFoldersAccessRequest
+	4,  // 21: material.Material.CreateFolder:output_type -> material.CreateFolderResponse
+	6,  // 22: material.Material.MoveFolders:output_type -> material.MoveFoldersResponse
+	8,  // 23: material.Material.RenameFolder:output_type -> material.RenameFolderResponse
+	10, // 24: material.Material.DeleteOneFolder:output_type -> material.DeleteOneFolderResponse
+	12, // 25: material.Material.DeleteFolders:output_type -> material.DeleteFoldersResponse
+	14, // 26: material.Material.GetStudentMaterials:output_type -> material.GetStudentMaterialsResponse
+	16, // 27: material.Material.GetTutorMaterials:output_type -> material.GetTutorMaterialsResponse
+	18, // 28: material.Material.CreateMaterials:output_type -> material.CreateMaterialsResponse
+	30, // 29: material.Material.MoveMaterials:output_type -> material.MoveMaterialsResponse
+	20, // 30: material.Material.RenameMaterial:output_type -> material.RenameMaterialResponse
+	22, // 31: material.Material.DeleteOneMaterial:output_type -> material.DeleteOneMaterialResponse
+	24, // 32: material.Material.DeleteMaterials:output_type -> material.DeleteMaterialsResponse
+	26, // 33: material.Material.UpdateUsersMaterialsAccess:output_type -> material.UpdateUsersMaterialsAccessResponse
+	28, // 34: material.Material.UpdateUsersFoldersAccess:output_type -> material.UpdateUsersFoldersAccessResponse
+	21, // [21:35] is the sub-list for method output_type
+	7,  // [7:21] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_material_material_proto_init() }

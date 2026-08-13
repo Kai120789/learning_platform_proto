@@ -72,7 +72,7 @@ message RenameFolderRequest {
 }
 
 message RenameFolderResponse {
-  Folder folder = 1;
+  
 }
 
 message DeleteOneFolderRequest {
