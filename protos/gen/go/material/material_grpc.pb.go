@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Material_CreateFolder_FullMethodName                 = "/material.Material/CreateFolder"
-	Material_MoveFolder_FullMethodName                   = "/material.Material/MoveFolder"
-	Material_RenameFolder_FullMethodName                 = "/material.Material/RenameFolder"
-	Material_DeleteFolder_FullMethodName                 = "/material.Material/DeleteFolder"
-	Material_GetStudentMaterials_FullMethodName          = "/material.Material/GetStudentMaterials"
-	Material_GetTutorMaterials_FullMethodName            = "/material.Material/GetTutorMaterials"
-	Material_CreateMaterials_FullMethodName              = "/material.Material/CreateMaterials"
-	Material_MoveMaterials_FullMethodName                = "/material.Material/MoveMaterials"
-	Material_RenameMaterial_FullMethodName               = "/material.Material/RenameMaterial"
-	Material_DeleteOneMaterial_FullMethodName            = "/material.Material/DeleteOneMaterial"
-	Material_DeleteMaterials_FullMethodName              = "/material.Material/DeleteMaterials"
-	Material_UpdateUsersOneMaterialAccess_FullMethodName = "/material.Material/UpdateUsersOneMaterialAccess"
-	Material_UpdateUsersMaterialsAccess_FullMethodName   = "/material.Material/UpdateUsersMaterialsAccess"
-	Material_UpdateUsersFolderAccess_FullMethodName      = "/material.Material/UpdateUsersFolderAccess"
+	Material_CreateFolder_FullMethodName               = "/material.Material/CreateFolder"
+	Material_MoveFolders_FullMethodName                = "/material.Material/MoveFolders"
+	Material_RenameFolder_FullMethodName               = "/material.Material/RenameFolder"
+	Material_DeleteOneFolder_FullMethodName            = "/material.Material/DeleteOneFolder"
+	Material_DeleteFolders_FullMethodName              = "/material.Material/DeleteFolders"
+	Material_GetStudentMaterials_FullMethodName        = "/material.Material/GetStudentMaterials"
+	Material_GetTutorMaterials_FullMethodName          = "/material.Material/GetTutorMaterials"
+	Material_CreateMaterials_FullMethodName            = "/material.Material/CreateMaterials"
+	Material_MoveMaterials_FullMethodName              = "/material.Material/MoveMaterials"
+	Material_RenameMaterial_FullMethodName             = "/material.Material/RenameMaterial"
+	Material_DeleteOneMaterial_FullMethodName          = "/material.Material/DeleteOneMaterial"
+	Material_DeleteMaterials_FullMethodName            = "/material.Material/DeleteMaterials"
+	Material_UpdateUsersMaterialsAccess_FullMethodName = "/material.Material/UpdateUsersMaterialsAccess"
+	Material_UpdateUsersFoldersAccess_FullMethodName   = "/material.Material/UpdateUsersFoldersAccess"
 )
 
 // MaterialClient is the client API for Material service.
@@ -40,9 +40,10 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MaterialClient interface {
 	CreateFolder(ctx context.Context, in *CreateFolderRequest, opts ...grpc.CallOption) (*CreateFolderResponse, error)
-	MoveFolder(ctx context.Context, in *MoveFolderRequest, opts ...grpc.CallOption) (*MoveFolderResponse, error)
+	MoveFolders(ctx context.Context, in *MoveFoldersRequest, opts ...grpc.CallOption) (*MoveFoldersResponse, error)
 	RenameFolder(ctx context.Context, in *RenameFolderRequest, opts ...grpc.CallOption) (*RenameFolderResponse, error)
-	DeleteFolder(ctx context.Context, in *DeleteFolderRequest, opts ...grpc.CallOption) (*DeleteFolderResponse, error)
+	DeleteOneFolder(ctx context.Context, in *DeleteOneFolderRequest, opts ...grpc.CallOption) (*DeleteOneFolderResponse, error)
+	DeleteFolders(ctx context.Context, in *DeleteFoldersRequest, opts ...grpc.CallOption) (*DeleteFoldersResponse, error)
 	GetStudentMaterials(ctx context.Context, in *GetStudentMaterialsRequest, opts ...grpc.CallOption) (*GetStudentMaterialsResponse, error)
 	GetTutorMaterials(ctx context.Context, in *GetTutorMaterialsRequest, opts ...grpc.CallOption) (*GetTutorMaterialsResponse, error)
 	CreateMaterials(ctx context.Context, in *CreateMaterialsRequest, opts ...grpc.CallOption) (*CreateMaterialsResponse, error)
@@ -50,9 +51,8 @@ type MaterialClient interface {
 	RenameMaterial(ctx context.Context, in *RenameMaterialRequest, opts ...grpc.CallOption) (*RenameMaterialResponse, error)
 	DeleteOneMaterial(ctx context.Context, in *DeleteOneMaterialRequest, opts ...grpc.CallOption) (*DeleteOneMaterialResponse, error)
 	DeleteMaterials(ctx context.Context, in *DeleteMaterialsRequest, opts ...grpc.CallOption) (*DeleteMaterialsResponse, error)
-	UpdateUsersOneMaterialAccess(ctx context.Context, in *UpdateUsersOneMaterialAccessRequest, opts ...grpc.CallOption) (*UpdateUsersOneMaterialAccessResponse, error)
 	UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialsAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialsAccessResponse, error)
-	UpdateUsersFolderAccess(ctx context.Context, in *UpdateUsersFolderAccessRequest, opts ...grpc.CallOption) (*UpdateUsersFolderAccessResponse, error)
+	UpdateUsersFoldersAccess(ctx context.Context, in *UpdateUsersFoldersAccessRequest, opts ...grpc.CallOption) (*UpdateUsersFoldersAccessResponse, error)
 }
 
 type materialClient struct {
@@ -73,10 +73,10 @@ func (c *materialClient) CreateFolder(ctx context.Context, in *CreateFolderReque
 	return out, nil
 }
 
-func (c *materialClient) MoveFolder(ctx context.Context, in *MoveFolderRequest, opts ...grpc.CallOption) (*MoveFolderResponse, error) {
+func (c *materialClient) MoveFolders(ctx context.Context, in *MoveFoldersRequest, opts ...grpc.CallOption) (*MoveFoldersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MoveFolderResponse)
-	err := c.cc.Invoke(ctx, Material_MoveFolder_FullMethodName, in, out, cOpts...)
+	out := new(MoveFoldersResponse)
+	err := c.cc.Invoke(ctx, Material_MoveFolders_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,10 +93,20 @@ func (c *materialClient) RenameFolder(ctx context.Context, in *RenameFolderReque
 	return out, nil
 }
 
-func (c *materialClient) DeleteFolder(ctx context.Context, in *DeleteFolderRequest, opts ...grpc.CallOption) (*DeleteFolderResponse, error) {
+func (c *materialClient) DeleteOneFolder(ctx context.Context, in *DeleteOneFolderRequest, opts ...grpc.CallOption) (*DeleteOneFolderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteFolderResponse)
-	err := c.cc.Invoke(ctx, Material_DeleteFolder_FullMethodName, in, out, cOpts...)
+	out := new(DeleteOneFolderResponse)
+	err := c.cc.Invoke(ctx, Material_DeleteOneFolder_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *materialClient) DeleteFolders(ctx context.Context, in *DeleteFoldersRequest, opts ...grpc.CallOption) (*DeleteFoldersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteFoldersResponse)
+	err := c.cc.Invoke(ctx, Material_DeleteFolders_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -173,16 +183,6 @@ func (c *materialClient) DeleteMaterials(ctx context.Context, in *DeleteMaterial
 	return out, nil
 }
 
-func (c *materialClient) UpdateUsersOneMaterialAccess(ctx context.Context, in *UpdateUsersOneMaterialAccessRequest, opts ...grpc.CallOption) (*UpdateUsersOneMaterialAccessResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateUsersOneMaterialAccessResponse)
-	err := c.cc.Invoke(ctx, Material_UpdateUsersOneMaterialAccess_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *materialClient) UpdateUsersMaterialsAccess(ctx context.Context, in *UpdateUsersMaterialsAccessRequest, opts ...grpc.CallOption) (*UpdateUsersMaterialsAccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateUsersMaterialsAccessResponse)
@@ -193,10 +193,10 @@ func (c *materialClient) UpdateUsersMaterialsAccess(ctx context.Context, in *Upd
 	return out, nil
 }
 
-func (c *materialClient) UpdateUsersFolderAccess(ctx context.Context, in *UpdateUsersFolderAccessRequest, opts ...grpc.CallOption) (*UpdateUsersFolderAccessResponse, error) {
+func (c *materialClient) UpdateUsersFoldersAccess(ctx context.Context, in *UpdateUsersFoldersAccessRequest, opts ...grpc.CallOption) (*UpdateUsersFoldersAccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateUsersFolderAccessResponse)
-	err := c.cc.Invoke(ctx, Material_UpdateUsersFolderAccess_FullMethodName, in, out, cOpts...)
+	out := new(UpdateUsersFoldersAccessResponse)
+	err := c.cc.Invoke(ctx, Material_UpdateUsersFoldersAccess_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -208,9 +208,10 @@ func (c *materialClient) UpdateUsersFolderAccess(ctx context.Context, in *Update
 // for forward compatibility.
 type MaterialServer interface {
 	CreateFolder(context.Context, *CreateFolderRequest) (*CreateFolderResponse, error)
-	MoveFolder(context.Context, *MoveFolderRequest) (*MoveFolderResponse, error)
+	MoveFolders(context.Context, *MoveFoldersRequest) (*MoveFoldersResponse, error)
 	RenameFolder(context.Context, *RenameFolderRequest) (*RenameFolderResponse, error)
-	DeleteFolder(context.Context, *DeleteFolderRequest) (*DeleteFolderResponse, error)
+	DeleteOneFolder(context.Context, *DeleteOneFolderRequest) (*DeleteOneFolderResponse, error)
+	DeleteFolders(context.Context, *DeleteFoldersRequest) (*DeleteFoldersResponse, error)
 	GetStudentMaterials(context.Context, *GetStudentMaterialsRequest) (*GetStudentMaterialsResponse, error)
 	GetTutorMaterials(context.Context, *GetTutorMaterialsRequest) (*GetTutorMaterialsResponse, error)
 	CreateMaterials(context.Context, *CreateMaterialsRequest) (*CreateMaterialsResponse, error)
@@ -218,9 +219,8 @@ type MaterialServer interface {
 	RenameMaterial(context.Context, *RenameMaterialRequest) (*RenameMaterialResponse, error)
 	DeleteOneMaterial(context.Context, *DeleteOneMaterialRequest) (*DeleteOneMaterialResponse, error)
 	DeleteMaterials(context.Context, *DeleteMaterialsRequest) (*DeleteMaterialsResponse, error)
-	UpdateUsersOneMaterialAccess(context.Context, *UpdateUsersOneMaterialAccessRequest) (*UpdateUsersOneMaterialAccessResponse, error)
 	UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialsAccessRequest) (*UpdateUsersMaterialsAccessResponse, error)
-	UpdateUsersFolderAccess(context.Context, *UpdateUsersFolderAccessRequest) (*UpdateUsersFolderAccessResponse, error)
+	UpdateUsersFoldersAccess(context.Context, *UpdateUsersFoldersAccessRequest) (*UpdateUsersFoldersAccessResponse, error)
 	mustEmbedUnimplementedMaterialServer()
 }
 
@@ -234,14 +234,17 @@ type UnimplementedMaterialServer struct{}
 func (UnimplementedMaterialServer) CreateFolder(context.Context, *CreateFolderRequest) (*CreateFolderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateFolder not implemented")
 }
-func (UnimplementedMaterialServer) MoveFolder(context.Context, *MoveFolderRequest) (*MoveFolderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MoveFolder not implemented")
+func (UnimplementedMaterialServer) MoveFolders(context.Context, *MoveFoldersRequest) (*MoveFoldersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveFolders not implemented")
 }
 func (UnimplementedMaterialServer) RenameFolder(context.Context, *RenameFolderRequest) (*RenameFolderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RenameFolder not implemented")
 }
-func (UnimplementedMaterialServer) DeleteFolder(context.Context, *DeleteFolderRequest) (*DeleteFolderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteFolder not implemented")
+func (UnimplementedMaterialServer) DeleteOneFolder(context.Context, *DeleteOneFolderRequest) (*DeleteOneFolderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteOneFolder not implemented")
+}
+func (UnimplementedMaterialServer) DeleteFolders(context.Context, *DeleteFoldersRequest) (*DeleteFoldersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFolders not implemented")
 }
 func (UnimplementedMaterialServer) GetStudentMaterials(context.Context, *GetStudentMaterialsRequest) (*GetStudentMaterialsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStudentMaterials not implemented")
@@ -264,14 +267,11 @@ func (UnimplementedMaterialServer) DeleteOneMaterial(context.Context, *DeleteOne
 func (UnimplementedMaterialServer) DeleteMaterials(context.Context, *DeleteMaterialsRequest) (*DeleteMaterialsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMaterials not implemented")
 }
-func (UnimplementedMaterialServer) UpdateUsersOneMaterialAccess(context.Context, *UpdateUsersOneMaterialAccessRequest) (*UpdateUsersOneMaterialAccessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersOneMaterialAccess not implemented")
-}
 func (UnimplementedMaterialServer) UpdateUsersMaterialsAccess(context.Context, *UpdateUsersMaterialsAccessRequest) (*UpdateUsersMaterialsAccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersMaterialsAccess not implemented")
 }
-func (UnimplementedMaterialServer) UpdateUsersFolderAccess(context.Context, *UpdateUsersFolderAccessRequest) (*UpdateUsersFolderAccessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersFolderAccess not implemented")
+func (UnimplementedMaterialServer) UpdateUsersFoldersAccess(context.Context, *UpdateUsersFoldersAccessRequest) (*UpdateUsersFoldersAccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUsersFoldersAccess not implemented")
 }
 func (UnimplementedMaterialServer) mustEmbedUnimplementedMaterialServer() {}
 func (UnimplementedMaterialServer) testEmbeddedByValue()                  {}
@@ -312,20 +312,20 @@ func _Material_CreateFolder_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Material_MoveFolder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MoveFolderRequest)
+func _Material_MoveFolders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MoveFoldersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MaterialServer).MoveFolder(ctx, in)
+		return srv.(MaterialServer).MoveFolders(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Material_MoveFolder_FullMethodName,
+		FullMethod: Material_MoveFolders_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaterialServer).MoveFolder(ctx, req.(*MoveFolderRequest))
+		return srv.(MaterialServer).MoveFolders(ctx, req.(*MoveFoldersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -348,20 +348,38 @@ func _Material_RenameFolder_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Material_DeleteFolder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteFolderRequest)
+func _Material_DeleteOneFolder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteOneFolderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MaterialServer).DeleteFolder(ctx, in)
+		return srv.(MaterialServer).DeleteOneFolder(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Material_DeleteFolder_FullMethodName,
+		FullMethod: Material_DeleteOneFolder_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaterialServer).DeleteFolder(ctx, req.(*DeleteFolderRequest))
+		return srv.(MaterialServer).DeleteOneFolder(ctx, req.(*DeleteOneFolderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Material_DeleteFolders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFoldersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaterialServer).DeleteFolders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Material_DeleteFolders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaterialServer).DeleteFolders(ctx, req.(*DeleteFoldersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -492,24 +510,6 @@ func _Material_DeleteMaterials_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Material_UpdateUsersOneMaterialAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUsersOneMaterialAccessRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MaterialServer).UpdateUsersOneMaterialAccess(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Material_UpdateUsersOneMaterialAccess_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaterialServer).UpdateUsersOneMaterialAccess(ctx, req.(*UpdateUsersOneMaterialAccessRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Material_UpdateUsersMaterialsAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateUsersMaterialsAccessRequest)
 	if err := dec(in); err != nil {
@@ -528,20 +528,20 @@ func _Material_UpdateUsersMaterialsAccess_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Material_UpdateUsersFolderAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUsersFolderAccessRequest)
+func _Material_UpdateUsersFoldersAccess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUsersFoldersAccessRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MaterialServer).UpdateUsersFolderAccess(ctx, in)
+		return srv.(MaterialServer).UpdateUsersFoldersAccess(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Material_UpdateUsersFolderAccess_FullMethodName,
+		FullMethod: Material_UpdateUsersFoldersAccess_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MaterialServer).UpdateUsersFolderAccess(ctx, req.(*UpdateUsersFolderAccessRequest))
+		return srv.(MaterialServer).UpdateUsersFoldersAccess(ctx, req.(*UpdateUsersFoldersAccessRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -558,16 +558,20 @@ var Material_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Material_CreateFolder_Handler,
 		},
 		{
-			MethodName: "MoveFolder",
-			Handler:    _Material_MoveFolder_Handler,
+			MethodName: "MoveFolders",
+			Handler:    _Material_MoveFolders_Handler,
 		},
 		{
 			MethodName: "RenameFolder",
 			Handler:    _Material_RenameFolder_Handler,
 		},
 		{
-			MethodName: "DeleteFolder",
-			Handler:    _Material_DeleteFolder_Handler,
+			MethodName: "DeleteOneFolder",
+			Handler:    _Material_DeleteOneFolder_Handler,
+		},
+		{
+			MethodName: "DeleteFolders",
+			Handler:    _Material_DeleteFolders_Handler,
 		},
 		{
 			MethodName: "GetStudentMaterials",
@@ -598,16 +602,12 @@ var Material_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Material_DeleteMaterials_Handler,
 		},
 		{
-			MethodName: "UpdateUsersOneMaterialAccess",
-			Handler:    _Material_UpdateUsersOneMaterialAccess_Handler,
-		},
-		{
 			MethodName: "UpdateUsersMaterialsAccess",
 			Handler:    _Material_UpdateUsersMaterialsAccess_Handler,
 		},
 		{
-			MethodName: "UpdateUsersFolderAccess",
-			Handler:    _Material_UpdateUsersFolderAccess_Handler,
+			MethodName: "UpdateUsersFoldersAccess",
+			Handler:    _Material_UpdateUsersFoldersAccess_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

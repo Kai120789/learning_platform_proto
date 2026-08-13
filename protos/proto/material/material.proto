@@ -6,9 +6,10 @@ option go_package = "github.com/Kai120789/learning_platform/learning_platform_pr
 
 service Material {
   rpc CreateFolder (CreateFolderRequest) returns (CreateFolderResponse);
-  rpc MoveFolder (MoveFolderRequest) returns (MoveFolderResponse);
+  rpc MoveFolders (MoveFoldersRequest) returns (MoveFoldersResponse);
   rpc RenameFolder (RenameFolderRequest) returns (RenameFolderResponse);
-  rpc DeleteFolder (DeleteFolderRequest) returns (DeleteFolderResponse);
+  rpc DeleteOneFolder (DeleteOneFolderRequest) returns (DeleteOneFolderResponse);
+  rpc DeleteFolders (DeleteFoldersRequest) returns (DeleteFoldersResponse);
   rpc GetStudentMaterials (GetStudentMaterialsRequest) returns (GetStudentMaterialsResponse);
   rpc GetTutorMaterials (GetTutorMaterialsRequest) returns (GetTutorMaterialsResponse);
   rpc CreateMaterials (CreateMaterialsRequest) returns (CreateMaterialsResponse);
@@ -16,9 +17,8 @@ service Material {
   rpc RenameMaterial (RenameMaterialRequest) returns (RenameMaterialResponse);
   rpc DeleteOneMaterial (DeleteOneMaterialRequest) returns (DeleteOneMaterialResponse);
   rpc DeleteMaterials (DeleteMaterialsRequest) returns (DeleteMaterialsResponse);
-  rpc UpdateUsersOneMaterialAccess (UpdateUsersOneMaterialAccessRequest) returns (UpdateUsersOneMaterialAccessResponse);
   rpc UpdateUsersMaterialsAccess (UpdateUsersMaterialsAccessRequest) returns (UpdateUsersMaterialsAccessResponse);
-  rpc UpdateUsersFolderAccess (UpdateUsersFolderAccessRequest) returns (UpdateUsersFolderAccessResponse);
+  rpc UpdateUsersFoldersAccess (UpdateUsersFoldersAccessRequest) returns (UpdateUsersFoldersAccessResponse);
 }
 
 message Folder {
@@ -57,12 +57,12 @@ message CreateFolderResponse {
   Folder folder = 1;
 }
 
-message MoveFolderRequest {
-  int64 folder_id = 1;
+message MoveFoldersRequest {
+  repeated int64 folder_ids = 1;
   optional int64 parent_folder_id = 2;
 }
 
-message MoveFolderResponse {
+message MoveFoldersResponse {
 
 }
 
@@ -75,11 +75,19 @@ message RenameFolderResponse {
   Folder folder = 1;
 }
 
-message DeleteFolderRequest {
+message DeleteOneFolderRequest {
   int64 folder_id = 1;
 }
 
-message DeleteFolderResponse {
+message DeleteOneFolderResponse {
+
+}
+
+message DeleteFoldersRequest {
+  repeated int64 folder_ids = 1;
+}
+
+message DeleteFoldersResponse {
 
 }
 
@@ -136,17 +144,8 @@ message DeleteMaterialsResponse {
 
 }
 
-message UpdateUsersOneMaterialAccessRequest {
-  repeated int64 material_ids = 1;
-  repeated int64 user_ids = 2;
-}
-
-message UpdateUsersOneMaterialAccessResponse {
-
-}
-
 message UpdateUsersMaterialsAccessRequest {
-  int64 material_id = 1;
+  repeated int64 material_ids = 1;
   repeated int64 user_ids = 2;
 }
 
@@ -154,12 +153,12 @@ message UpdateUsersMaterialsAccessResponse {
 
 }
 
-message UpdateUsersFolderAccessRequest {
-  int64 folder_id = 1;
+message UpdateUsersFoldersAccessRequest {
+  repeated int64 folder_ids = 1;
   repeated int64 user_ids = 2;
 }
 
-message UpdateUsersFolderAccessResponse {
+message UpdateUsersFoldersAccessResponse {
 
 }
 

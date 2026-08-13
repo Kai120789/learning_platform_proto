@@ -369,28 +369,28 @@ func (x *CreateFolderResponse) GetFolder() *Folder {
 	return nil
 }
 
-type MoveFolderRequest struct {
+type MoveFoldersRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	FolderId       int64                  `protobuf:"varint,1,opt,name=folder_id,json=folderId,proto3" json:"folder_id,omitempty"`
+	FolderIds      []int64                `protobuf:"varint,1,rep,packed,name=folder_ids,json=folderIds,proto3" json:"folder_ids,omitempty"`
 	ParentFolderId *int64                 `protobuf:"varint,2,opt,name=parent_folder_id,json=parentFolderId,proto3,oneof" json:"parent_folder_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *MoveFolderRequest) Reset() {
-	*x = MoveFolderRequest{}
+func (x *MoveFoldersRequest) Reset() {
+	*x = MoveFoldersRequest{}
 	mi := &file_material_material_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveFolderRequest) String() string {
+func (x *MoveFoldersRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveFolderRequest) ProtoMessage() {}
+func (*MoveFoldersRequest) ProtoMessage() {}
 
-func (x *MoveFolderRequest) ProtoReflect() protoreflect.Message {
+func (x *MoveFoldersRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -402,45 +402,45 @@ func (x *MoveFolderRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveFolderRequest.ProtoReflect.Descriptor instead.
-func (*MoveFolderRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use MoveFoldersRequest.ProtoReflect.Descriptor instead.
+func (*MoveFoldersRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *MoveFolderRequest) GetFolderId() int64 {
+func (x *MoveFoldersRequest) GetFolderIds() []int64 {
 	if x != nil {
-		return x.FolderId
+		return x.FolderIds
 	}
-	return 0
+	return nil
 }
 
-func (x *MoveFolderRequest) GetParentFolderId() int64 {
+func (x *MoveFoldersRequest) GetParentFolderId() int64 {
 	if x != nil && x.ParentFolderId != nil {
 		return *x.ParentFolderId
 	}
 	return 0
 }
 
-type MoveFolderResponse struct {
+type MoveFoldersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MoveFolderResponse) Reset() {
-	*x = MoveFolderResponse{}
+func (x *MoveFoldersResponse) Reset() {
+	*x = MoveFoldersResponse{}
 	mi := &file_material_material_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveFolderResponse) String() string {
+func (x *MoveFoldersResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveFolderResponse) ProtoMessage() {}
+func (*MoveFoldersResponse) ProtoMessage() {}
 
-func (x *MoveFolderResponse) ProtoReflect() protoreflect.Message {
+func (x *MoveFoldersResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -452,8 +452,8 @@ func (x *MoveFolderResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveFolderResponse.ProtoReflect.Descriptor instead.
-func (*MoveFolderResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MoveFoldersResponse.ProtoReflect.Descriptor instead.
+func (*MoveFoldersResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{6}
 }
 
@@ -553,27 +553,27 @@ func (x *RenameFolderResponse) GetFolder() *Folder {
 	return nil
 }
 
-type DeleteFolderRequest struct {
+type DeleteOneFolderRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FolderId      int64                  `protobuf:"varint,1,opt,name=folder_id,json=folderId,proto3" json:"folder_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteFolderRequest) Reset() {
-	*x = DeleteFolderRequest{}
+func (x *DeleteOneFolderRequest) Reset() {
+	*x = DeleteOneFolderRequest{}
 	mi := &file_material_material_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteFolderRequest) String() string {
+func (x *DeleteOneFolderRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteFolderRequest) ProtoMessage() {}
+func (*DeleteOneFolderRequest) ProtoMessage() {}
 
-func (x *DeleteFolderRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteOneFolderRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -585,38 +585,38 @@ func (x *DeleteFolderRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteFolderRequest.ProtoReflect.Descriptor instead.
-func (*DeleteFolderRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteOneFolderRequest.ProtoReflect.Descriptor instead.
+func (*DeleteOneFolderRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteFolderRequest) GetFolderId() int64 {
+func (x *DeleteOneFolderRequest) GetFolderId() int64 {
 	if x != nil {
 		return x.FolderId
 	}
 	return 0
 }
 
-type DeleteFolderResponse struct {
+type DeleteOneFolderResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteFolderResponse) Reset() {
-	*x = DeleteFolderResponse{}
+func (x *DeleteOneFolderResponse) Reset() {
+	*x = DeleteOneFolderResponse{}
 	mi := &file_material_material_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteFolderResponse) String() string {
+func (x *DeleteOneFolderResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteFolderResponse) ProtoMessage() {}
+func (*DeleteOneFolderResponse) ProtoMessage() {}
 
-func (x *DeleteFolderResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteOneFolderResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -628,9 +628,89 @@ func (x *DeleteFolderResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteFolderResponse.ProtoReflect.Descriptor instead.
-func (*DeleteFolderResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteOneFolderResponse.ProtoReflect.Descriptor instead.
+func (*DeleteOneFolderResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{10}
+}
+
+type DeleteFoldersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FolderIds     []int64                `protobuf:"varint,1,rep,packed,name=folder_ids,json=folderIds,proto3" json:"folder_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteFoldersRequest) Reset() {
+	*x = DeleteFoldersRequest{}
+	mi := &file_material_material_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteFoldersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFoldersRequest) ProtoMessage() {}
+
+func (x *DeleteFoldersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_material_material_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFoldersRequest.ProtoReflect.Descriptor instead.
+func (*DeleteFoldersRequest) Descriptor() ([]byte, []int) {
+	return file_material_material_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteFoldersRequest) GetFolderIds() []int64 {
+	if x != nil {
+		return x.FolderIds
+	}
+	return nil
+}
+
+type DeleteFoldersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteFoldersResponse) Reset() {
+	*x = DeleteFoldersResponse{}
+	mi := &file_material_material_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteFoldersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFoldersResponse) ProtoMessage() {}
+
+func (x *DeleteFoldersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_material_material_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFoldersResponse.ProtoReflect.Descriptor instead.
+func (*DeleteFoldersResponse) Descriptor() ([]byte, []int) {
+	return file_material_material_proto_rawDescGZIP(), []int{12}
 }
 
 type GetStudentMaterialsRequest struct {
@@ -643,7 +723,7 @@ type GetStudentMaterialsRequest struct {
 
 func (x *GetStudentMaterialsRequest) Reset() {
 	*x = GetStudentMaterialsRequest{}
-	mi := &file_material_material_proto_msgTypes[11]
+	mi := &file_material_material_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -655,7 +735,7 @@ func (x *GetStudentMaterialsRequest) String() string {
 func (*GetStudentMaterialsRequest) ProtoMessage() {}
 
 func (x *GetStudentMaterialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[11]
+	mi := &file_material_material_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -668,7 +748,7 @@ func (x *GetStudentMaterialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentMaterialsRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentMaterialsRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{11}
+	return file_material_material_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetStudentMaterialsRequest) GetStudentId() int64 {
@@ -695,7 +775,7 @@ type GetStudentMaterialsResponse struct {
 
 func (x *GetStudentMaterialsResponse) Reset() {
 	*x = GetStudentMaterialsResponse{}
-	mi := &file_material_material_proto_msgTypes[12]
+	mi := &file_material_material_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -707,7 +787,7 @@ func (x *GetStudentMaterialsResponse) String() string {
 func (*GetStudentMaterialsResponse) ProtoMessage() {}
 
 func (x *GetStudentMaterialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[12]
+	mi := &file_material_material_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +800,7 @@ func (x *GetStudentMaterialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentMaterialsResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentMaterialsResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{12}
+	return file_material_material_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetStudentMaterialsResponse) GetFolders() []*Folder {
@@ -747,7 +827,7 @@ type GetTutorMaterialsRequest struct {
 
 func (x *GetTutorMaterialsRequest) Reset() {
 	*x = GetTutorMaterialsRequest{}
-	mi := &file_material_material_proto_msgTypes[13]
+	mi := &file_material_material_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -759,7 +839,7 @@ func (x *GetTutorMaterialsRequest) String() string {
 func (*GetTutorMaterialsRequest) ProtoMessage() {}
 
 func (x *GetTutorMaterialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[13]
+	mi := &file_material_material_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -772,7 +852,7 @@ func (x *GetTutorMaterialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorMaterialsRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorMaterialsRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{13}
+	return file_material_material_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetTutorMaterialsRequest) GetTutorId() int64 {
@@ -799,7 +879,7 @@ type GetTutorMaterialsResponse struct {
 
 func (x *GetTutorMaterialsResponse) Reset() {
 	*x = GetTutorMaterialsResponse{}
-	mi := &file_material_material_proto_msgTypes[14]
+	mi := &file_material_material_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -811,7 +891,7 @@ func (x *GetTutorMaterialsResponse) String() string {
 func (*GetTutorMaterialsResponse) ProtoMessage() {}
 
 func (x *GetTutorMaterialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[14]
+	mi := &file_material_material_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -824,7 +904,7 @@ func (x *GetTutorMaterialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorMaterialsResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorMaterialsResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{14}
+	return file_material_material_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetTutorMaterialsResponse) GetFolders() []*Folder {
@@ -850,7 +930,7 @@ type CreateMaterialsRequest struct {
 
 func (x *CreateMaterialsRequest) Reset() {
 	*x = CreateMaterialsRequest{}
-	mi := &file_material_material_proto_msgTypes[15]
+	mi := &file_material_material_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -862,7 +942,7 @@ func (x *CreateMaterialsRequest) String() string {
 func (*CreateMaterialsRequest) ProtoMessage() {}
 
 func (x *CreateMaterialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[15]
+	mi := &file_material_material_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -875,7 +955,7 @@ func (x *CreateMaterialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMaterialsRequest.ProtoReflect.Descriptor instead.
 func (*CreateMaterialsRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{15}
+	return file_material_material_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CreateMaterialsRequest) GetMaterials() []*NewFolderMaterial {
@@ -894,7 +974,7 @@ type CreateMaterialsResponse struct {
 
 func (x *CreateMaterialsResponse) Reset() {
 	*x = CreateMaterialsResponse{}
-	mi := &file_material_material_proto_msgTypes[16]
+	mi := &file_material_material_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -906,7 +986,7 @@ func (x *CreateMaterialsResponse) String() string {
 func (*CreateMaterialsResponse) ProtoMessage() {}
 
 func (x *CreateMaterialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[16]
+	mi := &file_material_material_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,7 +999,7 @@ func (x *CreateMaterialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMaterialsResponse.ProtoReflect.Descriptor instead.
 func (*CreateMaterialsResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{16}
+	return file_material_material_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreateMaterialsResponse) GetMaterials() []*FolderMaterial {
@@ -939,7 +1019,7 @@ type RenameMaterialRequest struct {
 
 func (x *RenameMaterialRequest) Reset() {
 	*x = RenameMaterialRequest{}
-	mi := &file_material_material_proto_msgTypes[17]
+	mi := &file_material_material_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -951,7 +1031,7 @@ func (x *RenameMaterialRequest) String() string {
 func (*RenameMaterialRequest) ProtoMessage() {}
 
 func (x *RenameMaterialRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[17]
+	mi := &file_material_material_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -964,7 +1044,7 @@ func (x *RenameMaterialRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RenameMaterialRequest.ProtoReflect.Descriptor instead.
 func (*RenameMaterialRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{17}
+	return file_material_material_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *RenameMaterialRequest) GetMaterialId() int64 {
@@ -989,7 +1069,7 @@ type RenameMaterialResponse struct {
 
 func (x *RenameMaterialResponse) Reset() {
 	*x = RenameMaterialResponse{}
-	mi := &file_material_material_proto_msgTypes[18]
+	mi := &file_material_material_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1001,7 +1081,7 @@ func (x *RenameMaterialResponse) String() string {
 func (*RenameMaterialResponse) ProtoMessage() {}
 
 func (x *RenameMaterialResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[18]
+	mi := &file_material_material_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1014,7 +1094,7 @@ func (x *RenameMaterialResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RenameMaterialResponse.ProtoReflect.Descriptor instead.
 func (*RenameMaterialResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{18}
+	return file_material_material_proto_rawDescGZIP(), []int{20}
 }
 
 type DeleteOneMaterialRequest struct {
@@ -1026,7 +1106,7 @@ type DeleteOneMaterialRequest struct {
 
 func (x *DeleteOneMaterialRequest) Reset() {
 	*x = DeleteOneMaterialRequest{}
-	mi := &file_material_material_proto_msgTypes[19]
+	mi := &file_material_material_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1038,7 +1118,7 @@ func (x *DeleteOneMaterialRequest) String() string {
 func (*DeleteOneMaterialRequest) ProtoMessage() {}
 
 func (x *DeleteOneMaterialRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[19]
+	mi := &file_material_material_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +1131,7 @@ func (x *DeleteOneMaterialRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneMaterialRequest.ProtoReflect.Descriptor instead.
 func (*DeleteOneMaterialRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{19}
+	return file_material_material_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteOneMaterialRequest) GetMaterialId() int64 {
@@ -1069,7 +1149,7 @@ type DeleteOneMaterialResponse struct {
 
 func (x *DeleteOneMaterialResponse) Reset() {
 	*x = DeleteOneMaterialResponse{}
-	mi := &file_material_material_proto_msgTypes[20]
+	mi := &file_material_material_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1081,7 +1161,7 @@ func (x *DeleteOneMaterialResponse) String() string {
 func (*DeleteOneMaterialResponse) ProtoMessage() {}
 
 func (x *DeleteOneMaterialResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[20]
+	mi := &file_material_material_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1094,7 +1174,7 @@ func (x *DeleteOneMaterialResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneMaterialResponse.ProtoReflect.Descriptor instead.
 func (*DeleteOneMaterialResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{20}
+	return file_material_material_proto_rawDescGZIP(), []int{22}
 }
 
 type DeleteMaterialsRequest struct {
@@ -1106,7 +1186,7 @@ type DeleteMaterialsRequest struct {
 
 func (x *DeleteMaterialsRequest) Reset() {
 	*x = DeleteMaterialsRequest{}
-	mi := &file_material_material_proto_msgTypes[21]
+	mi := &file_material_material_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1118,7 +1198,7 @@ func (x *DeleteMaterialsRequest) String() string {
 func (*DeleteMaterialsRequest) ProtoMessage() {}
 
 func (x *DeleteMaterialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[21]
+	mi := &file_material_material_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1131,7 +1211,7 @@ func (x *DeleteMaterialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMaterialsRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMaterialsRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{21}
+	return file_material_material_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeleteMaterialsRequest) GetMaterialIds() []int64 {
@@ -1149,7 +1229,7 @@ type DeleteMaterialsResponse struct {
 
 func (x *DeleteMaterialsResponse) Reset() {
 	*x = DeleteMaterialsResponse{}
-	mi := &file_material_material_proto_msgTypes[22]
+	mi := &file_material_material_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1161,7 +1241,7 @@ func (x *DeleteMaterialsResponse) String() string {
 func (*DeleteMaterialsResponse) ProtoMessage() {}
 
 func (x *DeleteMaterialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[22]
+	mi := &file_material_material_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1174,100 +1254,12 @@ func (x *DeleteMaterialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMaterialsResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMaterialsResponse) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{22}
-}
-
-type UpdateUsersOneMaterialAccessRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MaterialIds   []int64                `protobuf:"varint,1,rep,packed,name=material_ids,json=materialIds,proto3" json:"material_ids,omitempty"`
-	UserIds       []int64                `protobuf:"varint,2,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateUsersOneMaterialAccessRequest) Reset() {
-	*x = UpdateUsersOneMaterialAccessRequest{}
-	mi := &file_material_material_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateUsersOneMaterialAccessRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateUsersOneMaterialAccessRequest) ProtoMessage() {}
-
-func (x *UpdateUsersOneMaterialAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateUsersOneMaterialAccessRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUsersOneMaterialAccessRequest) Descriptor() ([]byte, []int) {
-	return file_material_material_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *UpdateUsersOneMaterialAccessRequest) GetMaterialIds() []int64 {
-	if x != nil {
-		return x.MaterialIds
-	}
-	return nil
-}
-
-func (x *UpdateUsersOneMaterialAccessRequest) GetUserIds() []int64 {
-	if x != nil {
-		return x.UserIds
-	}
-	return nil
-}
-
-type UpdateUsersOneMaterialAccessResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateUsersOneMaterialAccessResponse) Reset() {
-	*x = UpdateUsersOneMaterialAccessResponse{}
-	mi := &file_material_material_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateUsersOneMaterialAccessResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateUsersOneMaterialAccessResponse) ProtoMessage() {}
-
-func (x *UpdateUsersOneMaterialAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_material_material_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateUsersOneMaterialAccessResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUsersOneMaterialAccessResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{24}
 }
 
 type UpdateUsersMaterialsAccessRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MaterialId    int64                  `protobuf:"varint,1,opt,name=material_id,json=materialId,proto3" json:"material_id,omitempty"`
+	MaterialIds   []int64                `protobuf:"varint,1,rep,packed,name=material_ids,json=materialIds,proto3" json:"material_ids,omitempty"`
 	UserIds       []int64                `protobuf:"varint,2,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1303,11 +1295,11 @@ func (*UpdateUsersMaterialsAccessRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *UpdateUsersMaterialsAccessRequest) GetMaterialId() int64 {
+func (x *UpdateUsersMaterialsAccessRequest) GetMaterialIds() []int64 {
 	if x != nil {
-		return x.MaterialId
+		return x.MaterialIds
 	}
-	return 0
+	return nil
 }
 
 func (x *UpdateUsersMaterialsAccessRequest) GetUserIds() []int64 {
@@ -1353,28 +1345,28 @@ func (*UpdateUsersMaterialsAccessResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{26}
 }
 
-type UpdateUsersFolderAccessRequest struct {
+type UpdateUsersFoldersAccessRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FolderId      int64                  `protobuf:"varint,1,opt,name=folder_id,json=folderId,proto3" json:"folder_id,omitempty"`
+	FolderIds     []int64                `protobuf:"varint,1,rep,packed,name=folder_ids,json=folderIds,proto3" json:"folder_ids,omitempty"`
 	UserIds       []int64                `protobuf:"varint,2,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUsersFolderAccessRequest) Reset() {
-	*x = UpdateUsersFolderAccessRequest{}
+func (x *UpdateUsersFoldersAccessRequest) Reset() {
+	*x = UpdateUsersFoldersAccessRequest{}
 	mi := &file_material_material_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUsersFolderAccessRequest) String() string {
+func (x *UpdateUsersFoldersAccessRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUsersFolderAccessRequest) ProtoMessage() {}
+func (*UpdateUsersFoldersAccessRequest) ProtoMessage() {}
 
-func (x *UpdateUsersFolderAccessRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateUsersFoldersAccessRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1386,45 +1378,45 @@ func (x *UpdateUsersFolderAccessRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUsersFolderAccessRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUsersFolderAccessRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUsersFoldersAccessRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUsersFoldersAccessRequest) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{27}
 }
 
-func (x *UpdateUsersFolderAccessRequest) GetFolderId() int64 {
+func (x *UpdateUsersFoldersAccessRequest) GetFolderIds() []int64 {
 	if x != nil {
-		return x.FolderId
+		return x.FolderIds
 	}
-	return 0
+	return nil
 }
 
-func (x *UpdateUsersFolderAccessRequest) GetUserIds() []int64 {
+func (x *UpdateUsersFoldersAccessRequest) GetUserIds() []int64 {
 	if x != nil {
 		return x.UserIds
 	}
 	return nil
 }
 
-type UpdateUsersFolderAccessResponse struct {
+type UpdateUsersFoldersAccessResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUsersFolderAccessResponse) Reset() {
-	*x = UpdateUsersFolderAccessResponse{}
+func (x *UpdateUsersFoldersAccessResponse) Reset() {
+	*x = UpdateUsersFoldersAccessResponse{}
 	mi := &file_material_material_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUsersFolderAccessResponse) String() string {
+func (x *UpdateUsersFoldersAccessResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUsersFolderAccessResponse) ProtoMessage() {}
+func (*UpdateUsersFoldersAccessResponse) ProtoMessage() {}
 
-func (x *UpdateUsersFolderAccessResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateUsersFoldersAccessResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_material_material_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1436,8 +1428,8 @@ func (x *UpdateUsersFolderAccessResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUsersFolderAccessResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUsersFolderAccessResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUsersFoldersAccessResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUsersFoldersAccessResponse) Descriptor() ([]byte, []int) {
 	return file_material_material_proto_rawDescGZIP(), []int{28}
 }
 
@@ -1564,20 +1556,25 @@ const file_material_material_proto_rawDesc = "" +
 	"\x10parent_folder_id\x18\x02 \x01(\x03R\x0eparentFolderId\x12\x19\n" +
 	"\btutor_id\x18\x03 \x01(\x03R\atutorId\"@\n" +
 	"\x14CreateFolderResponse\x12(\n" +
-	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"t\n" +
-	"\x11MoveFolderRequest\x12\x1b\n" +
-	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\x12-\n" +
+	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"w\n" +
+	"\x12MoveFoldersRequest\x12\x1d\n" +
+	"\n" +
+	"folder_ids\x18\x01 \x03(\x03R\tfolderIds\x12-\n" +
 	"\x10parent_folder_id\x18\x02 \x01(\x03H\x00R\x0eparentFolderId\x88\x01\x01B\x13\n" +
-	"\x11_parent_folder_id\"\x14\n" +
-	"\x12MoveFolderResponse\"H\n" +
+	"\x11_parent_folder_id\"\x15\n" +
+	"\x13MoveFoldersResponse\"H\n" +
 	"\x13RenameFolderRequest\x12\x1b\n" +
 	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\"@\n" +
 	"\x14RenameFolderResponse\x12(\n" +
-	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"2\n" +
-	"\x13DeleteFolderRequest\x12\x1b\n" +
-	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\"\x16\n" +
-	"\x14DeleteFolderResponse\"k\n" +
+	"\x06folder\x18\x01 \x01(\v2\x10.material.FolderR\x06folder\"5\n" +
+	"\x16DeleteOneFolderRequest\x12\x1b\n" +
+	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\"\x19\n" +
+	"\x17DeleteOneFolderResponse\"5\n" +
+	"\x14DeleteFoldersRequest\x12\x1d\n" +
+	"\n" +
+	"folder_ids\x18\x01 \x03(\x03R\tfolderIds\"\x17\n" +
+	"\x15DeleteFoldersResponse\"k\n" +
 	"\x1aGetStudentMaterialsRequest\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\x03R\tstudentId\x12 \n" +
@@ -1610,43 +1607,38 @@ const file_material_material_proto_rawDesc = "" +
 	"\x19DeleteOneMaterialResponse\";\n" +
 	"\x16DeleteMaterialsRequest\x12!\n" +
 	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\"\x19\n" +
-	"\x17DeleteMaterialsResponse\"c\n" +
-	"#UpdateUsersOneMaterialAccessRequest\x12!\n" +
+	"\x17DeleteMaterialsResponse\"a\n" +
+	"!UpdateUsersMaterialsAccessRequest\x12!\n" +
 	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\x12\x19\n" +
-	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"&\n" +
-	"$UpdateUsersOneMaterialAccessResponse\"_\n" +
-	"!UpdateUsersMaterialsAccessRequest\x12\x1f\n" +
-	"\vmaterial_id\x18\x01 \x01(\x03R\n" +
-	"materialId\x12\x19\n" +
 	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"$\n" +
-	"\"UpdateUsersMaterialsAccessResponse\"X\n" +
-	"\x1eUpdateUsersFolderAccessRequest\x12\x1b\n" +
-	"\tfolder_id\x18\x01 \x01(\x03R\bfolderId\x12\x19\n" +
-	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"!\n" +
-	"\x1fUpdateUsersFolderAccessResponse\"i\n" +
+	"\"UpdateUsersMaterialsAccessResponse\"[\n" +
+	"\x1fUpdateUsersFoldersAccessRequest\x12\x1d\n" +
+	"\n" +
+	"folder_ids\x18\x01 \x03(\x03R\tfolderIds\x12\x19\n" +
+	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"\"\n" +
+	" UpdateUsersFoldersAccessResponse\"i\n" +
 	"\x14MoveMaterialsRequest\x12!\n" +
 	"\fmaterial_ids\x18\x01 \x03(\x03R\vmaterialIds\x12 \n" +
 	"\tfolder_id\x18\x02 \x01(\x03H\x00R\bfolderId\x88\x01\x01B\f\n" +
 	"\n" +
 	"_folder_id\"\x17\n" +
-	"\x15MoveMaterialsResponse2\x9f\n" +
+	"\x15MoveMaterialsResponse2\x81\n" +
 	"\n" +
 	"\bMaterial\x12M\n" +
-	"\fCreateFolder\x12\x1d.material.CreateFolderRequest\x1a\x1e.material.CreateFolderResponse\x12G\n" +
-	"\n" +
-	"MoveFolder\x12\x1b.material.MoveFolderRequest\x1a\x1c.material.MoveFolderResponse\x12M\n" +
-	"\fRenameFolder\x12\x1d.material.RenameFolderRequest\x1a\x1e.material.RenameFolderResponse\x12M\n" +
-	"\fDeleteFolder\x12\x1d.material.DeleteFolderRequest\x1a\x1e.material.DeleteFolderResponse\x12b\n" +
+	"\fCreateFolder\x12\x1d.material.CreateFolderRequest\x1a\x1e.material.CreateFolderResponse\x12J\n" +
+	"\vMoveFolders\x12\x1c.material.MoveFoldersRequest\x1a\x1d.material.MoveFoldersResponse\x12M\n" +
+	"\fRenameFolder\x12\x1d.material.RenameFolderRequest\x1a\x1e.material.RenameFolderResponse\x12V\n" +
+	"\x0fDeleteOneFolder\x12 .material.DeleteOneFolderRequest\x1a!.material.DeleteOneFolderResponse\x12P\n" +
+	"\rDeleteFolders\x12\x1e.material.DeleteFoldersRequest\x1a\x1f.material.DeleteFoldersResponse\x12b\n" +
 	"\x13GetStudentMaterials\x12$.material.GetStudentMaterialsRequest\x1a%.material.GetStudentMaterialsResponse\x12\\\n" +
 	"\x11GetTutorMaterials\x12\".material.GetTutorMaterialsRequest\x1a#.material.GetTutorMaterialsResponse\x12V\n" +
 	"\x0fCreateMaterials\x12 .material.CreateMaterialsRequest\x1a!.material.CreateMaterialsResponse\x12P\n" +
 	"\rMoveMaterials\x12\x1e.material.MoveMaterialsRequest\x1a\x1f.material.MoveMaterialsResponse\x12S\n" +
 	"\x0eRenameMaterial\x12\x1f.material.RenameMaterialRequest\x1a .material.RenameMaterialResponse\x12\\\n" +
 	"\x11DeleteOneMaterial\x12\".material.DeleteOneMaterialRequest\x1a#.material.DeleteOneMaterialResponse\x12V\n" +
-	"\x0fDeleteMaterials\x12 .material.DeleteMaterialsRequest\x1a!.material.DeleteMaterialsResponse\x12}\n" +
-	"\x1cUpdateUsersOneMaterialAccess\x12-.material.UpdateUsersOneMaterialAccessRequest\x1a..material.UpdateUsersOneMaterialAccessResponse\x12w\n" +
-	"\x1aUpdateUsersMaterialsAccess\x12+.material.UpdateUsersMaterialsAccessRequest\x1a,.material.UpdateUsersMaterialsAccessResponse\x12n\n" +
-	"\x17UpdateUsersFolderAccess\x12(.material.UpdateUsersFolderAccessRequest\x1a).material.UpdateUsersFolderAccessResponseBWZUgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/materialb\x06proto3"
+	"\x0fDeleteMaterials\x12 .material.DeleteMaterialsRequest\x1a!.material.DeleteMaterialsResponse\x12w\n" +
+	"\x1aUpdateUsersMaterialsAccess\x12+.material.UpdateUsersMaterialsAccessRequest\x1a,.material.UpdateUsersMaterialsAccessResponse\x12q\n" +
+	"\x18UpdateUsersFoldersAccess\x12).material.UpdateUsersFoldersAccessRequest\x1a*.material.UpdateUsersFoldersAccessResponseBWZUgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/materialb\x06proto3"
 
 var (
 	file_material_material_proto_rawDescOnce sync.Once
@@ -1662,37 +1654,37 @@ func file_material_material_proto_rawDescGZIP() []byte {
 
 var file_material_material_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_material_material_proto_goTypes = []any{
-	(*Folder)(nil),                               // 0: material.Folder
-	(*FolderMaterial)(nil),                       // 1: material.FolderMaterial
-	(*NewFolderMaterial)(nil),                    // 2: material.NewFolderMaterial
-	(*CreateFolderRequest)(nil),                  // 3: material.CreateFolderRequest
-	(*CreateFolderResponse)(nil),                 // 4: material.CreateFolderResponse
-	(*MoveFolderRequest)(nil),                    // 5: material.MoveFolderRequest
-	(*MoveFolderResponse)(nil),                   // 6: material.MoveFolderResponse
-	(*RenameFolderRequest)(nil),                  // 7: material.RenameFolderRequest
-	(*RenameFolderResponse)(nil),                 // 8: material.RenameFolderResponse
-	(*DeleteFolderRequest)(nil),                  // 9: material.DeleteFolderRequest
-	(*DeleteFolderResponse)(nil),                 // 10: material.DeleteFolderResponse
-	(*GetStudentMaterialsRequest)(nil),           // 11: material.GetStudentMaterialsRequest
-	(*GetStudentMaterialsResponse)(nil),          // 12: material.GetStudentMaterialsResponse
-	(*GetTutorMaterialsRequest)(nil),             // 13: material.GetTutorMaterialsRequest
-	(*GetTutorMaterialsResponse)(nil),            // 14: material.GetTutorMaterialsResponse
-	(*CreateMaterialsRequest)(nil),               // 15: material.CreateMaterialsRequest
-	(*CreateMaterialsResponse)(nil),              // 16: material.CreateMaterialsResponse
-	(*RenameMaterialRequest)(nil),                // 17: material.RenameMaterialRequest
-	(*RenameMaterialResponse)(nil),               // 18: material.RenameMaterialResponse
-	(*DeleteOneMaterialRequest)(nil),             // 19: material.DeleteOneMaterialRequest
-	(*DeleteOneMaterialResponse)(nil),            // 20: material.DeleteOneMaterialResponse
-	(*DeleteMaterialsRequest)(nil),               // 21: material.DeleteMaterialsRequest
-	(*DeleteMaterialsResponse)(nil),              // 22: material.DeleteMaterialsResponse
-	(*UpdateUsersOneMaterialAccessRequest)(nil),  // 23: material.UpdateUsersOneMaterialAccessRequest
-	(*UpdateUsersOneMaterialAccessResponse)(nil), // 24: material.UpdateUsersOneMaterialAccessResponse
-	(*UpdateUsersMaterialsAccessRequest)(nil),    // 25: material.UpdateUsersMaterialsAccessRequest
-	(*UpdateUsersMaterialsAccessResponse)(nil),   // 26: material.UpdateUsersMaterialsAccessResponse
-	(*UpdateUsersFolderAccessRequest)(nil),       // 27: material.UpdateUsersFolderAccessRequest
-	(*UpdateUsersFolderAccessResponse)(nil),      // 28: material.UpdateUsersFolderAccessResponse
-	(*MoveMaterialsRequest)(nil),                 // 29: material.MoveMaterialsRequest
-	(*MoveMaterialsResponse)(nil),                // 30: material.MoveMaterialsResponse
+	(*Folder)(nil),                             // 0: material.Folder
+	(*FolderMaterial)(nil),                     // 1: material.FolderMaterial
+	(*NewFolderMaterial)(nil),                  // 2: material.NewFolderMaterial
+	(*CreateFolderRequest)(nil),                // 3: material.CreateFolderRequest
+	(*CreateFolderResponse)(nil),               // 4: material.CreateFolderResponse
+	(*MoveFoldersRequest)(nil),                 // 5: material.MoveFoldersRequest
+	(*MoveFoldersResponse)(nil),                // 6: material.MoveFoldersResponse
+	(*RenameFolderRequest)(nil),                // 7: material.RenameFolderRequest
+	(*RenameFolderResponse)(nil),               // 8: material.RenameFolderResponse
+	(*DeleteOneFolderRequest)(nil),             // 9: material.DeleteOneFolderRequest
+	(*DeleteOneFolderResponse)(nil),            // 10: material.DeleteOneFolderResponse
+	(*DeleteFoldersRequest)(nil),               // 11: material.DeleteFoldersRequest
+	(*DeleteFoldersResponse)(nil),              // 12: material.DeleteFoldersResponse
+	(*GetStudentMaterialsRequest)(nil),         // 13: material.GetStudentMaterialsRequest
+	(*GetStudentMaterialsResponse)(nil),        // 14: material.GetStudentMaterialsResponse
+	(*GetTutorMaterialsRequest)(nil),           // 15: material.GetTutorMaterialsRequest
+	(*GetTutorMaterialsResponse)(nil),          // 16: material.GetTutorMaterialsResponse
+	(*CreateMaterialsRequest)(nil),             // 17: material.CreateMaterialsRequest
+	(*CreateMaterialsResponse)(nil),            // 18: material.CreateMaterialsResponse
+	(*RenameMaterialRequest)(nil),              // 19: material.RenameMaterialRequest
+	(*RenameMaterialResponse)(nil),             // 20: material.RenameMaterialResponse
+	(*DeleteOneMaterialRequest)(nil),           // 21: material.DeleteOneMaterialRequest
+	(*DeleteOneMaterialResponse)(nil),          // 22: material.DeleteOneMaterialResponse
+	(*DeleteMaterialsRequest)(nil),             // 23: material.DeleteMaterialsRequest
+	(*DeleteMaterialsResponse)(nil),            // 24: material.DeleteMaterialsResponse
+	(*UpdateUsersMaterialsAccessRequest)(nil),  // 25: material.UpdateUsersMaterialsAccessRequest
+	(*UpdateUsersMaterialsAccessResponse)(nil), // 26: material.UpdateUsersMaterialsAccessResponse
+	(*UpdateUsersFoldersAccessRequest)(nil),    // 27: material.UpdateUsersFoldersAccessRequest
+	(*UpdateUsersFoldersAccessResponse)(nil),   // 28: material.UpdateUsersFoldersAccessResponse
+	(*MoveMaterialsRequest)(nil),               // 29: material.MoveMaterialsRequest
+	(*MoveMaterialsResponse)(nil),              // 30: material.MoveMaterialsResponse
 }
 var file_material_material_proto_depIdxs = []int32{
 	0,  // 0: material.CreateFolderResponse.folder:type_name -> material.Folder
@@ -1704,33 +1696,33 @@ var file_material_material_proto_depIdxs = []int32{
 	2,  // 6: material.CreateMaterialsRequest.materials:type_name -> material.NewFolderMaterial
 	1,  // 7: material.CreateMaterialsResponse.materials:type_name -> material.FolderMaterial
 	3,  // 8: material.Material.CreateFolder:input_type -> material.CreateFolderRequest
-	5,  // 9: material.Material.MoveFolder:input_type -> material.MoveFolderRequest
+	5,  // 9: material.Material.MoveFolders:input_type -> material.MoveFoldersRequest
 	7,  // 10: material.Material.RenameFolder:input_type -> material.RenameFolderRequest
-	9,  // 11: material.Material.DeleteFolder:input_type -> material.DeleteFolderRequest
-	11, // 12: material.Material.GetStudentMaterials:input_type -> material.GetStudentMaterialsRequest
-	13, // 13: material.Material.GetTutorMaterials:input_type -> material.GetTutorMaterialsRequest
-	15, // 14: material.Material.CreateMaterials:input_type -> material.CreateMaterialsRequest
-	29, // 15: material.Material.MoveMaterials:input_type -> material.MoveMaterialsRequest
-	17, // 16: material.Material.RenameMaterial:input_type -> material.RenameMaterialRequest
-	19, // 17: material.Material.DeleteOneMaterial:input_type -> material.DeleteOneMaterialRequest
-	21, // 18: material.Material.DeleteMaterials:input_type -> material.DeleteMaterialsRequest
-	23, // 19: material.Material.UpdateUsersOneMaterialAccess:input_type -> material.UpdateUsersOneMaterialAccessRequest
+	9,  // 11: material.Material.DeleteOneFolder:input_type -> material.DeleteOneFolderRequest
+	11, // 12: material.Material.DeleteFolders:input_type -> material.DeleteFoldersRequest
+	13, // 13: material.Material.GetStudentMaterials:input_type -> material.GetStudentMaterialsRequest
+	15, // 14: material.Material.GetTutorMaterials:input_type -> material.GetTutorMaterialsRequest
+	17, // 15: material.Material.CreateMaterials:input_type -> material.CreateMaterialsRequest
+	29, // 16: material.Material.MoveMaterials:input_type -> material.MoveMaterialsRequest
+	19, // 17: material.Material.RenameMaterial:input_type -> material.RenameMaterialRequest
+	21, // 18: material.Material.DeleteOneMaterial:input_type -> material.DeleteOneMaterialRequest
+	23, // 19: material.Material.DeleteMaterials:input_type -> material.DeleteMaterialsRequest
 	25, // 20: material.Material.UpdateUsersMaterialsAccess:input_type -> material.UpdateUsersMaterialsAccessRequest
-	27, // 21: material.Material.UpdateUsersFolderAccess:input_type -> material.UpdateUsersFolderAccessRequest
+	27, // 21: material.Material.UpdateUsersFoldersAccess:input_type -> material.UpdateUsersFoldersAccessRequest
 	4,  // 22: material.Material.CreateFolder:output_type -> material.CreateFolderResponse
-	6,  // 23: material.Material.MoveFolder:output_type -> material.MoveFolderResponse
+	6,  // 23: material.Material.MoveFolders:output_type -> material.MoveFoldersResponse
 	8,  // 24: material.Material.RenameFolder:output_type -> material.RenameFolderResponse
-	10, // 25: material.Material.DeleteFolder:output_type -> material.DeleteFolderResponse
-	12, // 26: material.Material.GetStudentMaterials:output_type -> material.GetStudentMaterialsResponse
-	14, // 27: material.Material.GetTutorMaterials:output_type -> material.GetTutorMaterialsResponse
-	16, // 28: material.Material.CreateMaterials:output_type -> material.CreateMaterialsResponse
-	30, // 29: material.Material.MoveMaterials:output_type -> material.MoveMaterialsResponse
-	18, // 30: material.Material.RenameMaterial:output_type -> material.RenameMaterialResponse
-	20, // 31: material.Material.DeleteOneMaterial:output_type -> material.DeleteOneMaterialResponse
-	22, // 32: material.Material.DeleteMaterials:output_type -> material.DeleteMaterialsResponse
-	24, // 33: material.Material.UpdateUsersOneMaterialAccess:output_type -> material.UpdateUsersOneMaterialAccessResponse
+	10, // 25: material.Material.DeleteOneFolder:output_type -> material.DeleteOneFolderResponse
+	12, // 26: material.Material.DeleteFolders:output_type -> material.DeleteFoldersResponse
+	14, // 27: material.Material.GetStudentMaterials:output_type -> material.GetStudentMaterialsResponse
+	16, // 28: material.Material.GetTutorMaterials:output_type -> material.GetTutorMaterialsResponse
+	18, // 29: material.Material.CreateMaterials:output_type -> material.CreateMaterialsResponse
+	30, // 30: material.Material.MoveMaterials:output_type -> material.MoveMaterialsResponse
+	20, // 31: material.Material.RenameMaterial:output_type -> material.RenameMaterialResponse
+	22, // 32: material.Material.DeleteOneMaterial:output_type -> material.DeleteOneMaterialResponse
+	24, // 33: material.Material.DeleteMaterials:output_type -> material.DeleteMaterialsResponse
 	26, // 34: material.Material.UpdateUsersMaterialsAccess:output_type -> material.UpdateUsersMaterialsAccessResponse
-	28, // 35: material.Material.UpdateUsersFolderAccess:output_type -> material.UpdateUsersFolderAccessResponse
+	28, // 35: material.Material.UpdateUsersFoldersAccess:output_type -> material.UpdateUsersFoldersAccessResponse
 	22, // [22:36] is the sub-list for method output_type
 	8,  // [8:22] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -1747,8 +1739,8 @@ func file_material_material_proto_init() {
 	file_material_material_proto_msgTypes[1].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[2].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[5].OneofWrappers = []any{}
-	file_material_material_proto_msgTypes[11].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[13].OneofWrappers = []any{}
+	file_material_material_proto_msgTypes[15].OneofWrappers = []any{}
 	file_material_material_proto_msgTypes[29].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
