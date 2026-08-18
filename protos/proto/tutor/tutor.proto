@@ -1,0 +1,268 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package tutor;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/tutor";
+
+service Tutor {
+  rpc AddStudent (AddStudentRequest) returns (AddStudentResponse);
+  rpc DeleteOneStudent (DeleteOneStudentRequest) returns (DeleteOneStudentResponse);
+  rpc DeleteStudents (DeleteStudentsRequest) returns (DeleteStudentsResponse);
+  rpc GetTutorStudents (GetTutorStudentsRequest) returns (GetTutorStudentsResponse);
+  rpc GetOneTutor (GetOneTutorRequest) returns (GetOneTutorResponse);
+  rpc GetTutors (GetTutorsRequest) returns (GetTutorsResponse);
+  rpc GetTutorReviews (GetTutorReviewsRequest) returns (GetTutorReviewsResponse);
+  rpc AddTutorReview (AddTutorReviewRequest) returns (AddTutorReviewResponse);
+  rpc UpdateTutorReview (UpdateTutorReviewRequest) returns (UpdateTutorReviewResponse);
+  rpc DeleteTutorReview (DeleteTutorReviewRequest) returns (DeleteTutorReviewResponse);
+  rpc GetTutorOffers (GetTutorOffersRequest) returns (GetTutorOffersResponse);
+  rpc AddTutorOffer (AddTutorOfferRequest) returns (AddTutorOfferResponse);
+  rpc UpdateTutorOffer (UpdateTutorOfferRequest) returns (UpdateTutorOfferResponse);
+  rpc DeleteOneTutorOffer (DeleteOneTutorOfferRequest) returns (DeleteOneTutorOfferResponse);
+  rpc DeleteTutorOffers (DeleteTutorOffersRequest) returns (DeleteTutorOffersResponse);
+  rpc GetTutorSubjects (GetTutorSubjectsRequest) returns (GetTutorSubjectsResponse);
+  rpc AddTutorSubject (AddTutorSubjectRequest) returns (AddTutorSubjectResponse);
+  rpc DeleteTutorSubject (DeleteTutorSubjectRequest) returns (DeleteTutorSubjectResponse);
+}
+
+enum SubjectType {
+  SUBJECT_TYPE_UNSPECIFIED = 0;
+  EGE = 1;
+  OGE = 2;
+  IMPROVE = 3;
+}
+
+message Review {
+  int64 id = 1;
+  int64 tutor_id = 2;
+  int64 author_id = 3;
+  int64 subject_id = 4;
+  string text = 5;
+  int64 rating = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message Offer {
+  int64 id = 1;
+  string title = 2;
+  optional string description = 3;
+  int64 subject_id = 4;
+  int64 price = 5;
+  int64 duration_minutes = 6;
+}
+
+message Subject {
+  int64 id = 1;
+  string code = 2;
+  string title = 3;
+  SubjectType type = 4;
+}
+
+message UserShortInfo {
+  int64 id = 1;
+  string name = 2;
+  string surname = 3;
+  optional string patronymic = 4;
+  optional string tg_username = 5;
+  optional string avatar = 6;
+}
+
+message TutorShortInfo {
+  UserShortInfo tutor_info = 1;
+  float rating = 2;
+  int64 reviews_count = 3;
+}
+
+message TutorStudent {
+  UserShortInfo student = 1;
+  google.protobuf.Timestamp last_interacted_at = 2;
+}
+
+message AddStudentRequest {
+  int64 tutor_id = 1;
+  int64 student_id = 2;
+}
+
+message AddStudentResponse {
+
+}
+
+message DeleteOneStudentRequest {
+  int64 tutor_id = 1;
+  int64 student_id = 2;
+}
+
+message DeleteOneStudentResponse {
+
+}
+
+message DeleteStudentsRequest {
+  int64 tutor_id = 1;
+  repeated int64 student_ids = 2;
+}
+
+message DeleteStudentsResponse {
+
+}
+
+message GetTutorStudentsRequest {
+  int64 tutor_id = 1;
+  optional int64 interacted_within_days = 2;
+  string search = 3;
+  int64 page = 4;
+  int64 limit = 5;
+}
+
+message GetTutorStudentsResponse {
+  repeated TutorStudent students = 1;
+  int64 count = 2;
+}
+
+message GetOneTutorRequest {
+  int64 tutor_id = 1;
+}
+
+message GetOneTutorResponse {
+  UserShortInfo tutor_info = 1;
+  float rating = 2;
+  int64 reviews_count = 3;
+  repeated Offer offers = 4;
+  repeated Subject subjects = 5;
+  bool can_add_review = 6;
+}
+
+message GetTutorsRequest {
+  optional int64 subject_id = 1;
+  int64 page = 2;
+  int64 limit = 3;
+}
+
+message GetTutorsResponse {
+  repeated TutorShortInfo tutors = 1;
+  int64 count = 2;
+}
+
+message GetTutorReviewsRequest {
+  int64 tutor_id = 1;
+  int64 page = 2;
+  int64 limit = 3;
+}
+
+message GetTutorReviewsResponse {
+  repeated Review reviews = 1;
+  int64 count = 2;
+}
+
+message AddTutorReviewRequest {
+  string text = 1;
+  int64 tutor_id = 2;
+  int64 author_id = 3;
+  int64 subject_id = 4;
+  int64 rating = 5;
+}
+
+message AddTutorReviewResponse {
+  Review review = 1;
+}
+
+message UpdateTutorReviewRequest {
+  int64 id = 1;
+  string text = 2;
+  int64 author_id = 3;
+  int64 subject_id = 4;
+  int64 rating = 5;
+}
+
+message UpdateTutorReviewResponse {
+
+}
+
+message DeleteTutorReviewRequest {
+  int64 id = 1;
+  int64 author_id = 2;
+}
+
+message DeleteTutorReviewResponse {
+
+}
+
+message GetTutorOffersRequest {
+  int64 tutor_id = 1;
+}
+
+message GetTutorOffersResponse {
+  repeated Offer offers = 1;
+}
+
+message AddTutorOfferRequest {
+  string title = 1;
+  optional string description = 2;
+  int64 subject_id = 3;
+  int64 price = 4;
+  int64 duration_minutes = 5;
+}
+
+message AddTutorOfferResponse {
+  Offer offer = 1;
+}
+
+message UpdateTutorOfferRequest {
+  int64 id = 1;
+  string title = 2;
+  optional string description = 3;
+  int64 subject_id = 4;
+  int64 price = 5;
+  int64 duration_minutes = 6;
+}
+
+message UpdateTutorOfferResponse {
+
+}
+
+message DeleteOneTutorOfferRequest {
+  int64 id = 1;
+  int64 tutor_id = 2;
+}
+
+message DeleteOneTutorOfferResponse {
+
+}
+
+message DeleteTutorOffersRequest {
+  repeated int64 ids = 1;
+  int64 tutor_id = 2;
+}
+
+message DeleteTutorOffersResponse {
+
+}
+
+message GetTutorSubjectsRequest {
+  int64 tutor_id = 1;
+}
+
+message GetTutorSubjectsResponse {
+  repeated Subject subjects = 1;
+}
+
+message AddTutorSubjectRequest {
+  int64 tutor_id = 1;
+  int64 subject_id = 2;
+}
+
+message AddTutorSubjectResponse {
+
+}
+
+message DeleteTutorSubjectRequest {
+  int64 tutor_id = 1;
+  int64 subject_id = 2;
+}
+
+message DeleteTutorSubjectResponse {
+  int64 tutor_id = 1;
+  int64 subject_id = 2;
+}
