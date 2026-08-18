@@ -22,9 +22,6 @@ service Tutor {
   rpc UpdateTutorOffer (UpdateTutorOfferRequest) returns (UpdateTutorOfferResponse);
   rpc DeleteOneTutorOffer (DeleteOneTutorOfferRequest) returns (DeleteOneTutorOfferResponse);
   rpc DeleteTutorOffers (DeleteTutorOffersRequest) returns (DeleteTutorOffersResponse);
-  rpc GetTutorSubjects (GetTutorSubjectsRequest) returns (GetTutorSubjectsResponse);
-  rpc AddTutorSubject (AddTutorSubjectRequest) returns (AddTutorSubjectResponse);
-  rpc DeleteTutorSubject (DeleteTutorSubjectRequest) returns (DeleteTutorSubjectResponse);
 }
 
 enum SubjectType {
@@ -238,31 +235,4 @@ message DeleteTutorOffersRequest {
 
 message DeleteTutorOffersResponse {
 
-}
-
-message GetTutorSubjectsRequest {
-  int64 tutor_id = 1;
-}
-
-message GetTutorSubjectsResponse {
-  repeated Subject subjects = 1;
-}
-
-message AddTutorSubjectRequest {
-  int64 tutor_id = 1;
-  int64 subject_id = 2;
-}
-
-message AddTutorSubjectResponse {
-
-}
-
-message DeleteTutorSubjectRequest {
-  int64 tutor_id = 1;
-  int64 subject_id = 2;
-}
-
-message DeleteTutorSubjectResponse {
-  int64 tutor_id = 1;
-  int64 subject_id = 2;
 }
