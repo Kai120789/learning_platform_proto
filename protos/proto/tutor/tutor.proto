@@ -24,13 +24,6 @@ service Tutor {
   rpc DeleteTutorOffers (DeleteTutorOffersRequest) returns (DeleteTutorOffersResponse);
 }
 
-enum SubjectType {
-  SUBJECT_TYPE_UNSPECIFIED = 0;
-  EGE = 1;
-  OGE = 2;
-  IMPROVE = 3;
-}
-
 message Review {
   int64 id = 1;
   int64 tutor_id = 2;
@@ -52,30 +45,15 @@ message Offer {
   optional int64 duration_minutes = 7;
 }
 
-message Subject {
-  int64 id = 1;
-  string code = 2;
-  string title = 3;
-  SubjectType type = 4;
-}
-
-message UserShortInfo {
-  int64 id = 1;
-  string name = 2;
-  string surname = 3;
-  optional string patronymic = 4;
-  optional string tg_username = 5;
-  optional string avatar = 6;
-}
 
 message TutorShortInfo {
-  UserShortInfo tutor_info = 1;
+  int64 tutor_id = 1; // потом получать из user сервиса
   float rating = 2;
   int64 reviews_count = 3;
 }
 
 message TutorStudent {
-  UserShortInfo student = 1;
+  int64 student_id = 1; // потом получать из user сервиса
   google.protobuf.Timestamp last_interacted_at = 2;
 }
 
@@ -124,11 +102,11 @@ message GetOneTutorRequest {
 }
 
 message GetOneTutorResponse {
-  UserShortInfo tutor_info = 1;
+  int64 tutor_id = 1; // потом получать из user сервиса
   float rating = 2;
   int64 reviews_count = 3;
   repeated Offer offers = 4;
-  repeated Subject subjects = 5;
+  repeated int64 subject_ids = 5;  // потом получать из subject сервиса
   bool can_add_review = 6;
 }
 

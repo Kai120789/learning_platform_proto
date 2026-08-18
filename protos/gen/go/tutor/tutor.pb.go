@@ -22,58 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type SubjectType int32
-
-const (
-	SubjectType_SUBJECT_TYPE_UNSPECIFIED SubjectType = 0
-	SubjectType_EGE                      SubjectType = 1
-	SubjectType_OGE                      SubjectType = 2
-	SubjectType_IMPROVE                  SubjectType = 3
-)
-
-// Enum value maps for SubjectType.
-var (
-	SubjectType_name = map[int32]string{
-		0: "SUBJECT_TYPE_UNSPECIFIED",
-		1: "EGE",
-		2: "OGE",
-		3: "IMPROVE",
-	}
-	SubjectType_value = map[string]int32{
-		"SUBJECT_TYPE_UNSPECIFIED": 0,
-		"EGE":                      1,
-		"OGE":                      2,
-		"IMPROVE":                  3,
-	}
-)
-
-func (x SubjectType) Enum() *SubjectType {
-	p := new(SubjectType)
-	*p = x
-	return p
-}
-
-func (x SubjectType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (SubjectType) Descriptor() protoreflect.EnumDescriptor {
-	return file_tutor_tutor_proto_enumTypes[0].Descriptor()
-}
-
-func (SubjectType) Type() protoreflect.EnumType {
-	return &file_tutor_tutor_proto_enumTypes[0]
-}
-
-func (x SubjectType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use SubjectType.Descriptor instead.
-func (SubjectType) EnumDescriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{0}
-}
-
 type Review struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -266,161 +214,9 @@ func (x *Offer) GetDurationMinutes() int64 {
 	return 0
 }
 
-type Subject struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Type          SubjectType            `protobuf:"varint,4,opt,name=type,proto3,enum=tutor.SubjectType" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Subject) Reset() {
-	*x = Subject{}
-	mi := &file_tutor_tutor_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Subject) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Subject) ProtoMessage() {}
-
-func (x *Subject) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Subject.ProtoReflect.Descriptor instead.
-func (*Subject) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *Subject) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *Subject) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *Subject) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *Subject) GetType() SubjectType {
-	if x != nil {
-		return x.Type
-	}
-	return SubjectType_SUBJECT_TYPE_UNSPECIFIED
-}
-
-type UserShortInfo struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
-	Patronymic    *string                `protobuf:"bytes,4,opt,name=patronymic,proto3,oneof" json:"patronymic,omitempty"`
-	TgUsername    *string                `protobuf:"bytes,5,opt,name=tg_username,json=tgUsername,proto3,oneof" json:"tg_username,omitempty"`
-	Avatar        *string                `protobuf:"bytes,6,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UserShortInfo) Reset() {
-	*x = UserShortInfo{}
-	mi := &file_tutor_tutor_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UserShortInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UserShortInfo) ProtoMessage() {}
-
-func (x *UserShortInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UserShortInfo.ProtoReflect.Descriptor instead.
-func (*UserShortInfo) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UserShortInfo) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *UserShortInfo) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *UserShortInfo) GetSurname() string {
-	if x != nil {
-		return x.Surname
-	}
-	return ""
-}
-
-func (x *UserShortInfo) GetPatronymic() string {
-	if x != nil && x.Patronymic != nil {
-		return *x.Patronymic
-	}
-	return ""
-}
-
-func (x *UserShortInfo) GetTgUsername() string {
-	if x != nil && x.TgUsername != nil {
-		return *x.TgUsername
-	}
-	return ""
-}
-
-func (x *UserShortInfo) GetAvatar() string {
-	if x != nil && x.Avatar != nil {
-		return *x.Avatar
-	}
-	return ""
-}
-
 type TutorShortInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TutorInfo     *UserShortInfo         `protobuf:"bytes,1,opt,name=tutor_info,json=tutorInfo,proto3" json:"tutor_info,omitempty"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"` // потом получать из user сервиса
 	Rating        float32                `protobuf:"fixed32,2,opt,name=rating,proto3" json:"rating,omitempty"`
 	ReviewsCount  int64                  `protobuf:"varint,3,opt,name=reviews_count,json=reviewsCount,proto3" json:"reviews_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -429,7 +225,7 @@ type TutorShortInfo struct {
 
 func (x *TutorShortInfo) Reset() {
 	*x = TutorShortInfo{}
-	mi := &file_tutor_tutor_proto_msgTypes[4]
+	mi := &file_tutor_tutor_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -441,7 +237,7 @@ func (x *TutorShortInfo) String() string {
 func (*TutorShortInfo) ProtoMessage() {}
 
 func (x *TutorShortInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[4]
+	mi := &file_tutor_tutor_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -454,14 +250,14 @@ func (x *TutorShortInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TutorShortInfo.ProtoReflect.Descriptor instead.
 func (*TutorShortInfo) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{4}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *TutorShortInfo) GetTutorInfo() *UserShortInfo {
+func (x *TutorShortInfo) GetTutorId() int64 {
 	if x != nil {
-		return x.TutorInfo
+		return x.TutorId
 	}
-	return nil
+	return 0
 }
 
 func (x *TutorShortInfo) GetRating() float32 {
@@ -480,7 +276,7 @@ func (x *TutorShortInfo) GetReviewsCount() int64 {
 
 type TutorStudent struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
-	Student          *UserShortInfo         `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
+	StudentId        int64                  `protobuf:"varint,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"` // потом получать из user сервиса
 	LastInteractedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=last_interacted_at,json=lastInteractedAt,proto3" json:"last_interacted_at,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -488,7 +284,7 @@ type TutorStudent struct {
 
 func (x *TutorStudent) Reset() {
 	*x = TutorStudent{}
-	mi := &file_tutor_tutor_proto_msgTypes[5]
+	mi := &file_tutor_tutor_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -500,7 +296,7 @@ func (x *TutorStudent) String() string {
 func (*TutorStudent) ProtoMessage() {}
 
 func (x *TutorStudent) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[5]
+	mi := &file_tutor_tutor_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -513,14 +309,14 @@ func (x *TutorStudent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TutorStudent.ProtoReflect.Descriptor instead.
 func (*TutorStudent) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{5}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *TutorStudent) GetStudent() *UserShortInfo {
+func (x *TutorStudent) GetStudentId() int64 {
 	if x != nil {
-		return x.Student
+		return x.StudentId
 	}
-	return nil
+	return 0
 }
 
 func (x *TutorStudent) GetLastInteractedAt() *timestamppb.Timestamp {
@@ -540,7 +336,7 @@ type AddStudentRequest struct {
 
 func (x *AddStudentRequest) Reset() {
 	*x = AddStudentRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[6]
+	mi := &file_tutor_tutor_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -552,7 +348,7 @@ func (x *AddStudentRequest) String() string {
 func (*AddStudentRequest) ProtoMessage() {}
 
 func (x *AddStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[6]
+	mi := &file_tutor_tutor_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -565,7 +361,7 @@ func (x *AddStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStudentRequest.ProtoReflect.Descriptor instead.
 func (*AddStudentRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{6}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AddStudentRequest) GetTutorId() int64 {
@@ -590,7 +386,7 @@ type AddStudentResponse struct {
 
 func (x *AddStudentResponse) Reset() {
 	*x = AddStudentResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[7]
+	mi := &file_tutor_tutor_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -602,7 +398,7 @@ func (x *AddStudentResponse) String() string {
 func (*AddStudentResponse) ProtoMessage() {}
 
 func (x *AddStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[7]
+	mi := &file_tutor_tutor_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -615,7 +411,7 @@ func (x *AddStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStudentResponse.ProtoReflect.Descriptor instead.
 func (*AddStudentResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{7}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{5}
 }
 
 type DeleteOneStudentRequest struct {
@@ -628,7 +424,7 @@ type DeleteOneStudentRequest struct {
 
 func (x *DeleteOneStudentRequest) Reset() {
 	*x = DeleteOneStudentRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[8]
+	mi := &file_tutor_tutor_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -640,7 +436,7 @@ func (x *DeleteOneStudentRequest) String() string {
 func (*DeleteOneStudentRequest) ProtoMessage() {}
 
 func (x *DeleteOneStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[8]
+	mi := &file_tutor_tutor_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -653,7 +449,7 @@ func (x *DeleteOneStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneStudentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteOneStudentRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{8}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteOneStudentRequest) GetTutorId() int64 {
@@ -678,7 +474,7 @@ type DeleteOneStudentResponse struct {
 
 func (x *DeleteOneStudentResponse) Reset() {
 	*x = DeleteOneStudentResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[9]
+	mi := &file_tutor_tutor_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -690,7 +486,7 @@ func (x *DeleteOneStudentResponse) String() string {
 func (*DeleteOneStudentResponse) ProtoMessage() {}
 
 func (x *DeleteOneStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[9]
+	mi := &file_tutor_tutor_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -703,7 +499,7 @@ func (x *DeleteOneStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneStudentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteOneStudentResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{9}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{7}
 }
 
 type DeleteStudentsRequest struct {
@@ -716,7 +512,7 @@ type DeleteStudentsRequest struct {
 
 func (x *DeleteStudentsRequest) Reset() {
 	*x = DeleteStudentsRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[10]
+	mi := &file_tutor_tutor_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -728,7 +524,7 @@ func (x *DeleteStudentsRequest) String() string {
 func (*DeleteStudentsRequest) ProtoMessage() {}
 
 func (x *DeleteStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[10]
+	mi := &file_tutor_tutor_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -741,7 +537,7 @@ func (x *DeleteStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStudentsRequest.ProtoReflect.Descriptor instead.
 func (*DeleteStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{10}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteStudentsRequest) GetTutorId() int64 {
@@ -766,7 +562,7 @@ type DeleteStudentsResponse struct {
 
 func (x *DeleteStudentsResponse) Reset() {
 	*x = DeleteStudentsResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[11]
+	mi := &file_tutor_tutor_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -778,7 +574,7 @@ func (x *DeleteStudentsResponse) String() string {
 func (*DeleteStudentsResponse) ProtoMessage() {}
 
 func (x *DeleteStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[11]
+	mi := &file_tutor_tutor_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -791,7 +587,7 @@ func (x *DeleteStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStudentsResponse.ProtoReflect.Descriptor instead.
 func (*DeleteStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{11}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{9}
 }
 
 type GetTutorStudentsRequest struct {
@@ -807,7 +603,7 @@ type GetTutorStudentsRequest struct {
 
 func (x *GetTutorStudentsRequest) Reset() {
 	*x = GetTutorStudentsRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[12]
+	mi := &file_tutor_tutor_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -819,7 +615,7 @@ func (x *GetTutorStudentsRequest) String() string {
 func (*GetTutorStudentsRequest) ProtoMessage() {}
 
 func (x *GetTutorStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[12]
+	mi := &file_tutor_tutor_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -832,7 +628,7 @@ func (x *GetTutorStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorStudentsRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{12}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetTutorStudentsRequest) GetTutorId() int64 {
@@ -880,7 +676,7 @@ type GetTutorStudentsResponse struct {
 
 func (x *GetTutorStudentsResponse) Reset() {
 	*x = GetTutorStudentsResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[13]
+	mi := &file_tutor_tutor_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -892,7 +688,7 @@ func (x *GetTutorStudentsResponse) String() string {
 func (*GetTutorStudentsResponse) ProtoMessage() {}
 
 func (x *GetTutorStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[13]
+	mi := &file_tutor_tutor_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -905,7 +701,7 @@ func (x *GetTutorStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorStudentsResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{13}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetTutorStudentsResponse) GetStudents() []*TutorStudent {
@@ -931,7 +727,7 @@ type GetOneTutorRequest struct {
 
 func (x *GetOneTutorRequest) Reset() {
 	*x = GetOneTutorRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[14]
+	mi := &file_tutor_tutor_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -943,7 +739,7 @@ func (x *GetOneTutorRequest) String() string {
 func (*GetOneTutorRequest) ProtoMessage() {}
 
 func (x *GetOneTutorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[14]
+	mi := &file_tutor_tutor_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -956,7 +752,7 @@ func (x *GetOneTutorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOneTutorRequest.ProtoReflect.Descriptor instead.
 func (*GetOneTutorRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{14}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetOneTutorRequest) GetTutorId() int64 {
@@ -968,11 +764,11 @@ func (x *GetOneTutorRequest) GetTutorId() int64 {
 
 type GetOneTutorResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TutorInfo     *UserShortInfo         `protobuf:"bytes,1,opt,name=tutor_info,json=tutorInfo,proto3" json:"tutor_info,omitempty"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"` // потом получать из user сервиса
 	Rating        float32                `protobuf:"fixed32,2,opt,name=rating,proto3" json:"rating,omitempty"`
 	ReviewsCount  int64                  `protobuf:"varint,3,opt,name=reviews_count,json=reviewsCount,proto3" json:"reviews_count,omitempty"`
 	Offers        []*Offer               `protobuf:"bytes,4,rep,name=offers,proto3" json:"offers,omitempty"`
-	Subjects      []*Subject             `protobuf:"bytes,5,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	SubjectIds    []int64                `protobuf:"varint,5,rep,packed,name=subject_ids,json=subjectIds,proto3" json:"subject_ids,omitempty"` // потом получать из subject сервиса
 	CanAddReview  bool                   `protobuf:"varint,6,opt,name=can_add_review,json=canAddReview,proto3" json:"can_add_review,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -980,7 +776,7 @@ type GetOneTutorResponse struct {
 
 func (x *GetOneTutorResponse) Reset() {
 	*x = GetOneTutorResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[15]
+	mi := &file_tutor_tutor_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +788,7 @@ func (x *GetOneTutorResponse) String() string {
 func (*GetOneTutorResponse) ProtoMessage() {}
 
 func (x *GetOneTutorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[15]
+	mi := &file_tutor_tutor_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,14 +801,14 @@ func (x *GetOneTutorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOneTutorResponse.ProtoReflect.Descriptor instead.
 func (*GetOneTutorResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{15}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *GetOneTutorResponse) GetTutorInfo() *UserShortInfo {
+func (x *GetOneTutorResponse) GetTutorId() int64 {
 	if x != nil {
-		return x.TutorInfo
+		return x.TutorId
 	}
-	return nil
+	return 0
 }
 
 func (x *GetOneTutorResponse) GetRating() float32 {
@@ -1036,9 +832,9 @@ func (x *GetOneTutorResponse) GetOffers() []*Offer {
 	return nil
 }
 
-func (x *GetOneTutorResponse) GetSubjects() []*Subject {
+func (x *GetOneTutorResponse) GetSubjectIds() []int64 {
 	if x != nil {
-		return x.Subjects
+		return x.SubjectIds
 	}
 	return nil
 }
@@ -1061,7 +857,7 @@ type GetTutorsRequest struct {
 
 func (x *GetTutorsRequest) Reset() {
 	*x = GetTutorsRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[16]
+	mi := &file_tutor_tutor_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1073,7 +869,7 @@ func (x *GetTutorsRequest) String() string {
 func (*GetTutorsRequest) ProtoMessage() {}
 
 func (x *GetTutorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[16]
+	mi := &file_tutor_tutor_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1086,7 +882,7 @@ func (x *GetTutorsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorsRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorsRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{16}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetTutorsRequest) GetSubjectId() int64 {
@@ -1120,7 +916,7 @@ type GetTutorsResponse struct {
 
 func (x *GetTutorsResponse) Reset() {
 	*x = GetTutorsResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[17]
+	mi := &file_tutor_tutor_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1132,7 +928,7 @@ func (x *GetTutorsResponse) String() string {
 func (*GetTutorsResponse) ProtoMessage() {}
 
 func (x *GetTutorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[17]
+	mi := &file_tutor_tutor_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1145,7 +941,7 @@ func (x *GetTutorsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorsResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorsResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{17}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetTutorsResponse) GetTutors() []*TutorShortInfo {
@@ -1173,7 +969,7 @@ type GetTutorReviewsRequest struct {
 
 func (x *GetTutorReviewsRequest) Reset() {
 	*x = GetTutorReviewsRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[18]
+	mi := &file_tutor_tutor_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1185,7 +981,7 @@ func (x *GetTutorReviewsRequest) String() string {
 func (*GetTutorReviewsRequest) ProtoMessage() {}
 
 func (x *GetTutorReviewsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[18]
+	mi := &file_tutor_tutor_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1198,7 +994,7 @@ func (x *GetTutorReviewsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorReviewsRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorReviewsRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{18}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetTutorReviewsRequest) GetTutorId() int64 {
@@ -1232,7 +1028,7 @@ type GetTutorReviewsResponse struct {
 
 func (x *GetTutorReviewsResponse) Reset() {
 	*x = GetTutorReviewsResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[19]
+	mi := &file_tutor_tutor_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1244,7 +1040,7 @@ func (x *GetTutorReviewsResponse) String() string {
 func (*GetTutorReviewsResponse) ProtoMessage() {}
 
 func (x *GetTutorReviewsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[19]
+	mi := &file_tutor_tutor_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1257,7 +1053,7 @@ func (x *GetTutorReviewsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorReviewsResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorReviewsResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{19}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetTutorReviewsResponse) GetReviews() []*Review {
@@ -1287,7 +1083,7 @@ type AddTutorReviewRequest struct {
 
 func (x *AddTutorReviewRequest) Reset() {
 	*x = AddTutorReviewRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[20]
+	mi := &file_tutor_tutor_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1299,7 +1095,7 @@ func (x *AddTutorReviewRequest) String() string {
 func (*AddTutorReviewRequest) ProtoMessage() {}
 
 func (x *AddTutorReviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[20]
+	mi := &file_tutor_tutor_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1312,7 +1108,7 @@ func (x *AddTutorReviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTutorReviewRequest.ProtoReflect.Descriptor instead.
 func (*AddTutorReviewRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{20}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AddTutorReviewRequest) GetText() string {
@@ -1359,7 +1155,7 @@ type AddTutorReviewResponse struct {
 
 func (x *AddTutorReviewResponse) Reset() {
 	*x = AddTutorReviewResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[21]
+	mi := &file_tutor_tutor_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1371,7 +1167,7 @@ func (x *AddTutorReviewResponse) String() string {
 func (*AddTutorReviewResponse) ProtoMessage() {}
 
 func (x *AddTutorReviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[21]
+	mi := &file_tutor_tutor_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1384,7 +1180,7 @@ func (x *AddTutorReviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTutorReviewResponse.ProtoReflect.Descriptor instead.
 func (*AddTutorReviewResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{21}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddTutorReviewResponse) GetReview() *Review {
@@ -1407,7 +1203,7 @@ type UpdateTutorReviewRequest struct {
 
 func (x *UpdateTutorReviewRequest) Reset() {
 	*x = UpdateTutorReviewRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[22]
+	mi := &file_tutor_tutor_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1419,7 +1215,7 @@ func (x *UpdateTutorReviewRequest) String() string {
 func (*UpdateTutorReviewRequest) ProtoMessage() {}
 
 func (x *UpdateTutorReviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[22]
+	mi := &file_tutor_tutor_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1432,7 +1228,7 @@ func (x *UpdateTutorReviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTutorReviewRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTutorReviewRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{22}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *UpdateTutorReviewRequest) GetId() int64 {
@@ -1478,7 +1274,7 @@ type UpdateTutorReviewResponse struct {
 
 func (x *UpdateTutorReviewResponse) Reset() {
 	*x = UpdateTutorReviewResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[23]
+	mi := &file_tutor_tutor_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1490,7 +1286,7 @@ func (x *UpdateTutorReviewResponse) String() string {
 func (*UpdateTutorReviewResponse) ProtoMessage() {}
 
 func (x *UpdateTutorReviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[23]
+	mi := &file_tutor_tutor_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1503,7 +1299,7 @@ func (x *UpdateTutorReviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTutorReviewResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTutorReviewResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{23}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{21}
 }
 
 type DeleteTutorReviewRequest struct {
@@ -1516,7 +1312,7 @@ type DeleteTutorReviewRequest struct {
 
 func (x *DeleteTutorReviewRequest) Reset() {
 	*x = DeleteTutorReviewRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[24]
+	mi := &file_tutor_tutor_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1528,7 +1324,7 @@ func (x *DeleteTutorReviewRequest) String() string {
 func (*DeleteTutorReviewRequest) ProtoMessage() {}
 
 func (x *DeleteTutorReviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[24]
+	mi := &file_tutor_tutor_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1541,7 +1337,7 @@ func (x *DeleteTutorReviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTutorReviewRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTutorReviewRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{24}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *DeleteTutorReviewRequest) GetId() int64 {
@@ -1566,7 +1362,7 @@ type DeleteTutorReviewResponse struct {
 
 func (x *DeleteTutorReviewResponse) Reset() {
 	*x = DeleteTutorReviewResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[25]
+	mi := &file_tutor_tutor_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1578,7 +1374,7 @@ func (x *DeleteTutorReviewResponse) String() string {
 func (*DeleteTutorReviewResponse) ProtoMessage() {}
 
 func (x *DeleteTutorReviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[25]
+	mi := &file_tutor_tutor_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1591,7 +1387,7 @@ func (x *DeleteTutorReviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTutorReviewResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTutorReviewResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{25}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{23}
 }
 
 type GetTutorOffersRequest struct {
@@ -1603,7 +1399,7 @@ type GetTutorOffersRequest struct {
 
 func (x *GetTutorOffersRequest) Reset() {
 	*x = GetTutorOffersRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[26]
+	mi := &file_tutor_tutor_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1615,7 +1411,7 @@ func (x *GetTutorOffersRequest) String() string {
 func (*GetTutorOffersRequest) ProtoMessage() {}
 
 func (x *GetTutorOffersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[26]
+	mi := &file_tutor_tutor_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1628,7 +1424,7 @@ func (x *GetTutorOffersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorOffersRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorOffersRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{26}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetTutorOffersRequest) GetTutorId() int64 {
@@ -1647,7 +1443,7 @@ type GetTutorOffersResponse struct {
 
 func (x *GetTutorOffersResponse) Reset() {
 	*x = GetTutorOffersResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[27]
+	mi := &file_tutor_tutor_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1659,7 +1455,7 @@ func (x *GetTutorOffersResponse) String() string {
 func (*GetTutorOffersResponse) ProtoMessage() {}
 
 func (x *GetTutorOffersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[27]
+	mi := &file_tutor_tutor_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1672,7 +1468,7 @@ func (x *GetTutorOffersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorOffersResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorOffersResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{27}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetTutorOffersResponse) GetOffers() []*Offer {
@@ -1696,7 +1492,7 @@ type AddTutorOfferRequest struct {
 
 func (x *AddTutorOfferRequest) Reset() {
 	*x = AddTutorOfferRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[28]
+	mi := &file_tutor_tutor_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1708,7 +1504,7 @@ func (x *AddTutorOfferRequest) String() string {
 func (*AddTutorOfferRequest) ProtoMessage() {}
 
 func (x *AddTutorOfferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[28]
+	mi := &file_tutor_tutor_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1721,7 +1517,7 @@ func (x *AddTutorOfferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTutorOfferRequest.ProtoReflect.Descriptor instead.
 func (*AddTutorOfferRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{28}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *AddTutorOfferRequest) GetTitle() string {
@@ -1775,7 +1571,7 @@ type AddTutorOfferResponse struct {
 
 func (x *AddTutorOfferResponse) Reset() {
 	*x = AddTutorOfferResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[29]
+	mi := &file_tutor_tutor_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1787,7 +1583,7 @@ func (x *AddTutorOfferResponse) String() string {
 func (*AddTutorOfferResponse) ProtoMessage() {}
 
 func (x *AddTutorOfferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[29]
+	mi := &file_tutor_tutor_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1800,7 +1596,7 @@ func (x *AddTutorOfferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTutorOfferResponse.ProtoReflect.Descriptor instead.
 func (*AddTutorOfferResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{29}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *AddTutorOfferResponse) GetOffer() *Offer {
@@ -1824,7 +1620,7 @@ type UpdateTutorOfferRequest struct {
 
 func (x *UpdateTutorOfferRequest) Reset() {
 	*x = UpdateTutorOfferRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[30]
+	mi := &file_tutor_tutor_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1836,7 +1632,7 @@ func (x *UpdateTutorOfferRequest) String() string {
 func (*UpdateTutorOfferRequest) ProtoMessage() {}
 
 func (x *UpdateTutorOfferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[30]
+	mi := &file_tutor_tutor_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1849,7 +1645,7 @@ func (x *UpdateTutorOfferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTutorOfferRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTutorOfferRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{30}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateTutorOfferRequest) GetId() int64 {
@@ -1902,7 +1698,7 @@ type UpdateTutorOfferResponse struct {
 
 func (x *UpdateTutorOfferResponse) Reset() {
 	*x = UpdateTutorOfferResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[31]
+	mi := &file_tutor_tutor_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1914,7 +1710,7 @@ func (x *UpdateTutorOfferResponse) String() string {
 func (*UpdateTutorOfferResponse) ProtoMessage() {}
 
 func (x *UpdateTutorOfferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[31]
+	mi := &file_tutor_tutor_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1927,7 +1723,7 @@ func (x *UpdateTutorOfferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTutorOfferResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTutorOfferResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{31}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{29}
 }
 
 type DeleteOneTutorOfferRequest struct {
@@ -1940,7 +1736,7 @@ type DeleteOneTutorOfferRequest struct {
 
 func (x *DeleteOneTutorOfferRequest) Reset() {
 	*x = DeleteOneTutorOfferRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[32]
+	mi := &file_tutor_tutor_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1952,7 +1748,7 @@ func (x *DeleteOneTutorOfferRequest) String() string {
 func (*DeleteOneTutorOfferRequest) ProtoMessage() {}
 
 func (x *DeleteOneTutorOfferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[32]
+	mi := &file_tutor_tutor_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1965,7 +1761,7 @@ func (x *DeleteOneTutorOfferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneTutorOfferRequest.ProtoReflect.Descriptor instead.
 func (*DeleteOneTutorOfferRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{32}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *DeleteOneTutorOfferRequest) GetId() int64 {
@@ -1990,7 +1786,7 @@ type DeleteOneTutorOfferResponse struct {
 
 func (x *DeleteOneTutorOfferResponse) Reset() {
 	*x = DeleteOneTutorOfferResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[33]
+	mi := &file_tutor_tutor_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2002,7 +1798,7 @@ func (x *DeleteOneTutorOfferResponse) String() string {
 func (*DeleteOneTutorOfferResponse) ProtoMessage() {}
 
 func (x *DeleteOneTutorOfferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[33]
+	mi := &file_tutor_tutor_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2015,7 +1811,7 @@ func (x *DeleteOneTutorOfferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOneTutorOfferResponse.ProtoReflect.Descriptor instead.
 func (*DeleteOneTutorOfferResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{33}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{31}
 }
 
 type DeleteTutorOffersRequest struct {
@@ -2028,7 +1824,7 @@ type DeleteTutorOffersRequest struct {
 
 func (x *DeleteTutorOffersRequest) Reset() {
 	*x = DeleteTutorOffersRequest{}
-	mi := &file_tutor_tutor_proto_msgTypes[34]
+	mi := &file_tutor_tutor_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2040,7 +1836,7 @@ func (x *DeleteTutorOffersRequest) String() string {
 func (*DeleteTutorOffersRequest) ProtoMessage() {}
 
 func (x *DeleteTutorOffersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[34]
+	mi := &file_tutor_tutor_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2053,7 +1849,7 @@ func (x *DeleteTutorOffersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTutorOffersRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTutorOffersRequest) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{34}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeleteTutorOffersRequest) GetIds() []int64 {
@@ -2078,7 +1874,7 @@ type DeleteTutorOffersResponse struct {
 
 func (x *DeleteTutorOffersResponse) Reset() {
 	*x = DeleteTutorOffersResponse{}
-	mi := &file_tutor_tutor_proto_msgTypes[35]
+	mi := &file_tutor_tutor_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2090,7 +1886,7 @@ func (x *DeleteTutorOffersResponse) String() string {
 func (*DeleteTutorOffersResponse) ProtoMessage() {}
 
 func (x *DeleteTutorOffersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_tutor_tutor_proto_msgTypes[35]
+	mi := &file_tutor_tutor_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2103,7 +1899,7 @@ func (x *DeleteTutorOffersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTutorOffersResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTutorOffersResponse) Descriptor() ([]byte, []int) {
-	return file_tutor_tutor_proto_rawDescGZIP(), []int{35}
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{33}
 }
 
 var File_tutor_tutor_proto protoreflect.FileDescriptor
@@ -2133,32 +1929,14 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x05price\x18\x06 \x01(\x03R\x05price\x12.\n" +
 	"\x10duration_minutes\x18\a \x01(\x03H\x01R\x0fdurationMinutes\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\x13\n" +
-	"\x11_duration_minutes\"k\n" +
-	"\aSubject\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\x12\x14\n" +
-	"\x05title\x18\x03 \x01(\tR\x05title\x12&\n" +
-	"\x04type\x18\x04 \x01(\x0e2\x12.tutor.SubjectTypeR\x04type\"\xdf\x01\n" +
-	"\rUserShortInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\asurname\x18\x03 \x01(\tR\asurname\x12#\n" +
-	"\n" +
-	"patronymic\x18\x04 \x01(\tH\x00R\n" +
-	"patronymic\x88\x01\x01\x12$\n" +
-	"\vtg_username\x18\x05 \x01(\tH\x01R\n" +
-	"tgUsername\x88\x01\x01\x12\x1b\n" +
-	"\x06avatar\x18\x06 \x01(\tH\x02R\x06avatar\x88\x01\x01B\r\n" +
-	"\v_patronymicB\x0e\n" +
-	"\f_tg_usernameB\t\n" +
-	"\a_avatar\"\x82\x01\n" +
-	"\x0eTutorShortInfo\x123\n" +
-	"\n" +
-	"tutor_info\x18\x01 \x01(\v2\x14.tutor.UserShortInfoR\ttutorInfo\x12\x16\n" +
+	"\x11_duration_minutes\"h\n" +
+	"\x0eTutorShortInfo\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x16\n" +
 	"\x06rating\x18\x02 \x01(\x02R\x06rating\x12#\n" +
-	"\rreviews_count\x18\x03 \x01(\x03R\freviewsCount\"\x88\x01\n" +
-	"\fTutorStudent\x12.\n" +
-	"\astudent\x18\x01 \x01(\v2\x14.tutor.UserShortInfoR\astudent\x12H\n" +
+	"\rreviews_count\x18\x03 \x01(\x03R\freviewsCount\"w\n" +
+	"\fTutorStudent\x12\x1d\n" +
+	"\n" +
+	"student_id\x18\x01 \x01(\x03R\tstudentId\x12H\n" +
 	"\x12last_interacted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x10lastInteractedAt\"M\n" +
 	"\x11AddStudentRequest\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x1d\n" +
@@ -2186,14 +1964,14 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\bstudents\x18\x01 \x03(\v2\x13.tutor.TutorStudentR\bstudents\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x03R\x05count\"/\n" +
 	"\x12GetOneTutorRequest\x12\x19\n" +
-	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"\xff\x01\n" +
-	"\x13GetOneTutorResponse\x123\n" +
-	"\n" +
-	"tutor_info\x18\x01 \x01(\v2\x14.tutor.UserShortInfoR\ttutorInfo\x12\x16\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"\xda\x01\n" +
+	"\x13GetOneTutorResponse\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x16\n" +
 	"\x06rating\x18\x02 \x01(\x02R\x06rating\x12#\n" +
 	"\rreviews_count\x18\x03 \x01(\x03R\freviewsCount\x12$\n" +
-	"\x06offers\x18\x04 \x03(\v2\f.tutor.OfferR\x06offers\x12*\n" +
-	"\bsubjects\x18\x05 \x03(\v2\x0e.tutor.SubjectR\bsubjects\x12$\n" +
+	"\x06offers\x18\x04 \x03(\v2\f.tutor.OfferR\x06offers\x12\x1f\n" +
+	"\vsubject_ids\x18\x05 \x03(\x03R\n" +
+	"subjectIds\x12$\n" +
 	"\x0ecan_add_review\x18\x06 \x01(\bR\fcanAddReview\"o\n" +
 	"\x10GetTutorsRequest\x12\"\n" +
 	"\n" +
@@ -2266,12 +2044,7 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x18DeleteTutorOffersRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\x03R\x03ids\x12\x19\n" +
 	"\btutor_id\x18\x02 \x01(\x03R\atutorId\"\x1b\n" +
-	"\x19DeleteTutorOffersResponse*J\n" +
-	"\vSubjectType\x12\x1c\n" +
-	"\x18SUBJECT_TYPE_UNSPECIFIED\x10\x00\x12\a\n" +
-	"\x03EGE\x10\x01\x12\a\n" +
-	"\x03OGE\x10\x02\x12\v\n" +
-	"\aIMPROVE\x10\x032\xc0\t\n" +
+	"\x19DeleteTutorOffersResponse2\xc0\t\n" +
 	"\x05Tutor\x12A\n" +
 	"\n" +
 	"AddStudent\x12\x18.tutor.AddStudentRequest\x1a\x19.tutor.AddStudentResponse\x12S\n" +
@@ -2302,99 +2075,90 @@ func file_tutor_tutor_proto_rawDescGZIP() []byte {
 	return file_tutor_tutor_proto_rawDescData
 }
 
-var file_tutor_tutor_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_tutor_tutor_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
+var file_tutor_tutor_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_tutor_tutor_proto_goTypes = []any{
-	(SubjectType)(0),                    // 0: tutor.SubjectType
-	(*Review)(nil),                      // 1: tutor.Review
-	(*Offer)(nil),                       // 2: tutor.Offer
-	(*Subject)(nil),                     // 3: tutor.Subject
-	(*UserShortInfo)(nil),               // 4: tutor.UserShortInfo
-	(*TutorShortInfo)(nil),              // 5: tutor.TutorShortInfo
-	(*TutorStudent)(nil),                // 6: tutor.TutorStudent
-	(*AddStudentRequest)(nil),           // 7: tutor.AddStudentRequest
-	(*AddStudentResponse)(nil),          // 8: tutor.AddStudentResponse
-	(*DeleteOneStudentRequest)(nil),     // 9: tutor.DeleteOneStudentRequest
-	(*DeleteOneStudentResponse)(nil),    // 10: tutor.DeleteOneStudentResponse
-	(*DeleteStudentsRequest)(nil),       // 11: tutor.DeleteStudentsRequest
-	(*DeleteStudentsResponse)(nil),      // 12: tutor.DeleteStudentsResponse
-	(*GetTutorStudentsRequest)(nil),     // 13: tutor.GetTutorStudentsRequest
-	(*GetTutorStudentsResponse)(nil),    // 14: tutor.GetTutorStudentsResponse
-	(*GetOneTutorRequest)(nil),          // 15: tutor.GetOneTutorRequest
-	(*GetOneTutorResponse)(nil),         // 16: tutor.GetOneTutorResponse
-	(*GetTutorsRequest)(nil),            // 17: tutor.GetTutorsRequest
-	(*GetTutorsResponse)(nil),           // 18: tutor.GetTutorsResponse
-	(*GetTutorReviewsRequest)(nil),      // 19: tutor.GetTutorReviewsRequest
-	(*GetTutorReviewsResponse)(nil),     // 20: tutor.GetTutorReviewsResponse
-	(*AddTutorReviewRequest)(nil),       // 21: tutor.AddTutorReviewRequest
-	(*AddTutorReviewResponse)(nil),      // 22: tutor.AddTutorReviewResponse
-	(*UpdateTutorReviewRequest)(nil),    // 23: tutor.UpdateTutorReviewRequest
-	(*UpdateTutorReviewResponse)(nil),   // 24: tutor.UpdateTutorReviewResponse
-	(*DeleteTutorReviewRequest)(nil),    // 25: tutor.DeleteTutorReviewRequest
-	(*DeleteTutorReviewResponse)(nil),   // 26: tutor.DeleteTutorReviewResponse
-	(*GetTutorOffersRequest)(nil),       // 27: tutor.GetTutorOffersRequest
-	(*GetTutorOffersResponse)(nil),      // 28: tutor.GetTutorOffersResponse
-	(*AddTutorOfferRequest)(nil),        // 29: tutor.AddTutorOfferRequest
-	(*AddTutorOfferResponse)(nil),       // 30: tutor.AddTutorOfferResponse
-	(*UpdateTutorOfferRequest)(nil),     // 31: tutor.UpdateTutorOfferRequest
-	(*UpdateTutorOfferResponse)(nil),    // 32: tutor.UpdateTutorOfferResponse
-	(*DeleteOneTutorOfferRequest)(nil),  // 33: tutor.DeleteOneTutorOfferRequest
-	(*DeleteOneTutorOfferResponse)(nil), // 34: tutor.DeleteOneTutorOfferResponse
-	(*DeleteTutorOffersRequest)(nil),    // 35: tutor.DeleteTutorOffersRequest
-	(*DeleteTutorOffersResponse)(nil),   // 36: tutor.DeleteTutorOffersResponse
-	(*timestamppb.Timestamp)(nil),       // 37: google.protobuf.Timestamp
+	(*Review)(nil),                      // 0: tutor.Review
+	(*Offer)(nil),                       // 1: tutor.Offer
+	(*TutorShortInfo)(nil),              // 2: tutor.TutorShortInfo
+	(*TutorStudent)(nil),                // 3: tutor.TutorStudent
+	(*AddStudentRequest)(nil),           // 4: tutor.AddStudentRequest
+	(*AddStudentResponse)(nil),          // 5: tutor.AddStudentResponse
+	(*DeleteOneStudentRequest)(nil),     // 6: tutor.DeleteOneStudentRequest
+	(*DeleteOneStudentResponse)(nil),    // 7: tutor.DeleteOneStudentResponse
+	(*DeleteStudentsRequest)(nil),       // 8: tutor.DeleteStudentsRequest
+	(*DeleteStudentsResponse)(nil),      // 9: tutor.DeleteStudentsResponse
+	(*GetTutorStudentsRequest)(nil),     // 10: tutor.GetTutorStudentsRequest
+	(*GetTutorStudentsResponse)(nil),    // 11: tutor.GetTutorStudentsResponse
+	(*GetOneTutorRequest)(nil),          // 12: tutor.GetOneTutorRequest
+	(*GetOneTutorResponse)(nil),         // 13: tutor.GetOneTutorResponse
+	(*GetTutorsRequest)(nil),            // 14: tutor.GetTutorsRequest
+	(*GetTutorsResponse)(nil),           // 15: tutor.GetTutorsResponse
+	(*GetTutorReviewsRequest)(nil),      // 16: tutor.GetTutorReviewsRequest
+	(*GetTutorReviewsResponse)(nil),     // 17: tutor.GetTutorReviewsResponse
+	(*AddTutorReviewRequest)(nil),       // 18: tutor.AddTutorReviewRequest
+	(*AddTutorReviewResponse)(nil),      // 19: tutor.AddTutorReviewResponse
+	(*UpdateTutorReviewRequest)(nil),    // 20: tutor.UpdateTutorReviewRequest
+	(*UpdateTutorReviewResponse)(nil),   // 21: tutor.UpdateTutorReviewResponse
+	(*DeleteTutorReviewRequest)(nil),    // 22: tutor.DeleteTutorReviewRequest
+	(*DeleteTutorReviewResponse)(nil),   // 23: tutor.DeleteTutorReviewResponse
+	(*GetTutorOffersRequest)(nil),       // 24: tutor.GetTutorOffersRequest
+	(*GetTutorOffersResponse)(nil),      // 25: tutor.GetTutorOffersResponse
+	(*AddTutorOfferRequest)(nil),        // 26: tutor.AddTutorOfferRequest
+	(*AddTutorOfferResponse)(nil),       // 27: tutor.AddTutorOfferResponse
+	(*UpdateTutorOfferRequest)(nil),     // 28: tutor.UpdateTutorOfferRequest
+	(*UpdateTutorOfferResponse)(nil),    // 29: tutor.UpdateTutorOfferResponse
+	(*DeleteOneTutorOfferRequest)(nil),  // 30: tutor.DeleteOneTutorOfferRequest
+	(*DeleteOneTutorOfferResponse)(nil), // 31: tutor.DeleteOneTutorOfferResponse
+	(*DeleteTutorOffersRequest)(nil),    // 32: tutor.DeleteTutorOffersRequest
+	(*DeleteTutorOffersResponse)(nil),   // 33: tutor.DeleteTutorOffersResponse
+	(*timestamppb.Timestamp)(nil),       // 34: google.protobuf.Timestamp
 }
 var file_tutor_tutor_proto_depIdxs = []int32{
-	37, // 0: tutor.Review.created_at:type_name -> google.protobuf.Timestamp
-	37, // 1: tutor.Review.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 2: tutor.Subject.type:type_name -> tutor.SubjectType
-	4,  // 3: tutor.TutorShortInfo.tutor_info:type_name -> tutor.UserShortInfo
-	4,  // 4: tutor.TutorStudent.student:type_name -> tutor.UserShortInfo
-	37, // 5: tutor.TutorStudent.last_interacted_at:type_name -> google.protobuf.Timestamp
-	6,  // 6: tutor.GetTutorStudentsResponse.students:type_name -> tutor.TutorStudent
-	4,  // 7: tutor.GetOneTutorResponse.tutor_info:type_name -> tutor.UserShortInfo
-	2,  // 8: tutor.GetOneTutorResponse.offers:type_name -> tutor.Offer
-	3,  // 9: tutor.GetOneTutorResponse.subjects:type_name -> tutor.Subject
-	5,  // 10: tutor.GetTutorsResponse.tutors:type_name -> tutor.TutorShortInfo
-	1,  // 11: tutor.GetTutorReviewsResponse.reviews:type_name -> tutor.Review
-	1,  // 12: tutor.AddTutorReviewResponse.review:type_name -> tutor.Review
-	2,  // 13: tutor.GetTutorOffersResponse.offers:type_name -> tutor.Offer
-	2,  // 14: tutor.AddTutorOfferResponse.offer:type_name -> tutor.Offer
-	7,  // 15: tutor.Tutor.AddStudent:input_type -> tutor.AddStudentRequest
-	9,  // 16: tutor.Tutor.DeleteOneStudent:input_type -> tutor.DeleteOneStudentRequest
-	11, // 17: tutor.Tutor.DeleteStudents:input_type -> tutor.DeleteStudentsRequest
-	13, // 18: tutor.Tutor.GetTutorStudents:input_type -> tutor.GetTutorStudentsRequest
-	15, // 19: tutor.Tutor.GetOneTutor:input_type -> tutor.GetOneTutorRequest
-	17, // 20: tutor.Tutor.GetTutors:input_type -> tutor.GetTutorsRequest
-	19, // 21: tutor.Tutor.GetTutorReviews:input_type -> tutor.GetTutorReviewsRequest
-	21, // 22: tutor.Tutor.AddTutorReview:input_type -> tutor.AddTutorReviewRequest
-	23, // 23: tutor.Tutor.UpdateTutorReview:input_type -> tutor.UpdateTutorReviewRequest
-	25, // 24: tutor.Tutor.DeleteTutorReview:input_type -> tutor.DeleteTutorReviewRequest
-	27, // 25: tutor.Tutor.GetTutorOffers:input_type -> tutor.GetTutorOffersRequest
-	29, // 26: tutor.Tutor.AddTutorOffer:input_type -> tutor.AddTutorOfferRequest
-	31, // 27: tutor.Tutor.UpdateTutorOffer:input_type -> tutor.UpdateTutorOfferRequest
-	33, // 28: tutor.Tutor.DeleteOneTutorOffer:input_type -> tutor.DeleteOneTutorOfferRequest
-	35, // 29: tutor.Tutor.DeleteTutorOffers:input_type -> tutor.DeleteTutorOffersRequest
-	8,  // 30: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
-	10, // 31: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
-	12, // 32: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
-	14, // 33: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
-	16, // 34: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
-	18, // 35: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
-	20, // 36: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
-	22, // 37: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
-	24, // 38: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
-	26, // 39: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
-	28, // 40: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
-	30, // 41: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
-	32, // 42: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
-	34, // 43: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
-	36, // 44: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
-	30, // [30:45] is the sub-list for method output_type
-	15, // [15:30] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	34, // 0: tutor.Review.created_at:type_name -> google.protobuf.Timestamp
+	34, // 1: tutor.Review.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 2: tutor.TutorStudent.last_interacted_at:type_name -> google.protobuf.Timestamp
+	3,  // 3: tutor.GetTutorStudentsResponse.students:type_name -> tutor.TutorStudent
+	1,  // 4: tutor.GetOneTutorResponse.offers:type_name -> tutor.Offer
+	2,  // 5: tutor.GetTutorsResponse.tutors:type_name -> tutor.TutorShortInfo
+	0,  // 6: tutor.GetTutorReviewsResponse.reviews:type_name -> tutor.Review
+	0,  // 7: tutor.AddTutorReviewResponse.review:type_name -> tutor.Review
+	1,  // 8: tutor.GetTutorOffersResponse.offers:type_name -> tutor.Offer
+	1,  // 9: tutor.AddTutorOfferResponse.offer:type_name -> tutor.Offer
+	4,  // 10: tutor.Tutor.AddStudent:input_type -> tutor.AddStudentRequest
+	6,  // 11: tutor.Tutor.DeleteOneStudent:input_type -> tutor.DeleteOneStudentRequest
+	8,  // 12: tutor.Tutor.DeleteStudents:input_type -> tutor.DeleteStudentsRequest
+	10, // 13: tutor.Tutor.GetTutorStudents:input_type -> tutor.GetTutorStudentsRequest
+	12, // 14: tutor.Tutor.GetOneTutor:input_type -> tutor.GetOneTutorRequest
+	14, // 15: tutor.Tutor.GetTutors:input_type -> tutor.GetTutorsRequest
+	16, // 16: tutor.Tutor.GetTutorReviews:input_type -> tutor.GetTutorReviewsRequest
+	18, // 17: tutor.Tutor.AddTutorReview:input_type -> tutor.AddTutorReviewRequest
+	20, // 18: tutor.Tutor.UpdateTutorReview:input_type -> tutor.UpdateTutorReviewRequest
+	22, // 19: tutor.Tutor.DeleteTutorReview:input_type -> tutor.DeleteTutorReviewRequest
+	24, // 20: tutor.Tutor.GetTutorOffers:input_type -> tutor.GetTutorOffersRequest
+	26, // 21: tutor.Tutor.AddTutorOffer:input_type -> tutor.AddTutorOfferRequest
+	28, // 22: tutor.Tutor.UpdateTutorOffer:input_type -> tutor.UpdateTutorOfferRequest
+	30, // 23: tutor.Tutor.DeleteOneTutorOffer:input_type -> tutor.DeleteOneTutorOfferRequest
+	32, // 24: tutor.Tutor.DeleteTutorOffers:input_type -> tutor.DeleteTutorOffersRequest
+	5,  // 25: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
+	7,  // 26: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
+	9,  // 27: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
+	11, // 28: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
+	13, // 29: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
+	15, // 30: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
+	17, // 31: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
+	19, // 32: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
+	21, // 33: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
+	23, // 34: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
+	25, // 35: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
+	27, // 36: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
+	29, // 37: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
+	31, // 38: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
+	33, // 39: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
+	25, // [25:40] is the sub-list for method output_type
+	10, // [10:25] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_tutor_tutor_proto_init() }
@@ -2403,24 +2167,22 @@ func file_tutor_tutor_proto_init() {
 		return
 	}
 	file_tutor_tutor_proto_msgTypes[1].OneofWrappers = []any{}
-	file_tutor_tutor_proto_msgTypes[3].OneofWrappers = []any{}
-	file_tutor_tutor_proto_msgTypes[12].OneofWrappers = []any{}
-	file_tutor_tutor_proto_msgTypes[16].OneofWrappers = []any{}
+	file_tutor_tutor_proto_msgTypes[10].OneofWrappers = []any{}
+	file_tutor_tutor_proto_msgTypes[14].OneofWrappers = []any{}
+	file_tutor_tutor_proto_msgTypes[26].OneofWrappers = []any{}
 	file_tutor_tutor_proto_msgTypes[28].OneofWrappers = []any{}
-	file_tutor_tutor_proto_msgTypes[30].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tutor_tutor_proto_rawDesc), len(file_tutor_tutor_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   36,
+			NumEnums:      0,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_tutor_tutor_proto_goTypes,
 		DependencyIndexes: file_tutor_tutor_proto_depIdxs,
-		EnumInfos:         file_tutor_tutor_proto_enumTypes,
 		MessageInfos:      file_tutor_tutor_proto_msgTypes,
 	}.Build()
 	File_tutor_tutor_proto = out.File
