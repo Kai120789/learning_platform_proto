@@ -180,8 +180,9 @@ type Offer struct {
 	Title           string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Description     *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	SubjectId       int64                  `protobuf:"varint,4,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	Price           int64                  `protobuf:"varint,5,opt,name=price,proto3" json:"price,omitempty"`
-	DurationMinutes int64                  `protobuf:"varint,6,opt,name=duration_minutes,json=durationMinutes,proto3" json:"duration_minutes,omitempty"`
+	TutorId         int64                  `protobuf:"varint,5,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	Price           int64                  `protobuf:"varint,6,opt,name=price,proto3" json:"price,omitempty"`
+	DurationMinutes int64                  `protobuf:"varint,7,opt,name=duration_minutes,json=durationMinutes,proto3" json:"duration_minutes,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -240,6 +241,13 @@ func (x *Offer) GetDescription() string {
 func (x *Offer) GetSubjectId() int64 {
 	if x != nil {
 		return x.SubjectId
+	}
+	return 0
+}
+
+func (x *Offer) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
 	}
 	return 0
 }
@@ -1678,9 +1686,10 @@ type AddTutorOfferRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Title           string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Description     *string                `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	SubjectId       int64                  `protobuf:"varint,3,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	Price           int64                  `protobuf:"varint,4,opt,name=price,proto3" json:"price,omitempty"`
-	DurationMinutes int64                  `protobuf:"varint,5,opt,name=duration_minutes,json=durationMinutes,proto3" json:"duration_minutes,omitempty"`
+	TutorId         int64                  `protobuf:"varint,3,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	SubjectId       int64                  `protobuf:"varint,4,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
+	Price           int64                  `protobuf:"varint,5,opt,name=price,proto3" json:"price,omitempty"`
+	DurationMinutes int64                  `protobuf:"varint,6,opt,name=duration_minutes,json=durationMinutes,proto3" json:"duration_minutes,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1727,6 +1736,13 @@ func (x *AddTutorOfferRequest) GetDescription() string {
 		return *x.Description
 	}
 	return ""
+}
+
+func (x *AddTutorOfferRequest) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
 }
 
 func (x *AddTutorOfferRequest) GetSubjectId() int64 {
@@ -2106,15 +2122,16 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xc4\x01\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xdf\x01\n" +
 	"\x05Offer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12%\n" +
 	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x04 \x01(\x03R\tsubjectId\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\x03R\x05price\x12)\n" +
-	"\x10duration_minutes\x18\x06 \x01(\x03R\x0fdurationMinutesB\x0e\n" +
+	"subject_id\x18\x04 \x01(\x03R\tsubjectId\x12\x19\n" +
+	"\btutor_id\x18\x05 \x01(\x03R\atutorId\x12\x14\n" +
+	"\x05price\x18\x06 \x01(\x03R\x05price\x12)\n" +
+	"\x10duration_minutes\x18\a \x01(\x03R\x0fdurationMinutesB\x0e\n" +
 	"\f_description\"k\n" +
 	"\aSubject\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
@@ -2217,14 +2234,15 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x15GetTutorOffersRequest\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\">\n" +
 	"\x16GetTutorOffersResponse\x12$\n" +
-	"\x06offers\x18\x01 \x03(\v2\f.tutor.OfferR\x06offers\"\xc3\x01\n" +
+	"\x06offers\x18\x01 \x03(\v2\f.tutor.OfferR\x06offers\"\xde\x01\n" +
 	"\x14AddTutorOfferRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12%\n" +
-	"\vdescription\x18\x02 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x1d\n" +
+	"\vdescription\x18\x02 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x19\n" +
+	"\btutor_id\x18\x03 \x01(\x03R\atutorId\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x03 \x01(\x03R\tsubjectId\x12\x14\n" +
-	"\x05price\x18\x04 \x01(\x03R\x05price\x12)\n" +
-	"\x10duration_minutes\x18\x05 \x01(\x03R\x0fdurationMinutesB\x0e\n" +
+	"subject_id\x18\x04 \x01(\x03R\tsubjectId\x12\x14\n" +
+	"\x05price\x18\x05 \x01(\x03R\x05price\x12)\n" +
+	"\x10duration_minutes\x18\x06 \x01(\x03R\x0fdurationMinutesB\x0e\n" +
 	"\f_description\";\n" +
 	"\x15AddTutorOfferResponse\x12\"\n" +
 	"\x05offer\x18\x01 \x01(\v2\f.tutor.OfferR\x05offer\"\xd6\x01\n" +
