@@ -191,8 +191,9 @@ message UpdateTutorOfferRequest {
   string title = 2;
   optional string description = 3;
   int64 subject_id = 4;
-  int64 price = 5;
-  optional int64 duration_minutes = 6;
+  int64 tutor_id = 5;
+  int64 price = 6;
+  optional int64 duration_minutes = 7;
 }
 
 message UpdateTutorOfferResponse {
