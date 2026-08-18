@@ -153,7 +153,7 @@ message UpdateTutorReviewRequest {
 }
 
 message UpdateTutorReviewResponse {
-
+  Review review = 1;
 }
 
 message DeleteTutorReviewRequest {
@@ -197,7 +197,7 @@ message UpdateTutorOfferRequest {
 }
 
 message UpdateTutorOfferResponse {
-
+  Offer offer = 1;
 }
 
 message DeleteOneTutorOfferRequest {

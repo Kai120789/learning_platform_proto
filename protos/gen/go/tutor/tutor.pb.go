@@ -1268,6 +1268,7 @@ func (x *UpdateTutorReviewRequest) GetRating() int64 {
 
 type UpdateTutorReviewResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Review        *Review                `protobuf:"bytes,1,opt,name=review,proto3" json:"review,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1300,6 +1301,13 @@ func (x *UpdateTutorReviewResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateTutorReviewResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTutorReviewResponse) Descriptor() ([]byte, []int) {
 	return file_tutor_tutor_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UpdateTutorReviewResponse) GetReview() *Review {
+	if x != nil {
+		return x.Review
+	}
+	return nil
 }
 
 type DeleteTutorReviewRequest struct {
@@ -1700,6 +1708,7 @@ func (x *UpdateTutorOfferRequest) GetDurationMinutes() int64 {
 
 type UpdateTutorOfferResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Offer         *Offer                 `protobuf:"bytes,1,opt,name=offer,proto3" json:"offer,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1732,6 +1741,13 @@ func (x *UpdateTutorOfferResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateTutorOfferResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTutorOfferResponse) Descriptor() ([]byte, []int) {
 	return file_tutor_tutor_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *UpdateTutorOfferResponse) GetOffer() *Offer {
+	if x != nil {
+		return x.Offer
+	}
+	return nil
 }
 
 type DeleteOneTutorOfferRequest struct {
@@ -2012,8 +2028,9 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\tauthor_id\x18\x03 \x01(\x03R\bauthorId\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x04 \x01(\x03R\tsubjectId\x12\x16\n" +
-	"\x06rating\x18\x05 \x01(\x03R\x06rating\"\x1b\n" +
-	"\x19UpdateTutorReviewResponse\"G\n" +
+	"\x06rating\x18\x05 \x01(\x03R\x06rating\"B\n" +
+	"\x19UpdateTutorReviewResponse\x12%\n" +
+	"\x06review\x18\x01 \x01(\v2\r.tutor.ReviewR\x06review\"G\n" +
 	"\x18DeleteTutorReviewRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
 	"\tauthor_id\x18\x02 \x01(\x03R\bauthorId\"\x1b\n" +
@@ -2044,8 +2061,9 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x05price\x18\x06 \x01(\x03R\x05price\x12.\n" +
 	"\x10duration_minutes\x18\a \x01(\x03H\x01R\x0fdurationMinutes\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\x13\n" +
-	"\x11_duration_minutes\"\x1a\n" +
-	"\x18UpdateTutorOfferResponse\"G\n" +
+	"\x11_duration_minutes\">\n" +
+	"\x18UpdateTutorOfferResponse\x12\"\n" +
+	"\x05offer\x18\x01 \x01(\v2\f.tutor.OfferR\x05offer\"G\n" +
 	"\x1aDeleteOneTutorOfferRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\btutor_id\x18\x02 \x01(\x03R\atutorId\"\x1d\n" +
@@ -2131,43 +2149,45 @@ var file_tutor_tutor_proto_depIdxs = []int32{
 	2,  // 5: tutor.GetTutorsResponse.tutors:type_name -> tutor.TutorShortInfo
 	0,  // 6: tutor.GetTutorReviewsResponse.reviews:type_name -> tutor.Review
 	0,  // 7: tutor.AddTutorReviewResponse.review:type_name -> tutor.Review
-	1,  // 8: tutor.GetTutorOffersResponse.offers:type_name -> tutor.Offer
-	1,  // 9: tutor.AddTutorOfferResponse.offer:type_name -> tutor.Offer
-	4,  // 10: tutor.Tutor.AddStudent:input_type -> tutor.AddStudentRequest
-	6,  // 11: tutor.Tutor.DeleteOneStudent:input_type -> tutor.DeleteOneStudentRequest
-	8,  // 12: tutor.Tutor.DeleteStudents:input_type -> tutor.DeleteStudentsRequest
-	10, // 13: tutor.Tutor.GetTutorStudents:input_type -> tutor.GetTutorStudentsRequest
-	12, // 14: tutor.Tutor.GetOneTutor:input_type -> tutor.GetOneTutorRequest
-	14, // 15: tutor.Tutor.GetTutors:input_type -> tutor.GetTutorsRequest
-	16, // 16: tutor.Tutor.GetTutorReviews:input_type -> tutor.GetTutorReviewsRequest
-	18, // 17: tutor.Tutor.AddTutorReview:input_type -> tutor.AddTutorReviewRequest
-	20, // 18: tutor.Tutor.UpdateTutorReview:input_type -> tutor.UpdateTutorReviewRequest
-	22, // 19: tutor.Tutor.DeleteTutorReview:input_type -> tutor.DeleteTutorReviewRequest
-	24, // 20: tutor.Tutor.GetTutorOffers:input_type -> tutor.GetTutorOffersRequest
-	26, // 21: tutor.Tutor.AddTutorOffer:input_type -> tutor.AddTutorOfferRequest
-	28, // 22: tutor.Tutor.UpdateTutorOffer:input_type -> tutor.UpdateTutorOfferRequest
-	30, // 23: tutor.Tutor.DeleteOneTutorOffer:input_type -> tutor.DeleteOneTutorOfferRequest
-	32, // 24: tutor.Tutor.DeleteTutorOffers:input_type -> tutor.DeleteTutorOffersRequest
-	5,  // 25: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
-	7,  // 26: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
-	9,  // 27: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
-	11, // 28: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
-	13, // 29: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
-	15, // 30: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
-	17, // 31: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
-	19, // 32: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
-	21, // 33: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
-	23, // 34: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
-	25, // 35: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
-	27, // 36: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
-	29, // 37: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
-	31, // 38: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
-	33, // 39: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
-	25, // [25:40] is the sub-list for method output_type
-	10, // [10:25] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	0,  // 8: tutor.UpdateTutorReviewResponse.review:type_name -> tutor.Review
+	1,  // 9: tutor.GetTutorOffersResponse.offers:type_name -> tutor.Offer
+	1,  // 10: tutor.AddTutorOfferResponse.offer:type_name -> tutor.Offer
+	1,  // 11: tutor.UpdateTutorOfferResponse.offer:type_name -> tutor.Offer
+	4,  // 12: tutor.Tutor.AddStudent:input_type -> tutor.AddStudentRequest
+	6,  // 13: tutor.Tutor.DeleteOneStudent:input_type -> tutor.DeleteOneStudentRequest
+	8,  // 14: tutor.Tutor.DeleteStudents:input_type -> tutor.DeleteStudentsRequest
+	10, // 15: tutor.Tutor.GetTutorStudents:input_type -> tutor.GetTutorStudentsRequest
+	12, // 16: tutor.Tutor.GetOneTutor:input_type -> tutor.GetOneTutorRequest
+	14, // 17: tutor.Tutor.GetTutors:input_type -> tutor.GetTutorsRequest
+	16, // 18: tutor.Tutor.GetTutorReviews:input_type -> tutor.GetTutorReviewsRequest
+	18, // 19: tutor.Tutor.AddTutorReview:input_type -> tutor.AddTutorReviewRequest
+	20, // 20: tutor.Tutor.UpdateTutorReview:input_type -> tutor.UpdateTutorReviewRequest
+	22, // 21: tutor.Tutor.DeleteTutorReview:input_type -> tutor.DeleteTutorReviewRequest
+	24, // 22: tutor.Tutor.GetTutorOffers:input_type -> tutor.GetTutorOffersRequest
+	26, // 23: tutor.Tutor.AddTutorOffer:input_type -> tutor.AddTutorOfferRequest
+	28, // 24: tutor.Tutor.UpdateTutorOffer:input_type -> tutor.UpdateTutorOfferRequest
+	30, // 25: tutor.Tutor.DeleteOneTutorOffer:input_type -> tutor.DeleteOneTutorOfferRequest
+	32, // 26: tutor.Tutor.DeleteTutorOffers:input_type -> tutor.DeleteTutorOffersRequest
+	5,  // 27: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
+	7,  // 28: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
+	9,  // 29: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
+	11, // 30: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
+	13, // 31: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
+	15, // 32: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
+	17, // 33: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
+	19, // 34: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
+	21, // 35: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
+	23, // 36: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
+	25, // 37: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
+	27, // 38: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
+	29, // 39: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
+	31, // 40: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
+	33, // 41: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
+	27, // [27:42] is the sub-list for method output_type
+	12, // [12:27] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_tutor_tutor_proto_init() }
