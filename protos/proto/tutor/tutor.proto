@@ -52,7 +52,8 @@ message TutorShortInfo {
   int64 tutor_id = 1; // потом получать из user сервиса
   float rating = 2;
   int64 reviews_count = 3;
-  repeated int64 subject_ids = 4;
+  int64 students_count = 4;
+  repeated int64 subject_ids = 5;
 }
 
 message TutorStudent {
@@ -105,12 +106,9 @@ message GetOneTutorRequest {
 }
 
 message GetOneTutorResponse {
-  int64 tutor_id = 1; // потом получать из user сервиса
-  float rating = 2;
-  int64 reviews_count = 3;
-  repeated Offer offers = 4;
-  repeated int64 subject_ids = 5;  // потом получать из subject сервиса
-  optional Review my_review = 6;
+  TutorShortInfo tutor_info = 1;
+  repeated Offer offers = 2;
+  optional Review my_review = 3;
 }
 
 message GetTutorsRequest {
@@ -233,7 +231,6 @@ message AddTutorSubjectsResponse {
 message UpdateTutorSubjectsRequest {
   int64 tutor_id = 1;
   repeated int64 subject_ids = 2;
-  repeated int64 deleted_subject_ids = 3;
 }
 
 message UpdateTutorSubjectsResponse {
