@@ -34,6 +34,8 @@ const (
 	Tutor_UpdateTutorOffer_FullMethodName    = "/tutor.Tutor/UpdateTutorOffer"
 	Tutor_DeleteOneTutorOffer_FullMethodName = "/tutor.Tutor/DeleteOneTutorOffer"
 	Tutor_DeleteTutorOffers_FullMethodName   = "/tutor.Tutor/DeleteTutorOffers"
+	Tutor_AddTutorSubjects_FullMethodName    = "/tutor.Tutor/AddTutorSubjects"
+	Tutor_UpdateTutorSubjects_FullMethodName = "/tutor.Tutor/UpdateTutorSubjects"
 )
 
 // TutorClient is the client API for Tutor service.
@@ -55,6 +57,8 @@ type TutorClient interface {
 	UpdateTutorOffer(ctx context.Context, in *UpdateTutorOfferRequest, opts ...grpc.CallOption) (*UpdateTutorOfferResponse, error)
 	DeleteOneTutorOffer(ctx context.Context, in *DeleteOneTutorOfferRequest, opts ...grpc.CallOption) (*DeleteOneTutorOfferResponse, error)
 	DeleteTutorOffers(ctx context.Context, in *DeleteTutorOffersRequest, opts ...grpc.CallOption) (*DeleteTutorOffersResponse, error)
+	AddTutorSubjects(ctx context.Context, in *AddTutorSubjectsRequest, opts ...grpc.CallOption) (*AddTutorSubjectsResponse, error)
+	UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSubjectsRequest, opts ...grpc.CallOption) (*UpdateTutorSubjectsResponse, error)
 }
 
 type tutorClient struct {
@@ -215,6 +219,26 @@ func (c *tutorClient) DeleteTutorOffers(ctx context.Context, in *DeleteTutorOffe
 	return out, nil
 }
 
+func (c *tutorClient) AddTutorSubjects(ctx context.Context, in *AddTutorSubjectsRequest, opts ...grpc.CallOption) (*AddTutorSubjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddTutorSubjectsResponse)
+	err := c.cc.Invoke(ctx, Tutor_AddTutorSubjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tutorClient) UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSubjectsRequest, opts ...grpc.CallOption) (*UpdateTutorSubjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTutorSubjectsResponse)
+	err := c.cc.Invoke(ctx, Tutor_UpdateTutorSubjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TutorServer is the server API for Tutor service.
 // All implementations must embed UnimplementedTutorServer
 // for forward compatibility.
@@ -234,6 +258,8 @@ type TutorServer interface {
 	UpdateTutorOffer(context.Context, *UpdateTutorOfferRequest) (*UpdateTutorOfferResponse, error)
 	DeleteOneTutorOffer(context.Context, *DeleteOneTutorOfferRequest) (*DeleteOneTutorOfferResponse, error)
 	DeleteTutorOffers(context.Context, *DeleteTutorOffersRequest) (*DeleteTutorOffersResponse, error)
+	AddTutorSubjects(context.Context, *AddTutorSubjectsRequest) (*AddTutorSubjectsResponse, error)
+	UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error)
 	mustEmbedUnimplementedTutorServer()
 }
 
@@ -288,6 +314,12 @@ func (UnimplementedTutorServer) DeleteOneTutorOffer(context.Context, *DeleteOneT
 }
 func (UnimplementedTutorServer) DeleteTutorOffers(context.Context, *DeleteTutorOffersRequest) (*DeleteTutorOffersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTutorOffers not implemented")
+}
+func (UnimplementedTutorServer) AddTutorSubjects(context.Context, *AddTutorSubjectsRequest) (*AddTutorSubjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTutorSubjects not implemented")
+}
+func (UnimplementedTutorServer) UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTutorSubjects not implemented")
 }
 func (UnimplementedTutorServer) mustEmbedUnimplementedTutorServer() {}
 func (UnimplementedTutorServer) testEmbeddedByValue()               {}
@@ -580,6 +612,42 @@ func _Tutor_DeleteTutorOffers_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tutor_AddTutorSubjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTutorSubjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TutorServer).AddTutorSubjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tutor_AddTutorSubjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TutorServer).AddTutorSubjects(ctx, req.(*AddTutorSubjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tutor_UpdateTutorSubjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTutorSubjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TutorServer).UpdateTutorSubjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tutor_UpdateTutorSubjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TutorServer).UpdateTutorSubjects(ctx, req.(*UpdateTutorSubjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tutor_ServiceDesc is the grpc.ServiceDesc for Tutor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -646,6 +714,14 @@ var Tutor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteTutorOffers",
 			Handler:    _Tutor_DeleteTutorOffers_Handler,
+		},
+		{
+			MethodName: "AddTutorSubjects",
+			Handler:    _Tutor_AddTutorSubjects_Handler,
+		},
+		{
+			MethodName: "UpdateTutorSubjects",
+			Handler:    _Tutor_UpdateTutorSubjects_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
