@@ -87,9 +87,8 @@ message DeleteStudentsResponse {
 message GetTutorStudentsRequest {
   int64 tutor_id = 1;
   optional int64 interacted_within_days = 2;
-  string search = 3;
-  int64 page = 4;
-  int64 limit = 5;
+  int64 page = 3;
+  int64 limit = 4;
 }
 
 message GetTutorStudentsResponse {

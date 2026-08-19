@@ -594,9 +594,8 @@ type GetTutorStudentsRequest struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	TutorId              int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
 	InteractedWithinDays *int64                 `protobuf:"varint,2,opt,name=interacted_within_days,json=interactedWithinDays,proto3,oneof" json:"interacted_within_days,omitempty"`
-	Search               string                 `protobuf:"bytes,3,opt,name=search,proto3" json:"search,omitempty"`
-	Page                 int64                  `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
-	Limit                int64                  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
+	Page                 int64                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	Limit                int64                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -643,13 +642,6 @@ func (x *GetTutorStudentsRequest) GetInteractedWithinDays() int64 {
 		return *x.InteractedWithinDays
 	}
 	return 0
-}
-
-func (x *GetTutorStudentsRequest) GetSearch() string {
-	if x != nil {
-		return x.Search
-	}
-	return ""
 }
 
 func (x *GetTutorStudentsRequest) GetPage() int64 {
@@ -1976,13 +1968,12 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x1f\n" +
 	"\vstudent_ids\x18\x02 \x03(\x03R\n" +
 	"studentIds\"\x18\n" +
-	"\x16DeleteStudentsResponse\"\xcc\x01\n" +
+	"\x16DeleteStudentsResponse\"\xb4\x01\n" +
 	"\x17GetTutorStudentsRequest\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x129\n" +
-	"\x16interacted_within_days\x18\x02 \x01(\x03H\x00R\x14interactedWithinDays\x88\x01\x01\x12\x16\n" +
-	"\x06search\x18\x03 \x01(\tR\x06search\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x03R\x04page\x12\x14\n" +
-	"\x05limit\x18\x05 \x01(\x03R\x05limitB\x19\n" +
+	"\x16interacted_within_days\x18\x02 \x01(\x03H\x00R\x14interactedWithinDays\x88\x01\x01\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x03R\x04page\x12\x14\n" +
+	"\x05limit\x18\x04 \x01(\x03R\x05limitB\x19\n" +
 	"\x17_interacted_within_days\"a\n" +
 	"\x18GetTutorStudentsResponse\x12/\n" +
 	"\bstudents\x18\x01 \x03(\v2\x13.tutor.TutorStudentR\bstudents\x12\x14\n" +
