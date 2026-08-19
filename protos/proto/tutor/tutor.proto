@@ -52,6 +52,7 @@ message TutorShortInfo {
   int64 tutor_id = 1; // потом получать из user сервиса
   float rating = 2;
   int64 reviews_count = 3;
+  repeated int64 subject_ids = 4;
 }
 
 message TutorStudent {

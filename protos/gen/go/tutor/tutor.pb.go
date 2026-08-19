@@ -219,6 +219,7 @@ type TutorShortInfo struct {
 	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"` // потом получать из user сервиса
 	Rating        float32                `protobuf:"fixed32,2,opt,name=rating,proto3" json:"rating,omitempty"`
 	ReviewsCount  int64                  `protobuf:"varint,3,opt,name=reviews_count,json=reviewsCount,proto3" json:"reviews_count,omitempty"`
+	SubjectIds    []int64                `protobuf:"varint,4,rep,packed,name=subject_ids,json=subjectIds,proto3" json:"subject_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -272,6 +273,13 @@ func (x *TutorShortInfo) GetReviewsCount() int64 {
 		return x.ReviewsCount
 	}
 	return 0
+}
+
+func (x *TutorShortInfo) GetSubjectIds() []int64 {
+	if x != nil {
+		return x.SubjectIds
+	}
+	return nil
 }
 
 type TutorStudent struct {
@@ -2153,11 +2161,13 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x05price\x18\x06 \x01(\x03R\x05price\x12.\n" +
 	"\x10duration_minutes\x18\a \x01(\x03H\x01R\x0fdurationMinutes\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\x13\n" +
-	"\x11_duration_minutes\"h\n" +
+	"\x11_duration_minutes\"\x89\x01\n" +
 	"\x0eTutorShortInfo\x12\x19\n" +
 	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x16\n" +
 	"\x06rating\x18\x02 \x01(\x02R\x06rating\x12#\n" +
-	"\rreviews_count\x18\x03 \x01(\x03R\freviewsCount\"w\n" +
+	"\rreviews_count\x18\x03 \x01(\x03R\freviewsCount\x12\x1f\n" +
+	"\vsubject_ids\x18\x04 \x03(\x03R\n" +
+	"subjectIds\"w\n" +
 	"\fTutorStudent\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\x03R\tstudentId\x12H\n" +
