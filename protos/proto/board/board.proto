@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package board;
+
+option go_package = "github.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/board";
+
+service Board {
+  rpc GetBoard (GetBoardRequest) returns (GetBoardResponse);
+  rpc CreateBoard (CreateBoardRequest) returns (CreateBoardResponse);
+  rpc GetTutorBoards (GetTutorBoardsRequest) returns (GetTutorBoardsResponse);
+  rpc DeleteBoard (DeleteBoardRequest) returns (DeleteBoardResponse);
+  rpc UpdateBoard (UpdateBoardRequest) returns (UpdateBoardResponse);
+}
+
+message OneBoard {
+  int64 id = 1;
+  string title = 2;
+  int64 tutor_id = 3;
+}
+
+message GetBoardRequest {
+  int64 board_id = 1;
+  int64 user_id = 2;
+}
+
+message GetBoardResponse {
+  OneBoard board = 1;
+}
+
+message CreateBoardRequest {
+  string title = 1;
+  int64 tutor_id = 2;
+  int64 tutor_board_limit = 3;
+}
+
+message CreateBoardResponse {
+  OneBoard board = 1;
+}
+
+message GetTutorBoardsRequest {
+  int64 tutor_id = 1;
+}
+
+message GetTutorBoardsResponse {
+  repeated OneBoard board = 1;
+}
+
+message DeleteBoardRequest {
+  int64 board_id = 1;
+  int64 tutor_id = 2;
+}
+
+message DeleteBoardResponse {
+
+}
+
+message UpdateBoardRequest {
+  int64 board_id = 1;
+  int64 tutor_id = 2;
+  string new_title = 3;
+}
+
+message UpdateBoardResponse {
+  OneBoard board = 1;
+}
