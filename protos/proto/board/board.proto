@@ -42,7 +42,7 @@ message GetTutorBoardsRequest {
 }
 
 message GetTutorBoardsResponse {
-  repeated OneBoard board = 1;
+  repeated OneBoard boards = 1;
 }
 
 message DeleteBoardRequest {

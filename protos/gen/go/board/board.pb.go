@@ -327,7 +327,7 @@ func (x *GetTutorBoardsRequest) GetTutorId() int64 {
 
 type GetTutorBoardsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Board         []*OneBoard            `protobuf:"bytes,1,rep,name=board,proto3" json:"board,omitempty"`
+	Boards        []*OneBoard            `protobuf:"bytes,1,rep,name=boards,proto3" json:"boards,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -362,9 +362,9 @@ func (*GetTutorBoardsResponse) Descriptor() ([]byte, []int) {
 	return file_board_board_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetTutorBoardsResponse) GetBoard() []*OneBoard {
+func (x *GetTutorBoardsResponse) GetBoards() []*OneBoard {
 	if x != nil {
-		return x.Board
+		return x.Boards
 	}
 	return nil
 }
@@ -582,9 +582,9 @@ const file_board_board_proto_rawDesc = "" +
 	"\x13CreateBoardResponse\x12%\n" +
 	"\x05board\x18\x01 \x01(\v2\x0f.board.OneBoardR\x05board\"2\n" +
 	"\x15GetTutorBoardsRequest\x12\x19\n" +
-	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"?\n" +
-	"\x16GetTutorBoardsResponse\x12%\n" +
-	"\x05board\x18\x01 \x03(\v2\x0f.board.OneBoardR\x05board\"J\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"A\n" +
+	"\x16GetTutorBoardsResponse\x12'\n" +
+	"\x06boards\x18\x01 \x03(\v2\x0f.board.OneBoardR\x06boards\"J\n" +
 	"\x12DeleteBoardRequest\x12\x19\n" +
 	"\bboard_id\x18\x01 \x01(\x03R\aboardId\x12\x19\n" +
 	"\btutor_id\x18\x02 \x01(\x03R\atutorId\"\x15\n" +
@@ -631,7 +631,7 @@ var file_board_board_proto_goTypes = []any{
 var file_board_board_proto_depIdxs = []int32{
 	0,  // 0: board.GetBoardResponse.board:type_name -> board.OneBoard
 	0,  // 1: board.CreateBoardResponse.board:type_name -> board.OneBoard
-	0,  // 2: board.GetTutorBoardsResponse.board:type_name -> board.OneBoard
+	0,  // 2: board.GetTutorBoardsResponse.boards:type_name -> board.OneBoard
 	0,  // 3: board.UpdateBoardResponse.board:type_name -> board.OneBoard
 	1,  // 4: board.Board.GetBoard:input_type -> board.GetBoardRequest
 	3,  // 5: board.Board.CreateBoard:input_type -> board.CreateBoardRequest
