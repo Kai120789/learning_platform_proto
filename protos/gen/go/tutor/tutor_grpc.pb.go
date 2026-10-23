@@ -36,6 +36,7 @@ const (
 	Tutor_DeleteTutorOffers_FullMethodName     = "/tutor.Tutor/DeleteTutorOffers"
 	Tutor_AddTutorSubjects_FullMethodName      = "/tutor.Tutor/AddTutorSubjects"
 	Tutor_UpdateTutorSubjects_FullMethodName   = "/tutor.Tutor/UpdateTutorSubjects"
+	Tutor_SetTutorBoardLimit_FullMethodName    = "/tutor.Tutor/SetTutorBoardLimit"
 	Tutor_GetTutorBoardLimit_FullMethodName    = "/tutor.Tutor/GetTutorBoardLimit"
 	Tutor_UpdateTutorBoardLimit_FullMethodName = "/tutor.Tutor/UpdateTutorBoardLimit"
 )
@@ -61,6 +62,7 @@ type TutorClient interface {
 	DeleteTutorOffers(ctx context.Context, in *DeleteTutorOffersRequest, opts ...grpc.CallOption) (*DeleteTutorOffersResponse, error)
 	AddTutorSubjects(ctx context.Context, in *AddTutorSubjectsRequest, opts ...grpc.CallOption) (*AddTutorSubjectsResponse, error)
 	UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSubjectsRequest, opts ...grpc.CallOption) (*UpdateTutorSubjectsResponse, error)
+	SetTutorBoardLimit(ctx context.Context, in *SetTutorBoardLimitRequest, opts ...grpc.CallOption) (*SetTutorBoardLimitResponse, error)
 	GetTutorBoardLimit(ctx context.Context, in *GetTutorBoardLimitRequest, opts ...grpc.CallOption) (*GetTutorBoardLimitResponse, error)
 	UpdateTutorBoardLimit(ctx context.Context, in *UpdateTutorBoardLimitRequest, opts ...grpc.CallOption) (*UpdateTutorBoardLimitResponse, error)
 }
@@ -243,6 +245,16 @@ func (c *tutorClient) UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSu
 	return out, nil
 }
 
+func (c *tutorClient) SetTutorBoardLimit(ctx context.Context, in *SetTutorBoardLimitRequest, opts ...grpc.CallOption) (*SetTutorBoardLimitResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetTutorBoardLimitResponse)
+	err := c.cc.Invoke(ctx, Tutor_SetTutorBoardLimit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tutorClient) GetTutorBoardLimit(ctx context.Context, in *GetTutorBoardLimitRequest, opts ...grpc.CallOption) (*GetTutorBoardLimitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetTutorBoardLimitResponse)
@@ -284,6 +296,7 @@ type TutorServer interface {
 	DeleteTutorOffers(context.Context, *DeleteTutorOffersRequest) (*DeleteTutorOffersResponse, error)
 	AddTutorSubjects(context.Context, *AddTutorSubjectsRequest) (*AddTutorSubjectsResponse, error)
 	UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error)
+	SetTutorBoardLimit(context.Context, *SetTutorBoardLimitRequest) (*SetTutorBoardLimitResponse, error)
 	GetTutorBoardLimit(context.Context, *GetTutorBoardLimitRequest) (*GetTutorBoardLimitResponse, error)
 	UpdateTutorBoardLimit(context.Context, *UpdateTutorBoardLimitRequest) (*UpdateTutorBoardLimitResponse, error)
 	mustEmbedUnimplementedTutorServer()
@@ -346,6 +359,9 @@ func (UnimplementedTutorServer) AddTutorSubjects(context.Context, *AddTutorSubje
 }
 func (UnimplementedTutorServer) UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTutorSubjects not implemented")
+}
+func (UnimplementedTutorServer) SetTutorBoardLimit(context.Context, *SetTutorBoardLimitRequest) (*SetTutorBoardLimitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTutorBoardLimit not implemented")
 }
 func (UnimplementedTutorServer) GetTutorBoardLimit(context.Context, *GetTutorBoardLimitRequest) (*GetTutorBoardLimitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTutorBoardLimit not implemented")
@@ -680,6 +696,24 @@ func _Tutor_UpdateTutorSubjects_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tutor_SetTutorBoardLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTutorBoardLimitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TutorServer).SetTutorBoardLimit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tutor_SetTutorBoardLimit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TutorServer).SetTutorBoardLimit(ctx, req.(*SetTutorBoardLimitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Tutor_GetTutorBoardLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTutorBoardLimitRequest)
 	if err := dec(in); err != nil {
@@ -790,6 +824,10 @@ var Tutor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateTutorSubjects",
 			Handler:    _Tutor_UpdateTutorSubjects_Handler,
+		},
+		{
+			MethodName: "SetTutorBoardLimit",
+			Handler:    _Tutor_SetTutorBoardLimit_Handler,
 		},
 		{
 			MethodName: "GetTutorBoardLimit",
