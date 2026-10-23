@@ -19,23 +19,25 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Tutor_AddStudent_FullMethodName          = "/tutor.Tutor/AddStudent"
-	Tutor_DeleteOneStudent_FullMethodName    = "/tutor.Tutor/DeleteOneStudent"
-	Tutor_DeleteStudents_FullMethodName      = "/tutor.Tutor/DeleteStudents"
-	Tutor_GetTutorStudents_FullMethodName    = "/tutor.Tutor/GetTutorStudents"
-	Tutor_GetOneTutor_FullMethodName         = "/tutor.Tutor/GetOneTutor"
-	Tutor_GetTutors_FullMethodName           = "/tutor.Tutor/GetTutors"
-	Tutor_GetTutorReviews_FullMethodName     = "/tutor.Tutor/GetTutorReviews"
-	Tutor_AddTutorReview_FullMethodName      = "/tutor.Tutor/AddTutorReview"
-	Tutor_UpdateTutorReview_FullMethodName   = "/tutor.Tutor/UpdateTutorReview"
-	Tutor_DeleteTutorReview_FullMethodName   = "/tutor.Tutor/DeleteTutorReview"
-	Tutor_GetTutorOffers_FullMethodName      = "/tutor.Tutor/GetTutorOffers"
-	Tutor_AddTutorOffer_FullMethodName       = "/tutor.Tutor/AddTutorOffer"
-	Tutor_UpdateTutorOffer_FullMethodName    = "/tutor.Tutor/UpdateTutorOffer"
-	Tutor_DeleteOneTutorOffer_FullMethodName = "/tutor.Tutor/DeleteOneTutorOffer"
-	Tutor_DeleteTutorOffers_FullMethodName   = "/tutor.Tutor/DeleteTutorOffers"
-	Tutor_AddTutorSubjects_FullMethodName    = "/tutor.Tutor/AddTutorSubjects"
-	Tutor_UpdateTutorSubjects_FullMethodName = "/tutor.Tutor/UpdateTutorSubjects"
+	Tutor_AddStudent_FullMethodName            = "/tutor.Tutor/AddStudent"
+	Tutor_DeleteOneStudent_FullMethodName      = "/tutor.Tutor/DeleteOneStudent"
+	Tutor_DeleteStudents_FullMethodName        = "/tutor.Tutor/DeleteStudents"
+	Tutor_GetTutorStudents_FullMethodName      = "/tutor.Tutor/GetTutorStudents"
+	Tutor_GetOneTutor_FullMethodName           = "/tutor.Tutor/GetOneTutor"
+	Tutor_GetTutors_FullMethodName             = "/tutor.Tutor/GetTutors"
+	Tutor_GetTutorReviews_FullMethodName       = "/tutor.Tutor/GetTutorReviews"
+	Tutor_AddTutorReview_FullMethodName        = "/tutor.Tutor/AddTutorReview"
+	Tutor_UpdateTutorReview_FullMethodName     = "/tutor.Tutor/UpdateTutorReview"
+	Tutor_DeleteTutorReview_FullMethodName     = "/tutor.Tutor/DeleteTutorReview"
+	Tutor_GetTutorOffers_FullMethodName        = "/tutor.Tutor/GetTutorOffers"
+	Tutor_AddTutorOffer_FullMethodName         = "/tutor.Tutor/AddTutorOffer"
+	Tutor_UpdateTutorOffer_FullMethodName      = "/tutor.Tutor/UpdateTutorOffer"
+	Tutor_DeleteOneTutorOffer_FullMethodName   = "/tutor.Tutor/DeleteOneTutorOffer"
+	Tutor_DeleteTutorOffers_FullMethodName     = "/tutor.Tutor/DeleteTutorOffers"
+	Tutor_AddTutorSubjects_FullMethodName      = "/tutor.Tutor/AddTutorSubjects"
+	Tutor_UpdateTutorSubjects_FullMethodName   = "/tutor.Tutor/UpdateTutorSubjects"
+	Tutor_GetTutorBoardLimit_FullMethodName    = "/tutor.Tutor/GetTutorBoardLimit"
+	Tutor_UpdateTutorBoardLimit_FullMethodName = "/tutor.Tutor/UpdateTutorBoardLimit"
 )
 
 // TutorClient is the client API for Tutor service.
@@ -59,6 +61,8 @@ type TutorClient interface {
 	DeleteTutorOffers(ctx context.Context, in *DeleteTutorOffersRequest, opts ...grpc.CallOption) (*DeleteTutorOffersResponse, error)
 	AddTutorSubjects(ctx context.Context, in *AddTutorSubjectsRequest, opts ...grpc.CallOption) (*AddTutorSubjectsResponse, error)
 	UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSubjectsRequest, opts ...grpc.CallOption) (*UpdateTutorSubjectsResponse, error)
+	GetTutorBoardLimit(ctx context.Context, in *GetTutorBoardLimitRequest, opts ...grpc.CallOption) (*GetTutorBoardLimitResponse, error)
+	UpdateTutorBoardLimit(ctx context.Context, in *UpdateTutorBoardLimitRequest, opts ...grpc.CallOption) (*UpdateTutorBoardLimitResponse, error)
 }
 
 type tutorClient struct {
@@ -239,6 +243,26 @@ func (c *tutorClient) UpdateTutorSubjects(ctx context.Context, in *UpdateTutorSu
 	return out, nil
 }
 
+func (c *tutorClient) GetTutorBoardLimit(ctx context.Context, in *GetTutorBoardLimitRequest, opts ...grpc.CallOption) (*GetTutorBoardLimitResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTutorBoardLimitResponse)
+	err := c.cc.Invoke(ctx, Tutor_GetTutorBoardLimit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tutorClient) UpdateTutorBoardLimit(ctx context.Context, in *UpdateTutorBoardLimitRequest, opts ...grpc.CallOption) (*UpdateTutorBoardLimitResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTutorBoardLimitResponse)
+	err := c.cc.Invoke(ctx, Tutor_UpdateTutorBoardLimit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TutorServer is the server API for Tutor service.
 // All implementations must embed UnimplementedTutorServer
 // for forward compatibility.
@@ -260,6 +284,8 @@ type TutorServer interface {
 	DeleteTutorOffers(context.Context, *DeleteTutorOffersRequest) (*DeleteTutorOffersResponse, error)
 	AddTutorSubjects(context.Context, *AddTutorSubjectsRequest) (*AddTutorSubjectsResponse, error)
 	UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error)
+	GetTutorBoardLimit(context.Context, *GetTutorBoardLimitRequest) (*GetTutorBoardLimitResponse, error)
+	UpdateTutorBoardLimit(context.Context, *UpdateTutorBoardLimitRequest) (*UpdateTutorBoardLimitResponse, error)
 	mustEmbedUnimplementedTutorServer()
 }
 
@@ -320,6 +346,12 @@ func (UnimplementedTutorServer) AddTutorSubjects(context.Context, *AddTutorSubje
 }
 func (UnimplementedTutorServer) UpdateTutorSubjects(context.Context, *UpdateTutorSubjectsRequest) (*UpdateTutorSubjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTutorSubjects not implemented")
+}
+func (UnimplementedTutorServer) GetTutorBoardLimit(context.Context, *GetTutorBoardLimitRequest) (*GetTutorBoardLimitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTutorBoardLimit not implemented")
+}
+func (UnimplementedTutorServer) UpdateTutorBoardLimit(context.Context, *UpdateTutorBoardLimitRequest) (*UpdateTutorBoardLimitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTutorBoardLimit not implemented")
 }
 func (UnimplementedTutorServer) mustEmbedUnimplementedTutorServer() {}
 func (UnimplementedTutorServer) testEmbeddedByValue()               {}
@@ -648,6 +680,42 @@ func _Tutor_UpdateTutorSubjects_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tutor_GetTutorBoardLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTutorBoardLimitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TutorServer).GetTutorBoardLimit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tutor_GetTutorBoardLimit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TutorServer).GetTutorBoardLimit(ctx, req.(*GetTutorBoardLimitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tutor_UpdateTutorBoardLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTutorBoardLimitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TutorServer).UpdateTutorBoardLimit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tutor_UpdateTutorBoardLimit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TutorServer).UpdateTutorBoardLimit(ctx, req.(*UpdateTutorBoardLimitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tutor_ServiceDesc is the grpc.ServiceDesc for Tutor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -722,6 +790,14 @@ var Tutor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateTutorSubjects",
 			Handler:    _Tutor_UpdateTutorSubjects_Handler,
+		},
+		{
+			MethodName: "GetTutorBoardLimit",
+			Handler:    _Tutor_GetTutorBoardLimit_Handler,
+		},
+		{
+			MethodName: "UpdateTutorBoardLimit",
+			Handler:    _Tutor_UpdateTutorBoardLimit_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

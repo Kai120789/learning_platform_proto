@@ -2110,6 +2110,206 @@ func (x *UpdateTutorSubjectsResponse) GetSubjectIds() []int64 {
 	return nil
 }
 
+type GetTutorBoardLimitRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTutorBoardLimitRequest) Reset() {
+	*x = GetTutorBoardLimitRequest{}
+	mi := &file_tutor_tutor_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTutorBoardLimitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTutorBoardLimitRequest) ProtoMessage() {}
+
+func (x *GetTutorBoardLimitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tutor_tutor_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTutorBoardLimitRequest.ProtoReflect.Descriptor instead.
+func (*GetTutorBoardLimitRequest) Descriptor() ([]byte, []int) {
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *GetTutorBoardLimitRequest) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
+}
+
+type GetTutorBoardLimitResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	BoardLimit    int64                  `protobuf:"varint,2,opt,name=board_limit,json=boardLimit,proto3" json:"board_limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTutorBoardLimitResponse) Reset() {
+	*x = GetTutorBoardLimitResponse{}
+	mi := &file_tutor_tutor_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTutorBoardLimitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTutorBoardLimitResponse) ProtoMessage() {}
+
+func (x *GetTutorBoardLimitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tutor_tutor_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTutorBoardLimitResponse.ProtoReflect.Descriptor instead.
+func (*GetTutorBoardLimitResponse) Descriptor() ([]byte, []int) {
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *GetTutorBoardLimitResponse) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
+}
+
+func (x *GetTutorBoardLimitResponse) GetBoardLimit() int64 {
+	if x != nil {
+		return x.BoardLimit
+	}
+	return 0
+}
+
+type UpdateTutorBoardLimitRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	NewBoardLimit int64                  `protobuf:"varint,2,opt,name=new_board_limit,json=newBoardLimit,proto3" json:"new_board_limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTutorBoardLimitRequest) Reset() {
+	*x = UpdateTutorBoardLimitRequest{}
+	mi := &file_tutor_tutor_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTutorBoardLimitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTutorBoardLimitRequest) ProtoMessage() {}
+
+func (x *UpdateTutorBoardLimitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tutor_tutor_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTutorBoardLimitRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTutorBoardLimitRequest) Descriptor() ([]byte, []int) {
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *UpdateTutorBoardLimitRequest) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
+}
+
+func (x *UpdateTutorBoardLimitRequest) GetNewBoardLimit() int64 {
+	if x != nil {
+		return x.NewBoardLimit
+	}
+	return 0
+}
+
+type UpdateTutorBoardLimitResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TutorId       int64                  `protobuf:"varint,1,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	BoardLimit    int64                  `protobuf:"varint,2,opt,name=board_limit,json=boardLimit,proto3" json:"board_limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTutorBoardLimitResponse) Reset() {
+	*x = UpdateTutorBoardLimitResponse{}
+	mi := &file_tutor_tutor_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTutorBoardLimitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTutorBoardLimitResponse) ProtoMessage() {}
+
+func (x *UpdateTutorBoardLimitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tutor_tutor_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTutorBoardLimitResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTutorBoardLimitResponse) Descriptor() ([]byte, []int) {
+	return file_tutor_tutor_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *UpdateTutorBoardLimitResponse) GetTutorId() int64 {
+	if x != nil {
+		return x.TutorId
+	}
+	return 0
+}
+
+func (x *UpdateTutorBoardLimitResponse) GetBoardLimit() int64 {
+	if x != nil {
+		return x.BoardLimit
+	}
+	return 0
+}
+
 var File_tutor_tutor_proto protoreflect.FileDescriptor
 
 const file_tutor_tutor_proto_rawDesc = "" +
@@ -2271,8 +2471,20 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"subjectIds\">\n" +
 	"\x1bUpdateTutorSubjectsResponse\x12\x1f\n" +
 	"\vsubject_ids\x18\x01 \x03(\x03R\n" +
-	"subjectIds2\xf3\n" +
-	"\n" +
+	"subjectIds\"6\n" +
+	"\x19GetTutorBoardLimitRequest\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\"X\n" +
+	"\x1aGetTutorBoardLimitResponse\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x1f\n" +
+	"\vboard_limit\x18\x02 \x01(\x03R\n" +
+	"boardLimit\"a\n" +
+	"\x1cUpdateTutorBoardLimitRequest\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12&\n" +
+	"\x0fnew_board_limit\x18\x02 \x01(\x03R\rnewBoardLimit\"[\n" +
+	"\x1dUpdateTutorBoardLimitResponse\x12\x19\n" +
+	"\btutor_id\x18\x01 \x01(\x03R\atutorId\x12\x1f\n" +
+	"\vboard_limit\x18\x02 \x01(\x03R\n" +
+	"boardLimit2\xb2\f\n" +
 	"\x05Tutor\x12A\n" +
 	"\n" +
 	"AddStudent\x12\x18.tutor.AddStudentRequest\x1a\x19.tutor.AddStudentResponse\x12S\n" +
@@ -2291,7 +2503,9 @@ const file_tutor_tutor_proto_rawDesc = "" +
 	"\x13DeleteOneTutorOffer\x12!.tutor.DeleteOneTutorOfferRequest\x1a\".tutor.DeleteOneTutorOfferResponse\x12V\n" +
 	"\x11DeleteTutorOffers\x12\x1f.tutor.DeleteTutorOffersRequest\x1a .tutor.DeleteTutorOffersResponse\x12S\n" +
 	"\x10AddTutorSubjects\x12\x1e.tutor.AddTutorSubjectsRequest\x1a\x1f.tutor.AddTutorSubjectsResponse\x12\\\n" +
-	"\x13UpdateTutorSubjects\x12!.tutor.UpdateTutorSubjectsRequest\x1a\".tutor.UpdateTutorSubjectsResponseBTZRgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/tutorb\x06proto3"
+	"\x13UpdateTutorSubjects\x12!.tutor.UpdateTutorSubjectsRequest\x1a\".tutor.UpdateTutorSubjectsResponse\x12Y\n" +
+	"\x12GetTutorBoardLimit\x12 .tutor.GetTutorBoardLimitRequest\x1a!.tutor.GetTutorBoardLimitResponse\x12b\n" +
+	"\x15UpdateTutorBoardLimit\x12#.tutor.UpdateTutorBoardLimitRequest\x1a$.tutor.UpdateTutorBoardLimitResponseBTZRgithub.com/Kai120789/learning_platform/learning_platform_proto/protos/gen/go/tutorb\x06proto3"
 
 var (
 	file_tutor_tutor_proto_rawDescOnce sync.Once
@@ -2305,52 +2519,56 @@ func file_tutor_tutor_proto_rawDescGZIP() []byte {
 	return file_tutor_tutor_proto_rawDescData
 }
 
-var file_tutor_tutor_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
+var file_tutor_tutor_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_tutor_tutor_proto_goTypes = []any{
-	(*Review)(nil),                      // 0: tutor.Review
-	(*Offer)(nil),                       // 1: tutor.Offer
-	(*TutorShortInfo)(nil),              // 2: tutor.TutorShortInfo
-	(*TutorStudent)(nil),                // 3: tutor.TutorStudent
-	(*AddStudentRequest)(nil),           // 4: tutor.AddStudentRequest
-	(*AddStudentResponse)(nil),          // 5: tutor.AddStudentResponse
-	(*DeleteOneStudentRequest)(nil),     // 6: tutor.DeleteOneStudentRequest
-	(*DeleteOneStudentResponse)(nil),    // 7: tutor.DeleteOneStudentResponse
-	(*DeleteStudentsRequest)(nil),       // 8: tutor.DeleteStudentsRequest
-	(*DeleteStudentsResponse)(nil),      // 9: tutor.DeleteStudentsResponse
-	(*GetTutorStudentsRequest)(nil),     // 10: tutor.GetTutorStudentsRequest
-	(*GetTutorStudentsResponse)(nil),    // 11: tutor.GetTutorStudentsResponse
-	(*GetOneTutorRequest)(nil),          // 12: tutor.GetOneTutorRequest
-	(*GetOneTutorResponse)(nil),         // 13: tutor.GetOneTutorResponse
-	(*GetTutorsRequest)(nil),            // 14: tutor.GetTutorsRequest
-	(*GetTutorsResponse)(nil),           // 15: tutor.GetTutorsResponse
-	(*GetTutorReviewsRequest)(nil),      // 16: tutor.GetTutorReviewsRequest
-	(*GetTutorReviewsResponse)(nil),     // 17: tutor.GetTutorReviewsResponse
-	(*AddTutorReviewRequest)(nil),       // 18: tutor.AddTutorReviewRequest
-	(*AddTutorReviewResponse)(nil),      // 19: tutor.AddTutorReviewResponse
-	(*UpdateTutorReviewRequest)(nil),    // 20: tutor.UpdateTutorReviewRequest
-	(*UpdateTutorReviewResponse)(nil),   // 21: tutor.UpdateTutorReviewResponse
-	(*DeleteTutorReviewRequest)(nil),    // 22: tutor.DeleteTutorReviewRequest
-	(*DeleteTutorReviewResponse)(nil),   // 23: tutor.DeleteTutorReviewResponse
-	(*GetTutorOffersRequest)(nil),       // 24: tutor.GetTutorOffersRequest
-	(*GetTutorOffersResponse)(nil),      // 25: tutor.GetTutorOffersResponse
-	(*AddTutorOfferRequest)(nil),        // 26: tutor.AddTutorOfferRequest
-	(*AddTutorOfferResponse)(nil),       // 27: tutor.AddTutorOfferResponse
-	(*UpdateTutorOfferRequest)(nil),     // 28: tutor.UpdateTutorOfferRequest
-	(*UpdateTutorOfferResponse)(nil),    // 29: tutor.UpdateTutorOfferResponse
-	(*DeleteOneTutorOfferRequest)(nil),  // 30: tutor.DeleteOneTutorOfferRequest
-	(*DeleteOneTutorOfferResponse)(nil), // 31: tutor.DeleteOneTutorOfferResponse
-	(*DeleteTutorOffersRequest)(nil),    // 32: tutor.DeleteTutorOffersRequest
-	(*DeleteTutorOffersResponse)(nil),   // 33: tutor.DeleteTutorOffersResponse
-	(*AddTutorSubjectsRequest)(nil),     // 34: tutor.AddTutorSubjectsRequest
-	(*AddTutorSubjectsResponse)(nil),    // 35: tutor.AddTutorSubjectsResponse
-	(*UpdateTutorSubjectsRequest)(nil),  // 36: tutor.UpdateTutorSubjectsRequest
-	(*UpdateTutorSubjectsResponse)(nil), // 37: tutor.UpdateTutorSubjectsResponse
-	(*timestamppb.Timestamp)(nil),       // 38: google.protobuf.Timestamp
+	(*Review)(nil),                        // 0: tutor.Review
+	(*Offer)(nil),                         // 1: tutor.Offer
+	(*TutorShortInfo)(nil),                // 2: tutor.TutorShortInfo
+	(*TutorStudent)(nil),                  // 3: tutor.TutorStudent
+	(*AddStudentRequest)(nil),             // 4: tutor.AddStudentRequest
+	(*AddStudentResponse)(nil),            // 5: tutor.AddStudentResponse
+	(*DeleteOneStudentRequest)(nil),       // 6: tutor.DeleteOneStudentRequest
+	(*DeleteOneStudentResponse)(nil),      // 7: tutor.DeleteOneStudentResponse
+	(*DeleteStudentsRequest)(nil),         // 8: tutor.DeleteStudentsRequest
+	(*DeleteStudentsResponse)(nil),        // 9: tutor.DeleteStudentsResponse
+	(*GetTutorStudentsRequest)(nil),       // 10: tutor.GetTutorStudentsRequest
+	(*GetTutorStudentsResponse)(nil),      // 11: tutor.GetTutorStudentsResponse
+	(*GetOneTutorRequest)(nil),            // 12: tutor.GetOneTutorRequest
+	(*GetOneTutorResponse)(nil),           // 13: tutor.GetOneTutorResponse
+	(*GetTutorsRequest)(nil),              // 14: tutor.GetTutorsRequest
+	(*GetTutorsResponse)(nil),             // 15: tutor.GetTutorsResponse
+	(*GetTutorReviewsRequest)(nil),        // 16: tutor.GetTutorReviewsRequest
+	(*GetTutorReviewsResponse)(nil),       // 17: tutor.GetTutorReviewsResponse
+	(*AddTutorReviewRequest)(nil),         // 18: tutor.AddTutorReviewRequest
+	(*AddTutorReviewResponse)(nil),        // 19: tutor.AddTutorReviewResponse
+	(*UpdateTutorReviewRequest)(nil),      // 20: tutor.UpdateTutorReviewRequest
+	(*UpdateTutorReviewResponse)(nil),     // 21: tutor.UpdateTutorReviewResponse
+	(*DeleteTutorReviewRequest)(nil),      // 22: tutor.DeleteTutorReviewRequest
+	(*DeleteTutorReviewResponse)(nil),     // 23: tutor.DeleteTutorReviewResponse
+	(*GetTutorOffersRequest)(nil),         // 24: tutor.GetTutorOffersRequest
+	(*GetTutorOffersResponse)(nil),        // 25: tutor.GetTutorOffersResponse
+	(*AddTutorOfferRequest)(nil),          // 26: tutor.AddTutorOfferRequest
+	(*AddTutorOfferResponse)(nil),         // 27: tutor.AddTutorOfferResponse
+	(*UpdateTutorOfferRequest)(nil),       // 28: tutor.UpdateTutorOfferRequest
+	(*UpdateTutorOfferResponse)(nil),      // 29: tutor.UpdateTutorOfferResponse
+	(*DeleteOneTutorOfferRequest)(nil),    // 30: tutor.DeleteOneTutorOfferRequest
+	(*DeleteOneTutorOfferResponse)(nil),   // 31: tutor.DeleteOneTutorOfferResponse
+	(*DeleteTutorOffersRequest)(nil),      // 32: tutor.DeleteTutorOffersRequest
+	(*DeleteTutorOffersResponse)(nil),     // 33: tutor.DeleteTutorOffersResponse
+	(*AddTutorSubjectsRequest)(nil),       // 34: tutor.AddTutorSubjectsRequest
+	(*AddTutorSubjectsResponse)(nil),      // 35: tutor.AddTutorSubjectsResponse
+	(*UpdateTutorSubjectsRequest)(nil),    // 36: tutor.UpdateTutorSubjectsRequest
+	(*UpdateTutorSubjectsResponse)(nil),   // 37: tutor.UpdateTutorSubjectsResponse
+	(*GetTutorBoardLimitRequest)(nil),     // 38: tutor.GetTutorBoardLimitRequest
+	(*GetTutorBoardLimitResponse)(nil),    // 39: tutor.GetTutorBoardLimitResponse
+	(*UpdateTutorBoardLimitRequest)(nil),  // 40: tutor.UpdateTutorBoardLimitRequest
+	(*UpdateTutorBoardLimitResponse)(nil), // 41: tutor.UpdateTutorBoardLimitResponse
+	(*timestamppb.Timestamp)(nil),         // 42: google.protobuf.Timestamp
 }
 var file_tutor_tutor_proto_depIdxs = []int32{
-	38, // 0: tutor.Review.created_at:type_name -> google.protobuf.Timestamp
-	38, // 1: tutor.Review.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 2: tutor.TutorStudent.last_interacted_at:type_name -> google.protobuf.Timestamp
+	42, // 0: tutor.Review.created_at:type_name -> google.protobuf.Timestamp
+	42, // 1: tutor.Review.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 2: tutor.TutorStudent.last_interacted_at:type_name -> google.protobuf.Timestamp
 	3,  // 3: tutor.GetTutorStudentsResponse.students:type_name -> tutor.TutorStudent
 	2,  // 4: tutor.GetOneTutorResponse.tutor_info:type_name -> tutor.TutorShortInfo
 	1,  // 5: tutor.GetOneTutorResponse.offers:type_name -> tutor.Offer
@@ -2379,25 +2597,29 @@ var file_tutor_tutor_proto_depIdxs = []int32{
 	32, // 28: tutor.Tutor.DeleteTutorOffers:input_type -> tutor.DeleteTutorOffersRequest
 	34, // 29: tutor.Tutor.AddTutorSubjects:input_type -> tutor.AddTutorSubjectsRequest
 	36, // 30: tutor.Tutor.UpdateTutorSubjects:input_type -> tutor.UpdateTutorSubjectsRequest
-	5,  // 31: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
-	7,  // 32: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
-	9,  // 33: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
-	11, // 34: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
-	13, // 35: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
-	15, // 36: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
-	17, // 37: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
-	19, // 38: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
-	21, // 39: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
-	23, // 40: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
-	25, // 41: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
-	27, // 42: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
-	29, // 43: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
-	31, // 44: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
-	33, // 45: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
-	35, // 46: tutor.Tutor.AddTutorSubjects:output_type -> tutor.AddTutorSubjectsResponse
-	37, // 47: tutor.Tutor.UpdateTutorSubjects:output_type -> tutor.UpdateTutorSubjectsResponse
-	31, // [31:48] is the sub-list for method output_type
-	14, // [14:31] is the sub-list for method input_type
+	38, // 31: tutor.Tutor.GetTutorBoardLimit:input_type -> tutor.GetTutorBoardLimitRequest
+	40, // 32: tutor.Tutor.UpdateTutorBoardLimit:input_type -> tutor.UpdateTutorBoardLimitRequest
+	5,  // 33: tutor.Tutor.AddStudent:output_type -> tutor.AddStudentResponse
+	7,  // 34: tutor.Tutor.DeleteOneStudent:output_type -> tutor.DeleteOneStudentResponse
+	9,  // 35: tutor.Tutor.DeleteStudents:output_type -> tutor.DeleteStudentsResponse
+	11, // 36: tutor.Tutor.GetTutorStudents:output_type -> tutor.GetTutorStudentsResponse
+	13, // 37: tutor.Tutor.GetOneTutor:output_type -> tutor.GetOneTutorResponse
+	15, // 38: tutor.Tutor.GetTutors:output_type -> tutor.GetTutorsResponse
+	17, // 39: tutor.Tutor.GetTutorReviews:output_type -> tutor.GetTutorReviewsResponse
+	19, // 40: tutor.Tutor.AddTutorReview:output_type -> tutor.AddTutorReviewResponse
+	21, // 41: tutor.Tutor.UpdateTutorReview:output_type -> tutor.UpdateTutorReviewResponse
+	23, // 42: tutor.Tutor.DeleteTutorReview:output_type -> tutor.DeleteTutorReviewResponse
+	25, // 43: tutor.Tutor.GetTutorOffers:output_type -> tutor.GetTutorOffersResponse
+	27, // 44: tutor.Tutor.AddTutorOffer:output_type -> tutor.AddTutorOfferResponse
+	29, // 45: tutor.Tutor.UpdateTutorOffer:output_type -> tutor.UpdateTutorOfferResponse
+	31, // 46: tutor.Tutor.DeleteOneTutorOffer:output_type -> tutor.DeleteOneTutorOfferResponse
+	33, // 47: tutor.Tutor.DeleteTutorOffers:output_type -> tutor.DeleteTutorOffersResponse
+	35, // 48: tutor.Tutor.AddTutorSubjects:output_type -> tutor.AddTutorSubjectsResponse
+	37, // 49: tutor.Tutor.UpdateTutorSubjects:output_type -> tutor.UpdateTutorSubjectsResponse
+	39, // 50: tutor.Tutor.GetTutorBoardLimit:output_type -> tutor.GetTutorBoardLimitResponse
+	41, // 51: tutor.Tutor.UpdateTutorBoardLimit:output_type -> tutor.UpdateTutorBoardLimitResponse
+	33, // [33:52] is the sub-list for method output_type
+	14, // [14:33] is the sub-list for method input_type
 	14, // [14:14] is the sub-list for extension type_name
 	14, // [14:14] is the sub-list for extension extendee
 	0,  // [0:14] is the sub-list for field type_name
@@ -2420,7 +2642,7 @@ func file_tutor_tutor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tutor_tutor_proto_rawDesc), len(file_tutor_tutor_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   38,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
